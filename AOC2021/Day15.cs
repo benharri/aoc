@@ -19,7 +19,7 @@ public sealed class Day15 : Day
     private readonly Dictionary<(int x, int y), Node> _grid;
     private readonly int _width;
 
-    public Day15() : base(15, "Chiton")
+    public Day15() : base(2021, 15, "Chiton")
     {
         _grid = Input
             .SelectMany((line, y) =>

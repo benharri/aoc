@@ -2,7 +2,7 @@ namespace AOC2019;
 
 public sealed class Day23 : Day
 {
-    public Day23() : base(23, "Category Six")
+    public Day23() : base(2019, 23, "Category Six")
     {
     }
 

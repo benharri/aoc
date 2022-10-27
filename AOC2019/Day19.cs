@@ -5,7 +5,7 @@ public sealed class Day19 : Day
     private readonly long[,] _grid;
     private readonly IntCodeVM _vm;
 
-    public Day19() : base(19, "Tractor Beam")
+    public Day19() : base(2019, 19, "Tractor Beam")
     {
         _vm = new(Input.First());
         _grid = new long[50, 50];

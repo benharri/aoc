@@ -9,7 +9,7 @@ public sealed class Day11 : Day
     private readonly int _flashesAfter100, _totalTurns;
     private readonly int[][] _octopusField;
     
-    public Day11() : base(11, "Dumbo Octopus")
+    public Day11() : base(2021, 11, "Dumbo Octopus")
     {
         _octopusField = Input.Select(line => line.Select(c => int.Parse($"{c}")).ToArray()).ToArray();
 

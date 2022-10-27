@@ -8,7 +8,7 @@ public sealed class Day03 : Day
     private readonly string[] _grid;
     private readonly int _width;
 
-    public Day03() : base(3, "Toboggan Trajectory")
+    public Day03() : base(2020, 3, "Toboggan Trajectory")
     {
         _grid = Input.ToArray();
         _width = _grid[0].Length;

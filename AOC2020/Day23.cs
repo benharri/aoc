@@ -10,7 +10,7 @@ public sealed class Day23 : Day
     private readonly long[] _move;
     private long _current;
 
-    public Day23() : base(23, "Crab Cups")
+    public Day23() : base(2020, 23, "Crab Cups")
     {
         _initialCups = Input.First().Select(c => long.Parse(c.ToString())).ToImmutableList();
         _current = _initialCups.First();

@@ -4,7 +4,7 @@ public sealed class Day21 : Day
 {
     private readonly IntCodeVM _vm;
 
-    public Day21() : base(21, "Springdroid Adventure")
+    public Day21() : base(2019, 21, "Springdroid Adventure")
     {
         _vm = new(Input.First());
     }

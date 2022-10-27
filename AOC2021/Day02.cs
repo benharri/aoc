@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class Day02 : Day
 {
-    public Day02() : base(2, "Dive!")
+    public Day02() : base(2021, 2, "Dive!")
     {
     }
 

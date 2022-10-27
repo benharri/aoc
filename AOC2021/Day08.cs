@@ -8,7 +8,7 @@ public sealed class Day08 : Day
     private static readonly List<char[]> PossibleMappings =
         "abcdefg".ToCharArray().Permute().Select(m => m.ToArray()).ToList();
     
-    public Day08() : base(8, "Seven Segment Search")
+    public Day08() : base(2021, 8, "Seven Segment Search")
     {
     }
 

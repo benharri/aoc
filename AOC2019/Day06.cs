@@ -4,7 +4,7 @@ public sealed class Day06 : Day
 {
     private readonly Dictionary<string, string> _input;
 
-    public Day06() : base(6, "Universal Orbit Map")
+    public Day06() : base(2019, 6, "Universal Orbit Map")
     {
         _input = Input.ToDictionary(i => i.Split(')')[1], i => i.Split(')')[0]);
     }

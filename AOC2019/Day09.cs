@@ -4,7 +4,7 @@ public sealed class Day09 : Day
 {
     private readonly IntCodeVM _vm;
 
-    public Day09() : base(9, "Sensor Boost")
+    public Day09() : base(2019, 9, "Sensor Boost")
     {
         _vm = new(Input.First());
     }

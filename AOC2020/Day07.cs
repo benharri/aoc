@@ -7,7 +7,7 @@ public sealed class Day07 : Day
 {
     private readonly Dictionary<string, IEnumerable<(int Weight, string Name)?>> _rules;
 
-    public Day07() : base(7, "Handy Haversacks") =>
+    public Day07() : base(2020, 7, "Handy Haversacks") =>
         _rules = Input
             .Select(rule =>
             {

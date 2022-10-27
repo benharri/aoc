@@ -2,7 +2,7 @@
 
 public sealed class Day22 : Day
 {
-    public Day22() : base(22, "Slam Shuffle")
+    public Day22() : base(2019, 22, "Slam Shuffle")
     {
     }
 

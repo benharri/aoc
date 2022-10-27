@@ -5,7 +5,7 @@ public sealed class Day13 : Day
     private readonly Dictionary<(int x, int y), int> _board;
     private readonly IntCodeVM _vm;
 
-    public Day13() : base(13, "Care Package")
+    public Day13() : base(2019, 13, "Care Package")
     {
         _vm = new(Input.First());
         _board = new Dictionary<(int, int), int>();

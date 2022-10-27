@@ -7,7 +7,7 @@ public sealed class Day02 : Day
 {
     private readonly ImmutableList<Password> _passwords;
 
-    public Day02() : base(2, "Password Philosophy") =>
+    public Day02() : base(2020, 2, "Password Philosophy") =>
         _passwords = Input.Select(p => new Password(p)).ToImmutableList();
 
     public override string Part1() =>

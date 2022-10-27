@@ -8,7 +8,7 @@ public sealed class Day21 : Day
     private readonly IEnumerable<(string[] Allergens, string[] Ingredients)> _parsedFoods;
     private readonly IEnumerable<(string Allergen, string Ingredient)> _dangerousFoods;
 
-    public Day21() : base(21, "Allergen Assessment")
+    public Day21() : base(2020, 21, "Allergen Assessment")
     {
         _parsedFoods = Input.Select(line => line.TrimEnd(')').Split(" (contains "))
             .Select(split => (Allergens: split[1].Split(", "), Ingredients: split[0].Split(' ')));

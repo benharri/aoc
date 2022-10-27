@@ -7,7 +7,7 @@ public sealed class Day12 : Day
 {
     private readonly Dictionary<string, List<string>> _edges = new();
 
-    public Day12() : base(12, "Passage Pathing")
+    public Day12() : base(2021, 12, "Passage Pathing")
     {
         foreach (var line in Input)
         {

@@ -5,7 +5,7 @@ public sealed class Day16 : Day
     private static readonly int[] BasePattern = { 0, 1, 0, -1 };
     private readonly int[] _initialList;
 
-    public Day16() : base(16, "Flawed Frequency Transmission")
+    public Day16() : base(2019, 16, "Flawed Frequency Transmission")
     {
         _initialList = Input.First().Select(c => int.Parse($"{c}")).ToArray();
     }

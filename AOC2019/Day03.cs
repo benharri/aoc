@@ -5,7 +5,7 @@ public sealed class Day03 : Day
     private readonly IEnumerable<(int, int)> _intersections;
     private readonly List<Dictionary<(int, int), int>> _wires;
 
-    public Day03() : base(3, "Crossed Wires")
+    public Day03() : base(2019, 3, "Crossed Wires")
     {
         _wires = Input.Select(ParseWire).ToList();
         _intersections = _wires[0].Keys.Intersect(_wires[1].Keys);

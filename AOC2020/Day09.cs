@@ -8,7 +8,7 @@ public sealed class Day09 : Day
     private readonly long[] _list;
     private long _part1;
 
-    public Day09() : base(9, "Encoding Error") =>
+    public Day09() : base(2020, 9, "Encoding Error") =>
         _list = Input.Select(long.Parse).ToArray();
 
     public override string Part1()

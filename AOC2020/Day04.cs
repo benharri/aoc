@@ -7,9 +7,9 @@ public sealed class Day04 : Day
 {
     private readonly List<Passport> _passports;
 
-    public Day04() : base(4, "Passport Processing")
+    public Day04() : base(2020, 4, "Passport Processing")
     {
-        _passports = new List<Passport>();
+        _passports = new();
 
         var a = new List<string>();
         foreach (var line in Input)

@@ -7,7 +7,7 @@ public sealed class Day16 : Day
 {
     private readonly Packet _packet;
 
-    public Day16() : base(16, "Packet Decoder")
+    public Day16() : base(2021, 16, "Packet Decoder")
     {
         var bits = string.Join(string.Empty,
             Input.First().Select(c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')));

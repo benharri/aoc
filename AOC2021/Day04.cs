@@ -9,7 +9,7 @@ public sealed class Day04 : Day
     private readonly List<List<int>> _boards;
     private readonly int _size;
     
-    public Day04() : base(4, "Giant Squid")
+    public Day04() : base(2021, 4, "Giant Squid")
     {
         _call = Input.First().Split(',').Select(int.Parse).ToList();
         _boards = new();

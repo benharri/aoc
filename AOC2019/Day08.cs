@@ -4,7 +4,7 @@ public sealed class Day08 : Day
 {
     private readonly List<List<char>> _photo;
 
-    public Day08() : base(8, "Space Image Format")
+    public Day08() : base(2019, 8, "Space Image Format")
     {
         _photo = Input.First().Chunk(25 * 6).Select(s => s.ToList()).ToList();
     }
