@@ -22,9 +22,9 @@ fi
 
 curl -s https://adventofcode.com/"$year"/day/"$day"/input \
   --cookie "session=$session" \
-  -o "$(printf "input%s/day%02d.in" "$year" "$day")"
+  -o "$(printf "AOC%s/input%s/day%02d.in" "$year" "$year" "$day")"
 
-class=$(printf "Day%02d.cs" "$day")
+class=$(printf "AOC%s/Day%02d.cs" "$year" "$day")
 longDay=$(printf "%02d" "$day")
 
 if [ ! -f "$class" ]; then
