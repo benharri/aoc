@@ -1,4 +1,5 @@
 ﻿using AOC2020;
+
 namespace AOC.Test;
 
 [TestClass]
@@ -32,6 +33,8 @@ public class Test2020
     [DataRow(typeof(Day25), "11707042", "")]
     public void CheckAllDays(Type dayType, string part1, string part2)
     {
+        Day.Year = 2020;
+
         // create day instance
         var s = Stopwatch.StartNew();
         var day = Activator.CreateInstance(dayType) as Day;

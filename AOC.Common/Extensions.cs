@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Numerics;
-
-namespace AOC.Common;
+﻿namespace AOC.Common;
 
 public static class Extensions
 {

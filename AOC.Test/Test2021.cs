@@ -1,4 +1,5 @@
 using AOC2021;
+
 namespace AOC.Test;
 
 [TestClass]
@@ -49,6 +50,8 @@ public class Test2021
     [DataRow(typeof(Day25), "417", "")]
     public void CheckAllDays(Type dayType, string part1, string part2)
     {
+        Day.Year = 2021;
+
         var s = Stopwatch.StartNew();
         var day = Activator.CreateInstance(dayType) as Day;
         s.Stop();
@@ -103,7 +106,9 @@ public class Test2021
     [DataRow(typeof(Day25), "58", "")]
     public void CheckTestInputs(Type dayType, string part1, string part2)
     {
+        Day.Year = 2021;
         Day.UseTestInput = true;
+
         var s = Stopwatch.StartNew();
         var day = Activator.CreateInstance(dayType) as Day;
         s.Stop();
