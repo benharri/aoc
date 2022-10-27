@@ -1,4 +1,5 @@
 using AOC2019;
+
 namespace AOC.Test;
 
 [TestClass]
@@ -34,6 +35,8 @@ public class Test2019
     //[DataRow(typeof(Day25), "", "")]
     public void TestAllDays(Type dayType, string part1, string part2)
     {
+        Day.Year = 2019;
+
         var s = Stopwatch.StartNew();
         var day = Activator.CreateInstance(dayType) as Day;
         s.Stop();
