@@ -26,7 +26,10 @@ public sealed class Day06 : Day
         var you = GetParents("YOU");
         var san = GetParents("SAN");
         var common = 1;
-        for (; you[^common] == san[^common]; common++) ;
+        for (; you[^common] == san[^common]; common++)
+        {
+        }
+
         return $"{you.Count + san.Count - common * 2}";
     }
 }

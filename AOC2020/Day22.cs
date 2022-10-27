@@ -18,7 +18,7 @@ public sealed class Day22 : Day
         _deck1.Clear();
         _deck2.Clear();
 
-        int player = 0;
+        var player = 0;
         foreach (var line in Input)
         {
             if (line == "") continue;
@@ -49,11 +49,9 @@ public sealed class Day22 : Day
                     // player1 wins
                     return (deck1, new());
                 }
-                else
-                {
-                    seen1.Add(deck1Hash);
-                    seen2.Add(deck2Hash);
-                }
+
+                seen1.Add(deck1Hash);
+                seen2.Add(deck2Hash);
             }
 
             var play1 = deck1.Dequeue();
@@ -87,7 +85,7 @@ public sealed class Day22 : Day
     private (Queue<int> deck1, Queue<int> deck2) Play(IEnumerable<int> enumerable1, IEnumerable<int> enumerable2, bool recursive) =>
         Play(new(enumerable1), new(enumerable2), recursive);
 
-    private static int CalculateScore(Queue<int> deck) =>
+    private static int CalculateScore(IReadOnlyCollection<int> deck) =>
         deck.Reverse().Zip(Enumerable.Range(1, deck.Count), (a, b) => a * b).Sum();
 
     public override string Part1()

@@ -27,9 +27,9 @@ public sealed class Day11 : Day
             case Direction.Right:
                 _x++;
                 break;
+            default:
+                throw new ArgumentException("invalid heading", nameof(_heading));
         }
-
-        ;
     }
 
     private void Turn(long direction)

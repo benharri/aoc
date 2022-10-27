@@ -57,9 +57,9 @@ public sealed class Day15 : Day
                     if (_verbose)
                     {
                         // find extents of canvas
-                        int xMin, xMax, yMin, yMax;
-                        xMin = yMin = int.MaxValue;
-                        xMax = yMax = int.MinValue;
+                        int yMin, yMax;
+                        var xMin = yMin = int.MaxValue;
+                        var xMax = yMax = int.MinValue;
                         foreach (var (x, y) in Location.AllLocations.Keys)
                         {
                             if (x < xMin) xMin = x;
