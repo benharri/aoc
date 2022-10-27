@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="input2020\*.in">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="AOC.Common" />
+        <Using Include="System.Collections.Generic" />
+        <Using Include="System.Collections.Immutable" />
+        <Using Include="System.Reflection" />
+        <Using Include="System.Text" />
+        <Using Include="System.Text.RegularExpressions" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AOC.Common\AOC.Common.csproj" />
+    </ItemGroup>
+
+</Project>

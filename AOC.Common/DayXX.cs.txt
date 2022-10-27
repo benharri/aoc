@@ -1,0 +1,15 @@
+﻿namespace AOCYYYY;
+
+/// <summary>
+/// Day Q: <see href="https://adventofcode.com/YYYY/day/Q"/>
+/// </summary>
+public sealed class DayXX : Day
+{
+    public DayXX() : base(Q, "Puzzle Name")
+    {
+    }
+
+    public override object Part1() => "";
+
+    public override object Part2() => "";
+}
