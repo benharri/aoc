@@ -5,7 +5,7 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day11 : Day
 {
-    public Day11() : base(11, "Seating System")
+    public Day11() : base(2020, 11, "Seating System")
     {
     }
 

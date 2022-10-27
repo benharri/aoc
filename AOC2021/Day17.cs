@@ -7,7 +7,7 @@ public sealed class Day17 : Day
 {
     private readonly List<int> _target;
 
-    public Day17() : base(17, "Trick Shot")
+    public Day17() : base(2021, 17, "Trick Shot")
     {
         _target = Input.First()
             .Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)

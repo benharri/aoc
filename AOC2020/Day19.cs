@@ -9,7 +9,7 @@ public sealed class Day19 : Day
     private readonly Dictionary<string, string[][]> _rules;
     private readonly Stack<string> _stack;
 
-    public Day19() : base(19, "Monster Messages")
+    public Day19() : base(2020, 19, "Monster Messages")
     {
         _rules = Input.TakeWhile(l => !string.IsNullOrWhiteSpace(l))
             .Select(l => l.Split(':'))

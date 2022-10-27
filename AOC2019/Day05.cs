@@ -5,7 +5,7 @@ public sealed class Day05 : Day
     private readonly IEnumerable<int> _tape;
     private int _output;
 
-    public Day05() : base(5, "Sunny with a Chance of Asteroids")
+    public Day05() : base(2019, 5, "Sunny with a Chance of Asteroids")
     {
         _tape = Input.First().Split(',').Select(int.Parse);
     }

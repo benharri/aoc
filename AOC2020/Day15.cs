@@ -9,7 +9,7 @@ public sealed class Day15 : Day
     private int _current;
     private int _i;
 
-    public Day15() : base(15, "Rambunctious Recitation")
+    public Day15() : base(2020, 15, "Rambunctious Recitation")
     {
         var initial = Input.First().Split(',').Select(int.Parse).ToArray();
         _turns = new int[30_000_000];

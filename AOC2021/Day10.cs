@@ -32,7 +32,7 @@ public sealed class Day10 : Day
     private readonly long _score1;
     private readonly List<long> _scores2 = new();
 
-    public Day10() : base(10, "Syntax Scoring")
+    public Day10() : base(2021, 10, "Syntax Scoring")
     {
         _score1 = 0L;
         foreach (var line in Input)

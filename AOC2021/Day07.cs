@@ -7,7 +7,7 @@ public sealed class Day07 : Day
 {
     private readonly List<long> _tape;
     
-    public Day07() : base(7, "The Treachery of Whales")
+    public Day07() : base(2021, 7, "The Treachery of Whales")
     {
         _tape = Input.First().Split(',').Select(long.Parse).OrderBy(i => i).ToList();
     }

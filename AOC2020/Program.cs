@@ -1,6 +1,4 @@
-﻿Day.Year = 2020;
-
-var days = Assembly.GetExecutingAssembly().GetTypes()
+﻿var days = Assembly.GetExecutingAssembly().GetTypes()
     .Where(t => t.BaseType == typeof(Day))
     .Select(t => (Activator.CreateInstance(t) as Day)!)
     .OrderBy(d => d.DayNumber);

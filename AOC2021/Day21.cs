@@ -11,7 +11,7 @@ public sealed class Day21 : Day
     private int _rollCount;
     private ulong _player1Victories, _player2Victories;
 
-    public Day21() : base(21, "Dirac Dice")
+    public Day21() : base(2021, 21, "Dirac Dice")
     {
         var s = Input
             .Select(l => l.Split(": ")[1])

@@ -4,7 +4,7 @@ public sealed class Day17 : Day
 {
     private readonly IntCodeVM _vm;
 
-    public Day17() : base(17, "Set and Forget")
+    public Day17() : base(2019, 17, "Set and Forget")
     {
         _vm = new(Input.First());
     }

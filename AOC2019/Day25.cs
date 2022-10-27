@@ -2,7 +2,7 @@
 
 public sealed class Day25 : Day
 {
-    public Day25() : base(25, "Cryostasis")
+    public Day25() : base(2019, 25, "Cryostasis")
     {
     }
 

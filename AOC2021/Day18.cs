@@ -7,7 +7,7 @@ public sealed class Day18 : Day
 {
     private readonly List<string> _fishes;
 
-    public Day18() : base(18, "Snailfish")
+    public Day18() : base(2021, 18, "Snailfish")
     {
         _fishes = Input.ToList();
     }

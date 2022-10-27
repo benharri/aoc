@@ -11,7 +11,7 @@ public sealed class Day19 : Day
     private readonly List<HashSet<Vector3>> _scans;
     private List<HashSet<Vector3>> _scanners = new();
 
-    public Day19() : base(19, "Beacon Scanner")
+    public Day19() : base(2021, 19, "Beacon Scanner")
     {
         _scans = Input
             .Aggregate(new List<HashSet<Vector3>>(), (list, line) =>

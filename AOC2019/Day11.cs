@@ -6,7 +6,7 @@ public sealed class Day11 : Day
     private Direction _heading;
     private long _x, _y;
 
-    public Day11() : base(11, "Space Police")
+    public Day11() : base(2019, 11, "Space Police")
     {
         _vm = new(Input.First());
     }
@@ -58,7 +58,7 @@ public sealed class Day11 : Day
         var haltType = IntCodeVM.HaltType.Waiting;
         while (haltType == IntCodeVM.HaltType.Waiting)
         {
-            haltType = _vm.Run(map.GetValueOrDefault((x: _x, y: _y)));
+            haltType = _vm.Run(map.GetValueOrDefault((_x, _y)));
             map[(_x, _y)] = _vm.Result;
             Turn(_vm.Result);
         }

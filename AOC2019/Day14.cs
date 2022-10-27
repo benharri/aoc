@@ -6,7 +6,7 @@ public sealed class Day14 : Day
 
     private Dictionary<string, long> _available;
 
-    public Day14() : base(14, "Space Stoichiometry")
+    public Day14() : base(2019, 14, "Space Stoichiometry")
     {
         _reactions = Input
             .Select(Reaction.Parse)

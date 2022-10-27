@@ -8,7 +8,7 @@ public sealed class Day14 : Day
     private readonly string _template;
     private readonly Dictionary<string, string> _substitutionPairs;
 
-    public Day14() : base(14, "Extended Polymerization")
+    public Day14() : base(2021, 14, "Extended Polymerization")
     {
         _template = Input.First();
         _substitutionPairs = Input.Skip(2).Select(l => l.Split(" -> ")).ToDictionary(k => k[0], v => v[1]);

@@ -7,7 +7,7 @@ public sealed class Day05 : Day
 {
     private readonly ImmutableHashSet<int> _ids;
 
-    public Day05() : base(5, "Binary Boarding") =>
+    public Day05() : base(2020, 5, "Binary Boarding") =>
         _ids = Input
             .Select(s =>
                 Convert.ToInt32(s.Replace('F', '0').Replace('B', '1').Replace('L', '0').Replace('R', '1'), 2))

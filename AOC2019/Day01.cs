@@ -4,7 +4,7 @@ public sealed class Day01 : Day
 {
     private readonly IEnumerable<int> _masses;
 
-    public Day01() : base(1, "The Tyranny of the Rocket Equation")
+    public Day01() : base(2019, 1, "The Tyranny of the Rocket Equation")
     {
         _masses = Input.Select(int.Parse);
     }

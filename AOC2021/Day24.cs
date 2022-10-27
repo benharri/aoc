@@ -7,7 +7,7 @@ public sealed class Day24 : Day
 {
     private readonly Dictionary<int, (int x, int y)> _keys = new();
 
-    public Day24() : base(24, "Arithmetic Logic Unit")
+    public Day24() : base(2021, 24, "Arithmetic Logic Unit")
     {
         var lines = Input.ToList();
         var pairs = Enumerable.Range(0, 14)

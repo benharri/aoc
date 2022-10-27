@@ -8,7 +8,7 @@ public sealed class Day16 : Day
     private readonly Dictionary<string, List<Range>> _rules;
     private readonly List<List<int>> _tickets;
 
-    public Day16() : base(16, "Ticket Translation")
+    public Day16() : base(2020, 16, "Ticket Translation")
     {
         _tickets = new();
         _rules = new();

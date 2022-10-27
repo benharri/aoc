@@ -8,7 +8,7 @@ public sealed class Day22 : Day
     private readonly Queue<int> _deck1 = new();
     private readonly Queue<int> _deck2 = new();
 
-    public Day22() : base(22, "Crab Combat")
+    public Day22() : base(2020, 22, "Crab Combat")
     {
         Reset();
     }
@@ -47,7 +47,7 @@ public sealed class Day22 : Day
                 if (seen1.Contains(deck1Hash) || seen2.Contains(deck2Hash))
                 {
                     // player1 wins
-                    return (deck1, new Queue<int>());
+                    return (deck1, new());
                 }
                 else
                 {
@@ -85,7 +85,7 @@ public sealed class Day22 : Day
     }
 
     private (Queue<int> deck1, Queue<int> deck2) Play(IEnumerable<int> enumerable1, IEnumerable<int> enumerable2, bool recursive) =>
-        Play(new Queue<int>(enumerable1), new Queue<int>(enumerable2), recursive);
+        Play(new(enumerable1), new(enumerable2), recursive);
 
     private static int CalculateScore(Queue<int> deck) =>
         deck.Reverse().Zip(Enumerable.Range(1, deck.Count), (a, b) => a * b).Sum();

@@ -6,7 +6,7 @@ public sealed class Day10 : Day
     private (int x, int y) _best = (x: -1, y: -1);
     private int _bestCanSee;
 
-    public Day10() : base(10, "Monitoring Station")
+    public Day10() : base(2019, 10, "Monitoring Station")
     {
         _asteroids = Input
             .Select((r, y) => r.Select((c, x) => (x, y, isAsteroid: c == '#')).ToArray())

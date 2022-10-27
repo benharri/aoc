@@ -10,7 +10,7 @@ public sealed class Day13 : Day
     private List<(int x, int y)> _dots;
     private readonly List<(char axis, int index)> _folds;
     
-    public Day13() : base(13, "Transparent Origami")
+    public Day13() : base(2021, 13, "Transparent Origami")
     {
         var s = Input.Split("").ToList();
         

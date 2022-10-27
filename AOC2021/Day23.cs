@@ -7,7 +7,7 @@ public sealed class Day23 : Day
 {
     private readonly List<char> _crabs;
 
-    public Day23() : base(23, "Amphipod")
+    public Day23() : base(2021, 23, "Amphipod")
     {
         _crabs = Input.SelectMany(l => l).Where(char.IsLetter).ToList();
     }

@@ -17,7 +17,7 @@ public sealed class Day24 : Day
 
     private Dictionary<(int q, int r, int s), Tile> _tiles;
 
-    public Day24() : base(24, "Lobby Layout")
+    public Day24() : base(2020, 24, "Lobby Layout")
     {
         _tiles = Input
             .Select(Tile.FromLine)
@@ -72,7 +72,7 @@ public sealed class Day24 : Day
                 direction = "";
             }
 
-            return new Tile { Location = location };
+            return new() { Location = location };
         }
 
         public static Tile operator +(Tile t, (int q, int r, int s) direction) =>

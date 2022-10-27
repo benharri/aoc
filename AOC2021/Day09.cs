@@ -11,7 +11,7 @@ public sealed class Day09 : Day
     private readonly List<(int x, int y)> _lowPoints;
     private readonly List<string> _map;
 
-    public Day09() : base(9, "Smoke Basin")
+    public Day09() : base(2021, 9, "Smoke Basin")
     {
         _part1Sum = 0;
         _lowPoints = new();

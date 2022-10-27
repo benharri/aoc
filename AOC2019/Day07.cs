@@ -4,7 +4,7 @@ public sealed class Day07 : Day
 {
     private readonly IntCodeVM[] _amplifiers = new IntCodeVM[5];
 
-    public Day07() : base(7, "Amplification Circuit")
+    public Day07() : base(2019, 7, "Amplification Circuit")
     {
         for (var i = 0; i < 5; i++) _amplifiers[i] = new(Input.First());
     }

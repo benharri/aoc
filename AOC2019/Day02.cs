@@ -4,7 +4,7 @@ public sealed class Day02 : Day
 {
     private readonly IEnumerable<int> _input;
 
-    public Day02() : base(2, "1202 Program Alarm")
+    public Day02() : base(2019, 2, "1202 Program Alarm")
     {
         _input = Input.First().Split(',').Select(int.Parse);
     }

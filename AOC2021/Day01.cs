@@ -7,7 +7,7 @@ public sealed class Day01 : Day
 {
     private readonly List<int> _readings;
     
-    public Day01() : base(1, "Sonar Sweep")
+    public Day01() : base(2021, 1, "Sonar Sweep")
     {
         _readings = Input.Select(int.Parse).ToList();
     }

@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class Day05 : Day
 {
-    public Day05() : base(5, "Hydrothermal Venture")
+    public Day05() : base(2021, 5, "Hydrothermal Venture")
     {
     }
 

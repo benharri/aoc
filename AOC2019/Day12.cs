@@ -5,7 +5,7 @@ public sealed class Day12 : Day
     private readonly List<Position> _moons;
     private int _step;
 
-    public Day12() : base(12, "The N-Body Problem")
+    public Day12() : base(2019, 12, "The N-Body Problem")
     {
         _moons = Input
             .Select(moon =>

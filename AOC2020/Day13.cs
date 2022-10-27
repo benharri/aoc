@@ -9,7 +9,7 @@ public sealed class Day13 : Day
     private readonly long _earliest;
     private readonly string[] _fullSchedule;
 
-    public Day13() : base(13, "Shuttle Search")
+    public Day13() : base(2020, 13, "Shuttle Search")
     {
         _earliest = long.Parse(Input.First());
         _fullSchedule = Input.Last().Split(',');

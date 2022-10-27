@@ -7,7 +7,7 @@ public sealed class Day22 : Day
 {
     private readonly List<Instruction> _instructions = new();
     
-    public Day22() : base(22, "Reactor Reboot")
+    public Day22() : base(2021, 22, "Reactor Reboot")
     {
         foreach (var line in Input)
         {

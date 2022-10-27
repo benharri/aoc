@@ -8,7 +8,7 @@ public sealed class Day20 : Day
     private readonly ImmutableArray<bool> _enhancementAlgorithm;
     private readonly Image _initialImage;
 
-    public Day20() : base(20, "Trench Map")
+    public Day20() : base(2021, 20, "Trench Map")
     {
         _enhancementAlgorithm = Input.First().Select(ch => ch == '#').ToImmutableArray();
         _initialImage = Parse(Input.Skip(2).ToList());

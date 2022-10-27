@@ -2,16 +2,16 @@
 
 public abstract class Day
 {
-    protected Day(int dayNumber, string puzzleName)
+    protected Day(int year, int day, string puzzleName)
     {
-        DayNumber = dayNumber;
+        Year = year;
+        DayNumber = day;
         PuzzleName = puzzleName;
     }
 
     public static bool UseTestInput { get; set; }
     
-    public static int Year { get; set; }
-
+    public int Year { get; }
     public int DayNumber { get; }
     public string PuzzleName { get; }
 

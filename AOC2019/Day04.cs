@@ -4,7 +4,7 @@ public sealed class Day04 : Day
 {
     private readonly int _start, _end;
 
-    public Day04() : base(4, "Secure Container")
+    public Day04() : base(2019, 4, "Secure Container")
     {
         var range = Input.First().Split('-').Select(int.Parse).ToList();
         _start = range[0];

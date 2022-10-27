@@ -8,7 +8,7 @@ public sealed class Day10 : Day
     private readonly int[] _adapters;
     private readonly long[] _memo;
 
-    public Day10() : base(10, "Adapter Array")
+    public Day10() : base(2020, 10, "Adapter Array")
     {
         var parsed = Input.Select(int.Parse).ToArray();
         // add socket and device to the list
@@ -42,7 +42,7 @@ public sealed class Day10 : Day
                 case 3:
                     threes++;
                     break;
-                default: throw new Exception("something went wrong");
+                default: throw new("something went wrong");
             }
 
         return $"{ones * threes}";

@@ -7,7 +7,7 @@ public sealed class Day03 : Day
 {
     private readonly List<string> _report;
     
-    public Day03() : base(3, "Binary Diagnostic")
+    public Day03() : base(2021, 3, "Binary Diagnostic")
     {
         _report = Input.ToList();
     }

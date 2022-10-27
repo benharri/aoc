@@ -7,7 +7,7 @@ public sealed class Day25 : Day
 {
     private readonly char[][] _cucumbers;
 
-    public Day25() : base(25, "Sea Cucumber")
+    public Day25() : base(2021, 25, "Sea Cucumber")
     {
         _cucumbers = Input.Select(l => l.ToCharArray()).ToArray();
     }

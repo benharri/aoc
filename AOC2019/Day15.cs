@@ -5,7 +5,7 @@ public sealed class Day15 : Day
     private readonly bool _verbose = false;
     private readonly IntCodeVM _vm;
 
-    public Day15() : base(15, "Oxygen System")
+    public Day15() : base(2019, 15, "Oxygen System")
     {
         _vm = new(Input.First());
     }

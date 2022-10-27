@@ -7,7 +7,7 @@ public sealed class Day18 : Day
 {
     private readonly List<string> _expressions;
 
-    public Day18() : base(18, "Operation Order") =>
+    public Day18() : base(2020, 18, "Operation Order") =>
         _expressions = Input.Select(line => line.Replace(" ", "")).ToList();
 
     private static long Calculate(string expr, Func<char, int> precedence)

@@ -5,7 +5,7 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day20 : Day
 {
-    public Day20() : base(20, "Jurassic Jigsaw")
+    public Day20() : base(2020, 20, "Jurassic Jigsaw")
     {
     }
 
@@ -53,8 +53,8 @@ public sealed class Day20 : Day
 
         void AddConnection(PuzzlePiece p1, PuzzlePiece p2)
         {
-            if (!connections.ContainsKey(p1)) connections.Add(p1, new List<PuzzlePiece>());
-            if (!connections.ContainsKey(p2)) connections.Add(p2, new List<PuzzlePiece>());
+            if (!connections.ContainsKey(p1)) connections.Add(p1, new());
+            if (!connections.ContainsKey(p2)) connections.Add(p2, new());
             connections[p1].Add(p2);
             connections[p2].Add(p1);
         }
@@ -195,7 +195,7 @@ public sealed class Day20 : Day
         {
             var id = long.Parse(pieceWithId[0][5..^1]);
             var piece = pieceWithId[1..].Select(x => x.ToCharArray()).ToArray();
-            return new PuzzlePiece(id, piece);
+            return new(id, piece);
         }
 
         private PuzzlePiece(long id, char[][] piece)
@@ -203,14 +203,14 @@ public sealed class Day20 : Day
             Id = id;
             _piece = piece;
 
-            _topSide = new Lazy<string>(() => new string(piece[0]));
-            RightSide = new Lazy<string>(() => new string(piece.Select(line => line[^1]).ToArray()));
-            BottomSide = new Lazy<string>(() => new string(piece[^1].Reverse().ToArray()));
-            _leftSide = new Lazy<string>(() => new string(piece.Select(line => line[0]).Reverse().ToArray()));
-            Sides = new Lazy<string[]>(() => new[]
+            _topSide = new(() => new(piece[0]));
+            RightSide = new(() => new(piece.Select(line => line[^1]).ToArray()));
+            BottomSide = new(() => new(piece[^1].Reverse().ToArray()));
+            _leftSide = new(() => new(piece.Select(line => line[0]).Reverse().ToArray()));
+            Sides = new(() => new[]
                 { _topSide.Value, RightSide.Value, BottomSide.Value, _leftSide.Value });
-            SidesWithFlippedPaired = new Lazy<(string, string)[]>(() => CalculateSidesWithFlipped(this));
-            AllSidesWithFlipped = new Lazy<HashSet<string>>(() => CalculateAllSidesWithFlipped(this));
+            SidesWithFlippedPaired = new(() => CalculateSidesWithFlipped(this));
+            AllSidesWithFlipped = new(() => CalculateAllSidesWithFlipped(this));
         }
 
         public override bool Equals(object? obj) => obj is PuzzlePiece piece && Id == piece.Id;
@@ -218,10 +218,10 @@ public sealed class Day20 : Day
         public override string ToString() => Id.ToString();
 
         public PuzzlePiece TransformSoTopMatchesWith(string sideToMatch) =>
-            TransformSoSideMatchesWith(new string(sideToMatch.Reverse().ToArray()), p => p._topSide.Value);
+            TransformSoSideMatchesWith(new(sideToMatch.Reverse().ToArray()), p => p._topSide.Value);
 
         public PuzzlePiece TransformSoLeftMatchesWith(string sideToMatch) =>
-            TransformSoSideMatchesWith(new string(sideToMatch.Reverse().ToArray()), p => p._leftSide.Value);
+            TransformSoSideMatchesWith(new(sideToMatch.Reverse().ToArray()), p => p._leftSide.Value);
 
         private PuzzlePiece TransformSoSideMatchesWith(string sideToMatch, Func<PuzzlePiece, string> getSide)
         {
@@ -246,10 +246,10 @@ public sealed class Day20 : Day
         private static (string, string)[] CalculateSidesWithFlipped(PuzzlePiece piece) =>
             new (string, string)[]
             {
-                (piece._topSide.Value, new string(piece._topSide.Value.Reverse().ToArray())),
-                (piece.RightSide.Value, new string(piece.RightSide.Value.Reverse().ToArray())),
-                (piece.BottomSide.Value, new string(piece.BottomSide.Value.Reverse().ToArray())),
-                (piece._leftSide.Value, new string(piece._leftSide.Value.Reverse().ToArray())),
+                (piece._topSide.Value, new(piece._topSide.Value.Reverse().ToArray())),
+                (piece.RightSide.Value, new(piece.RightSide.Value.Reverse().ToArray())),
+                (piece.BottomSide.Value, new(piece.BottomSide.Value.Reverse().ToArray())),
+                (piece._leftSide.Value, new(piece._leftSide.Value.Reverse().ToArray())),
             };
 
         private static HashSet<string> CalculateAllSidesWithFlipped(PuzzlePiece piece) =>

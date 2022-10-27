@@ -9,7 +9,7 @@ public sealed class Day17 : Day
     private readonly Dictionary<(int x, int y, int z, int w), char> _plane4 = new();
 
 
-    public Day17() : base(17, "Conway Cubes")
+    public Day17() : base(2020, 17, "Conway Cubes")
     {
         var input = Input.ToList();
 
