@@ -129,10 +129,7 @@ public sealed class Day04 : Day
                 return false;
 
             // passport id
-            if (_pid != null && _pid.Length != 9)
-                return false;
-
-            return true;
+            return _pid == null || _pid.Length == 9;
         }
 
         public static Passport Parse(IEnumerable<string> list)
