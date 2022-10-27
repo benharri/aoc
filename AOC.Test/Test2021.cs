@@ -81,7 +81,8 @@ public class Test2021
     public void CheckTestInputs(Type dayType, string part1, string part2)
     {
         Day.UseTestInput = true;
-
         Common.CheckDay(dayType, part1, part2);
+        // must reset this as it's a static property
+        Day.UseTestInput = false;
     }
 }
