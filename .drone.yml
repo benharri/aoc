@@ -4,7 +4,7 @@ name: run
 
 steps:
   - name: run
-    image: mcr.microsoft.com/dotnet/sdk:6.0
+    image: mcr.microsoft.com/dotnet/sdk:7.0
     commands:
       - "dotnet test -l 'console;verbosity=detailed'"
 
