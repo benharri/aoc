@@ -15,6 +15,7 @@ public class Test2015
     }
 
     [DataTestMethod]
+    [DataRow(typeof(Day01), "-1", "5")]
     [DataRow(typeof(Day02), "58", "34")]
     [DataRow(typeof(Day03), "2", "11")]
     public void CheckTestInputs(Type dayType, string part1, string part2)
