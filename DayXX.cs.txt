@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class DayXX : Day
 {
-    public DayXX() : base(Q, "Puzzle Name")
+    public DayXX() : base(YYYY, Q, "Puzzle Name")
     {
     }
 
