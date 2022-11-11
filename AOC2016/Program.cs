@@ -1,0 +1,1 @@
+﻿Day.RunFromArgs(args);
