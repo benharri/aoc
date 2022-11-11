@@ -56,7 +56,7 @@ public sealed class Day13 : Day
             for (var x = 0; x <= xMax; x++)
                 s.Append(_dots.Contains((x, y)) ? "█" : "▒");
 
-            s.AppendLine();
+            if (y < yMax) s.AppendLine();
         }
 
         return s.ToString();
@@ -70,6 +70,6 @@ public sealed class Day13 : Day
         foreach (var (axis, at) in _folds)
             _dots = DoFold(_dots, axis, at);
 
-        return Environment.NewLine + PrintGrid();
+        return PrintGrid();
     }
 }
