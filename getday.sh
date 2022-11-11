@@ -20,6 +20,8 @@ else
   day="$2"
 fi
 
+mkdir -p "$(printf "AOC%s/input%s" "$year" "$year")"
+
 curl -s https://adventofcode.com/"$year"/day/"$day"/input \
   --cookie "session=$session" \
   -o "$(printf "AOC%s/input%s/day%02d.in" "$year" "$year" "$day")"
