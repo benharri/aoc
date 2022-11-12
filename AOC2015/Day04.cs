@@ -9,7 +9,7 @@ public sealed class Day04 : Day
 {
     private readonly string _key;
 
-    public Day04() : base(2015, 4, "Puzzle Name")
+    public Day04() : base(2015, 4, "The Ideal Stocking Stuffer")
     {
         _key = Input.First();
     }
