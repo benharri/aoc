@@ -15,6 +15,7 @@ public class Test2015
     [DataRow(typeof(Day07), "3176", "14710")]
     [DataRow(typeof(Day08), "1342", "2074")]
     [DataRow(typeof(Day09), "117", "909")]
+    [DataRow(typeof(Day10), "492982", "6989950")]
     public void TestAllDays(Type dayType, string part1, string part2)
     {
         Common.CheckDay(dayType, part1, part2);
@@ -30,6 +31,7 @@ public class Test2015
     // [DataRow(typeof(Day07), "", "")] // test input doesn't have "a" wire
     [DataRow(typeof(Day08), "12", "19")]
     [DataRow(typeof(Day09), "605", "982")]
+    [DataRow(typeof(Day10), "237746", "3369156")]
     public void CheckTestInputs(Type dayType, string part1, string part2)
     {
         Day.UseTestInput = true;
