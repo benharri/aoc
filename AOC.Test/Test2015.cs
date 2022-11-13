@@ -12,6 +12,7 @@ public class Test2015
     // [DataRow(typeof(Day04), "346386", "9958218")]
     [DataRow(typeof(Day05), "258", "53")]
     // [DataRow(typeof(Day06), "543903", "14687245")]
+    [DataRow(typeof(Day07), "3176", "14710")]
     public void TestAllDays(Type dayType, string part1, string part2)
     {
         Common.CheckDay(dayType, part1, part2);
@@ -24,6 +25,7 @@ public class Test2015
     // [DataRow(typeof(Day04), "609043", "6742839")]
     [DataRow(typeof(Day05), "1", "1")]
     [DataRow(typeof(Day06), "1000000", "1000000")]
+    // [DataRow(typeof(Day07), "", "")] // test input doesn't have "a" key
     public void CheckTestInputs(Type dayType, string part1, string part2)
     {
         Day.UseTestInput = true;

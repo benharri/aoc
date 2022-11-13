@@ -5,11 +5,115 @@
 /// </summary>
 public sealed class Day07 : Day
 {
-    public Day07() : base(2015, 7, "Puzzle Name")
+    private readonly Dictionary<string, ushort> _wires = new();
+    private readonly Dictionary<string, Func<ushort>> _actions = new();
+
+    public Day07() : base(2015, 7, "Some Assembly Required")
     {
     }
 
-    public override object Part1() => "";
+    public override object Part1()
+    {
+        ProcessInstructions();
+        return _actions["a"]();
+    }
 
-    public override object Part2() => "";
+    private void ProcessInstructions()
+    {
+        _actions.Clear();
+        _wires.Clear();
+
+        foreach (var line in Input)
+        {
+            var split = line.Split(' ');
+            var destination = split.Last();
+
+            switch (split.Length)
+            {
+                case 3:
+                    if (ushort.TryParse(split[0], out var val))
+                    {
+                        _actions.Add(destination, () => val);
+                        _wires.Add(destination, val);
+                    }
+                    else
+                    {
+                        _actions.Add(destination, () =>
+                        {
+                            if (_wires.ContainsKey(destination)) return _wires[destination];
+
+                            var res = _actions[split[0]]();
+                            _wires.Add(destination, res);
+                            return res;
+                        });
+                    }
+
+                    break;
+                case 4:
+                    _actions.Add(destination, () => (ushort)~_actions[split[1]]());
+                    break;
+                case 5:
+                    switch (split[1])
+                    {
+                        case "AND":
+                            _actions.Add(destination, () =>
+                            {
+                                if (_wires.ContainsKey(destination)) return _wires[destination];
+
+                                var res = (ushort)((ushort.TryParse(split[0], out var v)
+                                    ? v
+                                    : _actions[split[0]]()) & _actions[split[2]]());
+                                _wires.Add(destination, res);
+                                return res;
+                            });
+                            break;
+                        case "OR":
+                            _actions.Add(destination, () =>
+                            {
+                                if (_wires.ContainsKey(destination)) return _wires[destination];
+
+                                var res = (ushort)((ushort.TryParse(split[0], out var v)
+                                    ? v
+                                    : _actions[split[0]]()) | _actions[split[2]]());
+                                _wires.Add(destination, res);
+                                return res;
+                            });
+                            break;
+                        case "LSHIFT":
+                            _actions.Add(destination, () =>
+                            {
+                                if (_wires.ContainsKey(destination)) return _wires[destination];
+
+                                var res = (ushort)(_actions[split[0]]() << ushort.Parse(split[2]));
+                                _wires.Add(destination, res);
+                                return res;
+                            });
+                            break;
+                        case "RSHIFT":
+                            _actions.Add(destination, () =>
+                            {
+                                if (_wires.ContainsKey(destination)) return _wires[destination];
+
+                                var res = (ushort)(_actions[split[0]]() >> ushort.Parse(split[2]));
+                                _wires.Add(destination, res);
+                                return res;
+                            });
+                            break;
+                    }
+
+                    break;
+            }
+        }
+    }
+
+    public override object Part2()
+    {
+        ProcessInstructions();
+        var p1 = _actions["a"]();
+        
+        ProcessInstructions();
+        
+        _actions["b"] = () => p1;
+        return _actions["a"]();
+    }
 }
