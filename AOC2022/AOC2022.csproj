@@ -25,5 +25,8 @@
     <ItemGroup>
         <ProjectReference Include="..\AOC.Common\AOC.Common.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="morelinq" Version="3.3.2" />
+    </ItemGroup>
 
 </Project>
