@@ -3,7 +3,7 @@
 /// <summary>
 /// Day 1: <see href="https://adventofcode.com/2022/day/1"/>
 /// </summary>
-public sealed class Day01 : Day, IDay01
+public sealed class Day01 : Day
 {
     private readonly List<List<int>> _elfCalories = new();
 
