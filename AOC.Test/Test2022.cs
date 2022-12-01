@@ -10,4 +10,13 @@ public class Test2022
     {
         Common.CheckDay(dayType, part1, part2);
     }
+
+    [DataTestMethod]
+    [DataRow(typeof(Day01), "24000", "45000")]
+    public void TestAllDays(Type dayType, string part1, string part2)
+    {
+        Day.UseTestInput = true;
+        Common.CheckDay(dayType, part1, part2);
+        Day.UseTestInput = false;
+    }
 }
