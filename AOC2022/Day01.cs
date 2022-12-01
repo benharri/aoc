@@ -7,7 +7,7 @@ public sealed class Day01 : Day
 {
     private readonly List<List<int>> _elfCalories = new();
 
-    public Day01() : base(2022, 1, "Day 1 Puzzle Name")
+    public Day01() : base(2022, 1, "Calorie Counting")
     {
         var elf = new List<int>();
 
