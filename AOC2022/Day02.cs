@@ -17,13 +17,15 @@ public sealed class Day02 : Day
         var score = 0;
         foreach (var round in _rounds)
         {
-            score += round[1][0] - 'W';
-
-            if (round[1][0] == 'X' && round[0][0] == 'C' ||
-                round[1][0] == 'Y' && round[0][0] == 'A' ||
-                round[1][0] == 'Z' && round[0][0] == 'B') score += 6;
+            var me = round[1][0];
+            var elf = round[0][0];
+            score += me - 'W';
             
-            else if (round[0][0] - 'A' == round[1][0] - 'X') score += 3;
+            if (me == 'X' && elf == 'C' ||
+                me == 'Y' && elf == 'A' ||
+                me == 'Z' && elf == 'B') score += 6;
+            
+            else if (elf - 'A' == me - 'X') score += 3;
         }
 
         return score;
@@ -38,18 +40,13 @@ public sealed class Day02 : Day
             switch (round[1][0])
             {
                 case 'X': // lose
-                    if (c == 'A') score += 3;
-                    if (c == 'B') score++;
-                    if (c == 'C') score += 2;
+                    score += "BCA".IndexOf(c) + 1;
                     break;
                 case 'Y': // draw
                     score += c - 'A' + 4;
                     break;
                 case 'Z': // win
-                    score += 6;
-                    if (c == 'A') score += 2;
-                    if (c == 'B') score += 3;
-                    if (c == 'C') score++;
+                    score += "CAB".IndexOf(c) + 7;
                     break;
             }
         }
