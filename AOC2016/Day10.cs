@@ -1,4 +1,4 @@
-﻿namespace AOC2016;
+namespace AOC2016;
 
 /// <summary>
 /// Day 10: <a href="https://adventofcode.com/2016/day/10"/>

@@ -1,4 +1,4 @@
-﻿namespace AOC2018;
+namespace AOC2018;
 
 /// <summary>
 /// Day 17: <a href="https://adventofcode.com/2018/day/17"/>

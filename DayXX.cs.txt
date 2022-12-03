@@ -1,4 +1,4 @@
-﻿namespace AOCYYYY;
+namespace AOCYYYY;
 
 /// <summary>
 /// Day Q: <a href="https://adventofcode.com/YYYY/day/Q"/>

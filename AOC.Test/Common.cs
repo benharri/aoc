@@ -1,4 +1,4 @@
-﻿namespace AOC.Test;
+namespace AOC.Test;
 
 public static class Common
 {

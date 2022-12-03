@@ -1,4 +1,4 @@
-﻿namespace AOC2019;
+namespace AOC2019;
 
 public sealed class Day04 : Day
 {
