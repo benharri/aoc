@@ -1,4 +1,4 @@
-﻿namespace AOC2022;
+namespace AOC2022;
 
 /// <summary>
 /// Day 2: <a href="https://adventofcode.com/2022/day/2"/>

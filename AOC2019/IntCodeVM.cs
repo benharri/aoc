@@ -1,4 +1,4 @@
-﻿namespace AOC2019;
+namespace AOC2019;
 
 public class IntCodeVM
 {

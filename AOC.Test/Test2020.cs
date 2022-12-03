@@ -1,4 +1,4 @@
-﻿using AOC2020;
+using AOC2020;
 
 namespace AOC.Test;
 

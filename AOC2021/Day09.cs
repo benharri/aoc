@@ -1,4 +1,4 @@
-﻿using MoreLinq;
+using MoreLinq;
 
 namespace AOC2021;
 

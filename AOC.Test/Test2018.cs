@@ -1,4 +1,4 @@
-﻿using AOC2018;
+using AOC2018;
 
 namespace AOC.Test;
 

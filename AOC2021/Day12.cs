@@ -1,4 +1,4 @@
-﻿namespace AOC2021;
+namespace AOC2021;
 
 /// <summary>
 /// Day 12: <a href="https://adventofcode.com/2021/day/12"/>

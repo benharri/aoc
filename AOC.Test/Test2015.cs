@@ -1,4 +1,4 @@
-﻿using AOC2015;
+using AOC2015;
 
 namespace AOC.Test;
 

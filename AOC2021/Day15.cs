@@ -1,4 +1,4 @@
-﻿namespace AOC2021;
+namespace AOC2021;
 
 public record Node
 {

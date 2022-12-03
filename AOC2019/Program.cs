@@ -1,1 +1,1 @@
-﻿Day.RunFromArgs(args);
+Day.RunFromArgs(args);

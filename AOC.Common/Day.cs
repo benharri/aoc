@@ -1,4 +1,4 @@
-﻿namespace AOC.Common;
+namespace AOC.Common;
 
 public abstract class Day
 {

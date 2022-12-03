@@ -1,4 +1,4 @@
-﻿namespace AOC2020;
+namespace AOC2020;
 
 /// <summary>
 ///     Day 1: <a href="https://adventofcode.com/2020/day/1" />
