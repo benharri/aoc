@@ -9,27 +9,18 @@ public sealed class Day03 : Day
     {
     }
 
-    public override object Part1()
-    {
-        var priority = 0;
-        foreach (var line in Input)
-        {
-            var misPacked = line[..(line.Length / 2)].Intersect(line[(line.Length / 2)..]).Single();
-            priority += misPacked - (char.IsUpper(misPacked) ? '&' : '`');
-        }
+    public override object Part1() => 
+        Input
+            .Select(line => line[..(line.Length / 2)].Intersect(line[(line.Length / 2)..]).Single())
+            .Select(RankItem)
+            .Sum();
 
-        return priority;
-    }
+    public override object Part2() => 
+        Input
+            .Chunk(3)
+            .Select(group => group.Aggregate<IEnumerable<char>>((a, b) => a.Intersect(b)).Single())
+            .Select(RankItem)
+            .Sum();
 
-    public override object Part2()
-    {
-        var priority = 0;
-        foreach (var group in Input.Chunk(3))
-        {
-            var missing = group[0].Intersect(group[1]).Intersect(group[2]).Single();
-            priority += missing - (char.IsUpper(missing) ? '&' : '`');
-        }
-        
-        return priority;
-    }
+    private static int RankItem(char item) => item - (char.IsUpper(item) ? '&' : '`');
 }
