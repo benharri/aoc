@@ -1,7 +1,7 @@
 ﻿namespace AOCYYYY;
 
 /// <summary>
-/// Day Q: <see href="https://adventofcode.com/YYYY/day/Q"/>
+/// Day Q: <a href="https://adventofcode.com/YYYY/day/Q"/>
 /// </summary>
 public sealed class DayXX : Day
 {
