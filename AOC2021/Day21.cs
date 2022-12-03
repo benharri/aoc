@@ -1,7 +1,7 @@
 ﻿namespace AOC2021;
 
 /// <summary>
-/// Day 21: <see href="https://adventofcode.com/2021/day/21"/>
+/// Day 21: <a href="https://adventofcode.com/2021/day/21"/>
 /// </summary>
 public sealed class Day21 : Day
 {

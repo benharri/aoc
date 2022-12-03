@@ -1,7 +1,7 @@
 ﻿namespace AOC2018;
 
 /// <summary>
-/// Day 7: <see href="https://adventofcode.com/2018/day/7"/>
+/// Day 7: <a href="https://adventofcode.com/2018/day/7"/>
 /// </summary>
 public sealed class Day07 : Day
 {
