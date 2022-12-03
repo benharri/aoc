@@ -7,7 +7,7 @@ public sealed class Day10 : Day
 {
     private string _seed;
 
-    public Day10() : base(2015, 10, "Puzzle Name")
+    public Day10() : base(2015, 10, "Elves Look, Elves Say")
     {
         _seed = Input.First();
     }
