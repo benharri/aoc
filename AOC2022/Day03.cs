@@ -10,7 +10,7 @@ public sealed class Day03 : Day
     }
 
     public override object Part1() =>
-        Input.Sum(line => RankItem(line[..(line.Length / 2)].Intersect(line[(line.Length / 2)..]).Single()));
+        Input.Sum(rucksack => RankItem(rucksack.Chunk(rucksack.Length / 2).Aggregate<IEnumerable<char>>((a, b) => a.Intersect(b)).Single()));
 
     public override object Part2() =>
         Input.Chunk(3).Sum(group => RankItem(group.Aggregate<IEnumerable<char>>((a, b) => a.Intersect(b)).Single()));
