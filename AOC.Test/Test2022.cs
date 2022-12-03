@@ -7,7 +7,7 @@ public class Test2022
     [DataTestMethod]
     [DataRow(typeof(Day01), "70509", "208567")]
     [DataRow(typeof(Day02), "11449", "13187")]
-    [DataRow(typeof(Day03), "7917", "")]
+    [DataRow(typeof(Day03), "7917", "2585")]
     public void CheckAllDays(Type dayType, string part1, string part2)
     {
         Common.CheckDay(dayType, part1, part2);

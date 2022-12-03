@@ -28,7 +28,7 @@ public sealed class Day03 : Day
         var priority = 0;
         foreach (var group in Input.Chunk(3))
         {
-            var missing = group[0].Intersect(group[1].Intersect(group[2])).Single();
+            var missing = group[0].Intersect(group[1]).Intersect(group[2]).Single();
             priority += missing - (char.IsUpper(missing) ? '&' : '`');
         }
         
