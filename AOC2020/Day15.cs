@@ -19,7 +19,7 @@ public sealed class Day15 : Day
             _turns[initial[_i - 1]] = _i;
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         for (; _i != 2020; _i++)
         {
@@ -28,10 +28,10 @@ public sealed class Day15 : Day
             _current = next;
         }
 
-        return $"{_current}";
+        return _current;
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         for (; _i != 30_000_000; _i++)
         {
@@ -40,6 +40,6 @@ public sealed class Day15 : Day
             _current = next;
         }
 
-        return $"{_current}";
+        return _current;
     }
 }

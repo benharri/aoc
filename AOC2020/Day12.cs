@@ -72,15 +72,15 @@ public sealed class Day12 : Day
         return (x, y, sx, sy);
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var (x, y, _, _) = ProcessInstructions();
-        return $"{Math.Abs(x) + Math.Abs(y)}";
+        return Math.Abs(x) + Math.Abs(y);
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         var (_, _, sx, sy) = ProcessInstructions();
-        return $"{Math.Abs(sx) + Math.Abs(sy)}";
+        return Math.Abs(sx) + Math.Abs(sy);
     }
 }

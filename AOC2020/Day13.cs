@@ -16,17 +16,17 @@ public sealed class Day13 : Day
         _buses = _fullSchedule.Where(c => c != "x").Select(long.Parse).ToArray();
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         for (var i = _earliest; ; i++)
             if (_buses.Any(b => i % b == 0))
             {
                 var bus = _buses.First(b => i % b == 0);
-                return $"{bus * (i - _earliest)}";
+                return bus * (i - _earliest);
             }
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         var i = 0;
         long result = 1, multiplier = 1;
@@ -46,6 +46,6 @@ public sealed class Day13 : Day
             i++;
         }
 
-        return $"{result}";
+        return result;
     }
 }

@@ -9,7 +9,7 @@ public sealed class Day14 : Day
     {
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var writes = new Dictionary<ulong, ulong>();
         ulong mask = 0, bits = 0;
@@ -41,10 +41,10 @@ public sealed class Day14 : Day
                 writes[spl[0]] = (spl[1] & mask) | bits;
             }
 
-        return $"{writes.Aggregate<KeyValuePair<ulong, ulong>, ulong>(0, (current, w) => current + w.Value)}";
+        return writes.Aggregate<KeyValuePair<ulong, ulong>, ulong>(0, (current, w) => current + w.Value);
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         var memory = new Dictionary<ulong, ulong>();
         var mask = "";
@@ -101,6 +101,6 @@ public sealed class Day14 : Day
             }
         }
 
-        return $"{memory.Aggregate<KeyValuePair<ulong, ulong>, ulong>(0, (current, w) => current + w.Value)}";
+        return memory.Aggregate<KeyValuePair<ulong, ulong>, ulong>(0, (current, w) => current + w.Value);
     }
 }

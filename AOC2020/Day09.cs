@@ -11,7 +11,7 @@ public sealed class Day09 : Day
     public Day09() : base(2020, 9, "Encoding Error") =>
         _list = Input.Select(long.Parse).ToArray();
 
-    public override string Part1()
+    public override object Part1()
     {
         for (var i = 25; i < _list.Length - 25; i++)
         {
@@ -19,14 +19,14 @@ public sealed class Day09 : Day
             if (!preamble.Any(num1 => preamble.Any(num2 => num1 + num2 == _list[i])))
             {
                 _part1 = _list[i];
-                return $"{_part1}";
+                return _part1;
             }
         }
 
         return "";
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         for (var i = 0; i < _list.Length; i++)
         {
@@ -38,7 +38,7 @@ public sealed class Day09 : Day
                 if (sum != _part1) continue;
 
                 var subset = _list[i..(j + 1)].ToArray();
-                return $"{subset.Min() + subset.Max()}";
+                return subset.Min() + subset.Max();
             }
         }
 

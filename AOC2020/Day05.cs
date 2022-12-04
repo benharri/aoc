@@ -14,9 +14,9 @@ public sealed class Day05 : Day
             .OrderBy(i => i)
             .ToImmutableHashSet();
 
-    public override string Part1() => $"{_ids.Last()}";
+    public override object Part1() => _ids.Last();
 
-    public override string Part2() =>
+    public override object Part2() =>
         // arithmetic sum of full series
-        $"{(_ids.Count + 1) * (_ids.First() + _ids.Last()) / 2 - _ids.Sum()}";
+        (_ids.Count + 1) * (_ids.First() + _ids.Last()) / 2 - _ids.Sum();
 }

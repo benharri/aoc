@@ -38,7 +38,7 @@ public sealed class Day06 : Day
         }
     }
 
-    public override string Part1() => $"{_countPart1}";
+    public override object Part1() => _countPart1;
 
-    public override string Part2() => $"{_countPart2}";
+    public override object Part2() => _countPart2;
 }
