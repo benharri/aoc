@@ -2,16 +2,8 @@ namespace AOC.Common;
 
 public static class Extensions
 {
-    public static IEnumerable<string> Chunk(this string str, int chunkSize)
-    {
-        for (var i = 0; i < str.Length; i += chunkSize)
-            yield return str.Substring(i, chunkSize);
-    }
-
-    public static string ToDelimitedString<T>(this IEnumerable<T> enumerable, string delimiter = "")
-    {
-        return string.Join(delimiter, enumerable);
-    }
+    public static string ToDelimitedString<T>(this IEnumerable<T> enumerable, string delimiter = "") =>
+        string.Join(delimiter, enumerable);
 
     public static IEnumerable<T> Repeat<T>(this IEnumerable<T> sequence, int? count = null)
     {
@@ -30,10 +22,8 @@ public static class Extensions
     /// </summary>
     /// <param name="stopwatch"></param>
     /// <returns></returns>
-    public static double ScaleMilliseconds(this Stopwatch stopwatch)
-    {
-        return 1_000 * stopwatch.ElapsedTicks / (double)Stopwatch.Frequency;
-    }
+    public static double ScaleMilliseconds(this Stopwatch stopwatch) =>
+        1_000 * stopwatch.ElapsedTicks / (double)Stopwatch.Frequency;
 
     /// <summary>
     /// Given an array, it returns a rotated copy.
@@ -107,14 +97,10 @@ public static class Extensions
         return ret;
     }
 
-    public static IEnumerable<KeyValuePair<int, T>> Indexed<T>(this IEnumerable<T> source)
-    {
-        return source.Select((t, i) => new KeyValuePair<int, T>(i, t));
-    }
+    public static IEnumerable<KeyValuePair<int, T>> Indexed<T>(this IEnumerable<T> source) =>
+        source.Select((t, i) => new KeyValuePair<int, T>(i, t));
 
     public static IEnumerable<KeyValuePair<TKey, TValue>> WhereValue<TKey, TValue>(
-        this IEnumerable<KeyValuePair<TKey, TValue>> source, Func<TValue, bool> func)
-    {
-        return source.Where(pair => func(pair.Value));
-    }
+        this IEnumerable<KeyValuePair<TKey, TValue>> source, Func<TValue, bool> func) =>
+        source.Where(pair => func(pair.Value));
 }
