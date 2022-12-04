@@ -76,7 +76,7 @@ public sealed class Day11 : Day
         var minY = (int)map.Keys.Select(i => i.y).Min();
         var maxY = (int)map.Keys.Select(i => i.y).Max();
 
-        return "\n" + Enumerable.Range(minY, maxY - minY + 1)
+        return Enumerable.Range(minY, maxY - minY + 1)
             .Select(j =>
                 Enumerable.Range(minX, maxX - minX + 1)
                     .Select(i => map.GetValueOrDefault((x: i, y: j)) == 0 ? ' ' : '#')
