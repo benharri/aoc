@@ -36,18 +36,18 @@ public sealed class Day19 : Day
         return _rules[key].Length > 1 ? $"({sub})" : sub;
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var exp = new Regex($"^{MakeRegexExpression("0")}$");
-        return $"{_messages.Count(m => exp.IsMatch(m))}";
+        return _messages.Count(m => exp.IsMatch(m));
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         // fix rules 8 and 11
         _rules["8"] = new[] { new[] { "42" }, new[] { "42", "8" } };
         _rules["11"] = new[] { new[] { "42", "31" }, new[] { "42", "11", "31" } };
         var exp = new Regex($"^{MakeRegexExpression("0")}$");
-        return $"{_messages.Count(m => exp.IsMatch(m))}";
+        return _messages.Count(m => exp.IsMatch(m));
     }
 }

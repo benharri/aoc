@@ -104,17 +104,17 @@ public sealed class Day17 : Day
         return next;
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var plane = Enumerable.Range(0, 6).Aggregate(_plane, (current, _) => Iterate(current));
 
-        return $"{plane.Values.Count(v => v == '#')}";
+        return plane.Values.Count(v => v == '#');
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         var plane = Enumerable.Range(0, 6).Aggregate(_plane4, (current, _) => Iterate4(current));
 
-        return $"{plane.Values.Count(v => v == '#')}";
+        return plane.Values.Count(v => v == '#');
     }
 }

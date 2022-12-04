@@ -33,21 +33,13 @@ public sealed class Day21 : Day
             );
     }
 
-    public override string Part1()
-    {
-        var part1 = _parsedFoods
+    public override object Part1() =>
+        _parsedFoods
             .SelectMany(i => i.Ingredients)
             .Count(i => !_dangerousFoods.Select(t => t.Ingredient).Contains(i));
 
-        return $"{part1}";
-    }
-
-    public override string Part2()
-    {
-        var part2 = _dangerousFoods
+    public override object Part2() =>
+        string.Join(',', _dangerousFoods
             .OrderBy(i => i.Allergen)
-            .Select(i => i.Ingredient);
-
-        return $"{string.Join(',', part2)}";
-    }
+            .Select(i => i.Ingredient));
 }

@@ -9,7 +9,7 @@ public sealed class Day20 : Day
     {
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var puzzlePieces = ParsePiecesFromInput(Input.ToArray());
         var connections = FindConnections(puzzlePieces);
@@ -18,10 +18,10 @@ public sealed class Day20 : Day
             .Where(connection => connection.nrConnections == 2)
             .Select(connection => connection.piece.Id);
 
-        return $"{cornerIds.Aggregate((double)1, (curr, next) => curr * next)}";
+        return cornerIds.Aggregate((double)1, (curr, next) => curr * next);
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         var puzzlePieces = ParsePiecesFromInput(Input.ToArray());
         var connections = FindConnections(puzzlePieces);
@@ -29,7 +29,7 @@ public sealed class Day20 : Day
         var lines = ExtractImagesFromPuzzle(puzzle);
         var numberSeaMonsters = TagSeaMonsters(lines);
         var numberWaves = lines.Select(l => l.Count(c => c == '#')).Sum();
-        return $"{numberWaves - numberSeaMonsters * 15}";
+        return numberWaves - numberSeaMonsters * 15;
     }
 
     private static IEnumerable<PuzzlePiece> ParsePiecesFromInput(string[] input)

@@ -9,14 +9,14 @@ public sealed class Day25 : Day
     {
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var cardKey = int.Parse(Input.First());
         var doorKey = int.Parse(Input.Last());
-        return $"{Transform(doorKey, FindLoopSize(7, cardKey))}";
+        return Transform(doorKey, FindLoopSize(7, cardKey));
     }
 
-    public override string Part2() => "";
+    public override object Part2() => "";
     
     private static long Transform(long subject, int loopSize)
     {

@@ -52,7 +52,7 @@ public sealed class Day23 : Day
         }
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         for (var i = 0; i < _initialCups.Count; i++)
             _cups[_initialCups[i]] = _initialCups[(i + 1) % _initialCups.Count];
@@ -67,10 +67,10 @@ public sealed class Day23 : Day
             _current = _cups[_current];
         }
 
-        return result.ToString();
+        return result;
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         _cups.Clear();
         for (var i = 0; i < _initialCups.Count; i++)
@@ -84,6 +84,6 @@ public sealed class Day23 : Day
 
         DoMoves(10_000_000);
 
-        return $"{(ulong)_cups[1] * (ulong)_cups[_cups[1]]}";
+        return (ulong)_cups[1] * (ulong)_cups[_cups[1]];
     }
 }

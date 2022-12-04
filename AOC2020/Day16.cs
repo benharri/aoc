@@ -35,15 +35,14 @@ public sealed class Day16 : Day
         }
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var allValues = _tickets.Skip(1).SelectMany(t => t);
         var allRules = _rules.Values.SelectMany(r => r);
-        return
-            $"{allValues.Where(t => !allRules.Any(r => r.Contains(t))).Sum()}";
+        return allValues.Where(t => !allRules.Any(r => r.Contains(t))).Sum();
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         var ticketFields = _tickets
             // valid tickets
@@ -80,7 +79,6 @@ public sealed class Day16 : Day
 
         var departureFields = matchedRules.Where(r => r.Key.StartsWith("departure"));
 
-        return
-            $"{departureFields.Aggregate(1L, (l, match) => l * _tickets.First()[match.Index])}";
+        return departureFields.Aggregate(1L, (l, match) => l * _tickets.First()[match.Index]);
     }
 }
