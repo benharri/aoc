@@ -13,33 +13,14 @@ public sealed class Day04 : Day
             _ranges.Add(line.Split(',').SelectMany(q => q.Split('-')).Select(int.Parse).ToList());
     }
 
-    public override object Part1()
-    {
-        var overlapping = 0;
+    public override object Part1() =>
+        _ranges.Count(r =>
+            (r[0] >= r[2] && r[0] <= r[3] && r[1] >= r[2] && r[1] <= r[3]) ||
+            (r[2] >= r[0] && r[2] <= r[1] && r[3] >= r[0] && r[3] <= r[1]));
 
-        foreach (var range in _ranges)
-        {
-            int x1 = range[0], x2 = range[1], y1 = range[2], y2 = range[3];
-            
-            if ((x1 >= y1 && x1 <= y2 && x2 >= y1 && x2 <= y2) || (y1 >= x1 && y1 <= x2 && y2 >= x1 && y2 <= x2))
-                overlapping++;
-        }
-
-        return overlapping;
-    }
-
-    public override object Part2()
-    {
-        var overlapping = 0;
-
-        foreach (var range in _ranges)
-        {
-            int x1 = range[0], x2 = range[1], y1 = range[2], y2 = range[3];
-
-            if ((x1 >= y1 && x1 <= y2) || (x2 >= y1 && x2 <= y2) || (y1 >= x1 && y1 <= x2) || (y2 >= x1 && y2 <= x2))
-                overlapping++;
-        }
-
-        return overlapping;
-    }
+    public override object Part2() =>
+        _ranges.Count(r => (r[0] >= r[2] && r[0] <= r[3]) ||
+                           (r[1] >= r[2] && r[1] <= r[3]) ||
+                           (r[2] >= r[0] && r[2] <= r[1]) ||
+                           (r[3] >= r[0] && r[3] <= r[1]));
 }
