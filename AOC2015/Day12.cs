@@ -5,7 +5,7 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day12 : Day
 {
-    public Day12() : base(2015, 12, "Puzzle Name")
+    public Day12() : base(2015, 12, "JSAbacusFramework.io")
     {
     }
 
