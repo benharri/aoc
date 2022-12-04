@@ -46,14 +46,14 @@ public sealed class Day13 : Day
         }
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         _vm.Reset();
         _vm.Run();
-        return $"{_vm.Output.Where((v, i) => (i + 1) % 3 == 0 && v == 2).Count()}";
+        return _vm.Output.Where((v, i) => (i + 1) % 3 == 0 && v == 2).Count();
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         _vm.Reset();
         _vm.Memory[0] = 2;

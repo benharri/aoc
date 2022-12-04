@@ -9,13 +9,13 @@ public sealed class Day08 : Day
         _photo = Input.First().Chunk(25 * 6).Select(s => s.ToList()).ToList();
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var l = _photo.OrderBy(layer => layer.Count(pixel => pixel == '0')).First();
-        return $"{l.Count(p => p == '1') * l.Count(p => p == '2')}";
+        return l.Count(p => p == '1') * l.Count(p => p == '2');
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         return Enumerable.Range(0, 25 * 6)
             .Select(p => Enumerable.Range(0, _photo.Count)

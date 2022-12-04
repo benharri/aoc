@@ -11,16 +11,12 @@ public sealed class Day03 : Day
         _intersections = _wires[0].Keys.Intersect(_wires[1].Keys);
     }
 
-    public override string Part1()
-    {
-        return $"{_intersections.Min(x => Math.Abs(x.Item1) + Math.Abs(x.Item2))}";
-    }
+    public override object Part1() => 
+        _intersections.Min(x => Math.Abs(x.Item1) + Math.Abs(x.Item2));
 
-    public override string Part2()
-    {
+    public override object Part2() =>
         // add 2 to count (0, 0) on both lines
-        return $"{_intersections.Min(x => _wires[0][x] + _wires[1][x]) + 2}";
-    }
+        _intersections.Min(x => _wires[0][x] + _wires[1][x]) + 2;
 
     private static Dictionary<(int, int), int> ParseWire(string line)
     {

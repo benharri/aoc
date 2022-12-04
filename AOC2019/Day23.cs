@@ -6,7 +6,7 @@ public sealed class Day23 : Day
     {
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var vms = Enumerable.Range(0, 50)
             .Select((_, i) =>
@@ -25,7 +25,7 @@ public sealed class Day23 : Day
                     var x = vm.Result;
                     var y = vm.Result;
 
-                    if (destination == 255) return $"{y}";
+                    if (destination == 255) return y;
 
                     vms[destination].Run(x, y);
                 }
@@ -34,7 +34,7 @@ public sealed class Day23 : Day
             }
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         var vms = Enumerable.Range(0, 50)
             .Select((_, i) =>
@@ -77,7 +77,7 @@ public sealed class Day23 : Day
 
             if (numIdle == 50)
             {
-                if (natY == lastYSent) return $"{natY}";
+                if (natY == lastYSent) return natY;
                 vms[0].Run(natX, natY);
                 lastYSent = natY;
             }

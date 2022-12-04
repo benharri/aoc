@@ -9,17 +9,17 @@ public sealed class Day09 : Day
         _vm = new(Input.First());
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         _vm.Reset();
         _vm.Run(1);
-        return $"{_vm.Output.ToDelimitedString(",")}";
+        return _vm.Output.ToDelimitedString(",");
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         _vm.Reset();
         _vm.Run(2);
-        return $"{_vm.Output.ToDelimitedString(",")}";
+        return _vm.Output.ToDelimitedString(",");
     }
 }

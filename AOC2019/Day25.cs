@@ -6,12 +6,12 @@ public sealed class Day25 : Day
     {
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         return "";
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         return "";
     }

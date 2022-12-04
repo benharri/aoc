@@ -59,15 +59,15 @@ public sealed class Day05 : Day
         }
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         RunIntCode(_tape.ToList(), 1);
-        return $"{_output}";
+        return _output;
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         RunIntCode(_tape.ToList(), 5);
-        return $"{_output}";
+        return _output;
     }
 }

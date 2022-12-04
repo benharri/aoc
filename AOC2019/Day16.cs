@@ -10,7 +10,7 @@ public sealed class Day16 : Day
         _initialList = Input.First().Select(c => int.Parse($"{c}")).ToArray();
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         const int phaseCount = 100;
         var signal0 = _initialList.ToArray();
@@ -19,12 +19,12 @@ public sealed class Day16 : Day
         for (var i = 0; i < phaseCount; i++)
             CalculateSignal(i % 2 == 0 ? signal0 : signal1, i % 2 == 0 ? signal1 : signal0);
 
-        return new(
+        return new string(
             signal0.Take(8).Select(c => (char)(c + '0'))
                 .ToArray());
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         const int phaseCount = 100;
         var messageOffset = _initialList.Take(7).Aggregate((n, i) => n * 10 + i);
@@ -37,7 +37,7 @@ public sealed class Day16 : Day
                 signal[i] = (signal[i + 1] + signal[i]) % 10;
         }
 
-        return new(signal.Take(8).Select(c => (char)(c + '0')).ToArray());
+        return new string(signal.Take(8).Select(c => (char)(c + '0')).ToArray());
     }
 
     private static void CalculateSignal(IReadOnlyList<int> input, IList<int> output)

@@ -9,7 +9,7 @@ public sealed class Day07 : Day
         for (var i = 0; i < 5; i++) _amplifiers[i] = new(Input.First());
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var largest = 0L;
 
@@ -27,10 +27,10 @@ public sealed class Day07 : Day
                 largest = i;
         }
 
-        return $"{largest}";
+        return largest;
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         var largest = 0L;
 
@@ -57,6 +57,6 @@ public sealed class Day07 : Day
                 largest = i;
         }
 
-        return $"{largest}";
+        return largest;
     }
 }

@@ -66,9 +66,9 @@ public sealed class Day11 : Day
         return map;
     }
 
-    public override string Part1() => $"{PaintShip(0).Count}";
+    public override object Part1() => PaintShip(0).Count;
 
-    public override string Part2()
+    public override object Part2()
     {
         var map = PaintShip(1);
         var minX = (int)map.Keys.Select(i => i.x).Min();

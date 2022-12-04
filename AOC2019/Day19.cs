@@ -11,7 +11,7 @@ public sealed class Day19 : Day
         _grid = new long[50, 50];
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         for (var x = 0; x < 50; x++)
             for (var y = 0; y < 50; y++)
@@ -21,10 +21,10 @@ public sealed class Day19 : Day
                 _grid[x, y] = _vm.Result;
             }
 
-        return $"{_grid.Cast<long>().Sum()}";
+        return _grid.Cast<long>().Sum();
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         for (int x = 101, y = 0; ; x++)
         {
@@ -39,7 +39,7 @@ public sealed class Day19 : Day
             _vm.Reset();
             _vm.Run(x - 99, y + 99);
             if (_vm.Result == 1)
-                return $"{(x - 99) * 1e4 + y}";
+                return (x - 99) * 1e4 + y;
         }
     }
 }

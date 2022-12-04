@@ -31,9 +31,9 @@ public sealed class Day04 : Day
         return IsValid(i) && s.Select(c => s.Count(j => j == c)).Any(c => c == 2);
     }
 
-    public override string Part1() =>
-        $"{Enumerable.Range(_start, _end).Count(IsValid)}";
+    public override object Part1() =>
+        Enumerable.Range(_start, _end).Count(IsValid);
 
-    public override string Part2() => 
-        $"{Enumerable.Range(_start, _end).Count(HasOnePair)}";
+    public override object Part2() => 
+        Enumerable.Range(_start, _end).Count(HasOnePair);
 }
