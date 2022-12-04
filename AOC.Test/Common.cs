@@ -17,7 +17,7 @@ public static class Common
         s.Start();
         var part1Actual = day.Part1().ToString();
         s.Stop();
-        Console.Write($"Part 1: {part1Actual,-25} ");
+        Console.Write($"Part 1: {part1Actual,-30} ");
         Console.WriteLine($"{s.ScaleMilliseconds()} ms elapsed");
         Assert.AreEqual(part1, part1Actual, $"Incorrect answer for Day {day.DayNumber} Part1");
 
@@ -26,7 +26,7 @@ public static class Common
         s.Start();
         var part2Actual = day.Part2().ToString();
         s.Stop();
-        Console.Write($"Part 2: {part2Actual,-25} ");
+        Console.Write($"Part 2: {part2Actual,-30} ");
         Console.WriteLine($"{s.ScaleMilliseconds()} ms elapsed");
         Assert.AreEqual(part2, part2Actual, $"Incorrect answer for Day {day.DayNumber} Part2");
     }
