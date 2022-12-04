@@ -5,7 +5,7 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day16 : Day
 {
-    public Day16() : base(2015, 16, "Puzzle Name")
+    public Day16() : base(2015, 16, "Aunt Sue")
     {
     }
 

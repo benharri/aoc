@@ -5,7 +5,7 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day21 : Day
 {
-    public Day21() : base(2015, 21, "Puzzle Name")
+    public Day21() : base(2015, 21, "RPG Simulator 20XX")
     {
     }
 
