@@ -26,18 +26,18 @@ public sealed class Day02 : Day
         return v[0];
     }
 
-    public override string Part1()
+    public override object Part1()
     {
-        return $"{RunIntCode(12, 2)}";
+        return RunIntCode(12, 2);
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         for (var i = 0; i < 100; i++)
             for (var j = 0; j < 100; j++)
                 if (RunIntCode(i, j) == 19690720)
-                    return $"{100 * i + j}";
+                    return 100 * i + j;
 
-        return string.Empty;
+        return default!;
     }
 }

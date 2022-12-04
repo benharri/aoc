@@ -9,10 +9,7 @@ public sealed class Day01 : Day
         _masses = Input.Select(int.Parse);
     }
 
-    private static int FuelCost(int weight)
-    {
-        return weight / 3 - 2;
-    }
+    private static int FuelCost(int weight) => weight / 3 - 2;
 
     private static int FullCost(int cost)
     {
@@ -27,13 +24,7 @@ public sealed class Day01 : Day
         return total;
     }
 
-    public override string Part1()
-    {
-        return $"{_masses.Sum(FuelCost)}";
-    }
+    public override object Part1() => _masses.Sum(FuelCost);
 
-    public override string Part2()
-    {
-        return $"{_masses.Sum(FullCost)}";
-    }
+    public override object Part2() => _masses.Sum(FullCost);
 }

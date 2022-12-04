@@ -45,14 +45,14 @@ public sealed class Day14 : Day
         return true;
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         _available = new() { { "ORE", long.MaxValue } };
         Consume("FUEL", 1);
-        return $"{long.MaxValue - _available["ORE"]}";
+        return long.MaxValue - _available["ORE"];
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         const long capacity = 1_000_000_000_000;
         _available = new() { { "ORE", capacity } };
@@ -63,7 +63,7 @@ public sealed class Day14 : Day
         {
         }
 
-        return $"{_available["FUEL"] + 1}";
+        return _available["FUEL"] + 1;
     }
 
     private struct Component

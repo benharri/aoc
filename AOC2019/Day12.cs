@@ -33,15 +33,15 @@ public sealed class Day12 : Day
         _step++;
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         while (_step < 1000)
             Step();
 
-        return $"{_moons.Sum(p => p.TotalEnergy)}";
+        return _moons.Sum(p => p.TotalEnergy);
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         int cycleX = 0, cycleY = 0, cycleZ = 0;
 
@@ -53,7 +53,7 @@ public sealed class Day12 : Day
             if (cycleZ == 0 && _moons.All(m => m.Dz == 0)) cycleZ = _step * 2;
         }
 
-        return $"{Util.Lcm(cycleX, Util.Lcm(cycleY, cycleZ))}";
+        return Util.Lcm(cycleX, Util.Lcm(cycleY, cycleZ));
     }
 
     public class Position
@@ -82,15 +82,11 @@ public sealed class Day12 : Day
         internal int TotalEnergy =>
             KineticEnergy * PotentialEnergy;
 
-        public void SetSiblings(IEnumerable<Position> positions)
-        {
+        public void SetSiblings(IEnumerable<Position> positions) =>
             _siblings = positions.Where(p => p != this).ToList();
-        }
 
-        public override string ToString()
-        {
-            return $"pos=<x={_x}, y={_y}, z={_z}> vel=<x={Dx}, y={Dy}, z={Dz}>";
-        }
+        public override string ToString() =>
+            $"pos=<x={_x}, y={_y}, z={_z}> vel=<x={Dx}, y={Dy}, z={Dz}>";
 
         internal void Gravitate()
         {

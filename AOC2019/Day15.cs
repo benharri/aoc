@@ -10,7 +10,7 @@ public sealed class Day15 : Day
         _vm = new(Input.First());
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         _vm.Reset();
         var currentLocation = new Location(0, 0);
@@ -92,7 +92,7 @@ public sealed class Day15 : Day
                         currentLocation = Location.GetLocation(currentLocation!.PreviousLocation());
                     }
 
-                    return $"{distance}";
+                    return distance;
                 }
             }
         }
@@ -100,7 +100,7 @@ public sealed class Day15 : Day
         return "";
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         var changed = true;
         while (changed)
@@ -112,8 +112,7 @@ public sealed class Day15 : Day
 
         return Location.AllLocations.Values
             .Where(l => !l.IsWall)
-            .Max(l => l.DistanceToOxygenSystem)
-            .ToString();
+            .Max(l => l.DistanceToOxygenSystem);
     }
 
     private class Location

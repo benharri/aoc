@@ -9,7 +9,7 @@ public sealed class Day17 : Day
         _vm = new(Input.First());
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         _vm.Reset();
         _vm.Run();
@@ -29,10 +29,10 @@ public sealed class Day17 : Day
                 grid[y][x + 1] == '#')
                 sum += x * y;
 
-        return $"{sum}";
+        return sum;
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         //vm.Reset();
         //vm.memory[0] = 2;

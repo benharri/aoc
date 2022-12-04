@@ -9,14 +9,14 @@ public sealed class Day21 : Day
         _vm = new(Input.First());
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         _vm.Reset();
         var halt = _vm.Run();
         return "";
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         return "";
     }

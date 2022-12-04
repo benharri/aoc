@@ -16,7 +16,7 @@ public sealed class Day10 : Day
             .ToHashSet();
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         foreach (var asteroid in _asteroids)
         {
@@ -33,10 +33,10 @@ public sealed class Day10 : Day
             }
         }
 
-        return $"{_bestCanSee}";
+        return _bestCanSee;
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         static IEnumerable<(int x, int y, double angle, double dist)> GetValue(
             Queue<(int x, int y, double angle, double dist)> q)
@@ -61,7 +61,6 @@ public sealed class Day10 : Day
             .Skip(199)
             .Take(1)
             .Select(a => a.x * 100 + a.y)
-            .Single()
-            .ToString();
+            .Single();
     }
 }
