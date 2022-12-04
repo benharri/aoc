@@ -14,7 +14,7 @@ public class Test2019
     [DataRow(typeof(Day06), "145250", "274")]
     [DataRow(typeof(Day07), "19650", "35961106")]
     [DataRow(typeof(Day08), "2413",
-        "\nxxx   xx  xxx  xxxx xxx  \nx  x x  x x  x    x x  x \nxxx  x    x  x   x  xxx  \nx  x x    xxx   x   x  x \nx  x x  x x    x    x  x \nxxx   xx  x    xxxx xxx  ")]
+        "xxx   xx  xxx  xxxx xxx  \nx  x x  x x  x    x x  x \nxxx  x    x  x   x  xxx  \nx  x x    xxx   x   x  x \nx  x x  x x    x    x  x \nxxx   xx  x    xxxx xxx  ")]
     [DataRow(typeof(Day09), "3409270027", "82760")]
     [DataRow(typeof(Day10), "260", "608")]
     [DataRow(typeof(Day11), "2054",
@@ -33,7 +33,7 @@ public class Test2019
     [DataRow(typeof(Day23), "23626", "19019")]
     //[DataRow(typeof(Day24), "", "")]
     //[DataRow(typeof(Day25), "", "")]
-    public void TestAllDays(Type dayType, string part1, string part2)
+    public void CheckAllDays(Type dayType, string part1, string part2)
     {
         Common.CheckDay(dayType, part1, part2);
     }

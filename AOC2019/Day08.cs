@@ -17,7 +17,7 @@ public sealed class Day08 : Day
 
     public override string Part2()
     {
-        return "\n" + Enumerable.Range(0, 25 * 6)
+        return Enumerable.Range(0, 25 * 6)
             .Select(p => Enumerable.Range(0, _photo.Count)
                 .Select(l => _photo[l][p])
                 .Aggregate('2', (acc, next) =>
@@ -26,6 +26,7 @@ public sealed class Day08 : Day
             )
             .ToDelimitedString()
             .Chunk(25)
+            .Select(s => new string(s))
             .ToDelimitedString("\n")
             .Replace('1', 'x');
     }
