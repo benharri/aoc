@@ -61,9 +61,9 @@ public sealed class Day18 : Day
         return expressionStack.Pop();
     }
 
-    public override string Part1() =>
-        $"{_expressions.Sum(expr => Calculate(expr, c => c == '+' || c == '*' ? 1 : 0))}";
+    public override object Part1() =>
+        _expressions.Sum(expr => Calculate(expr, c => c == '+' || c == '*' ? 1 : 0));
 
-    public override string Part2() =>
-        $"{_expressions.Sum(expr => Calculate(expr, c => c switch { '+' => 2, '*' => 1, _ => 0 }))}";
+    public override object Part2() =>
+        _expressions.Sum(expr => Calculate(expr, c => c switch { '+' => 2, '*' => 1, _ => 0 }));
 }

@@ -27,9 +27,9 @@ public sealed class Day24 : Day
             .ToDictionary(t => t.Location);
     }
 
-    public override string Part1() => $"{_tiles.Count}";
+    public override object Part1() => _tiles.Count;
 
-    public override string Part2()
+    public override object Part2()
     {
         foreach (var _ in Enumerable.Range(0, 100))
         {
@@ -47,7 +47,7 @@ public sealed class Day24 : Day
                 .ToDictionary(t => t.Location);
         }
 
-        return $"{_tiles.Count}";
+        return _tiles.Count;
     }
 
     private record Tile
@@ -76,9 +76,6 @@ public sealed class Day24 : Day
         }
 
         public static Tile operator +(Tile t, (int q, int r, int s) direction) =>
-            t with
-            {
-                Location = (t.Location.q + direction.q, t.Location.r + direction.r, t.Location.s + direction.s)
-            };
+            new() { Location = (t.Location.q + direction.q, t.Location.r + direction.r, t.Location.s + direction.s) };
     }
 }

@@ -88,16 +88,16 @@ public sealed class Day22 : Day
     private static int CalculateScore(IReadOnlyCollection<int> deck) =>
         deck.Reverse().Zip(Enumerable.Range(1, deck.Count), (a, b) => a * b).Sum();
 
-    public override string Part1()
+    public override object Part1()
     {
         var (deck1, deck2) = Play(_deck1, _deck2);
-        return $"{CalculateScore(deck1.Any() ? deck1 : deck2)}";
+        return CalculateScore(deck1.Any() ? deck1 : deck2);
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         Reset();
         var (deck1, deck2) = Play(_deck1, _deck2, recursive: true);
-        return $"{CalculateScore(deck1.Any() ? deck1 : deck2)}";
+        return CalculateScore(deck1.Any() ? deck1 : deck2);
     }
 }
