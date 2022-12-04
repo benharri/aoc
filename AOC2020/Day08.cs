@@ -44,13 +44,13 @@ public sealed class Day08 : Day
         return _currentInstruction == _instructions.Length;
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         Halts();
-        return $"{_accumulator}";
+        return _accumulator;
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         for (var i = 0; i < _instructions.Length; i++)
             // swap each nop and jmp and check if the program halts
@@ -67,6 +67,6 @@ public sealed class Day08 : Day
                 _instructions[i].instruction = "jmp";
             }
 
-        return $"{_accumulator}";
+        return _accumulator;
     }
 }

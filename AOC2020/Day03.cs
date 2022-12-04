@@ -24,16 +24,15 @@ public sealed class Day03 : Day
         return hits;
     }
 
-    public override string Part1() => $"{CountSlope(3, 1)}";
+    public override object Part1() => CountSlope(3, 1);
 
-    public override string Part2()
+    public override object Part2()
     {
         var xSlopes = new[] { 1, 3, 5, 7, 1 };
         var ySlopes = new[] { 1, 1, 1, 1, 2 };
 
         return xSlopes.Zip(ySlopes)
             .Select(s => CountSlope(s.First, s.Second))
-            .Aggregate((acc, i) => acc * i)
-            .ToString();
+            .Aggregate((acc, i) => acc * i);
     }
 }

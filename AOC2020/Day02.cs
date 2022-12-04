@@ -10,11 +10,11 @@ public sealed class Day02 : Day
     public Day02() : base(2020, 2, "Password Philosophy") =>
         _passwords = Input.Select(p => new Password(p)).ToImmutableList();
 
-    public override string Part1() =>
-        $"{_passwords.Count(p => p.IsValid)}";
+    public override object Part1() =>
+        _passwords.Count(p => p.IsValid);
 
-    public override string Part2() =>
-        $"{_passwords.Count(p => p.IsValidByIndex)}";
+    public override object Part2() =>
+        _passwords.Count(p => p.IsValidByIndex);
 
     private class Password
     {

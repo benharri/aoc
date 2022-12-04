@@ -27,9 +27,9 @@ public sealed class Day04 : Day
         if (a.Any()) _passports.Add(Passport.Parse(a));
     }
 
-    public override string Part1() => $"{_passports.Count(p => p.IsValid)}";
+    public override object Part1() => _passports.Count(p => p.IsValid);
 
-    public override string Part2() => $"{_passports.Count(p => p.ExtendedValidation())}";
+    public override object Part2() => _passports.Count(p => p.ExtendedValidation());
 
     private class Passport
     {

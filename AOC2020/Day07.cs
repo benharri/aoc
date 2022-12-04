@@ -31,7 +31,7 @@ public sealed class Day07 : Day
             .Select(i => i!.Value)
             .Sum(i => i.Weight * Weight(i.Name));
 
-    public override string Part1()
+    public override object Part1()
     {
         // breadth-first search with Queue
         var start = new Queue<string>(new[] { "shiny gold" });
@@ -47,8 +47,8 @@ public sealed class Day07 : Day
             if (!start.Any()) break;
         }
 
-        return $"{p.Count}";
+        return p.Count;
     }
 
-    public override string Part2() => $"{Weight("shiny gold") - 1}";
+    public override object Part2() => Weight("shiny gold") - 1;
 }

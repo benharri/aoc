@@ -28,7 +28,7 @@ public sealed class Day10 : Day
         return _memo[i];
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var ones = 0;
         var threes = 0;
@@ -45,8 +45,8 @@ public sealed class Day10 : Day
                 default: throw new("something went wrong");
             }
 
-        return $"{ones * threes}";
+        return ones * threes;
     }
 
-    public override string Part2() => $"{Connections(0)}";
+    public override object Part2() => Connections(0);
 }

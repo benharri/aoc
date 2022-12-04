@@ -9,7 +9,7 @@ public sealed class Day11 : Day
     {
     }
 
-    public override string Part1()
+    public override object Part1()
     {
         var prev = new LifeGame(Input);
 
@@ -28,10 +28,10 @@ public sealed class Day11 : Day
             prev = next;
         }
 
-        return $"{prev.TotalSeated}";
+        return prev.TotalSeated;
     }
 
-    public override string Part2()
+    public override object Part2()
     {
         var prev = new LifeGame(Input);
         while (true)
@@ -49,7 +49,7 @@ public sealed class Day11 : Day
             prev = next;
         }
 
-        return $"{prev.TotalSeated}";
+        return prev.TotalSeated;
     }
 
     private class LifeGame
