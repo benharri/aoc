@@ -21,8 +21,6 @@ public class Test2022
     [DataRow(typeof(Day04), "2", "4")]
     public void CheckTestInputs(Type dayType, string part1, string part2)
     {
-        Day.UseTestInput = true;
-        Common.CheckDay(dayType, part1, part2);
-        Day.UseTestInput = false;
+        Common.CheckDay(dayType, part1, part2, true);
     }
 }

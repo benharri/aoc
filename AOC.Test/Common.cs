@@ -2,8 +2,9 @@ namespace AOC.Test;
 
 public static class Common
 {
-    public static void CheckDay(Type dayType, string part1, string part2)
+    public static void CheckDay(Type dayType, string part1, string part2, bool testInput = false)
     {
+        Day.UseTestInput = testInput;
         var s = Stopwatch.StartNew();
         var day = Activator.CreateInstance(dayType) as Day;
         s.Stop();
@@ -29,5 +30,6 @@ public static class Common
         Console.Write($"Part 2: {part2Actual,-30} ");
         Console.WriteLine($"{s.ScaleMilliseconds()} ms elapsed");
         Assert.AreEqual(part2, part2Actual, $"Incorrect answer for Day {day.DayNumber} Part2");
+        Day.UseTestInput = testInput;
     }
 }

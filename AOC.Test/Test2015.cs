@@ -35,8 +35,6 @@ public class Test2015
     [DataRow(typeof(Day10), "237746", "3369156")]
     public void CheckTestInputs(Type dayType, string part1, string part2)
     {
-        Day.UseTestInput = true;
-        Common.CheckDay(dayType, part1, part2);
-        Day.UseTestInput = false;
+        Common.CheckDay(dayType, part1, part2, true);
     }
 }
