@@ -20,10 +20,8 @@ public sealed class Day05 : Day
 
         foreach (var line in stackDiagram.Reverse().Skip(1))
         {
-            var diagram = line.Chunk(4);
             var diagramIndex = 1;
-
-            foreach (var stack in diagram)
+            foreach (var stack in line.Chunk(4))
             {
                 if (stack[1] != ' ')
                     _stacks[diagramIndex].Push(stack[1]);
@@ -42,12 +40,15 @@ public sealed class Day05 : Day
         return (int.Parse(split[1]), int.Parse(split[3]), int.Parse(split[5]));
     }
 
+    private static string PeekStackTops(IEnumerable<Stack<char>> stacks) =>
+        stacks.Where(s => s.Any()).Aggregate("", (result, stack) => result + stack.Peek());
+
     public override object Part1()
     {
         foreach (var (quantity, from, to) in _instructions)
             Enumerable.Range(0, quantity).ForEach(_ => _stacks[to].Push(_stacks[from].Pop()));
 
-        return _stacks.Where(q => q.Any()).Aggregate("", (s1, chars) => s1 + chars.Peek());
+        return PeekStackTops(_stacks);
     }
 
     public override object Part2()
@@ -60,6 +61,6 @@ public sealed class Day05 : Day
             while (crane.Any()) _stacksPart2[to].Push(crane.Pop());
         }
 
-        return _stacksPart2.Where(q => q.Any()).Aggregate("", (s1, chars) => s1 + chars.Peek());
+        return PeekStackTops(_stacksPart2);
     }
 }
