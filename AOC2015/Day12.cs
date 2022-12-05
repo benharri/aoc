@@ -1,4 +1,5 @@
-using System.Text.Json;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace AOC2015;
 
@@ -10,7 +11,7 @@ public sealed partial class Day12 : Day
     public Day12() : base(2015, 12, "JSAbacusFramework.io")
     {
     }
-    
+
     [GeneratedRegex(@"-?\d+")]
     private static partial Regex Digits();
 
@@ -19,31 +20,20 @@ public sealed partial class Day12 : Day
 
     public override object Part2()
     {
-        var reader = new Utf8JsonReader(File.ReadAllBytes(FileName));
-        var sum = 0;
-        bool redObject = false, insideObject = false;
-        
-        while (reader.Read())
-        {
-            switch (reader.TokenType)
-            {
-                case JsonTokenType.StartObject:
-                    insideObject = true;
-                    break;
-                case JsonTokenType.EndObject:
-                    insideObject = false;
-                    redObject = false;
-                    break;
-                case JsonTokenType.String:
-                    if (insideObject && reader.GetString()! == "red")
-                        redObject = true;
-                    break;
-                case JsonTokenType.Number:
-                    if (!redObject) sum += reader.GetInt32();
-                    break;
-            }
-        }
-
-        return sum;
+        dynamic j = JsonConvert.DeserializeObject(Input.First())!;
+        return GetSum(j, "red");
     }
+
+    private long GetSum(JObject o, string? avoid = null)
+    {
+        var shouldAvoid = o.Properties()
+            .Select(a => a.Value).OfType<JValue>()
+            .Select(v => v.Value).Contains(avoid);
+
+        return shouldAvoid ? 0 : o.Properties().Sum((dynamic a) => (long)GetSum(a.Value, avoid));
+    }
+
+    private long GetSum(JArray arr, string avoid) => arr.Sum((dynamic a) => (long)GetSum(a, avoid));
+
+    private long GetSum(JValue val, string avoid) => val.Type == JTokenType.Integer ? (long)(val.Value ?? 0L) : 0;
 }
