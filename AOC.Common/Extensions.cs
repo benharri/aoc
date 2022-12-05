@@ -59,6 +59,25 @@ public static class Extensions
         i >= range.Start.Value && i <= range.End.Value;
 
     /// <summary>
+    /// Does <paramref name="r1"/> contain the entire range of <paramref name="r2"/>?
+    /// </summary>
+    /// <param name="r1"></param>
+    /// <param name="r2"></param>
+    /// <returns></returns>
+    public static bool Contains(this Range r1, Range r2) =>
+        r1.Start.Value <= r2.Start.Value && r1.End.Value >= r2.End.Value;
+
+    /// <summary>
+    /// Do <paramref name="r1"/> and <paramref name="r2"/> overlap?
+    /// </summary>
+    /// <param name="r1"></param>
+    /// <param name="r2"></param>
+    /// <returns></returns>
+    public static bool Overlaps(this Range r1, Range r2) =>
+        r1.Start.Value <= r2.End.Value && r1.End.Value >= r2.Start.Value &&
+        r2.Start.Value <= r1.End.Value && r2.End.Value >= r1.Start.Value;
+
+    /// <summary>
     /// Creates a new BigInteger from a binary (Base2) string
     /// <see href="https://gist.github.com/mjs3339/73042bc0e717f98796ee9fa131e458d4" />
     /// </summary>
