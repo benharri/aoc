@@ -5,22 +5,19 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day04 : Day
 {
-    private readonly List<List<int>> _ranges = new();
+    private readonly List<(Range r1, Range r2)> _ranges;
 
     public Day04() : base(2022, 4, "Camp Cleanup")
     {
-        foreach (var line in Input)
-            _ranges.Add(line.Split(',').SelectMany(q => q.Split('-')).Select(int.Parse).ToList());
+        _ranges = Input
+            .Select(line => line.Split(',').SelectMany(q => q.Split('-')).Select(int.Parse).ToList())
+            .Select(p => (new Range(p[0], p[1]), new Range(p[2], p[3])))
+            .ToList();
     }
 
     public override object Part1() =>
-        _ranges.Count(r =>
-            (r[0] >= r[2] && r[0] <= r[3] && r[1] >= r[2] && r[1] <= r[3]) ||
-            (r[2] >= r[0] && r[2] <= r[1] && r[3] >= r[0] && r[3] <= r[1]));
+        _ranges.Count(r => r.r1.Contains(r.r2) || r.r2.Contains(r.r1));
 
     public override object Part2() =>
-        _ranges.Count(r => (r[0] >= r[2] && r[0] <= r[3]) ||
-                           (r[1] >= r[2] && r[1] <= r[3]) ||
-                           (r[2] >= r[0] && r[2] <= r[1]) ||
-                           (r[3] >= r[0] && r[3] <= r[1]));
+        _ranges.Count(r => r.r1.Overlaps(r.r2));
 }
