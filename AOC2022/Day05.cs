@@ -34,7 +34,7 @@ public sealed class Day05 : Day
         }
 
         _stacksPart2 = new(_stacks.Count);
-        _stacks.ForEach(item => _stacksPart2.Add(new(item)));
+        _stacks.ForEach(item => _stacksPart2.Add(new(item.Reverse())));
     }
 
     public override object Part1()
