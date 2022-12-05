@@ -7,6 +7,9 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day13 : Day
 {
+    private readonly Dictionary<(string person1, string person2), int> _happinessMap = new();
+    private readonly List<string> _people = new();
+
     public Day13() : base(2015, 13, "Knights of the Dinner Table")
     {
         foreach (var line in Input)
@@ -21,40 +24,36 @@ public sealed class Day13 : Day
     public override object Part2()
     {
         //  Add myself
-        foreach (var person in allPeople)
+        foreach (var person in _people)
         {
-            happinessMap[("me", person)] = 0;
-            happinessMap[(person, "me")] = 0;
+            _happinessMap[("me", person)] = 0;
+            _happinessMap[(person, "me")] = 0;
         }
-        
-        allPeople.Add("me");
+
+        _people.Add("me");
 
         return ComputeHappiness();
     }
 
-    private Dictionary<(string person1, string person2), int> happinessMap = new();
-    private List<string> allPeople = new();
-
     private void AddToHappinessMap(string thisString)
     {
         var tokens = thisString.Split(' ');
-        var firstPerson = tokens.First();
-        var lastPerson = tokens.Last().TrimEnd('.');
+        var person1 = tokens.First();
+        var person2 = tokens.Last().TrimEnd('.');
         var amount = int.Parse(tokens[3]);
 
         if (tokens.Contains("lose"))
             amount *= -1;
 
-        happinessMap[(firstPerson, lastPerson)] = amount;
+        _happinessMap[(person1, person2)] = amount;
 
-        if (!allPeople.Contains(firstPerson))
-            allPeople.Add(firstPerson);
-        if (!allPeople.Contains(lastPerson))
-            allPeople.Add(lastPerson);
+        if (!_people.Contains(person1))
+            _people.Add(person1);
+        if (!_people.Contains(person2))
+            _people.Add(person2);
     }
 
-
-    public static List<List<string>> BuildPermutations(List<string> items)
+    private static List<List<string>> BuildPermutations(List<string> items)
     {
         if (items.Count > 1)
         {
@@ -67,7 +66,7 @@ public sealed class Day13 : Day
 
     public long ComputeHappiness()
     {
-        var possibilities = BuildPermutations(allPeople);
+        var possibilities = BuildPermutations(_people);
 
         var maxHappiness = long.MinValue;
         foreach (var possibility in possibilities)
@@ -81,8 +80,8 @@ public sealed class Day13 : Day
                 var leftPerson = i == 0 ? possibility[^1] : possibility[i - 1];
                 var rightPerson = i == possibility.Count - 1 ? possibility[0] : possibility[i + 1];
 
-                thisPossibilityHappiness += happinessMap[(firstPerson, leftPerson)];
-                thisPossibilityHappiness += happinessMap[(firstPerson, rightPerson)];
+                thisPossibilityHappiness += _happinessMap[(firstPerson, leftPerson)];
+                thisPossibilityHappiness += _happinessMap[(firstPerson, rightPerson)];
             }
 
             maxHappiness = Math.Max(maxHappiness, thisPossibilityHappiness);
