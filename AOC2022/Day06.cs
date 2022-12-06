@@ -11,21 +11,9 @@ public sealed class Day06 : Day
         _signal = Input.First();
     }
 
-    public override object Part1()
-    {
-        for (var i = 0; i < _signal.Length; i++)
-            if (_signal.Substring(i, 4).Distinct().Count() == 4)
-                return i + 4;
+    public override object Part1() =>
+        Enumerable.Range(0, _signal.Length).First(i => _signal.Substring(i, 4).Distinct().Count() == 4) + 4;
 
-        return 0;
-    }
-
-    public override object Part2()
-    {
-        for (var i = 0; i < _signal.Length; i++)
-            if (_signal.Substring(i, 14).Distinct().Count() == 14)
-                return i + 14;
-
-        return 0;
-    }
+    public override object Part2() =>
+        Enumerable.Range(0, _signal.Length).First(i => _signal.Substring(i, 14).Distinct().Count() == 14) + 14;
 }
