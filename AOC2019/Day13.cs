@@ -2,38 +2,33 @@ namespace AOC2019;
 
 public sealed class Day13 : Day
 {
-    private readonly Dictionary<(int x, int y), int> _board;
+    private readonly Dictionary<(int x, int y), int> _board = new();
     private readonly IntCodeVM _vm;
 
     public Day13() : base(2019, 13, "Care Package")
     {
         _vm = new(Input.First());
-        _board = new Dictionary<(int, int), int>();
     }
 
-    private void UpdateTiles(IEnumerable<long> queue)
+    private IList<(int x, int y)> UpdateTiles(IEnumerable<long> queue)
     {
-        var input = queue.Select(i => (int)i).ToList();
-
-        for (var i = 0; i < input.Count - 2; i += 3)
+        var updated = new List<(int x, int y)>();
+        foreach (var c in queue.Select(i => (int)i).Chunk(3))
         {
-            var x = input[i];
-            var y = input[i + 1];
-            var val = input[i + 2];
-
-            if (_board.ContainsKey((x, y)))
-                _board[(x, y)] = val;
-            else
-                _board.Add((x, y), val);
+            _board[(c[0], c[1])] = c[2];
+            updated.Add((c[0], c[1]));
         }
+
+        return updated;
     }
 
-    private void PrintBoard()
+    private void PrintBoard(IList<(int x, int y)>? updated = null)
     {
-        foreach (var ((x, y), value) in _board)
+        foreach (var (x, y) in updated ?? _board.Keys.ToList())
         {
             if (x < 0 || y < 0) continue;
             Console.SetCursorPosition(x, y);
+            var value = _board[(x, y)];
             Console.Write(value switch
             {
                 0 => " ",
@@ -45,6 +40,7 @@ public sealed class Day13 : Day
             });
         }
     }
+
 
     public override object Part1()
     {
@@ -65,14 +61,14 @@ public sealed class Day13 : Day
         while (haltType == IntCodeVM.HaltType.Waiting)
         {
             haltType = _vm.Run();
-            UpdateTiles(_vm.Output);
+            var updated = UpdateTiles(_vm.Output);
+            if (printBoard) PrintBoard(updated);
 
-            var (ball, _) = _board.First(t => t.Value == 4).Key;
-            var (paddle, _) = _board.First(t => t.Value == 3).Key;
+            var (ball, _) = _board.Single(t => t.Value == 4).Key;
+            var (paddle, _) = _board.Single(t => t.Value == 3).Key;
             _vm.AddInput(ball > paddle ? 1 : ball < paddle ? -1 : 0);
 
             gameTicks++;
-            if (printBoard) PrintBoard();
         }
 
         return $"after {gameTicks} moves, the score is: {_board[(-1, 0)]}";
