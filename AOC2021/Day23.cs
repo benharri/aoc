@@ -5,9 +5,13 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day23 : Day
 {
-    private readonly List<char> _crabs;
+    private List<char>? _crabs;
 
     public Day23() : base(2021, 23, "Amphipod")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _crabs = Input.SelectMany(l => l).Where(char.IsLetter).ToList();
     }
@@ -83,7 +87,7 @@ public sealed class Day23 : Day
     public override object Part1()
     {
         var start = new State("           ",
-            $"{_crabs[0]}{_crabs[4]}",
+            $"{_crabs![0]}{_crabs[4]}",
             $"{_crabs[1]}{_crabs[5]}",
             $"{_crabs[2]}{_crabs[6]}",
             $"{_crabs[3]}{_crabs[7]}");
@@ -95,7 +99,7 @@ public sealed class Day23 : Day
     public override object Part2()
     {
         var start = new State("           ",
-            $"{_crabs[0]}DD{_crabs[4]}",
+            $"{_crabs![0]}DD{_crabs[4]}",
             $"{_crabs[1]}CB{_crabs[5]}",
             $"{_crabs[2]}BA{_crabs[6]}",
             $"{_crabs[3]}AC{_crabs[7]}");

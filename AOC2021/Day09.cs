@@ -7,11 +7,15 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day09 : Day
 {
-    private readonly int _part1Sum;
-    private readonly List<(int x, int y)> _lowPoints;
-    private readonly List<string> _map;
+    private int _part1Sum;
+    private List<(int x, int y)>? _lowPoints;
+    private List<string>? _map;
 
     public Day09() : base(2021, 9, "Smoke Basin")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _part1Sum = 0;
         _lowPoints = new();
@@ -36,7 +40,7 @@ public sealed class Day09 : Day
     public override object Part2()
     {
         var sizes = new List<long>();
-        foreach (var (x, y) in _lowPoints)
+        foreach (var (x, y) in _lowPoints!)
         {
             var s = 0;
             var seen = new HashSet<(int x, int y)>();
@@ -44,11 +48,11 @@ public sealed class Day09 : Day
             IEnumerable<(int x, int y)> Traverse((int x, int y) p)
             {
                 var (i, j) = p;
-                if (_map[j][i] == '9') yield break;
+                if (_map![j][i] == '9') yield break;
                 if (seen.Contains((i, j))) yield break;
                 seen.Add((i, j));
                 s++;
-                
+
                 if (j > 0)
                     yield return (i, j - 1);
                 if (j < _map.Count - 1)

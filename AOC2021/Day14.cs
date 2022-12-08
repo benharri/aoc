@@ -5,10 +5,14 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day14 : Day
 {
-    private readonly string _template;
-    private readonly Dictionary<string, string> _substitutionPairs;
+    private string? _template;
+    private Dictionary<string, string>? _substitutionPairs;
 
     public Day14() : base(2021, 14, "Extended Polymerization")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _template = Input.First();
         _substitutionPairs = Input.Skip(2).Select(l => l.Split(" -> ")).ToDictionary(k => k[0], v => v[1]);
@@ -21,7 +25,7 @@ public sealed class Day14 : Day
         for (var i = 0; i < input.Length - 1; i++)
         {
             var k = input.Substring(i, 2);
-            if (_substitutionPairs.ContainsKey(k))
+            if (_substitutionPairs!.ContainsKey(k))
             {
                 result.Append(k[0]);
                 result.Append(_substitutionPairs[k]);
@@ -40,7 +44,7 @@ public sealed class Day14 : Day
     private long Solve(int steps)
     {
         var moleculeCounts = new Dictionary<string, long>();
-        foreach (var i in Enumerable.Range(0, _template.Length - 1))
+        foreach (var i in Enumerable.Range(0, _template!.Length - 1))
         {
             var k = _template.Substring(i, 2);
             moleculeCounts[k] = moleculeCounts.GetValueOrDefault(k) + 1;
@@ -51,7 +55,7 @@ public sealed class Day14 : Day
             var updated = new Dictionary<string, long>();
             foreach (var (molecule, count) in moleculeCounts)
             {
-                var (a, n, b) = (molecule[0], _substitutionPairs[molecule], molecule[1]);
+                var (a, n, b) = (molecule[0], _substitutionPairs![molecule], molecule[1]);
                 updated[$"{a}{n}"] = updated.GetValueOrDefault($"{a}{n}") + count;
                 updated[$"{n}{b}"] = updated.GetValueOrDefault($"{n}{b}") + count;
             }
@@ -74,9 +78,9 @@ public sealed class Day14 : Day
 
     public override object Part1()
     {
-        var s = Enumerable.Range(0, 10).Aggregate(_template, (current, _) => DoStep(current));
+        var s = Enumerable.Range(0, 10).Aggregate(_template, (current, _) => DoStep(current!));
 
-        var most = s.ToCharArray()
+        var most = s!.ToCharArray()
             .GroupBy(c => c)
             .OrderByDescending(g => g.Count())
             .Select(g => g.Count())

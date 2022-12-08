@@ -5,9 +5,13 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day17 : Day
 {
-    private readonly List<int> _target;
+    private List<int>? _target;
 
     public Day17() : base(2021, 17, "Trick Shot")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _target = Input.First()
             .Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
@@ -20,7 +24,7 @@ public sealed class Day17 : Day
 
     public override object Part1()
     {
-        var initialYVelocity = Math.Abs(_target[2]) - 1;
+        var initialYVelocity = Math.Abs(_target![2]) - 1;
         return (initialYVelocity + 1) * initialYVelocity / 2;
     }
 
@@ -28,7 +32,7 @@ public sealed class Day17 : Day
     {
         var successfulVelocities = new HashSet<(int x, int y)>();
         var xMin = 1;
-        while (xMin * (xMin + 1) / 2 < _target[0]) xMin++;
+        while (xMin * (xMin + 1) / 2 < _target![0]) xMin++;
 
         for (var x = xMin; x <= _target[1]; x++)
         for (var y = _target[2]; y < Math.Abs(_target[2]); y++)

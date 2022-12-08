@@ -12,6 +12,10 @@ public sealed class Day08 : Day
     {
     }
 
+    public override void ProcessInput()
+    {
+    }
+
     private static int MatchDigit(string lit) =>
         lit switch
         {

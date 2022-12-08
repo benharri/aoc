@@ -29,10 +29,15 @@ public sealed class Day10 : Day
         { '<', 4 }
     };
 
-    private readonly long _score1;
     private readonly List<long> _scores2 = new();
 
+    private long _score1;
+
     public Day10() : base(2021, 10, "Syntax Scoring")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _score1 = 0L;
         foreach (var line in Input)

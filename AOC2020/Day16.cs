@@ -5,10 +5,14 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day16 : Day
 {
-    private readonly Dictionary<string, List<Range>> _rules;
-    private readonly List<List<int>> _tickets;
+    private Dictionary<string, List<Range>>? _rules;
+    private List<List<int>>? _tickets;
 
     public Day16() : base(2020, 16, "Ticket Translation")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _tickets = new();
         _rules = new();
@@ -37,17 +41,17 @@ public sealed class Day16 : Day
 
     public override object Part1()
     {
-        var allValues = _tickets.Skip(1).SelectMany(t => t);
-        var allRules = _rules.Values.SelectMany(r => r);
+        var allValues = _tickets!.Skip(1).SelectMany(t => t);
+        var allRules = _rules!.Values.SelectMany(r => r);
         return allValues.Where(t => !allRules.Any(r => r.Contains(t))).Sum();
     }
 
     public override object Part2()
     {
-        var ticketFields = _tickets
+        var ticketFields = _tickets!
             // valid tickets
             .Where(ticket => ticket
-                .All(t => _rules.Values
+                .All(t => _rules!.Values
                     .SelectMany(r => r)
                     .Any(r => r.Contains(t))))
             // group by index
@@ -57,7 +61,7 @@ public sealed class Day16 : Day
             .Select((val, i) => new { Value = val, Index = i })
             .ToList();
 
-        var matchedRules = _rules
+        var matchedRules = _rules!
             // find matching rules and indices
             .SelectMany(x => ticketFields
                 .Where(y => y.Value.All(z => x.Value.Any(r => r.Contains(z))))
@@ -79,6 +83,6 @@ public sealed class Day16 : Day
 
         var departureFields = matchedRules.Where(r => r.Key.StartsWith("departure"));
 
-        return departureFields.Aggregate(1L, (l, match) => l * _tickets.First()[match.Index]);
+        return departureFields.Aggregate(1L, (l, match) => l * _tickets!.First()[match.Index]);
     }
 }

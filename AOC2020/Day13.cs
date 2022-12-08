@@ -5,11 +5,15 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day13 : Day
 {
-    private readonly long[] _buses;
-    private readonly long _earliest;
-    private readonly string[] _fullSchedule;
+    private long[]? _buses;
+    private long _earliest;
+    private string[]? _fullSchedule;
 
     public Day13() : base(2020, 13, "Shuttle Search")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _earliest = long.Parse(Input.First());
         _fullSchedule = Input.Last().Split(',');
@@ -19,9 +23,9 @@ public sealed class Day13 : Day
     public override object Part1()
     {
         for (var i = _earliest; ; i++)
-            if (_buses.Any(b => i % b == 0))
+            if (_buses!.Any(b => i % b == 0))
             {
-                var bus = _buses.First(b => i % b == 0);
+                var bus = _buses!.First(b => i % b == 0);
                 return bus * (i - _earliest);
             }
     }
@@ -31,7 +35,7 @@ public sealed class Day13 : Day
         var i = 0;
         long result = 1, multiplier = 1;
 
-        foreach (var id in _fullSchedule)
+        foreach (var id in _fullSchedule!)
         {
             if (id != "x")
             {

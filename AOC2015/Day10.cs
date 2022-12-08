@@ -9,6 +9,10 @@ public sealed class Day10 : Day
 
     public Day10() : base(2015, 10, "Elves Look, Elves Say")
     {
+    }
+
+    public override void ProcessInput()
+    {
         _seed = Input.First();
     }
 

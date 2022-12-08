@@ -5,10 +5,14 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day07 : Day
 {
-    private readonly Dictionary<string, ushort> _wires = new();
     private readonly Dictionary<string, Func<ushort>> _actions = new();
+    private readonly Dictionary<string, ushort> _wires = new();
 
     public Day07() : base(2015, 7, "Some Assembly Required")
+    {
+    }
+
+    public override void ProcessInput()
     {
     }
 

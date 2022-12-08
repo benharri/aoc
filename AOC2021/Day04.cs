@@ -5,11 +5,15 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day04 : Day
 {
-    private readonly List<int> _call;
-    private readonly List<List<int>> _boards;
-    private readonly int _size;
-    
+    private List<int>? _call;
+    private List<List<int>>? _boards;
+    private int _size;
+
     public Day04() : base(2021, 4, "Giant Squid")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _call = Input.First().Split(',').Select(int.Parse).ToList();
         _boards = new();
@@ -41,34 +45,34 @@ public sealed class Day04 : Day
             b = FirstWin(i);
         }
 
-        var called = _call.Take(i).ToHashSet();
-        return called.Last() * _boards[b].Where(x => !called.Contains(x)).Sum();
+        var called = _call!.Take(i).ToHashSet();
+        return called.Last() * _boards![b].Where(x => !called.Contains(x)).Sum();
     }
 
     public override object Part2()
     {
         Dictionary<int, bool> wonBoards = new();
-        for (var i = 0; i < _boards.Count; i++)
+        for (var i = 0; i < _boards!.Count; i++)
             wonBoards[i] = false;
 
         var j = _size;
         while (wonBoards.Values.Count(b => b) != wonBoards.Count - 1)
         {
-            var c = _call.Take(j).ToHashSet();
+            var c = _call!.Take(j).ToHashSet();
             for (var u = 0; u < _boards.Count; u++)
                 wonBoards[u] = HasWin(c, _boards[u]);
             j++;
         }
 
-        var called = _call.Take(j).ToHashSet();
+        var called = _call!.Take(j).ToHashSet();
         var b = wonBoards.Single(kvp => !kvp.Value).Key;
         return called.Last() * _boards[b].Where(x => !called.Contains(x)).Sum();
     }
 
     private int FirstWin(int i)
     {
-        var c = _call.Take(i).ToHashSet();
-        for (var j = 0; j < _boards.Count; j++)
+        var c = _call!.Take(i).ToHashSet();
+        for (var j = 0; j < _boards!.Count; j++)
             if (HasWin(c, _boards[j])) return j;
         return -1;
     }

@@ -8,6 +8,10 @@ public sealed class Day25 : Day
     public Day25() : base(2015, 25, "Let It Snow")
     {
     }
+    
+    public override void ProcessInput()
+    {
+    }
 
     public override object Part1() => "";
 

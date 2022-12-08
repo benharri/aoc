@@ -6,6 +6,10 @@ public class Day01 : Day
     {
     }
 
+    public override void ProcessInput()
+    {
+    }
+
     public override object Part1()
     {
         var floor = 0;

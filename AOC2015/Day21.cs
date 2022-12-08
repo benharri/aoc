@@ -8,6 +8,10 @@ public sealed class Day21 : Day
     public Day21() : base(2015, 21, "RPG Simulator 20XX")
     {
     }
+    
+    public override void ProcessInput()
+    {
+    }
 
     public override object Part1() => "";
 

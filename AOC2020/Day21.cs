@@ -5,10 +5,14 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day21 : Day
 {
-    private readonly IEnumerable<(string[] Allergens, string[] Ingredients)> _parsedFoods;
-    private readonly IEnumerable<(string Allergen, string Ingredient)> _dangerousFoods;
+    private IEnumerable<(string[] Allergens, string[] Ingredients)>? _parsedFoods;
+    private IEnumerable<(string Allergen, string Ingredient)>? _dangerousFoods;
 
     public Day21() : base(2020, 21, "Allergen Assessment")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _parsedFoods = Input.Select(line => line.TrimEnd(')').Split(" (contains "))
             .Select(split => (Allergens: split[1].Split(", "), Ingredients: split[0].Split(' ')));
@@ -34,12 +38,12 @@ public sealed class Day21 : Day
     }
 
     public override object Part1() =>
-        _parsedFoods
+        _parsedFoods!
             .SelectMany(i => i.Ingredients)
-            .Count(i => !_dangerousFoods.Select(t => t.Ingredient).Contains(i));
+            .Count(i => !_dangerousFoods!.Select(t => t.Ingredient).Contains(i));
 
     public override object Part2() =>
-        string.Join(',', _dangerousFoods
+        string.Join(',', _dangerousFoods!
             .OrderBy(i => i.Allergen)
             .Select(i => i.Ingredient));
 }

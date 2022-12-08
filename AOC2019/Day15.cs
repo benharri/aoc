@@ -3,16 +3,20 @@ namespace AOC2019;
 public sealed class Day15 : Day
 {
     private readonly bool _verbose = false;
-    private readonly IntCodeVM _vm;
+    private IntCodeVM? _vm;
 
     public Day15() : base(2019, 15, "Oxygen System")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _vm = new(Input.First());
     }
 
     public override object Part1()
     {
-        _vm.Reset();
+        _vm!.Reset();
         var currentLocation = new Location(0, 0);
         var halt = IntCodeVM.HaltType.Waiting;
         while (halt == IntCodeVM.HaltType.Waiting)
@@ -128,9 +132,9 @@ public sealed class Day15 : Day
         public static readonly Dictionary<(int x, int y), Location> AllLocations = new();
 
         private readonly int _currentType;
-        public int DistanceToOxygenSystem = int.MaxValue - 1;
 
         private int _searchDirection = 1;
+        public int DistanceToOxygenSystem = int.MaxValue - 1;
 
         public Location(int x, int y, int prev = 0, int type = Empty)
         {

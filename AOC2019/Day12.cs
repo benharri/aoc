@@ -2,10 +2,14 @@ namespace AOC2019;
 
 public sealed class Day12 : Day
 {
-    private readonly List<Position> _moons;
+    private List<Position>? _moons;
     private int _step;
 
     public Day12() : base(2019, 12, "The N-Body Problem")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _moons = Input
             .Select(moon =>
@@ -24,7 +28,7 @@ public sealed class Day12 : Day
 
     private void Step()
     {
-        foreach (var moon in _moons)
+        foreach (var moon in _moons!)
             moon.Gravitate();
 
         foreach (var moon in _moons)
@@ -38,7 +42,7 @@ public sealed class Day12 : Day
         while (_step < 1000)
             Step();
 
-        return _moons.Sum(p => p.TotalEnergy);
+        return _moons!.Sum(p => p.TotalEnergy);
     }
 
     public override object Part2()
@@ -48,9 +52,9 @@ public sealed class Day12 : Day
         while (cycleX == 0 || cycleY == 0 || cycleZ == 0)
         {
             Step();
-            if (cycleX == 0 && _moons.All(m => m.Dx == 0)) cycleX = _step * 2;
-            if (cycleY == 0 && _moons.All(m => m.Dy == 0)) cycleY = _step * 2;
-            if (cycleZ == 0 && _moons.All(m => m.Dz == 0)) cycleZ = _step * 2;
+            if (cycleX == 0 && _moons!.All(m => m.Dx == 0)) cycleX = _step * 2;
+            if (cycleY == 0 && _moons!.All(m => m.Dy == 0)) cycleY = _step * 2;
+            if (cycleZ == 0 && _moons!.All(m => m.Dz == 0)) cycleZ = _step * 2;
         }
 
         return Util.Lcm(cycleX, Util.Lcm(cycleY, cycleZ));
@@ -58,9 +62,9 @@ public sealed class Day12 : Day
 
     public class Position
     {
-        public int Dx, Dy, Dz;
         private List<Position> _siblings;
         private int _x, _y, _z;
+        public int Dx, Dy, Dz;
 
         public Position(IList<int> moon)
         {

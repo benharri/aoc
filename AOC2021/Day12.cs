@@ -9,6 +9,10 @@ public sealed class Day12 : Day
 
     public Day12() : base(2021, 12, "Passage Pathing")
     {
+    }
+
+    public override void ProcessInput()
+    {
         foreach (var line in Input)
         {
             var s = line.Split('-', 2);

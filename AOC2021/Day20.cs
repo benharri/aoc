@@ -5,10 +5,14 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day20 : Day
 {
-    private readonly ImmutableArray<bool> _enhancementAlgorithm;
-    private readonly Image _initialImage;
+    private ImmutableArray<bool> _enhancementAlgorithm;
+    private Image? _initialImage;
 
     public Day20() : base(2021, 20, "Trench Map")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _enhancementAlgorithm = Input.First().Select(ch => ch == '#').ToImmutableArray();
         _initialImage = Parse(Input.Skip(2).ToList());
@@ -45,10 +49,10 @@ public sealed class Day20 : Day
     }
 
     public override object Part1() =>
-        Enhance(_initialImage, 2).PixelCount;
+        Enhance(_initialImage!, 2).PixelCount;
 
     public override object Part2() =>
-        Enhance(_initialImage, 50).PixelCount;
+        Enhance(_initialImage!, 50).PixelCount;
 
     private record struct Point(int X, int Y);
 
@@ -66,6 +70,7 @@ public sealed class Day20 : Day
     {
         private bool this[Point pt] =>
             Bounds.Contains(pt) ? Pixels.Contains(pt) : InfiniteValue;
+
         public int PixelCount => Pixels.Count(Bounds.Contains);
 
         public int GetEnhanceInput(Point pt)

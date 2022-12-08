@@ -8,6 +8,10 @@ public sealed class Day17 : Day
     public Day17() : base(2015, 17, "No Such Thing as Too Much")
     {
     }
+    
+    public override void ProcessInput()
+    {
+    }
 
     public override object Part1() => "";
 

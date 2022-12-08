@@ -5,9 +5,13 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day06 : Day
 {
-    private readonly long _p1, _p2;
+    private long _p1, _p2;
 
     public Day06() : base(2021, 6, "Lanternfish")
+    {
+    }
+
+    public override void ProcessInput()
     {
         var fishes = Input.First().Split(',').Select(long.Parse).ToList();
         Dictionary<long, long> counts = new();

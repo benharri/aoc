@@ -9,6 +9,10 @@ public sealed class Day24 : Day
 
     public Day24() : base(2021, 24, "Arithmetic Logic Unit")
     {
+    }
+
+    public override void ProcessInput()
+    {
         var lines = Input.ToList();
         var pairs = Enumerable.Range(0, 14)
             .Select(i => (int.Parse(lines[i * 18 + 5][6..]), int.Parse(lines[i * 18 + 15][6..])))

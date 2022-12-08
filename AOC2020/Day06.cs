@@ -5,10 +5,14 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day06 : Day
 {
-    private readonly int _countPart1;
-    private readonly int _countPart2;
+    private int _countPart1;
+    private int _countPart2;
 
     public Day06() : base(2020, 6, "Custom Customs")
+    {
+    }
+
+    public override void ProcessInput()
     {
         var alphabet = "abcedfghijklmnopqrstuvwxyz".ToCharArray();
         _countPart1 = 0;

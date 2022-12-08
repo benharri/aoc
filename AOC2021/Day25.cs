@@ -5,9 +5,13 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day25 : Day
 {
-    private readonly char[][] _cucumbers;
+    private char[][]? _cucumbers;
 
     public Day25() : base(2021, 25, "Sea Cucumber")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _cucumbers = Input.Select(l => l.ToCharArray()).ToArray();
     }

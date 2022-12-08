@@ -9,6 +9,10 @@ public sealed class Day11 : Day
     {
     }
 
+    public override void ProcessInput()
+    {
+    }
+
     public override object Part1()
     {
         var prev = new LifeGame(Input);

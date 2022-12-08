@@ -5,16 +5,20 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day01 : Day
 {
-    private readonly List<int> _readings;
-    
+    private List<int>? _readings;
+
     public Day01() : base(2021, 1, "Sonar Sweep")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _readings = Input.Select(int.Parse).ToList();
     }
 
     public override object Part1() =>
-        Enumerable.Range(0, _readings.Count - 1).Count(i => _readings[i + 1] > _readings[i]);
+        Enumerable.Range(0, _readings!.Count - 1).Count(i => _readings[i + 1] > _readings[i]);
 
     public override object Part2() =>
-        Enumerable.Range(0, _readings.Count - 3).Count(i => _readings[i + 3] > _readings[i]);
+        Enumerable.Range(0, _readings!.Count - 3).Count(i => _readings[i + 3] > _readings[i]);
 }

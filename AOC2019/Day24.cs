@@ -5,6 +5,10 @@ public sealed class Day24 : Day
     public Day24() : base(2019, 24, "Planet of Discord")
     {
     }
+    
+    public override void ProcessInput()
+    {
+    }
 
     public override object Part1()
     {

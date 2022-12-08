@@ -5,19 +5,21 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day03 : Day
 {
-    private readonly string[] _grid;
-    private readonly int _width;
+    private string[]? _grid;
 
     public Day03() : base(2020, 3, "Toboggan Trajectory")
     {
+    }
+
+    public override void ProcessInput()
+    {
         _grid = Input.ToArray();
-        _width = _grid[0].Length;
     }
 
     private long CountSlope(int dx, int dy)
     {
         long hits = 0;
-        for (int x = 0, y = 0; y < _grid.Length; y += dy, x = (x + dx) % _width)
+        for (int x = 0, y = 0; y < _grid!.Length; y += dy, x = (x + dx) % _grid[0].Length)
             if (_grid[y][x] == '#')
                 hits++;
 

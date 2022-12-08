@@ -5,11 +5,14 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day11 : Day
 {
-    private int _flashTally;
-    private readonly int _flashesAfter100, _totalTurns;
-    private readonly int[][] _octopusField;
-    
+    private int _flashTally, _flashesAfter100, _totalTurns;
+    private int[][]? _octopusField;
+
     public Day11() : base(2021, 11, "Dumbo Octopus")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _octopusField = Input.Select(line => line.Select(c => int.Parse($"{c}")).ToArray()).ToArray();
 
@@ -44,7 +47,7 @@ public sealed class Day11 : Day
     private void FlashAt(int r, int c)
     {
         _flashTally++;
-        _octopusField[r][c] = -1;
+        _octopusField![r][c] = -1;
         foreach (var rr in new[] { -1, 0, 1 }.Select(dr => dr + r))
         foreach (var cc in new[] { -1, 0, 1 }.Select(dc => dc + c))
             if (0 <= rr && rr < _octopusField.Length && 0 <= cc && cc < _octopusField[0].Length && _octopusField[rr][cc] != -1)

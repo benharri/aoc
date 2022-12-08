@@ -8,6 +8,10 @@ public sealed class Day20 : Day
     public Day20() : base(2015, 20, "Infinite Elves and Infinite Houses")
     {
     }
+    
+    public override void ProcessInput()
+    {
+    }
 
     public override object Part1() => "";
 

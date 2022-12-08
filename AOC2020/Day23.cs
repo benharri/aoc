@@ -6,11 +6,15 @@ namespace AOC2020;
 public sealed class Day23 : Day
 {
     private readonly Dictionary<long, long> _cups = new();
-    private readonly ImmutableList<long> _initialCups;
-    private readonly long[] _move;
+    private ImmutableList<long>? _initialCups;
+    private long[]? _move;
     private long _current;
 
     public Day23() : base(2020, 23, "Crab Cups")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _initialCups = Input.First().Select(c => long.Parse(c.ToString())).ToImmutableList();
         _current = _initialCups.First();
@@ -31,10 +35,10 @@ public sealed class Day23 : Day
                 _cups.Remove(id);
                 _cups[_current] = removedNext;
 
-                _move[i] = id;
+                _move![i] = id;
             }
 
-            while (_move.Contains(dest))
+            while (_move!.Contains(dest))
             {
                 dest--;
                 if (dest == 0) dest = _cups.Count + 3;
@@ -43,7 +47,7 @@ public sealed class Day23 : Day
             for (var i = 0; i <= 2; i++)
             {
                 var id = _cups[dest];
-                _cups[dest] = _move[i];
+                _cups[dest] = _move![i];
                 _cups.Add(_move[i], id);
                 dest = _cups[dest];
             }
@@ -54,7 +58,7 @@ public sealed class Day23 : Day
 
     public override object Part1()
     {
-        for (var i = 0; i < _initialCups.Count; i++)
+        for (var i = 0; i < _initialCups!.Count; i++)
             _cups[_initialCups[i]] = _initialCups[(i + 1) % _initialCups.Count];
 
         DoMoves(100);
@@ -73,7 +77,7 @@ public sealed class Day23 : Day
     public override object Part2()
     {
         _cups.Clear();
-        for (var i = 0; i < _initialCups.Count; i++)
+        for (var i = 0; i < _initialCups!.Count; i++)
             _cups[_initialCups[i]] = _initialCups[(i + 1) % _initialCups.Count];
 
         // add a million cups

@@ -3,15 +3,19 @@ namespace AOC2021;
 /// <summary>
 /// Day 5: <a href="https://adventofcode.com/2021/day/5"/>
 /// </summary>
-public sealed class Day05 : Day
+public sealed partial class Day05 : Day
 {
     public Day05() : base(2021, 5, "Hydrothermal Venture")
     {
     }
 
+    public override void ProcessInput()
+    {
+    }
+
     private int Solve(bool diagonals = false) =>
         Input
-            .Select(s => Regex.Split(s, @"\D+").Select(int.Parse).ToList())
+            .Select(s => NonDigits().Split(s).Select(int.Parse).ToList())
             .Where(t => diagonals || t[0] == t[2] || t[1] == t[3])
             .SelectMany(t =>
                 Enumerable.Range(0, Math.Max(Math.Abs(t[0] - t[2]), Math.Abs(t[1] - t[3])) + 1)
@@ -24,4 +28,7 @@ public sealed class Day05 : Day
     public override object Part1() => Solve();
 
     public override object Part2() => Solve(diagonals: true);
+
+    [GeneratedRegex(@"\D+")]
+    private static partial Regex NonDigits();
 }

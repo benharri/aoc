@@ -5,10 +5,16 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day18 : Day
 {
-    private readonly List<string> _expressions;
+    private List<string>? _expressions;
 
-    public Day18() : base(2020, 18, "Operation Order") =>
+    public Day18() : base(2020, 18, "Operation Order")
+    {
+    }
+
+    public override void ProcessInput()
+    {
         _expressions = Input.Select(line => line.Replace(" ", "")).ToList();
+    }
 
     private static long Calculate(string expr, Func<char, int> precedence)
     {
@@ -62,8 +68,8 @@ public sealed class Day18 : Day
     }
 
     public override object Part1() =>
-        _expressions.Sum(expr => Calculate(expr, c => c == '+' || c == '*' ? 1 : 0));
+        _expressions!.Sum(expr => Calculate(expr, c => c is '+' or '*' ? 1 : 0));
 
     public override object Part2() =>
-        _expressions.Sum(expr => Calculate(expr, c => c switch { '+' => 2, '*' => 1, _ => 0 }));
+        _expressions!.Sum(expr => Calculate(expr, c => c switch { '+' => 2, '*' => 1, _ => 0 }));
 }

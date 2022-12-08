@@ -5,16 +5,20 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day03 : Day
 {
-    private readonly List<string> _report;
-    
+    private List<string>? _report;
+
     public Day03() : base(2021, 3, "Binary Diagnostic")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _report = Input.ToList();
     }
 
     public override object Part1()
     {
-        var l = _report.Count / 2;
+        var l = _report!.Count / 2;
         var g = new StringBuilder();
         var e = new StringBuilder();
         
@@ -33,8 +37,8 @@ public sealed class Day03 : Day
 
     public override object Part2()
     {
-        var o = _report;
-        var c = _report;
+        var o = _report!;
+        var c = _report!;
 
         char MostCommon(int i, IReadOnlyCollection<string> report) =>
             report.Count(r => r[i] == '1') >= report.Count / 2.0 ? '1' : '0';

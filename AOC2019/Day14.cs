@@ -2,17 +2,18 @@ namespace AOC2019;
 
 public sealed class Day14 : Day
 {
-    private readonly Dictionary<string, Reaction> _reactions;
-
-    private Dictionary<string, long> _available;
+    private Dictionary<string, Reaction>? _reactions;
+    private Dictionary<string, long> _available = new();
 
     public Day14() : base(2019, 14, "Space Stoichiometry")
+    {
+    }
+    
+    public override void ProcessInput()
     {
         _reactions = Input
             .Select(Reaction.Parse)
             .ToDictionary(r => r.Product.Name);
-        
-        _available = new();
     }
 
     private bool Consume(string chem, long quantity)
@@ -35,7 +36,7 @@ public sealed class Day14 : Day
         if (chem == "ORE")
             return false;
 
-        var reaction = _reactions[chem];
+        var reaction = _reactions![chem];
         var reactionCount = (long)Math.Ceiling((double)quantity / reaction.Product.Quantity);
 
         if (reaction.Reactants.Any(reactant => !Consume(reactant.Name, reactionCount * reactant.Quantity)))

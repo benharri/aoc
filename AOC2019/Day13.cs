@@ -3,9 +3,13 @@ namespace AOC2019;
 public sealed class Day13 : Day
 {
     private readonly Dictionary<(int x, int y), int> _board = new();
-    private readonly IntCodeVM _vm;
+    private IntCodeVM? _vm;
 
     public Day13() : base(2019, 13, "Care Package")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _vm = new(Input.First());
     }
@@ -44,14 +48,14 @@ public sealed class Day13 : Day
 
     public override object Part1()
     {
-        _vm.Reset();
+        _vm!.Reset();
         _vm.Run();
         return _vm.Output.Where((v, i) => (i + 1) % 3 == 0 && v == 2).Count();
     }
 
     public override object Part2()
     {
-        _vm.Reset();
+        _vm!.Reset();
         _vm.Memory[0] = 2;
         var printBoard = false;
         var gameTicks = 0;

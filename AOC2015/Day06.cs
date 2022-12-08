@@ -5,13 +5,17 @@ namespace AOC2015;
 /// </summary>
 public sealed partial class Day06 : Day
 {
+    private readonly Dictionary<(int x, int y), int> _brightnessGrid = new();
+    private readonly Dictionary<(int x, int y), bool> _lightGrid = new();
+
+    public Day06() : base(2015, 6, "Probably a Fire Hazard")
+    {
+    }
+
     [GeneratedRegex(@"(\d+),(\d+) through (\d+),(\d+)")]
     private static partial Regex Coords();
 
-    private readonly Dictionary<(int x, int y), bool> _lightGrid = new();
-    private readonly Dictionary<(int x, int y), int> _brightnessGrid = new();
-
-    public Day06() : base(2015, 6, "Probably a Fire Hazard")
+    public override void ProcessInput()
     {
     }
 

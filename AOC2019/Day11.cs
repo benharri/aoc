@@ -2,11 +2,15 @@ namespace AOC2019;
 
 public sealed class Day11 : Day
 {
-    private readonly IntCodeVM _vm;
+    private IntCodeVM? _vm;
     private Direction _heading;
     private long _x, _y;
 
     public Day11() : base(2019, 11, "Space Police")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _vm = new(Input.First());
     }
@@ -49,7 +53,7 @@ public sealed class Day11 : Day
     private Dictionary<(long x, long y), long> PaintShip(int initialVal)
     {
         var map = new Dictionary<(long, long), long>();
-        _vm.Reset();
+        _vm!.Reset();
         _heading = Direction.Up;
         _x = 0;
         _y = 0;

@@ -7,11 +7,15 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day05 : Day
 {
-    private readonly IEnumerable<(int quantity, int from, int to)> _instructions;
-    private readonly List<Stack<char>> _stacks;
-    private readonly List<Stack<char>> _stacksPart2;
+    private IEnumerable<(int quantity, int from, int to)>? _instructions;
+    private List<Stack<char>>? _stacks;
+    private List<Stack<char>>? _stacksPart2;
 
     public Day05() : base(2022, 5, "Supply Stacks")
+    {
+    }
+    
+    public override void ProcessInput()
     {
         var s = Input.Split("").ToList();
         var stackDiagram = s[0];
@@ -45,22 +49,22 @@ public sealed class Day05 : Day
 
     public override object Part1()
     {
-        foreach (var (quantity, from, to) in _instructions)
-            Enumerable.Range(0, quantity).ForEach(_ => _stacks[to].Push(_stacks[from].Pop()));
+        foreach (var (quantity, from, to) in _instructions!)
+            Enumerable.Range(0, quantity).ForEach(_ => _stacks![to].Push(_stacks[from].Pop()));
 
-        return PeekStackTops(_stacks);
+        return PeekStackTops(_stacks!);
     }
 
     public override object Part2()
     {
-        foreach (var (quantity, from, to) in _instructions)
+        foreach (var (quantity, from, to) in _instructions!)
         {
             var crane = new Stack<char>(quantity);
-            Enumerable.Range(0, quantity).ForEach(_ => crane.Push(_stacksPart2[from].Pop()));
+            Enumerable.Range(0, quantity).ForEach(_ => crane.Push(_stacksPart2![from].Pop()));
 
-            while (crane.Any()) _stacksPart2[to].Push(crane.Pop());
+            while (crane.Any()) _stacksPart2![to].Push(crane.Pop());
         }
 
-        return PeekStackTops(_stacksPart2);
+        return PeekStackTops(_stacksPart2!);
     }
 }
