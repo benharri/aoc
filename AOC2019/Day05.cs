@@ -2,10 +2,14 @@ namespace AOC2019;
 
 public sealed class Day05 : Day
 {
-    private readonly IEnumerable<int> _tape;
+    private IEnumerable<int>? _tape;
     private int _output;
 
     public Day05() : base(2019, 5, "Sunny with a Chance of Asteroids")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _tape = Input.First().Split(',').Select(int.Parse);
     }
@@ -61,13 +65,13 @@ public sealed class Day05 : Day
 
     public override object Part1()
     {
-        RunIntCode(_tape.ToList(), 1);
+        RunIntCode(_tape!.ToList(), 1);
         return _output;
     }
 
     public override object Part2()
     {
-        RunIntCode(_tape.ToList(), 5);
+        RunIntCode(_tape!.ToList(), 5);
         return _output;
     }
 }

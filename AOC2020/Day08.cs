@@ -5,12 +5,18 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day08 : Day
 {
-    private readonly (string instruction, int value)[] _instructions;
+    private (string instruction, int value)[]? _instructions;
     private int _accumulator;
     private int _currentInstruction;
 
-    public Day08() : base(2020, 8, "Handheld Halting") =>
+    public Day08() : base(2020, 8, "Handheld Halting")
+    {
+    }
+
+    public override void ProcessInput()
+    {
         _instructions = Input.Select(ParseLine).ToArray();
+    }
 
     private static (string, int) ParseLine(string line)
     {
@@ -22,7 +28,7 @@ public sealed class Day08 : Day
     {
         _accumulator = 0;
         _currentInstruction = 0;
-        var visited = new bool[_instructions.Length + 1];
+        var visited = new bool[_instructions!.Length + 1];
 
         while (!visited[_currentInstruction] && _currentInstruction < _instructions.Length)
         {
@@ -52,7 +58,7 @@ public sealed class Day08 : Day
 
     public override object Part2()
     {
-        for (var i = 0; i < _instructions.Length; i++)
+        for (var i = 0; i < _instructions!.Length; i++)
             // swap each nop and jmp and check if the program halts
             if (_instructions[i].instruction == "nop")
             {

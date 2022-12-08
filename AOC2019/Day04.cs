@@ -2,9 +2,13 @@ namespace AOC2019;
 
 public sealed class Day04 : Day
 {
-    private readonly int _start, _end;
+    private int _start, _end;
 
     public Day04() : base(2019, 4, "Secure Container")
+    {
+    }
+
+    public override void ProcessInput()
     {
         var range = Input.First().Split('-').Select(int.Parse).ToList();
         _start = range[0];
@@ -34,6 +38,6 @@ public sealed class Day04 : Day
     public override object Part1() =>
         Enumerable.Range(_start, _end).Count(IsValid);
 
-    public override object Part2() => 
+    public override object Part2() =>
         Enumerable.Range(_start, _end).Count(HasOnePair);
 }

@@ -5,16 +5,20 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day08 : Day
 {
-    private readonly int[][] _trees;
+    private int[][]? _trees;
 
     public Day08() : base(2022, 8, "Treetop Tree House")
+    {
+    }
+    
+    public override void ProcessInput()
     {
         _trees = Input.Select(line => line.Select(c => c - '0').ToArray()).ToArray();
     }
 
     private (bool isVisible, int scenicScore) ScoreCoord(int x, int y)
     {
-        var height = _trees[y][x];
+        var height = _trees![y][x];
         bool top = true, left = true, bottom = true, right = true;
         int upMoves = 0, leftMoves = 0, downMoves = 0, rightMoves = 0;
 
@@ -62,13 +66,13 @@ public sealed class Day08 : Day
     }
 
     public override object Part1() =>
-        Enumerable.Range(0, _trees.Length)
+        Enumerable.Range(0, _trees!.Length)
             .Sum(y => Enumerable.Range(0, _trees[0].Length).Count(x => ScoreCoord(x, y).isVisible));
 
     public override object Part2()
     {
         var max = 0;
-        for (var y = 0; y < _trees.Length; y++)
+        for (var y = 0; y < _trees!.Length; y++)
         for (var x = 0; x < _trees[0].Length; x++)
         {
             var (_, score) = ScoreCoord(x, y);

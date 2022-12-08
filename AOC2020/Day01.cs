@@ -5,20 +5,26 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day01 : Day
 {
-    private readonly ImmutableHashSet<int> _entries;
+    private ImmutableHashSet<int>? _entries;
 
-    public Day01() : base(2020, 1, "Report Repair") =>
+    public Day01() : base(2020, 1, "Report Repair")
+    {
+    }
+
+    public override void ProcessInput()
+    {
         _entries = Input.Select(int.Parse).ToImmutableHashSet();
+    }
 
     public override object Part1()
     {
-        var entry = _entries.First(e => _entries.Contains(2020 - e));
+        var entry = _entries!.First(e => _entries!.Contains(2020 - e));
         return entry * (2020 - entry);
     }
 
     public override object Part2()
     {
-        foreach (var i in _entries)
+        foreach (var i in _entries!)
         foreach (var j in _entries)
         foreach (var k in _entries)
             if (i + j + k == 2020)

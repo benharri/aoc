@@ -5,13 +5,15 @@ public static class Common
     public static void CheckDay(Type dayType, string part1, string part2, bool testInput = false)
     {
         Day.UseTestInput = testInput;
-        var s = Stopwatch.StartNew();
         var day = Activator.CreateInstance(dayType) as Day;
-        s.Stop();
         Assert.IsNotNull(day, "failed to instantiate day object");
         Assert.IsTrue(File.Exists(day.FileName), $"File.Exists(day.FileName) {day.FileName}");
         Console.Write($"{day.Year} Day {day.DayNumber,2}: {day.PuzzleName,-25} ");
-        Console.WriteLine($"{s.ScaleMilliseconds()} ms elapsed in constructor");
+        
+        var s = Stopwatch.StartNew();
+        day.ProcessInput();
+        s.Stop();
+        Console.WriteLine($"{s.ScaleMilliseconds()} ms elapsed processing input");
 
         // part 1
         s.Reset();

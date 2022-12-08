@@ -5,9 +5,13 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day02 : Day
 {
-    private readonly List<string[]> _rounds;
+    private List<string[]>? _rounds;
 
     public Day02() : base(2022, 2, "Rock Paper Scissors")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _rounds = Input.Select(line => line.Split(' ')).ToList();
     }
@@ -15,7 +19,7 @@ public sealed class Day02 : Day
     public override object Part1()
     {
         var score = 0;
-        foreach (var round in _rounds)
+        foreach (var round in _rounds!)
         {
             var me = round[1][0];
             var elf = round[0][0];
@@ -34,7 +38,7 @@ public sealed class Day02 : Day
     public override object Part2()
     {
         var score = 0;
-        foreach (var round in _rounds)
+        foreach (var round in _rounds!)
         {
             var c = round[0][0];
             switch (round[1][0])

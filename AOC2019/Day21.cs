@@ -8,6 +8,10 @@ public sealed class Day21 : Day
     {
         _vm = new(Input.First());
     }
+    
+    public override void ProcessInput()
+    {
+    }
 
     public override object Part1()
     {

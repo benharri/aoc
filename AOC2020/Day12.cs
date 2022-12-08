@@ -9,6 +9,10 @@ public sealed class Day12 : Day
     {
     }
 
+    public override void ProcessInput()
+    {
+    }
+
     private static void Swap(ref int x, ref int y) => (y, x) = (x, y);
 
     private (int x, int y, int sx, int sy) ProcessInstructions()

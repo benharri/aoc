@@ -7,17 +7,21 @@ public sealed class Day24 : Day
 {
     private static readonly Dictionary<string, (int q, int r, int s)> Directions = new()
     {
-        { "e", (1, 0, -1) },
-        { "w", (-1, 0, 1) },
+        { "e",  (1, 0, -1) },
+        { "w",  (-1, 0, 1) },
         { "se", (0, 1, -1) },
         { "sw", (-1, 1, 0) },
         { "nw", (0, -1, 1) },
         { "ne", (1, -1, 0) }
     };
 
-    private Dictionary<(int q, int r, int s), Tile> _tiles;
+    private Dictionary<(int q, int r, int s), Tile>? _tiles;
 
     public Day24() : base(2020, 24, "Lobby Layout")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _tiles = Input
             .Select(Tile.FromLine)
@@ -27,27 +31,27 @@ public sealed class Day24 : Day
             .ToDictionary(t => t.Location);
     }
 
-    public override object Part1() => _tiles.Count;
+    public override object Part1() => _tiles!.Count;
 
     public override object Part2()
     {
         foreach (var _ in Enumerable.Range(0, 100))
         {
-            _tiles = _tiles
+            _tiles = _tiles!
                 .SelectMany(t => Directions.Select(d => t.Value + d.Value))
                 .Distinct()
                 .Where(t =>
                 {
                     var neighborCount = Directions
                         .Select(d => t + d.Value)
-                        .Count(neighbor => _tiles.ContainsKey(neighbor.Location));
+                        .Count(neighbor => _tiles!.ContainsKey(neighbor.Location));
 
-                    return neighborCount == 2 || _tiles.ContainsKey(t.Location) && neighborCount == 1;
+                    return neighborCount == 2 || _tiles!.ContainsKey(t.Location) && neighborCount == 1;
                 })
                 .ToDictionary(t => t.Location);
         }
 
-        return _tiles.Count;
+        return _tiles!.Count;
     }
 
     private record Tile

@@ -9,6 +9,10 @@ public sealed class Day25 : Day
     {
     }
 
+    public override void ProcessInput()
+    {
+    }
+
     public override object Part1()
     {
         var cardKey = int.Parse(Input.First());

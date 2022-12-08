@@ -15,11 +15,15 @@ public record Node
 public sealed class Day15 : Day
 {
     private static readonly (int x, int y)[] Adjacent = { (-1, 0), (1, 0), (0, -1), (0, 1) };
-    private readonly Dictionary<(int x, int y), Node> _fullGrid;
-    private readonly Dictionary<(int x, int y), Node> _grid;
-    private readonly int _width;
+    private Dictionary<(int x, int y), Node>? _fullGrid;
+    private Dictionary<(int x, int y), Node>? _grid;
+    private int _width;
 
     public Day15() : base(2021, 15, "Chiton")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _grid = Input
             .SelectMany((line, y) =>
@@ -76,8 +80,8 @@ public sealed class Day15 : Day
     }
 
     public override object Part1() =>
-        DijkstraCost(_grid, _grid[(_width - 1, _width - 1)]);
+        DijkstraCost(_grid!, _grid![(_width - 1, _width - 1)]);
 
     public override object Part2() =>
-        DijkstraCost(_fullGrid, _fullGrid[(5 * _width - 1, 5 * _width - 1)]);
+        DijkstraCost(_fullGrid!, _fullGrid![(5 * _width - 1, 5 * _width - 1)]);
 }

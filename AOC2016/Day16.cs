@@ -8,6 +8,10 @@ public sealed class Day16 : Day
     public Day16() : base(2016, 16, "Puzzle Name")
     {
     }
+    
+    public override void ProcessInput()
+    {
+    }
 
     public override object Part1() => "";
 

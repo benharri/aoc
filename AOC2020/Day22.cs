@@ -10,6 +10,10 @@ public sealed class Day22 : Day
 
     public Day22() : base(2020, 22, "Crab Combat")
     {
+    }
+
+    public override void ProcessInput()
+    {
         Reset();
     }
 
@@ -82,7 +86,8 @@ public sealed class Day22 : Day
         return (deck1, deck2);
     }
 
-    private (Queue<int> deck1, Queue<int> deck2) Play(IEnumerable<int> enumerable1, IEnumerable<int> enumerable2, bool recursive) =>
+    private (Queue<int> deck1, Queue<int> deck2) Play(IEnumerable<int> enumerable1, IEnumerable<int> enumerable2,
+        bool recursive) =>
         Play(new(enumerable1), new(enumerable2), recursive);
 
     private static int CalculateScore(IReadOnlyCollection<int> deck) =>

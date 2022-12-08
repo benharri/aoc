@@ -5,16 +5,20 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day02 : Day
 {
-    private readonly List<List<int>> _gifts;
+    private List<List<int>>? _gifts;
     
     public Day02() : base(2015, 2, "I Was Told There Would Be No Math")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _gifts = Input.Select(line => line.Split('x').Select(int.Parse).ToList()).ToList();
     }
 
     public override object Part1()
     {
-        return _gifts.Sum(gift =>
+        return _gifts!.Sum(gift =>
         {
             var biggestDimension = gift.IndexOf(gift.Max());
 
@@ -33,7 +37,7 @@ public sealed class Day02 : Day
 
     public override object Part2()
     {
-        return _gifts.Sum(gift =>
+        return _gifts!.Sum(gift =>
         {
             var biggestDimension = gift.IndexOf(gift.Max());
             var bowArea = gift.Aggregate(1, (i, i1) => i * i1);

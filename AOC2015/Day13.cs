@@ -12,6 +12,10 @@ public sealed class Day13 : Day
 
     public Day13() : base(2015, 13, "Knights of the Dinner Table")
     {
+    }
+
+    public override void ProcessInput()
+    {
         foreach (var line in Input)
             AddToHappinessMap(line);
     }

@@ -6,8 +6,12 @@ namespace AOC2021;
 public sealed class Day22 : Day
 {
     private readonly List<Instruction> _instructions = new();
-    
+
     public Day22() : base(2021, 22, "Reactor Reboot")
+    {
+    }
+
+    public override void ProcessInput()
     {
         foreach (var line in Input)
         {

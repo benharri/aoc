@@ -9,6 +9,10 @@ public sealed class Day07 : Day
 
     public Day07() : base(2022, 7, "No Space Left On Device")
     {
+    }
+    
+    public override void ProcessInput()
+    {
         var path = new Stack<string>();
         foreach (var line in Input)
         {

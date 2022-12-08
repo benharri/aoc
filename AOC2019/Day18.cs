@@ -6,6 +6,10 @@ public sealed class Day18 : Day
     {
     }
 
+    public override void ProcessInput()
+    {
+    }
+
     public override object Part1()
     {
         return "";

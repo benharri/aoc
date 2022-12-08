@@ -5,9 +5,13 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day16 : Day
 {
-    private readonly Packet _packet;
+    private Packet? _packet;
 
     public Day16() : base(2021, 16, "Packet Decoder")
+    {
+    }
+
+    public override void ProcessInput()
     {
         var bits = string.Join(string.Empty,
             Input.First().Select(c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')));
@@ -81,7 +85,7 @@ public sealed class Day16 : Day
             };
     }
 
-    public override object Part1() => _packet.VersionTotal;
+    public override object Part1() => _packet!.VersionTotal;
 
-    public override object Part2() => _packet.Eval;
+    public override object Part2() => _packet!.Eval;
 }

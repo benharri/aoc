@@ -5,23 +5,27 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day11 : Day
 {
-    private char[] _password;
+    private char[]? _password;
 
     public Day11() : base(2015, 11, "Corporate Policy")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _password = Input.First().ToCharArray();
     }
 
     public override object Part1()
     {
-        while (!IsValid(ref _password)) Increment(ref _password);
+        while (!IsValid(ref _password!)) Increment(ref _password);
 
         return new string(_password);
     }
 
     public override object Part2()
     {
-        Increment(ref _password);
+        Increment(ref _password!);
         while (!IsValid(ref _password)) Increment(ref _password);
 
         return new string(_password);

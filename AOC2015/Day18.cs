@@ -8,6 +8,10 @@ public sealed class Day18 : Day
     public Day18() : base(2015, 18, "Like a GIF For Your Yard")
     {
     }
+    
+    public override void ProcessInput()
+    {
+    }
 
     public override object Part1() => "";
 

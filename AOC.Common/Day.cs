@@ -22,16 +22,25 @@ public abstract class Day
         Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
             $"input{Year}/{(UseTestInput ? "test" : "day")}{DayNumber,2:00}.in");
 
+    public abstract void ProcessInput();
+
     public abstract object Part1();
     public abstract object Part2();
 
     private void AllParts(bool verbose = true)
     {
-        Console.WriteLine($"{Year} Day {DayNumber,2}: {PuzzleName}");
+        Console.Write($"{Year} Day {DayNumber,2}: {PuzzleName,-31}");
+        
         var s = Stopwatch.StartNew();
+        ProcessInput();
+        s.Stop();
+        Console.WriteLine($"{s.ScaleMilliseconds()}ms elapsed processing input");
+        s.Reset();
+        
+        s.Start();
         var part1 = Part1();
         s.Stop();
-        Console.Write($"Part 1: {part1,-25} ");
+        Console.Write($"Part 1: {part1,-35} ");
         Console.WriteLine(verbose ? $"{s.ScaleMilliseconds()}ms elapsed" : "");
 
         s.Reset();
@@ -39,7 +48,7 @@ public abstract class Day
         s.Start();
         var part2 = Part2();
         s.Stop();
-        Console.Write($"Part 2: {part2,-25} ");
+        Console.Write($"Part 2: {part2,-35} ");
         Console.WriteLine(verbose ? $"{s.ScaleMilliseconds()}ms elapsed" : "");
 
         Console.WriteLine();

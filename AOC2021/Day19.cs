@@ -8,10 +8,14 @@ public sealed class Day19 : Day
     private static readonly (int, int, int)[] Axes =
         { (0, 1, 0), (0, -1, 0), (1, 0, 0), (-1, 0, 0), (0, 0, 1), (0, 0, -1) };
 
-    private readonly List<HashSet<Vector3>> _scans;
+    private List<HashSet<Vector3>>? _scans;
     private List<HashSet<Vector3>> _scanners = new();
 
     public Day19() : base(2021, 19, "Beacon Scanner")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _scans = Input
             .Aggregate(new List<HashSet<Vector3>>(), (list, line) =>
@@ -126,7 +130,7 @@ public sealed class Day19 : Day
 
     public override object Part1()
     {
-        var scans = _scans;
+        var scans = _scans!;
         _scanners = scans.Select(_ => new HashSet<Vector3> { (0, 0, 0) }).ToList();
         while (scans.Count > 1)
             (scans, _scanners) = Reduce(scans, _scanners);

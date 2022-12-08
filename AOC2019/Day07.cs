@@ -6,6 +6,10 @@ public sealed class Day07 : Day
 
     public Day07() : base(2019, 7, "Amplification Circuit")
     {
+    }
+
+    public override void ProcessInput()
+    {
         for (var i = 0; i < 5; i++) _amplifiers[i] = new(Input.First());
     }
 

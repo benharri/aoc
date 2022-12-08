@@ -5,11 +5,14 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day09 : Day
 {
-    private record Distance(string Start, string End, int Length);
     private readonly List<Distance> _distances = new();
-    private readonly int _shortest = int.MaxValue, _longest;
+    private int _shortest = int.MaxValue, _longest;
 
     public Day09() : base(2015, 9, "All in a Single Night")
+    {
+    }
+
+    public override void ProcessInput()
     {
         foreach (var split in Input.Select(line => line.Split(' ')))
         {
@@ -34,4 +37,6 @@ public sealed class Day09 : Day
     public override object Part1() => _shortest;
 
     public override object Part2() => _longest;
+
+    private record Distance(string Start, string End, int Length);
 }

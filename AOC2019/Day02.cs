@@ -2,16 +2,20 @@ namespace AOC2019;
 
 public sealed class Day02 : Day
 {
-    private readonly IEnumerable<int> _input;
+    private IEnumerable<int>? _input;
 
     public Day02() : base(2019, 2, "1202 Program Alarm")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _input = Input.First().Split(',').Select(int.Parse);
     }
 
     private int RunIntCode(int noun, int verb)
     {
-        var v = _input.ToList();
+        var v = _input!.ToList();
         v[1] = noun;
         v[2] = verb;
 

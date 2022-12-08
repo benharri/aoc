@@ -9,6 +9,10 @@ public sealed class Day20 : Day
     {
     }
 
+    public override void ProcessInput()
+    {
+    }
+
     public override object Part1()
     {
         var puzzlePieces = ParsePiecesFromInput(Input.ToArray());

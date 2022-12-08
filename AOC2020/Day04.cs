@@ -3,11 +3,15 @@ namespace AOC2020;
 /// <summary>
 ///     Day 4: <a href="https://adventofcode.com/2020/day/4" />
 /// </summary>
-public sealed class Day04 : Day
+public sealed partial class Day04 : Day
 {
-    private readonly List<Passport> _passports;
+    private List<Passport>? _passports;
 
     public Day04() : base(2020, 4, "Passport Processing")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _passports = new();
 
@@ -27,11 +31,11 @@ public sealed class Day04 : Day
         if (a.Any()) _passports.Add(Passport.Parse(a));
     }
 
-    public override object Part1() => _passports.Count(p => p.IsValid);
+    public override object Part1() => _passports!.Count(p => p.IsValid);
 
-    public override object Part2() => _passports.Count(p => p.ExtendedValidation());
+    public override object Part2() => _passports!.Count(p => p.ExtendedValidation());
 
-    private class Passport
+    private partial class Passport
     {
         private string? _byr;
         private string? _cid;
@@ -58,7 +62,7 @@ public sealed class Day04 : Day
             // birth year
             if (int.TryParse(_byr, out var byr))
             {
-                if (byr < 1920 || byr > 2002)
+                if (byr is < 1920 or > 2002)
                     return false;
             }
             else
@@ -69,7 +73,7 @@ public sealed class Day04 : Day
             // issuance year
             if (int.TryParse(_iyr, out var iyr))
             {
-                if (iyr < 2010 || iyr > 2020)
+                if (iyr is < 2010 or > 2020)
                     return false;
             }
             else
@@ -80,7 +84,7 @@ public sealed class Day04 : Day
             // expiration year
             if (int.TryParse(_eyr, out var eyr))
             {
-                if (eyr < 2020 || eyr > 2030)
+                if (eyr is < 2020 or > 2030)
                     return false;
             }
             else
@@ -94,7 +98,7 @@ public sealed class Day04 : Day
                 var h = _hgt[..3];
                 if (int.TryParse(h, out var hgt))
                 {
-                    if (hgt < 150 || hgt > 193)
+                    if (hgt is < 150 or > 193)
                         return false;
                 }
                 else
@@ -107,7 +111,7 @@ public sealed class Day04 : Day
                 var h = _hgt[..2];
                 if (int.TryParse(h, out var hgt))
                 {
-                    if (hgt < 59 || hgt > 76)
+                    if (hgt is < 59 or > 76)
                         return false;
                 }
                 else
@@ -121,7 +125,7 @@ public sealed class Day04 : Day
             }
 
             // hair color
-            if (!Regex.IsMatch(_hcl!, "#[0-9a-f]{6}"))
+            if (!HexColor().IsMatch(_hcl!))
                 return false;
 
             // eye color
@@ -169,5 +173,8 @@ public sealed class Day04 : Day
 
             return passport;
         }
+
+        [GeneratedRegex("#[0-9a-f]{6}")]
+        private static partial Regex HexColor();
     }
 }

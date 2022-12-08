@@ -5,13 +5,17 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day21 : Day
 {
-    private readonly int _player1, _player2;
+    private int _player1, _player2;
     private readonly Dictionary<int, ulong> _possibleRollOutComes = new();
     private int _deterministicDie = 1;
     private int _rollCount;
     private ulong _player1Victories, _player2Victories;
 
     public Day21() : base(2021, 21, "Dirac Dice")
+    {
+    }
+
+    public override void ProcessInput()
     {
         var s = Input
             .Select(l => l.Split(": ")[1])

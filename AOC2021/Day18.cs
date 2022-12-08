@@ -5,9 +5,13 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day18 : Day
 {
-    private readonly List<string> _fishes;
+    private List<string>? _fishes;
 
     public Day18() : base(2021, 18, "Snailfish")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _fishes = Input.ToList();
     }
@@ -106,12 +110,12 @@ public sealed class Day18 : Day
     }
 
     public override object Part1() =>
-        Magnitude(_fishes.Skip(1).Aggregate(Parse(_fishes.First()), (a, b) => Add(a, Parse(b))).Root);
+        Magnitude(_fishes!.Skip(1).Aggregate(Parse(_fishes!.First()), (a, b) => Add(a, Parse(b))).Root);
 
     public override object Part2()
     {
         var best = 0L;
-        for (var i = 0; i < _fishes.Count; i++)
+        for (var i = 0; i < _fishes!.Count; i++)
             best = _fishes
                 .Where((_, j) => i != j)
                 .Select(t => Add(Parse(_fishes[i]), Parse(t)))

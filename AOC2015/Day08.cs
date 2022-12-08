@@ -5,10 +5,14 @@ namespace AOC2015;
 /// </summary>
 public sealed partial class Day08 : Day
 {
+    public Day08() : base(2015, 8, "Matchsticks")
+    {
+    }
+
     [GeneratedRegex(@"^""(\\x..|\\.|.)*""$")]
     private static partial Regex CharSet();
 
-    public Day08() : base(2015, 8, "Matchsticks")
+    public override void ProcessInput()
     {
     }
 

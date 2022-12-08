@@ -8,8 +8,11 @@ public sealed class Day17 : Day
     private readonly Dictionary<(int x, int y, int z), char> _plane = new();
     private readonly Dictionary<(int x, int y, int z, int w), char> _plane4 = new();
 
-
     public Day17() : base(2020, 17, "Conway Cubes")
+    {
+    }
+
+    public override void ProcessInput()
     {
         var input = Input.ToList();
 
@@ -107,14 +110,12 @@ public sealed class Day17 : Day
     public override object Part1()
     {
         var plane = Enumerable.Range(0, 6).Aggregate(_plane, (current, _) => Iterate(current));
-
         return plane.Values.Count(v => v == '#');
     }
 
     public override object Part2()
     {
         var plane = Enumerable.Range(0, 6).Aggregate(_plane4, (current, _) => Iterate4(current));
-
         return plane.Values.Count(v => v == '#');
     }
 }

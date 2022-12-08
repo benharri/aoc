@@ -5,6 +5,10 @@ public sealed class Day23 : Day
     public Day23() : base(2019, 23, "Category Six")
     {
     }
+    
+    public override void ProcessInput()
+    {
+    }
 
     public override object Part1()
     {

@@ -5,11 +5,15 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day15 : Day
 {
-    private readonly int[] _turns;
+    private int[]? _turns;
     private int _current;
     private int _i;
 
     public Day15() : base(2020, 15, "Rambunctious Recitation")
+    {
+    }
+
+    public override void ProcessInput()
     {
         var initial = Input.First().Split(',').Select(int.Parse).ToArray();
         _turns = new int[30_000_000];
@@ -23,7 +27,7 @@ public sealed class Day15 : Day
     {
         for (; _i != 2020; _i++)
         {
-            var next = _turns[_current] > 0 ? _i - _turns[_current] : 0;
+            var next = _turns![_current] > 0 ? _i - _turns[_current] : 0;
             _turns[_current] = _i;
             _current = next;
         }
@@ -35,7 +39,7 @@ public sealed class Day15 : Day
     {
         for (; _i != 30_000_000; _i++)
         {
-            var next = _turns[_current] > 0 ? _i - _turns[_current] : 0;
+            var next = _turns![_current] > 0 ? _i - _turns[_current] : 0;
             _turns[_current] = _i;
             _current = next;
         }

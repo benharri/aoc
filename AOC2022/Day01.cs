@@ -7,9 +7,13 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day01 : Day
 {
-    private readonly List<List<int>> _elfCalories;
+    private List<List<int>>? _elfCalories;
 
     public Day01() : base(2022, 1, "Calorie Counting")
+    {
+    }
+    
+    public override void ProcessInput()
     {
         _elfCalories = Input
             .Split("")
@@ -18,7 +22,7 @@ public sealed class Day01 : Day
             .ToList();
     }
 
-    public override object Part1() => _elfCalories.First().Sum();
+    public override object Part1() => _elfCalories!.First().Sum();
 
-    public override object Part2() => _elfCalories.Take(3).Sum(e => e.Sum());
+    public override object Part2() => _elfCalories!.Take(3).Sum(e => e.Sum());
 }

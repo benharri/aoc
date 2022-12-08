@@ -9,6 +9,10 @@ public sealed class Day14 : Day
     {
     }
 
+    public override void ProcessInput()
+    {
+    }
+
     public override object Part1()
     {
         var writes = new Dictionary<ulong, ulong>();

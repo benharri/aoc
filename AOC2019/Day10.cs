@@ -2,11 +2,15 @@ namespace AOC2019;
 
 public sealed class Day10 : Day
 {
-    private readonly HashSet<(int x, int y)> _asteroids;
+    private HashSet<(int x, int y)>? _asteroids;
     private (int x, int y) _best = (x: -1, y: -1);
     private int _bestCanSee;
 
     public Day10() : base(2019, 10, "Monitoring Station")
+    {
+    }
+
+    public override void ProcessInput()
     {
         _asteroids = Input
             .Select((r, y) => r.Select((c, x) => (x, y, isAsteroid: c == '#')).ToArray())
@@ -18,7 +22,7 @@ public sealed class Day10 : Day
 
     public override object Part1()
     {
-        foreach (var asteroid in _asteroids)
+        foreach (var asteroid in _asteroids!)
         {
             var canSee = _asteroids
                 .Except(new[] { asteroid })
@@ -44,7 +48,7 @@ public sealed class Day10 : Day
             if (q.Count > 0) yield return q.Dequeue();
         }
 
-        return _asteroids
+        return _asteroids!
             .Where(a => a != _best)
             .Select(a =>
             {

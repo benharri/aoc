@@ -8,6 +8,10 @@ public sealed class Day03 : Day
     public Day03() : base(2022, 3, "Rucksack Reorganization")
     {
     }
+    
+    public override void ProcessInput()
+    {
+    }
 
     public override object Part1() =>
         Input.Sum(rucksack => RankItem(rucksack.Chunk(rucksack.Length / 2).Aggregate<IEnumerable<char>>((a, b) => a.Intersect(b)).Single()));

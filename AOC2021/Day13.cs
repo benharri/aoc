@@ -7,10 +7,14 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day13 : Day
 {
-    private List<(int x, int y)> _dots;
-    private readonly List<(char axis, int index)> _folds;
-    
+    private List<(int x, int y)>? _dots;
+    private List<(char axis, int index)>? _folds;
+
     public Day13() : base(2021, 13, "Transparent Origami")
+    {
+    }
+
+    public override void ProcessInput()
     {
         var s = Input.Split("").ToList();
         
@@ -47,14 +51,14 @@ public sealed class Day13 : Day
 
     private string PrintGrid()
     {
-        var xMax = _dots.Max(g => g.x);
-        var yMax = _dots.Max(g => g.y);
+        var xMax = _dots!.Max(g => g.x);
+        var yMax = _dots!.Max(g => g.y);
         var s = new StringBuilder();
 
         for (var y = 0; y <= yMax; y++)
         {
             for (var x = 0; x <= xMax; x++)
-                s.Append(_dots.Contains((x, y)) ? "█" : "▒");
+                s.Append(_dots!.Contains((x, y)) ? "█" : "▒");
 
             if (y < yMax) s.AppendLine();
         }
@@ -63,12 +67,12 @@ public sealed class Day13 : Day
     }
 
     public override object Part1() =>
-        DoFold(_dots, _folds[0].axis, _folds[0].index).Count;
+        DoFold(_dots!, _folds![0].axis, _folds[0].index).Count;
 
     public override object Part2()
     {
-        foreach (var (axis, at) in _folds)
-            _dots = DoFold(_dots, axis, at);
+        foreach (var (axis, at) in _folds!)
+            _dots = DoFold(_dots!, axis, at);
 
         return PrintGrid();
     }

@@ -9,6 +9,10 @@ public sealed class Day03 : Day
     {
     }
 
+    public override void ProcessInput()
+    {
+    }
+
     public override object Part1()
     {
         int x = 0, y = 0;

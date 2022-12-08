@@ -5,16 +5,22 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day02 : Day
 {
-    private readonly ImmutableList<Password> _passwords;
+    private ImmutableList<Password>? _passwords;
 
-    public Day02() : base(2020, 2, "Password Philosophy") =>
+    public Day02() : base(2020, 2, "Password Philosophy")
+    {
+    }
+
+    public override void ProcessInput()
+    {
         _passwords = Input.Select(p => new Password(p)).ToImmutableList();
+    }
 
     public override object Part1() =>
-        _passwords.Count(p => p.IsValid);
+        _passwords!.Count(p => p.IsValid);
 
     public override object Part2() =>
-        _passwords.Count(p => p.IsValidByIndex);
+        _passwords!.Count(p => p.IsValidByIndex);
 
     private class Password
     {
