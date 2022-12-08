@@ -9,7 +9,7 @@ public sealed class Day08 : Day
 
     public Day08() : base(2022, 8, "Treetop Tree House")
     {
-        _trees = Input.Select(line => line.Select(c => int.Parse(c.ToString())).ToArray()).ToArray();
+        _trees = Input.Select(line => line.Select(c => c - '0').ToArray()).ToArray();
     }
 
     private (bool isVisible, int scenicScore) ScoreCoord(int x, int y)
