@@ -1,6 +1,6 @@
 namespace AOC.Common;
 
-public class DefaultDict<TKey, TValue> : Dictionary<TKey, TValue> where TKey : notnull
+public class DefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue> where TKey : notnull
 {
     public TValue? DefaultValue;
 
@@ -81,7 +81,7 @@ public class Dijkstra<TCell, TMid> where TCell : notnull
     public int ComputeFind(TCell start, TCell target, Func<TCell, bool>? valid = null)
     {
         valid ??= _ => true;
-        var dist = new DefaultDict<TCell, int> { DefaultValue = int.MaxValue, [start] = 0 };
+        var dist = new DefaultDictionary<TCell, int> { DefaultValue = int.MaxValue, [start] = 0 };
         var seen = new HashSet<TCell>();
         var queue = new PriorityQueue<TCell, int>();
         queue.Enqueue(start, 0);
