@@ -13,6 +13,7 @@ public class Test2022
     [DataRow(typeof(Day06), "1356", "2564")]
     [DataRow(typeof(Day07), "919137", "2877389")]
     [DataRow(typeof(Day08), "1776", "234416")]
+    [DataRow(typeof(Day09), "6406", "2643")]
     public void CheckAllDays(Type dayType, string part1, string part2)
     {
         Common.CheckDay(dayType, part1, part2);
@@ -27,6 +28,7 @@ public class Test2022
     [DataRow(typeof(Day06), "7", "19")]
     [DataRow(typeof(Day07), "95437", "24933642")]
     [DataRow(typeof(Day08), "21", "8")]
+    [DataRow(typeof(Day09), "88", "36")]
     public void CheckTestInputs(Type dayType, string part1, string part2)
     {
         Common.CheckDay(dayType, part1, part2, true);
