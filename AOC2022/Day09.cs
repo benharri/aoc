@@ -11,40 +11,35 @@ public sealed class Day09 : Day
     {
     }
     
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _steps = Input.Select(line => (line[0], int.Parse(line[2..]))).ToList();
-    }
 
     private int CountTailPositions(int ropeLength)
     {
         var rope = Enumerable.Range(0, ropeLength).Select(_ => (x: 0, y: 0)).ToArray();
         var visited = new HashSet<(int x, int y)>();
 
-        foreach (var step in _steps!)
+        foreach (var step in _steps!.SelectMany(step => Enumerable.Range(0, step.count), (step, _) => step))
         {
-            foreach (var _ in Enumerable.Range(0, step.count))
+            switch (step.direction)
             {
-                switch (step.direction)
-                {
-                    case 'U': rope[0].y++;  break;
-                    case 'D': rope[0].y--; break;
-                    case 'L': rope[0].x--; break;
-                    case 'R': rope[0].x++;  break;
-                }
-                
-                foreach (var i in Enumerable.Range(1, ropeLength - 1))
-                {
-                    int dx = rope[i - 1].x - rope[i].x, dy = rope[i - 1].y - rope[i].y;
-                    if (Math.Max(Math.Abs(dx), Math.Abs(dy)) > 1)
-                    {
-                        rope[i].x += Math.Sign(dx);
-                        rope[i].y += Math.Sign(dy);
-                    }
-                }
-
-                visited.Add(rope.Last());
+                case 'U': rope[0].y++; break;
+                case 'D': rope[0].y--; break;
+                case 'L': rope[0].x--; break;
+                case 'R': rope[0].x++; break;
             }
+                
+            foreach (var i in Enumerable.Range(1, ropeLength - 1))
+            {
+                int dx = rope[i - 1].x - rope[i].x, dy = rope[i - 1].y - rope[i].y;
+                if (Math.Max(Math.Abs(dx), Math.Abs(dy)) > 1)
+                {
+                    rope[i].x += Math.Sign(dx);
+                    rope[i].y += Math.Sign(dy);
+                }
+            }
+
+            visited.Add(rope.Last());
         }
 
         return visited.Count;
