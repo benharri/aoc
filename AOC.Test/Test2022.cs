@@ -5,7 +5,6 @@ namespace AOC.Test;
 public class Test2022
 {
     private const string Day10Actual = """
-
          ████ ███   ██  ███  █    ████ ████ █  █
             █ █  █ █  █ █  █ █    █       █ █  █
            █  █  █ █  █ █  █ █    ███    █  █  █
@@ -15,7 +14,6 @@ public class Test2022
         """;
 
     private const string Day10Test = """
-
          ██  ██  ██  ██  ██  ██  ██  ██  ██  ██ 
          ███   ███   ███   ███   ███   ███   ███
          ████    ████    ████    ████    ████   
