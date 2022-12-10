@@ -15,19 +15,13 @@ public sealed class Day10 : Day
     public override void ProcessInput()
     {
         int x = 1, cycle = 1;
-
         foreach (var line in Input)
-        {
-            if (line.StartsWith("addx"))
-            {
-                CpuTick(ref cycle, x);
-                CpuTick(ref cycle, x);
-                x += int.Parse(line.Split(' ')[1]);
-            }
-            else
-            {
-                CpuTick(ref cycle, x);
-            }
+        {               
+            CpuTick(ref cycle, x);
+            if (!line.StartsWith("addx")) continue;
+            
+            CpuTick(ref cycle, x);
+            x += int.Parse(line.Split(' ')[1]);
         }
     }
 
@@ -35,14 +29,11 @@ public sealed class Day10 : Day
     {
         if ((cycle - 20) % 40 == 0)
             _interestingSignals.Add(x * cycle);
-
         if (new[] { x - 1, x, x + 1 }.Contains((cycle - 1) % 40))
             _charMap[cycle] = '█';
-
         cycle++;
     }
 
     public override object Part1() => _interestingSignals.Sum();
-
     public override object Part2() => string.Join(Environment.NewLine, _charMap.Chunk(40).Select(s => new string(s)));
 }
