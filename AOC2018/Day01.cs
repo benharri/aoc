@@ -5,7 +5,7 @@ namespace AOC2018;
 /// </summary>
 public sealed class Day01 : Day
 {
-    public Day01() : base(2018, 1, "Puzzle Name")
+    public Day01() : base(2018, 1, "Chronal Calibration")
     {
     }
     
@@ -13,7 +13,12 @@ public sealed class Day01 : Day
     {
     }
 
-    public override object Part1() => "";
+    public override object Part1() => Input.Select(int.Parse).Sum();
 
-    public override object Part2() => "";
+    public override object Part2()
+    {
+        var frequencies = new HashSet<int>();
+        var freq = 0;
+        return Input.Select(int.Parse).Repeat().Any(f => !frequencies.Add(freq += f)) ? freq : 0;
+    }
 }

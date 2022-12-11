@@ -6,7 +6,8 @@ namespace AOC.Test;
 public class Test2018
 {
     [DataTestMethod]
-    [DataRow(typeof(Day01), "", "")]
+    [DataRow(typeof(Day01), "582", "488")]
+    [DataRow(typeof(Day02), "5166", "cypueihajytordkgzxfqplbwn")]
     public void CheckAllDays(Type dayType, string part1, string part2)
     {
         Common.CheckDay(dayType, part1, part2);

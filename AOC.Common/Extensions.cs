@@ -122,4 +122,10 @@ public static class Extensions
     public static IEnumerable<KeyValuePair<TKey, TValue>> WhereValue<TKey, TValue>(
         this IEnumerable<KeyValuePair<TKey, TValue>> source, Func<TValue, bool> func) =>
         source.Where(pair => func(pair.Value));
+
+    public static int HammingDistance(this string s1, string other)
+    {
+        if (s1.Length != other.Length) throw new("Strings must be equal length.");
+        return s1.Zip(other).Count(s => s.First != s.Second);
+    }
 }
