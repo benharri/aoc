@@ -5,7 +5,7 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day10 : Day
 {
-    private string _seed;
+    private string? _seed;
 
     public Day10() : base(2015, 10, "Elves Look, Elves Say")
     {
@@ -19,20 +19,20 @@ public sealed class Day10 : Day
     public override object Part1()
     {
         for (var i = 0; i < 40; i++)
-            _seed = string.Concat(LookAndSay(_seed));
+            _seed = string.Concat(LookAndSay(_seed!));
 
-        return _seed.Length;
+        return _seed!.Length;
     }
 
     public override object Part2()
     {
         for (var i = 0; i < 10; i++)
-            _seed = string.Concat(LookAndSay(_seed));
+            _seed = string.Concat(LookAndSay(_seed!));
 
-        return _seed.Length;
+        return _seed!.Length;
     }
 
-    public static IEnumerable<int> LookAndSay(string data)
+    private static IEnumerable<int> LookAndSay(string data)
     {
         var currentDigit = data[0];
         int count = 1, place = 1;
