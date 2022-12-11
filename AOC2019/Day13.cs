@@ -2,8 +2,9 @@ namespace AOC2019;
 
 public sealed class Day13 : Day
 {
-    private readonly Dictionary<(int x, int y), int> _board = new();
     private IntCodeVM? _vm;
+    private readonly Dictionary<(long x, long y), long> _board = new();
+    private readonly List<(long x, long y)> _updatedCoordinates = new();
 
     public Day13() : base(2019, 13, "Care Package")
     {
@@ -14,24 +15,23 @@ public sealed class Day13 : Day
         _vm = new(Input.First());
     }
 
-    private IList<(int x, int y)> UpdateTiles(IEnumerable<long> queue)
+    private void UpdateTiles()
     {
-        var updated = new List<(int x, int y)>();
-        foreach (var c in queue.Select(i => (int)i).Chunk(3))
+        _updatedCoordinates.Clear();
+        while (_vm!.Output.Any())
         {
-            _board[(c[0], c[1])] = c[2];
-            updated.Add((c[0], c[1]));
+            long x = _vm.Output.Dequeue(), y = _vm.Output.Dequeue();
+            _board[(x, y)] = _vm.Output.Dequeue();
+            _updatedCoordinates.Add((x, y));
         }
-
-        return updated;
     }
 
-    private void PrintBoard(IList<(int x, int y)>? updated = null)
+    private void PrintBoard()
     {
-        foreach (var (x, y) in updated ?? _board.Keys.ToList())
+        foreach (var (x, y) in _updatedCoordinates.Any() ? _updatedCoordinates : _board.Keys.ToList())
         {
             if (x < 0 || y < 0) continue;
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition((int)x, (int)y);
             var value = _board[(x, y)];
             Console.Write(value switch
             {
@@ -44,7 +44,6 @@ public sealed class Day13 : Day
             });
         }
     }
-
 
     public override object Part1()
     {
@@ -59,14 +58,18 @@ public sealed class Day13 : Day
         _vm.Memory[0] = 2;
         var printBoard = false;
         var gameTicks = 0;
-        if (printBoard) Console.Clear();
+        if (printBoard)
+        {
+            Console.Clear();
+            Console.CursorVisible = false;
+        }
 
         var haltType = IntCodeVM.HaltType.Waiting;
         while (haltType == IntCodeVM.HaltType.Waiting)
         {
             haltType = _vm.Run();
-            var updated = UpdateTiles(_vm.Output);
-            if (printBoard) PrintBoard(updated);
+            UpdateTiles();
+            if (printBoard) PrintBoard();
 
             var (ball, _) = _board.Single(t => t.Value == 4).Key;
             var (paddle, _) = _board.Single(t => t.Value == 3).Key;

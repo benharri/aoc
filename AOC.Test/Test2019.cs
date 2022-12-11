@@ -20,7 +20,7 @@ public class Test2019
     [DataRow(typeof(Day11), "2054",
         " #  # ###  #### ####  ##    ## #  # ###    \n # #  #  #    # #    #  #    # #  # #  #   \n ##   #  #   #  ###  #  #    # #### ###    \n # #  ###   #   #    ####    # #  # #  #   \n # #  # #  #    #    #  # #  # #  # #  #   \n #  # #  # #### #### #  #  ##  #  # ###    ")]
     [DataRow(typeof(Day12), "10635", "583523031727256")]
-    // [DataRow(typeof(Day13), "361", "after 7133 moves, the score is: 17590")] // this one takes a LONG time to run
+    [DataRow(typeof(Day13), "361", "after 7133 moves, the score is: 17590")]
     [DataRow(typeof(Day14), "397771", "3126714")]
     [DataRow(typeof(Day15), "280", "400")]
     [DataRow(typeof(Day16), "90744714", "82994322")]
