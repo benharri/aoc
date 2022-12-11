@@ -3,17 +3,40 @@ namespace AOC2018;
 /// <summary>
 /// Day 3: <a href="https://adventofcode.com/2018/day/3"/>
 /// </summary>
-public sealed class Day03 : Day
+public sealed partial class Day03 : Day
 {
-    public Day03() : base(2018, 3, "Puzzle Name")
+    private List<Claim>? _claims;
+    private readonly Dictionary<(int x, int y), List<int>> _plots = new();
+
+    public Day03() : base(2018, 3, "No Matter How You Slice It")
     {
     }
     
+    [GeneratedRegex(@"\d+")]
+    private static partial Regex Digits();
+
+    private record Claim(int ID, int X, int Y, int SizeX, int SizeY);
+    
     public override void ProcessInput()
     {
+        _claims = Input.Select(line => Digits().Matches(line).Select(m => int.Parse(m.Value)).ToList())
+            .Select(l => new Claim(l[0], l[1], l[2], l[3], l[4])).ToList();
+        
+        foreach (var claim in _claims)
+        {
+            foreach (var y in Enumerable.Range(claim.X, claim.SizeX))
+            foreach (var x in Enumerable.Range(claim.Y, claim.SizeY))
+            {
+                if (!_plots.ContainsKey((x, y))) _plots.Add((x, y), new());
+                _plots[(x, y)].Add(claim.ID);
+            }
+        }
     }
 
-    public override object Part1() => "";
-
-    public override object Part2() => "";
+    public override object Part1() => _plots.Values.Count(v => v.Count > 1);
+    public override object Part2()
+    {
+        var overlapping = _plots.Where(p => p.Value.Count > 1).SelectMany(p => p.Value).Distinct().ToList();
+        return _claims!.Single(p => !overlapping.Contains(p.ID)).ID;
+    }
 }
