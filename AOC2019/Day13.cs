@@ -15,20 +15,10 @@ public sealed class Day13 : Day
         _vm = new(Input.First());
     }
 
-    private void UpdateTiles()
-    {
-        _updatedCoordinates.Clear();
-        while (_vm!.Output.Any())
-        {
-            long x = _vm.Output.Dequeue(), y = _vm.Output.Dequeue();
-            _board[(x, y)] = _vm.Output.Dequeue();
-            _updatedCoordinates.Add((x, y));
-        }
-    }
-
     private void PrintBoard()
     {
-        foreach (var (x, y) in _updatedCoordinates.Any() ? _updatedCoordinates : _board.Keys.ToList())
+        var coords = _updatedCoordinates.Any() ? _updatedCoordinates : _board.Keys.ToList();
+        foreach (var (x, y) in coords)
         {
             if (x < 0 || y < 0) continue;
             Console.SetCursorPosition((int)x, (int)y);
@@ -68,12 +58,19 @@ public sealed class Day13 : Day
         while (haltType == IntCodeVM.HaltType.Waiting)
         {
             haltType = _vm.Run();
-            UpdateTiles();
+            if (printBoard) _updatedCoordinates.Clear();
+            while (_vm.Output.Any())
+            {
+                long x = _vm.Result, y = _vm.Result;
+                _board[(x, y)] = _vm.Result;
+                if (printBoard) _updatedCoordinates.Add((x, y));
+            }
+
             if (printBoard) PrintBoard();
 
-            var (ball, _) = _board.Single(t => t.Value == 4).Key;
+            var (ball, _)   = _board.Single(t => t.Value == 4).Key;
             var (paddle, _) = _board.Single(t => t.Value == 3).Key;
-            _vm.AddInput(ball > paddle ? 1 : ball < paddle ? -1 : 0);
+            _vm.AddInput(Math.Sign(ball.CompareTo(paddle)));
 
             gameTicks++;
         }
