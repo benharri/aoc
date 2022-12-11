@@ -36,8 +36,8 @@ public sealed class Day13 : Day
             Console.Write(value switch
             {
                 0 => " ",
-                1 => "|",
-                2 => "B",
+                1 => "█",
+                2 => "#",
                 3 => "_",
                 4 => ".",
                 _ => value
