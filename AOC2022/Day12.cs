@@ -33,7 +33,7 @@ public sealed class Day12 : Day
             }
     }
 
-    private int ShortestDistance((int x, int y) startCoord)
+    private int ShortestDistance((int x, int y) startCoord, (int x, int y)? destCoord, int? destVal = null)
     {
         var queue = new Queue<(int x, int y, int steps)>();
         var seen = new HashSet<(int x, int y)> { startCoord };
@@ -42,19 +42,19 @@ public sealed class Day12 : Day
         while (queue.Any())
         {
             var (x, y, steps) = queue.Dequeue();
-            if (_destCoord == (x, y)) return steps;
+            if (destCoord == (x, y) || (destVal != null && _grid[(x, y)] == destVal)) return steps;
 
             foreach (var subPath in Directions
                          .Select(direction => (x + direction.x, y + direction.y))
                          .Where(s => _grid.ContainsKey(s))
-                         .Where(s => _grid[s] <= _grid[(x, y)] + 1)
+                         .Where(s => _grid[s] >= _grid[(x, y)] - 1)
                          .Where(s => seen.Add(s)))
                 queue.Enqueue((subPath.Item1, subPath.Item2, steps + 1));
         }
 
-        return int.MaxValue;
+        throw new("Path not found");
     }
 
-    public override object Part1() => ShortestDistance(_startCoord);
-    public override object Part2() => _grid.WhereValue(v => v == 0).Min(g => ShortestDistance(g.Key));
+    public override object Part1() => ShortestDistance(_destCoord, _startCoord);
+    public override object Part2() => ShortestDistance(_destCoord, null, 0);
 }
