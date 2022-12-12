@@ -30,8 +30,8 @@ public sealed class Day08 : Day
             )
             .ToDelimitedString()
             .Chunk(25)
-            .Select(s => new string(s))
-            .ToDelimitedString("\n")
+            .Select(s => new string(s).Trim())
+            .ToDelimitedString(Environment.NewLine)
             .Replace('1', 'x');
     }
 }

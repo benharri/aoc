@@ -5,6 +5,24 @@ namespace AOC.Test;
 [TestClass]
 public class Test2019
 {
+    private const string Day8Actual = """
+        xxx   xx  xxx  xxxx xxx
+        x  x x  x x  x    x x  x
+        xxx  x    x  x   x  xxx
+        x  x x    xxx   x   x  x
+        x  x x  x x    x    x  x
+        xxx   xx  x    xxxx xxx
+        """;
+
+    private const string Day11Actual = """
+         #  # ###  #### ####  ##    ## #  # ###    
+         # #  #  #    # #    #  #    # #  # #  #   
+         ##   #  #   #  ###  #  #    # #### ###    
+         # #  ###   #   #    ####    # #  # #  #   
+         # #  # #  #    #    #  # #  # #  # #  #   
+         #  # #  # #### #### #  #  ##  #  # ###    
+        """;
+
     [DataTestMethod]
     [DataRow(typeof(Day01), "3394106", "5088280")]
     [DataRow(typeof(Day02), "3085697", "9425")]
@@ -13,12 +31,10 @@ public class Test2019
     [DataRow(typeof(Day05), "7692125", "14340395")]
     [DataRow(typeof(Day06), "145250", "274")]
     [DataRow(typeof(Day07), "19650", "35961106")]
-    [DataRow(typeof(Day08), "2413",
-        "xxx   xx  xxx  xxxx xxx  \nx  x x  x x  x    x x  x \nxxx  x    x  x   x  xxx  \nx  x x    xxx   x   x  x \nx  x x  x x    x    x  x \nxxx   xx  x    xxxx xxx  ")]
+    [DataRow(typeof(Day08), "2413", Day8Actual)]
     [DataRow(typeof(Day09), "3409270027", "82760")]
     [DataRow(typeof(Day10), "260", "608")]
-    [DataRow(typeof(Day11), "2054",
-        " #  # ###  #### ####  ##    ## #  # ###    \n # #  #  #    # #    #  #    # #  # #  #   \n ##   #  #   #  ###  #  #    # #### ###    \n # #  ###   #   #    ####    # #  # #  #   \n # #  # #  #    #    #  # #  # #  # #  #   \n #  # #  # #### #### #  #  ##  #  # ###    ")]
+    [DataRow(typeof(Day11), "2054", Day11Actual)]
     [DataRow(typeof(Day12), "10635", "583523031727256")]
     [DataRow(typeof(Day13), "361", "after 7133 moves, the score is: 17590")]
     [DataRow(typeof(Day14), "397771", "3126714")]
