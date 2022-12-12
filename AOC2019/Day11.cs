@@ -87,7 +87,7 @@ public sealed class Day11 : Day
                     .ToDelimitedString()
             )
             .Reverse()
-            .ToDelimitedString("\n");
+            .ToDelimitedString(Environment.NewLine);
     }
 
     private enum Direction

@@ -8,8 +8,8 @@ public class IntCodeVM
         Waiting
     }
 
-    private readonly Queue<long> _input;
-    public readonly Queue<long> Output;
+    private readonly Queue<long> _input = new();
+    public readonly Queue<long> Output = new();
 
     private readonly long[] _program;
     private long _i;
@@ -22,8 +22,6 @@ public class IntCodeVM
         _relativeBase = 0;
         _program = tape.Split(',').Select(long.Parse).ToArray();
         Memory = _program;
-        _input = new();
-        Output = new();
     }
 
     public long Result => Output.Dequeue();
@@ -37,34 +35,21 @@ public class IntCodeVM
         Output.Clear();
     }
 
-    public void AddInput(params long[] values)
-    {
-        foreach (var v in values) AddInput(v);
-    }
+    public void AddInput(long value) => _input.Enqueue(value);
 
-    public void AddInput(long value)
-    {
-        _input.Enqueue(value);
-    }
-
-    private long MemGet(long addr)
-    {
-        return addr < Memory.Length ? Memory[addr] : 0;
-    }
+    private long MemGet(long addr) => addr < Memory.Length ? Memory[addr] : 0;
 
     private void MemSet(long addr, long value)
     {
         if (addr < 0) addr = 0;
-        if (addr >= Memory.Length)
-            Array.Resize(ref Memory, (int)addr + 1);
+        if (addr >= Memory.Length) Array.Resize(ref Memory, (int)addr + 1);
         Memory[addr] = value;
     }
 
     private long Mode(long idx)
     {
         var mode = MemGet(_i) / 100;
-        for (var s = 1; s < idx; s++)
-            mode /= 10;
+        for (var s = 1; s < idx; s++) mode /= 10;
         return mode % 10;
     }
 
