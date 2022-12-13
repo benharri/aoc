@@ -14,6 +14,12 @@ public sealed class Day11 : Day
     {
     }
 
+    public override void ProcessInput()
+    {
+        _monkeys = Input.Split("").Select(Monkey.FromLines).ToArray();
+        _lcm = _monkeys!.Aggregate(1L, (i, monkey) => i * monkey.ModTest);
+    }
+
     private void DoRound(bool part1 = true)
     {
         foreach (var monkey in _monkeys!)
@@ -30,12 +36,6 @@ public sealed class Day11 : Day
                 _monkeys[dest].Items.Enqueue(item);
             }
         }
-    }
-
-    public override void ProcessInput()
-    {
-        _monkeys = Input.Split("").Select(Monkey.FromLines).ToArray();
-        _lcm = _monkeys!.Aggregate(1L, (i, monkey) => i * monkey.ModTest);
     }
 
     private long MonkeyBusiness() =>
