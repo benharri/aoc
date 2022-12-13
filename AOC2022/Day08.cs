@@ -11,10 +11,8 @@ public sealed class Day08 : Day
     {
     }
     
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _trees = Input.Select(line => line.Select(c => c - '0').ToArray()).ToArray();
-    }
 
     private (bool isVisible, int scenicScore) ScoreCoord(int x, int y)
     {

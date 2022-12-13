@@ -11,10 +11,8 @@ public sealed class Day02 : Day
     {
     }
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _rounds = Input.Select(line => line.Split(' ')).ToList();
-    }
 
     public override object Part1()
     {
