@@ -11,10 +11,8 @@ public sealed class Day06 : Day
     {
     }
     
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _signal = Input.First();
-    }
 
     private int DistinctSubstringIndex(int n) =>
         Enumerable.Range(0, _signal!.Length).First(i => _signal.Substring(i, n).Distinct().Count() == n) + n;

@@ -11,13 +11,11 @@ public sealed class Day04 : Day
     {
     }
     
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _ranges = Input
             .Select(line => line.Split(',').SelectMany(q => q.Split('-')).Select(int.Parse).ToList())
             .Select(p => (new Range(p[0], p[1]), new Range(p[2], p[3])))
             .ToList();
-    }
 
     public override object Part1() =>
         _ranges!.Count(r => r.r1.Contains(r.r2) || r.r2.Contains(r.r1));

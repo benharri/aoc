@@ -13,10 +13,8 @@ public sealed class Day13 : Day
     {
     }
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _packets = Input.Where(line => !string.IsNullOrWhiteSpace(line)).Select(s => JsonNode.Parse(s)!);
-    }
 
     private static int Compare(JsonNode? left, JsonNode? right)
     {

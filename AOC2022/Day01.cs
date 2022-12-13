@@ -13,14 +13,12 @@ public sealed class Day01 : Day
     {
     }
     
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _elfCalories = Input
             .Split("")
             .Select(e => e.Select(int.Parse).ToList())
             .OrderByDescending(e => e.Sum())
             .ToList();
-    }
 
     public override object Part1() => _elfCalories!.First().Sum();
 
