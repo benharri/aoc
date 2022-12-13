@@ -66,7 +66,7 @@ public sealed class Day11 : Day
 
         public static Monkey FromLines(IEnumerable<string> lines)
         {
-            var m = new Monkey { InspectionCount = 0 };
+            var m = new Monkey();
             foreach (var line in lines.Select(l => l.Trim()))
             {
                 if (line.StartsWith("Starting items: "))
