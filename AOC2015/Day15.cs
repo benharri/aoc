@@ -17,10 +17,8 @@ public sealed partial class Day15 : Day
 
     private static Ingredient ParseIngredient(string line)
     {
-        var s = line.Split(':');
-        var nums = Digits().Matches(s[1]).Select(match => int.Parse(match.Value)).ToList();
-
-        return new(s[0], nums[0], nums[1], nums[2], nums[3], nums[4]);
+        var nums = Digits().Matches(line.Split(':')[1]).Select(match => int.Parse(match.Value)).ToList();
+        return new(nums[0], nums[1], nums[2], nums[3], nums[4]);
     }
 
     public override void ProcessInput()
@@ -69,5 +67,5 @@ public sealed partial class Day15 : Day
 
     public override object Part2() => _best500Cals;
 
-    private record Ingredient(string Name, int Capacity, int Durability, int Flavor, int Texture, int Calories);
+    private record Ingredient(int Capacity, int Durability, int Flavor, int Texture, int Calories);
 }
