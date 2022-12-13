@@ -44,14 +44,14 @@ public sealed class Day11 : Day
 
     public override object Part1()
     {
-        foreach (var _ in Enumerable.Range(0, 20)) DoRound();
+        Enumerable.Range(0, 20).ForEach(_ => DoRound());
         return MonkeyBusiness();
     }
 
     public override object Part2()
     {
         ProcessInput();
-        foreach (var _ in Enumerable.Range(0, 10_000)) DoRound(part1: false);
+        Enumerable.Range(0, 10_000).ForEach(_ => DoRound(part1: false));
         return MonkeyBusiness();
     }
 
