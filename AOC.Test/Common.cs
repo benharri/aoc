@@ -7,7 +7,7 @@ public static class Common
         Day.UseTestInput = testInput;
         var day = Activator.CreateInstance(dayType) as Day;
         Assert.IsNotNull(day, "failed to instantiate day object");
-        Assert.IsTrue(File.Exists(day.FileName), $"File.Exists(day.FileName) {day.FileName}");
+        Assert.IsTrue(File.Exists(day!.FileName), $"File.Exists(day.FileName) {day.FileName}");
         Console.Write($"{day.Year} Day {day.DayNumber,2}: {day.PuzzleName,-25} ");
         
         var s = Stopwatch.StartNew();
