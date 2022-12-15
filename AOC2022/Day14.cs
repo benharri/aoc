@@ -5,7 +5,7 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day14 : Day
 {
-    private (int x, int y) _start = (500, 0);
+    private readonly (int x, int y) _start = (500, 0);
     private int _bottom;
     private HashSet<(int x, int y)>? _walls;
 
@@ -15,7 +15,7 @@ public sealed class Day14 : Day
 
     public override void ProcessInput()
     {
-        _walls = Input.Select(ParsePath).SelectMany(EnumPointsInPath).ToHashSet();
+        _walls = Input.Select(ParsePath).SelectMany(PathPoints).ToHashSet();
         _bottom = _walls.Select(p => p.y).Max();
     }
 
@@ -40,26 +40,25 @@ public sealed class Day14 : Day
         var pos = start;
         while (pos.y <= bottom)
         {
-            var next = EnumNextPositions(pos).Where(p => !blocked(p)).Select(p => ((int x, int y)?)p).FirstOrDefault();
+            var next = NextPositions(pos).Where(p => !blocked(p)).Select(p => ((int x, int y)?)p).FirstOrDefault();
             if (!next.HasValue) return pos;
-
             pos = next.Value;
         }
 
         return null;
     }
 
-    private static IEnumerable<(int x, int y)> EnumNextPositions((int x, int y) point)
+    private static IEnumerable<(int x, int y)> NextPositions((int x, int y) point)
     {
         yield return point with { y = point.y + 1 };
         yield return new(point.x - 1, point.y + 1);
         yield return new(point.x + 1, point.y + 1);
     }
 
-    private static IEnumerable<(int x, int y)> EnumPointsInPath(IEnumerable<(int x, int y)> path) =>
-        path.Zip(path.Skip(1)).SelectMany(pair => EnumPointsInLine(pair.First, pair.Second));
+    private static IEnumerable<(int x, int y)> PathPoints(IEnumerable<(int x, int y)> path) =>
+        path.Zip(path.Skip(1)).SelectMany(pair => LinePoints(pair.First, pair.Second));
 
-    private static IEnumerable<(int x, int y)> EnumPointsInLine((int x, int y) start, (int x, int y) end)
+    private static IEnumerable<(int x, int y)> LinePoints((int x, int y) start, (int x, int y) end)
     {
         if (start.x == end.x)
             return Enumerable.Range(Math.Min(start.y, end.y), Math.Abs(end.y - start.y) + 1)
@@ -72,8 +71,8 @@ public sealed class Day14 : Day
         return Enumerable.Empty<(int x, int y)>();
     }
 
-    private static IEnumerable<(int x, int y)> ParsePath(string input)
-        => input.Split("->", StringSplitOptions.TrimEntries)
+    private static IEnumerable<(int x, int y)> ParsePath(string input) =>
+        input.Split(" -> ")
             .Select(p => p.Split(',', 2))
             .Select(p => (int.Parse(p[0]), int.Parse(p[1])));
 
