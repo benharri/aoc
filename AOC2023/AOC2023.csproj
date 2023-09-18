@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Update="input2022\*.in">
+        <None Update="input2023\*.in">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
@@ -24,6 +24,12 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\AOC.Common\AOC.Common.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="morelinq" Version="3.4.2" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="input2023\" />
     </ItemGroup>
 
 </Project>
