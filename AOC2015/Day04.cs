@@ -33,12 +33,12 @@ public sealed class Day04 : Day
 
     public override object Part2()
     {
-        var counter = 0;
+        var counter = 9_000_000;
 
         while (true)
         {
-            var hash = MD5.HashData(Encoding.ASCII.GetBytes(_key + counter));
-            if (BitConverter.ToString(hash).Replace("-", "").StartsWith("000000"))
+            var hashBytes = MD5.HashData(Encoding.ASCII.GetBytes(_key + counter));
+            if (hashBytes[0] == 0 && hashBytes[1] == 0 && hashBytes[2] == 0)
                 return counter;
             counter++;
         }
