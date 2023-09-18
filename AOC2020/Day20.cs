@@ -66,14 +66,12 @@ public sealed class Day20 : Day
         foreach (var piece in puzzlePieces)
         foreach (var (original, flipped) in piece.SidesWithFlippedPaired.Value)
         {
-            if (sides.ContainsKey(original))
+            if (sides.TryGetValue(original, out var side))
             {
-                var otherPiece = sides[original];
-                AddConnection(piece, otherPiece);
+                AddConnection(piece, side);
             }
-            else if (sides.ContainsKey(flipped))
+            else if (sides.TryGetValue(flipped, out var otherPiece))
             {
-                var otherPiece = sides[flipped];
                 AddConnection(piece, otherPiece);
             }
             else

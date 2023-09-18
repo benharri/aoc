@@ -21,8 +21,7 @@ public sealed class Day14 : Day
         if (quantity <= 0)
             throw new ArgumentOutOfRangeException(nameof(quantity));
 
-        if (!_available.ContainsKey(chem))
-            _available[chem] = 0;
+        _available.TryAdd(chem, 0);
 
         if (_available[chem] < quantity && !Produce(chem, quantity - _available[chem]))
             return false;

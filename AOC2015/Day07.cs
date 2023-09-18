@@ -44,7 +44,7 @@ public sealed class Day07 : Day
                     {
                         _actions.Add(destination, () =>
                         {
-                            if (_wires.ContainsKey(destination)) return _wires[destination];
+                            if (_wires.TryGetValue(destination, out var wire)) return wire;
 
                             var res = _actions[split[0]]();
                             _wires.Add(destination, res);
@@ -62,7 +62,7 @@ public sealed class Day07 : Day
                         case "AND":
                             _actions.Add(destination, () =>
                             {
-                                if (_wires.ContainsKey(destination)) return _wires[destination];
+                                if (_wires.TryGetValue(destination, out var wire)) return wire;
 
                                 var res = (ushort)((ushort.TryParse(split[0], out var v)
                                     ? v
@@ -74,7 +74,7 @@ public sealed class Day07 : Day
                         case "OR":
                             _actions.Add(destination, () =>
                             {
-                                if (_wires.ContainsKey(destination)) return _wires[destination];
+                                if (_wires.TryGetValue(destination, out var wire)) return wire;
 
                                 var res = (ushort)((ushort.TryParse(split[0], out var v)
                                     ? v
@@ -86,7 +86,7 @@ public sealed class Day07 : Day
                         case "LSHIFT":
                             _actions.Add(destination, () =>
                             {
-                                if (_wires.ContainsKey(destination)) return _wires[destination];
+                                if (_wires.TryGetValue(destination, out var wire)) return wire;
 
                                 var res = (ushort)(_actions[split[0]]() << ushort.Parse(split[2]));
                                 _wires.Add(destination, res);
@@ -96,7 +96,7 @@ public sealed class Day07 : Day
                         case "RSHIFT":
                             _actions.Add(destination, () =>
                             {
-                                if (_wires.ContainsKey(destination)) return _wires[destination];
+                                if (_wires.TryGetValue(destination, out var wire)) return wire;
 
                                 var res = (ushort)(_actions[split[0]]() >> ushort.Parse(split[2]));
                                 _wires.Add(destination, res);
@@ -114,9 +114,9 @@ public sealed class Day07 : Day
     {
         ProcessInstructions();
         var p1 = _actions["a"]();
-        
+
         ProcessInstructions();
-        
+
         _actions["b"] = () => p1;
         return _actions["a"]();
     }
