@@ -13,7 +13,43 @@ public sealed class Day16 : Day
     {
     }
 
-    public override object Part1() => "";
+    private IEnumerable<string> Common()
+    {
+        return Input
+            .Select(i => Regex.Replace(i, @": \d\d", ": 9"))
+            .WhereMatch("children: 3")
+            .WhereMatch("samoyeds: 2")
+            .WhereMatch("akitas: 0")
+            .WhereMatch("vizslas: 0")
+            .WhereMatch("cars: 2")
+            .WhereMatch("perfumes: 1");
+    }
 
-    public override object Part2() => "";
+    public override object Part1()
+    {
+        return Common()
+            .WhereMatch("cats: 7")
+            .WhereMatch("trees: 3")
+            .WhereMatch("pomeranians: 3")
+            .WhereMatch("goldfish: 5")
+            .Single()
+            .Split(' ', ':')[1];
+    }
+
+    public override object Part2()
+    {
+        return Common()
+            .WhereMatch("cats: [89]")
+            .WhereMatch("trees: [4-9]")
+            .WhereMatch("pomeranians: [012]")
+            .WhereMatch("goldfish: [0-4]")
+            .Single()
+            .Split(' ', ':')[1];
+    }
+}
+
+public static class Day16Extensions
+{
+    public static IEnumerable<string> WhereMatch(this IEnumerable<string> input, string pattern) =>
+        input.Where(i => !i.Contains(pattern.Split(' ')[0]) || Regex.IsMatch(i, pattern));
 }
