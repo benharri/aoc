@@ -21,6 +21,7 @@ public class Test2015
     [DataRow(typeof(Day13), "733", "725")]
     [DataRow(typeof(Day14), "2655", "1059")]
     [DataRow(typeof(Day15), "222870", "117936")]
+    [DataRow(typeof(Day16), "103", "405")]
     public void CheckAllDays(Type dayType, string part1, string part2)
     {
         Common.CheckDay(dayType, part1, part2);
