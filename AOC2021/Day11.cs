@@ -3,14 +3,10 @@ namespace AOC2021;
 /// <summary>
 /// Day 11: <a href="https://adventofcode.com/2021/day/11"/>
 /// </summary>
-public sealed class Day11 : Day
+public sealed class Day11() : Day(2021, 11, "Dumbo Octopus")
 {
     private int _flashTally, _flashesAfter100, _totalTurns;
     private int[][]? _octopusField;
-
-    public Day11() : base(2021, 11, "Dumbo Octopus")
-    {
-    }
 
     public override void ProcessInput()
     {

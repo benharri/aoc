@@ -3,13 +3,9 @@ namespace AOC2020;
 /// <summary>
 ///     Day 18: <a href="https://adventofcode.com/2020/day/18" />
 /// </summary>
-public sealed class Day18 : Day
+public sealed class Day18() : Day(2020, 18, "Operation Order")
 {
     private List<string>? _expressions;
-
-    public Day18() : base(2020, 18, "Operation Order")
-    {
-    }
 
     public override void ProcessInput()
     {

@@ -3,14 +3,10 @@ namespace AOC2022;
 /// <summary>
 /// Day 6: <a href="https://adventofcode.com/2022/day/6"/>
 /// </summary>
-public sealed class Day06 : Day
+public sealed class Day06() : Day(2022, 6, "Tuning Trouble")
 {
     private string? _signal;
 
-    public Day06() : base(2022, 6, "Tuning Trouble")
-    {
-    }
-    
     public override void ProcessInput() =>
         _signal = Input.First();
 

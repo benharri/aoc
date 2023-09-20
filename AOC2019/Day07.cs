@@ -1,12 +1,8 @@
 namespace AOC2019;
 
-public sealed class Day07 : Day
+public sealed class Day07() : Day(2019, 7, "Amplification Circuit")
 {
     private readonly IntCodeVM[] _amplifiers = new IntCodeVM[5];
-
-    public Day07() : base(2019, 7, "Amplification Circuit")
-    {
-    }
 
     public override void ProcessInput()
     {

@@ -5,13 +5,9 @@ namespace AOC2022;
 /// <summary>
 /// Day 13: <a href="https://adventofcode.com/2022/day/13"/>
 /// </summary>
-public sealed class Day13 : Day
+public sealed class Day13() : Day(2022, 13, "Distress Signal")
 {
     private IEnumerable<JsonNode>? _packets;
-
-    public Day13() : base(2022, 13, "Distress Signal")
-    {
-    }
 
     public override void ProcessInput() =>
         _packets = Input.Where(line => !string.IsNullOrWhiteSpace(line)).Select(s => JsonNode.Parse(s)!);

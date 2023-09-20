@@ -3,14 +3,10 @@ namespace AOC2022;
 /// <summary>
 /// Day 9: <a href="https://adventofcode.com/2022/day/9"/>
 /// </summary>
-public sealed class Day09 : Day
+public sealed class Day09() : Day(2022, 9, "Rope Bridge")
 {
     private List<(char direction, int count)>? _steps;
-    
-    public Day09() : base(2022, 9, "Rope Bridge")
-    {
-    }
-    
+
     public override void ProcessInput() =>
         _steps = Input.Select(line => (line[0], int.Parse(line[2..]))).ToList();
 

@@ -3,13 +3,9 @@ namespace AOC2015;
 /// <summary>
 /// Day 2: <a href="https://adventofcode.com/2015/day/2"/>
 /// </summary>
-public sealed class Day02 : Day
+public sealed class Day02() : Day(2015, 2, "I Was Told There Would Be No Math")
 {
     private List<List<int>>? _gifts;
-    
-    public Day02() : base(2015, 2, "I Was Told There Would Be No Math")
-    {
-    }
 
     public override void ProcessInput()
     {

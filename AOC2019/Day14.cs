@@ -1,14 +1,10 @@
 namespace AOC2019;
 
-public sealed class Day14 : Day
+public sealed class Day14() : Day(2019, 14, "Space Stoichiometry")
 {
     private Dictionary<string, Reaction>? _reactions;
     private Dictionary<string, long> _available = new();
 
-    public Day14() : base(2019, 14, "Space Stoichiometry")
-    {
-    }
-    
     public override void ProcessInput()
     {
         _reactions = Input

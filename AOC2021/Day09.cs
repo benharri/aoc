@@ -5,15 +5,11 @@ namespace AOC2021;
 /// <summary>
 /// Day 9: <a href="https://adventofcode.com/2021/day/9"/>
 /// </summary>
-public sealed class Day09 : Day
+public sealed class Day09() : Day(2021, 9, "Smoke Basin")
 {
     private int _part1Sum;
     private List<(int x, int y)>? _lowPoints;
     private List<string>? _map;
-
-    public Day09() : base(2021, 9, "Smoke Basin")
-    {
-    }
 
     public override void ProcessInput()
     {

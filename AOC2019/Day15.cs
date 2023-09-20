@@ -1,13 +1,9 @@
 namespace AOC2019;
 
-public sealed class Day15 : Day
+public sealed class Day15() : Day(2019, 15, "Oxygen System")
 {
     private readonly bool _verbose = false;
     private IntCodeVM? _vm;
-
-    public Day15() : base(2019, 15, "Oxygen System")
-    {
-    }
 
     public override void ProcessInput()
     {

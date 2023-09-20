@@ -3,14 +3,10 @@ namespace AOC2020;
 /// <summary>
 ///     Day 6: <a href="https://adventofcode.com/2020/day/6" />
 /// </summary>
-public sealed class Day06 : Day
+public sealed class Day06() : Day(2020, 6, "Custom Customs")
 {
     private int _countPart1;
     private int _countPart2;
-
-    public Day06() : base(2020, 6, "Custom Customs")
-    {
-    }
 
     public override void ProcessInput()
     {

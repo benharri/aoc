@@ -6,12 +6,8 @@ namespace AOC2015;
 /// <summary>
 /// Day 12: <a href="https://adventofcode.com/2015/day/12"/>
 /// </summary>
-public sealed partial class Day12 : Day
+public sealed partial class Day12() : Day(2015, 12, "JSAbacusFramework.io")
 {
-    public Day12() : base(2015, 12, "JSAbacusFramework.io")
-    {
-    }
-
     [GeneratedRegex(@"-?\d+")]
     private static partial Regex Digits();
 

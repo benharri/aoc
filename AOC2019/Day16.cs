@@ -1,13 +1,9 @@
 namespace AOC2019;
 
-public sealed class Day16 : Day
+public sealed class Day16() : Day(2019, 16, "Flawed Frequency Transmission")
 {
     private static readonly int[] BasePattern = { 0, 1, 0, -1 };
     private int[]? _initialList;
-
-    public Day16() : base(2019, 16, "Flawed Frequency Transmission")
-    {
-    }
 
     public override void ProcessInput()
     {

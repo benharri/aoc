@@ -3,14 +3,10 @@ namespace AOC2015;
 /// <summary>
 /// Day 5: <a href="https://adventofcode.com/2015/day/5"/>
 /// </summary>
-public sealed partial class Day05 : Day
+public sealed partial class Day05() : Day(2015, 5, "Doesn't He Have Intern-Elves For This?")
 {
     private static readonly List<char> Vowels = new() { 'a', 'e', 'i', 'o', 'u' };
     private List<string> _strings = new();
-
-    public Day05() : base(2015, 5, "Doesn't He Have Intern-Elves For This?")
-    {
-    }
 
     [GeneratedRegex(@"(.)\1")]
     private static partial Regex DoubleLetter();

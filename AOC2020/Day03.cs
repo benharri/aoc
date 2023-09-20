@@ -3,13 +3,9 @@ namespace AOC2020;
 /// <summary>
 ///     Day 3: <a href="https://adventofcode.com/2020/day/3" />
 /// </summary>
-public sealed class Day03 : Day
+public sealed class Day03() : Day(2020, 3, "Toboggan Trajectory")
 {
     private string[]? _grid;
-
-    public Day03() : base(2020, 3, "Toboggan Trajectory")
-    {
-    }
 
     public override void ProcessInput()
     {

@@ -3,13 +3,9 @@ namespace AOC2020;
 /// <summary>
 ///     Day 5: <a href="https://adventofcode.com/2020/day/5" />
 /// </summary>
-public sealed class Day05 : Day
+public sealed class Day05() : Day(2020, 5, "Binary Boarding")
 {
     private ImmutableHashSet<int>? _ids;
-
-    public Day05() : base(2020, 5, "Binary Boarding")
-    {
-    }
 
     public override void ProcessInput()
     {

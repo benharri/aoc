@@ -3,7 +3,7 @@ namespace AOC2021;
 /// <summary>
 /// Day 10: <a href="https://adventofcode.com/2021/day/10"/>
 /// </summary>
-public sealed class Day10 : Day
+public sealed class Day10() : Day(2021, 10, "Syntax Scoring")
 {
     private static readonly Dictionary<char, char> MatchedBrackets = new()
     {
@@ -32,10 +32,6 @@ public sealed class Day10 : Day
     private readonly List<long> _scores2 = new();
 
     private long _score1;
-
-    public Day10() : base(2021, 10, "Syntax Scoring")
-    {
-    }
 
     public override void ProcessInput()
     {

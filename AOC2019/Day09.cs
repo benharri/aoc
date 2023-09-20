@@ -1,12 +1,8 @@
 namespace AOC2019;
 
-public sealed class Day09 : Day
+public sealed class Day09() : Day(2019, 9, "Sensor Boost")
 {
     private IntCodeVM? _vm;
-
-    public Day09() : base(2019, 9, "Sensor Boost")
-    {
-    }
 
     public override void ProcessInput()
     {

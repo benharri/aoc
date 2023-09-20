@@ -3,14 +3,10 @@ namespace AOC2015;
 /// <summary>
 /// Day 6: <a href="https://adventofcode.com/2015/day/6"/>
 /// </summary>
-public sealed partial class Day06 : Day
+public sealed partial class Day06() : Day(2015, 6, "Probably a Fire Hazard")
 {
     private readonly Dictionary<(int x, int y), int> _brightnessGrid = new();
     private readonly Dictionary<(int x, int y), bool> _lightGrid = new();
-
-    public Day06() : base(2015, 6, "Probably a Fire Hazard")
-    {
-    }
 
     [GeneratedRegex(@"(\d+),(\d+) through (\d+),(\d+)")]
     private static partial Regex Coords();

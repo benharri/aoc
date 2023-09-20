@@ -3,13 +3,9 @@ namespace AOC2021;
 /// <summary>
 /// Day 24: <a href="https://adventofcode.com/2021/day/24"/>
 /// </summary>
-public sealed class Day24 : Day
+public sealed class Day24() : Day(2021, 24, "Arithmetic Logic Unit")
 {
     private readonly Dictionary<int, (int x, int y)> _keys = new();
-
-    public Day24() : base(2021, 24, "Arithmetic Logic Unit")
-    {
-    }
 
     public override void ProcessInput()
     {

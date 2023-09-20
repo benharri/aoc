@@ -5,25 +5,17 @@ namespace AOC2015;
 /// <summary>
 /// Day 13: <a href="https://adventofcode.com/2015/day/13"/>
 /// </summary>
-public sealed class Day13 : Day
+public sealed class Day13() : Day(2015, 13, "Knights of the Dinner Table")
 {
     private readonly Dictionary<(string person1, string person2), int> _happinessMap = new();
     private readonly List<string> _people = new();
 
-    public Day13() : base(2015, 13, "Knights of the Dinner Table")
-    {
-    }
-
     public override void ProcessInput()
     {
-        foreach (var line in Input)
-            AddToHappinessMap(line);
+        foreach (var line in Input) AddToHappinessMap(line);
     }
 
-    public override object Part1()
-    {
-        return ComputeHappiness();
-    }
+    public override object Part1() => ComputeHappiness();
 
     public override object Part2()
     {
@@ -68,7 +60,7 @@ public sealed class Day13 : Day
         return new() { items };
     }
 
-    public long ComputeHappiness()
+    private long ComputeHappiness()
     {
         var possibilities = BuildPermutations(_people);
 

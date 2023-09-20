@@ -5,14 +5,10 @@ namespace AOC2022;
 /// <summary>
 /// Day 1: <a href="https://adventofcode.com/2022/day/1"/>
 /// </summary>
-public sealed class Day01 : Day
+public sealed class Day01() : Day(2022, 1, "Calorie Counting")
 {
     private List<List<int>>? _elfCalories;
 
-    public Day01() : base(2022, 1, "Calorie Counting")
-    {
-    }
-    
     public override void ProcessInput() =>
         _elfCalories = Input
             .Split("")

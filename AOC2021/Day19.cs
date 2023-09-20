@@ -3,17 +3,13 @@ namespace AOC2021;
 /// <summary>
 /// Day 19: <a href="https://adventofcode.com/2021/day/19"/>
 /// </summary>
-public sealed class Day19 : Day
+public sealed class Day19() : Day(2021, 19, "Beacon Scanner")
 {
     private static readonly (int, int, int)[] Axes =
         { (0, 1, 0), (0, -1, 0), (1, 0, 0), (-1, 0, 0), (0, 0, 1), (0, 0, -1) };
 
     private List<HashSet<Vector3>>? _scans;
     private List<HashSet<Vector3>> _scanners = new();
-
-    public Day19() : base(2021, 19, "Beacon Scanner")
-    {
-    }
 
     public override void ProcessInput()
     {

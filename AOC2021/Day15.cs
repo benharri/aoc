@@ -12,16 +12,12 @@ public record Node
 /// <summary>
 /// Day 15: <a href="https://adventofcode.com/2021/day/15"/>
 /// </summary>
-public sealed class Day15 : Day
+public sealed class Day15() : Day(2021, 15, "Chiton")
 {
     private static readonly (int x, int y)[] Adjacent = { (-1, 0), (1, 0), (0, -1), (0, 1) };
     private Dictionary<(int x, int y), Node>? _fullGrid;
     private Dictionary<(int x, int y), Node>? _grid;
     private int _width;
-
-    public Day15() : base(2021, 15, "Chiton")
-    {
-    }
 
     public override void ProcessInput()
     {

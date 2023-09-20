@@ -3,15 +3,11 @@ namespace AOC2020;
 /// <summary>
 ///     Day 15: <a href="https://adventofcode.com/2020/day/15" />
 /// </summary>
-public sealed class Day15 : Day
+public sealed class Day15() : Day(2020, 15, "Rambunctious Recitation")
 {
     private int[]? _turns;
     private int _current;
     private int _i;
-
-    public Day15() : base(2020, 15, "Rambunctious Recitation")
-    {
-    }
 
     public override void ProcessInput()
     {

@@ -3,13 +3,9 @@ namespace AOC2015;
 /// <summary>
 /// Day 11: <a href="https://adventofcode.com/2015/day/11"/>
 /// </summary>
-public sealed class Day11 : Day
+public sealed class Day11() : Day(2015, 11, "Corporate Policy")
 {
     private char[]? _password;
-
-    public Day11() : base(2015, 11, "Corporate Policy")
-    {
-    }
 
     public override void ProcessInput()
     {

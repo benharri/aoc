@@ -3,16 +3,12 @@ namespace AOC2020;
 /// <summary>
 ///     Day 23: <a href="https://adventofcode.com/2020/day/23" />
 /// </summary>
-public sealed class Day23 : Day
+public sealed class Day23() : Day(2020, 23, "Crab Cups")
 {
     private readonly Dictionary<long, long> _cups = new();
     private ImmutableList<long>? _initialCups;
     private long[]? _move;
     private long _current;
-
-    public Day23() : base(2020, 23, "Crab Cups")
-    {
-    }
 
     public override void ProcessInput()
     {

@@ -1,11 +1,7 @@
 namespace AOC2019;
 
-public sealed class Day23 : Day
+public sealed class Day23() : Day(2019, 23, "Category Six")
 {
-    public Day23() : base(2019, 23, "Category Six")
-    {
-    }
-    
     public override void ProcessInput()
     {
     }

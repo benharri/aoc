@@ -3,15 +3,11 @@ namespace AOC2015;
 /// <summary>
 /// Day 17: <a href="https://adventofcode.com/2015/day/17"/>
 /// </summary>
-public sealed class Day17 : Day
+public sealed class Day17() : Day(2015, 17, "No Such Thing as Too Much")
 {
     private List<int>? _containers;
     private IEnumerable<List<int>>? _combinations;
 
-    public Day17() : base(2015, 17, "No Such Thing as Too Much")
-    {
-    }
-    
     public override void ProcessInput()
     {
         _containers = Input.Select(int.Parse).ToList();

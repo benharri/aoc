@@ -1,13 +1,9 @@
 namespace AOC2019;
 
-public sealed class Day17 : Day
+public sealed class Day17() : Day(2019, 17, "Set and Forget")
 {
     private IntCodeVM? _vm;
 
-    public Day17() : base(2019, 17, "Set and Forget")
-    {
-    }
-    
     public override void ProcessInput()
     {
         _vm = new(Input.First());

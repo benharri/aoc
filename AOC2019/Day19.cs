@@ -1,13 +1,9 @@
 namespace AOC2019;
 
-public sealed class Day19 : Day
+public sealed class Day19() : Day(2019, 19, "Tractor Beam")
 {
     private long[,]? _grid;
     private IntCodeVM? _vm;
-
-    public Day19() : base(2019, 19, "Tractor Beam")
-    {
-    }
 
     public override void ProcessInput(){
         _vm = new(Input.First());

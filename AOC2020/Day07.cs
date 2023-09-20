@@ -3,13 +3,9 @@ namespace AOC2020;
 /// <summary>
 ///     Day 7: <a href="https://adventofcode.com/2020/day/7" />
 /// </summary>
-public sealed class Day07 : Day
+public sealed class Day07() : Day(2020, 7, "Handy Haversacks")
 {
     private Dictionary<string, IEnumerable<(int Weight, string Name)?>>? _rules;
-
-    public Day07() : base(2020, 7, "Handy Haversacks")
-    {
-    }
 
     public override void ProcessInput()
     {

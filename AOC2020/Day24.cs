@@ -3,7 +3,7 @@ namespace AOC2020;
 /// <summary>
 ///     Day 24: <a href="https://adventofcode.com/2020/day/24" />
 /// </summary>
-public sealed class Day24 : Day
+public sealed class Day24() : Day(2020, 24, "Lobby Layout")
 {
     private static readonly Dictionary<string, (int q, int r, int s)> Directions = new()
     {
@@ -16,10 +16,6 @@ public sealed class Day24 : Day
     };
 
     private Dictionary<(int q, int r, int s), Tile>? _tiles;
-
-    public Day24() : base(2020, 24, "Lobby Layout")
-    {
-    }
 
     public override void ProcessInput()
     {
