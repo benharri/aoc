@@ -55,12 +55,17 @@ public abstract class Day(int year, int day, string puzzleName)
             .OrderBy(d => d.DayNumber)
             .ToList();
 
-        if (days == null || !days.Any())
+        if (days == null || days.Count == 0)
         {
             throw new ApplicationException("no days found");
         }
 
-        if (args.Length == 1 && int.TryParse(args[0], out var dayNum))
+        if (args is [_, "--test"] or ["--test", ..])
+        {
+            UseTestInput = true;
+        }
+
+        if (int.TryParse(args[0], out var dayNum))
         {
             var day = days.FirstOrDefault(d => d.DayNumber == dayNum);
             if (day != null) day.AllParts();
