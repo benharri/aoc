@@ -5,16 +5,12 @@ namespace AOC2022;
 /// <summary>
 /// Day 5: <a href="https://adventofcode.com/2022/day/5"/>
 /// </summary>
-public sealed class Day05 : Day
+public sealed class Day05() : Day(2022, 5, "Supply Stacks")
 {
     private IEnumerable<(int quantity, int from, int to)>? _instructions;
     private List<Stack<char>>? _stacks;
     private List<Stack<char>>? _stacksPart2;
 
-    public Day05() : base(2022, 5, "Supply Stacks")
-    {
-    }
-    
     public override void ProcessInput()
     {
         var s = Input.Split("").ToList();

@@ -1,13 +1,9 @@
 namespace AOC2019;
 
-public sealed class Day05 : Day
+public sealed class Day05() : Day(2019, 5, "Sunny with a Chance of Asteroids")
 {
     private IEnumerable<int>? _tape;
     private int _output;
-
-    public Day05() : base(2019, 5, "Sunny with a Chance of Asteroids")
-    {
-    }
 
     public override void ProcessInput()
     {

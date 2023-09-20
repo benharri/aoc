@@ -5,14 +5,10 @@ namespace AOC2022;
 /// <summary>
 /// Day 11: <a href="https://adventofcode.com/2022/day/11"/>
 /// </summary>
-public sealed class Day11 : Day
+public sealed class Day11() : Day(2022, 11, "Monkey in the Middle")
 {
     private Monkey[]? _monkeys;
     private long _lcm;
-
-    public Day11() : base(2022, 11, "Monkey in the Middle")
-    {
-    }
 
     public override void ProcessInput()
     {

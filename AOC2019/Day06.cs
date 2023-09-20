@@ -1,12 +1,8 @@
 namespace AOC2019;
 
-public sealed class Day06 : Day
+public sealed class Day06() : Day(2019, 6, "Universal Orbit Map")
 {
     private Dictionary<string, string>? _input;
-
-    public Day06() : base(2019, 6, "Universal Orbit Map")
-    {
-    }
 
     public override void ProcessInput()
     {

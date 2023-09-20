@@ -3,12 +3,8 @@ namespace AOC2021;
 /// <summary>
 /// Day 5: <a href="https://adventofcode.com/2021/day/5"/>
 /// </summary>
-public sealed partial class Day05 : Day
+public sealed partial class Day05() : Day(2021, 5, "Hydrothermal Venture")
 {
-    public Day05() : base(2021, 5, "Hydrothermal Venture")
-    {
-    }
-
     public override void ProcessInput()
     {
     }

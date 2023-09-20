@@ -1,11 +1,7 @@
 namespace AOC2019;
 
-public sealed class Day25 : Day
+public sealed class Day25() : Day(2019, 25, "Cryostasis")
 {
-    public Day25() : base(2019, 25, "Cryostasis")
-    {
-    }
-    
     public override void ProcessInput()
     {
     }

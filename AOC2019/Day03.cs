@@ -1,13 +1,9 @@
 namespace AOC2019;
 
-public sealed class Day03 : Day
+public sealed class Day03() : Day(2019, 3, "Crossed Wires")
 {
     private IEnumerable<(int, int)>? _intersections;
     private List<Dictionary<(int, int), int>>? _wires;
-
-    public Day03() : base(2019, 3, "Crossed Wires")
-    {
-    }
 
     public override void ProcessInput()
     {

@@ -1,12 +1,8 @@
 namespace AOC2019;
 
-public sealed class Day04 : Day
+public sealed class Day04() : Day(2019, 4, "Secure Container")
 {
     private int _start, _end;
-
-    public Day04() : base(2019, 4, "Secure Container")
-    {
-    }
 
     public override void ProcessInput()
     {

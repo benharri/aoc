@@ -3,13 +3,9 @@ namespace AOC2021;
 /// <summary>
 /// Day 12: <a href="https://adventofcode.com/2021/day/12"/>
 /// </summary>
-public sealed class Day12 : Day
+public sealed class Day12() : Day(2021, 12, "Passage Pathing")
 {
     private readonly Dictionary<string, List<string>> _edges = new();
-
-    public Day12() : base(2021, 12, "Passage Pathing")
-    {
-    }
 
     public override void ProcessInput()
     {

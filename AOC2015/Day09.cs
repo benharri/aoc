@@ -3,14 +3,10 @@ namespace AOC2015;
 /// <summary>
 /// Day 9: <a href="https://adventofcode.com/2015/day/9"/>
 /// </summary>
-public sealed class Day09 : Day
+public sealed class Day09() : Day(2015, 9, "All in a Single Night")
 {
     private readonly List<Distance> _distances = new();
     private int _shortest = int.MaxValue, _longest;
-
-    public Day09() : base(2015, 9, "All in a Single Night")
-    {
-    }
 
     public override void ProcessInput()
     {

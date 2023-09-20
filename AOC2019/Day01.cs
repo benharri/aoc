@@ -1,13 +1,9 @@
 namespace AOC2019;
 
-public sealed class Day01 : Day
+public sealed class Day01() : Day(2019, 1, "The Tyranny of the Rocket Equation")
 {
     private IEnumerable<int>? _masses;
 
-    public Day01() : base(2019, 1, "The Tyranny of the Rocket Equation")
-    {
-    }
-    
     public override void ProcessInput()
     {
         _masses = Input.Select(int.Parse);

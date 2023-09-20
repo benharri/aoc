@@ -3,15 +3,11 @@ namespace AOC2018;
 /// <summary>
 /// Day 3: <a href="https://adventofcode.com/2018/day/3"/>
 /// </summary>
-public sealed partial class Day03 : Day
+public sealed partial class Day03() : Day(2018, 3, "No Matter How You Slice It")
 {
     private List<Claim>? _claims;
     private readonly Dictionary<(int x, int y), List<int>> _plots = new();
 
-    public Day03() : base(2018, 3, "No Matter How You Slice It")
-    {
-    }
-    
     [GeneratedRegex(@"\d+")]
     private static partial Regex Digits();
 

@@ -3,14 +3,10 @@ namespace AOC2015;
 /// <summary>
 /// Day 7: <a href="https://adventofcode.com/2015/day/7"/>
 /// </summary>
-public sealed class Day07 : Day
+public sealed class Day07() : Day(2015, 7, "Some Assembly Required")
 {
     private readonly Dictionary<string, Func<ushort>> _actions = new();
     private readonly Dictionary<string, ushort> _wires = new();
-
-    public Day07() : base(2015, 7, "Some Assembly Required")
-    {
-    }
 
     public override void ProcessInput()
     {

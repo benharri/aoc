@@ -3,13 +3,9 @@ namespace AOC2021;
 /// <summary>
 /// Day 16: <a href="https://adventofcode.com/2021/day/16"/>
 /// </summary>
-public sealed class Day16 : Day
+public sealed class Day16() : Day(2021, 16, "Packet Decoder")
 {
     private Packet? _packet;
-
-    public Day16() : base(2021, 16, "Packet Decoder")
-    {
-    }
 
     public override void ProcessInput()
     {

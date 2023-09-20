@@ -3,15 +3,11 @@ namespace AOC2022;
 /// <summary>
 /// Day 14: <a href="https://adventofcode.com/2022/day/14"/>
 /// </summary>
-public sealed class Day14 : Day
+public sealed class Day14() : Day(2022, 14, "Regolith Reservoir")
 {
     private readonly (int x, int y) _start = (500, 0);
     private int _bottom;
     private HashSet<(int x, int y)>? _walls;
-
-    public Day14() : base(2022, 14, "Regolith Reservoir")
-    {
-    }
 
     public override void ProcessInput()
     {

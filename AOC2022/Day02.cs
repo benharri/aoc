@@ -3,14 +3,10 @@ namespace AOC2022;
 /// <summary>
 /// Day 2: <a href="https://adventofcode.com/2022/day/2"/>
 /// </summary>
-public sealed class Day02 : Day
+public sealed class Day02() : Day(2022, 2, "Rock Paper Scissors")
 {
     private int _score1;
     private int _score2;
-
-    public Day02() : base(2022, 2, "Rock Paper Scissors")
-    {
-    }
 
     public override void ProcessInput()
     {

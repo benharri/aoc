@@ -3,14 +3,10 @@ namespace AOC2020;
 /// <summary>
 ///     Day 21: <a href="https://adventofcode.com/2020/day/21" />
 /// </summary>
-public sealed class Day21 : Day
+public sealed class Day21() : Day(2020, 21, "Allergen Assessment")
 {
     private IEnumerable<(string[] Allergens, string[] Ingredients)>? _parsedFoods;
     private IEnumerable<(string Allergen, string Ingredient)>? _dangerousFoods;
-
-    public Day21() : base(2020, 21, "Allergen Assessment")
-    {
-    }
 
     public override void ProcessInput()
     {

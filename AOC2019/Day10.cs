@@ -1,14 +1,10 @@
 namespace AOC2019;
 
-public sealed class Day10 : Day
+public sealed class Day10() : Day(2019, 10, "Monitoring Station")
 {
     private HashSet<(int x, int y)>? _asteroids;
     private (int x, int y) _best = (x: -1, y: -1);
     private int _bestCanSee;
-
-    public Day10() : base(2019, 10, "Monitoring Station")
-    {
-    }
 
     public override void ProcessInput()
     {

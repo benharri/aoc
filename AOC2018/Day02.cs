@@ -3,12 +3,8 @@ namespace AOC2018;
 /// <summary>
 /// Day 2: <a href="https://adventofcode.com/2018/day/2"/>
 /// </summary>
-public sealed class Day02 : Day
+public sealed class Day02() : Day(2018, 2, "Inventory Management System")
 {
-    public Day02() : base(2018, 2, "Inventory Management System")
-    {
-    }
-
     public override void ProcessInput()
     {
     }

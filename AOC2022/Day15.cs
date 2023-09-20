@@ -3,12 +3,8 @@ namespace AOC2022;
 /// <summary>
 /// Day 15: <a href="https://adventofcode.com/2022/day/15"/>
 /// </summary>
-public sealed class Day15 : Day
+public sealed class Day15() : Day(2022, 15, "Beacon Exclusion Zone")
 {
-    public Day15() : base(2022, 15, "Beacon Exclusion Zone")
-    {
-    }
-    
     public override void ProcessInput()
     {
     }

@@ -3,14 +3,10 @@ namespace AOC2022;
 /// <summary>
 /// Day 10: <a href="https://adventofcode.com/2022/day/10"/>
 /// </summary>
-public sealed class Day10 : Day
+public sealed class Day10() : Day(2022, 10, "Cathode-Ray Tube")
 {
     private readonly List<int> _interestingSignals = new();
     private readonly List<char> _charMap = Enumerable.Range(0, 6 * 40).Select(_ => ' ').ToList();
-
-    public Day10() : base(2022, 10, "Cathode-Ray Tube")
-    {
-    }
 
     public override void ProcessInput()
     {

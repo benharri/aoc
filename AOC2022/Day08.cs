@@ -3,14 +3,10 @@ namespace AOC2022;
 /// <summary>
 /// Day 8: <a href="https://adventofcode.com/2022/day/8"/>
 /// </summary>
-public sealed class Day08 : Day
+public sealed class Day08() : Day(2022, 8, "Treetop Tree House")
 {
     private int[][]? _trees;
 
-    public Day08() : base(2022, 8, "Treetop Tree House")
-    {
-    }
-    
     public override void ProcessInput() =>
         _trees = Input.Select(line => line.Select(c => c - '0').ToArray()).ToArray();
 

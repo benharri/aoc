@@ -3,14 +3,10 @@ namespace AOC2022;
 /// <summary>
 /// Day 4: <a href="https://adventofcode.com/2022/day/4"/>
 /// </summary>
-public sealed class Day04 : Day
+public sealed class Day04() : Day(2022, 4, "Camp Cleanup")
 {
     private List<(Range r1, Range r2)>? _ranges;
 
-    public Day04() : base(2022, 4, "Camp Cleanup")
-    {
-    }
-    
     public override void ProcessInput() =>
         _ranges = Input
             .Select(line => line.Split(',').SelectMany(q => q.Split('-')).Select(int.Parse).ToList())

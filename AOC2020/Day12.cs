@@ -3,12 +3,8 @@ namespace AOC2020;
 /// <summary>
 ///     Day 12: <a href="https://adventofcode.com/2020/day/12" />
 /// </summary>
-public sealed class Day12 : Day
+public sealed class Day12() : Day(2020, 12, "Rain Risk")
 {
-    public Day12() : base(2020, 12, "Rain Risk")
-    {
-    }
-
     public override void ProcessInput()
     {
     }

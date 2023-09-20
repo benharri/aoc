@@ -3,17 +3,13 @@ namespace AOC2021;
 /// <summary>
 /// Day 21: <a href="https://adventofcode.com/2021/day/21"/>
 /// </summary>
-public sealed class Day21 : Day
+public sealed class Day21() : Day(2021, 21, "Dirac Dice")
 {
     private int _player1, _player2;
     private readonly Dictionary<int, ulong> _possibleRollOutComes = new();
     private int _deterministicDie = 1;
     private int _rollCount;
     private ulong _player1Victories, _player2Victories;
-
-    public Day21() : base(2021, 21, "Dirac Dice")
-    {
-    }
 
     public override void ProcessInput()
     {

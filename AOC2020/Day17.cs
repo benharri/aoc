@@ -3,14 +3,10 @@ namespace AOC2020;
 /// <summary>
 ///     Day 17: <a href="https://adventofcode.com/2020/day/17" />
 /// </summary>
-public sealed class Day17 : Day
+public sealed class Day17() : Day(2020, 17, "Conway Cubes")
 {
     private readonly Dictionary<(int x, int y, int z), char> _plane = new();
     private readonly Dictionary<(int x, int y, int z, int w), char> _plane4 = new();
-
-    public Day17() : base(2020, 17, "Conway Cubes")
-    {
-    }
 
     public override void ProcessInput()
     {

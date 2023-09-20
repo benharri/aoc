@@ -1,12 +1,8 @@
 namespace AOC2019;
 
-public sealed class Day08 : Day
+public sealed class Day08() : Day(2019, 8, "Space Image Format")
 {
     private List<List<char>>? _photo;
-
-    public Day08() : base(2019, 8, "Space Image Format")
-    {
-    }
 
     public override void ProcessInput()
     {

@@ -3,14 +3,10 @@ namespace AOC2022;
 /// <summary>
 /// Day 7: <a href="https://adventofcode.com/2022/day/7"/>
 /// </summary>
-public sealed class Day07 : Day
+public sealed class Day07() : Day(2022, 7, "No Space Left On Device")
 {
     private readonly DefaultDictionary<string, long> _dirs = new();
 
-    public Day07() : base(2022, 7, "No Space Left On Device")
-    {
-    }
-    
     public override void ProcessInput()
     {
         var path = new Stack<string>();

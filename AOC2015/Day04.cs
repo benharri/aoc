@@ -5,13 +5,9 @@ namespace AOC2015;
 /// <summary>
 /// Day 4: <a href="https://adventofcode.com/2015/day/4"/>
 /// </summary>
-public sealed class Day04 : Day
+public sealed class Day04() : Day(2015, 4, "The Ideal Stocking Stuffer")
 {
     private string? _key;
-
-    public Day04() : base(2015, 4, "The Ideal Stocking Stuffer")
-    {
-    }
 
     public override void ProcessInput()
     {

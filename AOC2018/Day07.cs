@@ -3,12 +3,8 @@ namespace AOC2018;
 /// <summary>
 /// Day 7: <a href="https://adventofcode.com/2018/day/7"/>
 /// </summary>
-public sealed class Day07 : Day
+public sealed class Day07() : Day(2018, 7, "Puzzle Name")
 {
-    public Day07() : base(2018, 7, "Puzzle Name")
-    {
-    }
-    
     public override void ProcessInput()
     {
     }

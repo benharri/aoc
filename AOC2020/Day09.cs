@@ -3,14 +3,10 @@ namespace AOC2020;
 /// <summary>
 ///     Day 9: <a href="https://adventofcode.com/2020/day/9" />
 /// </summary>
-public sealed class Day09 : Day
+public sealed class Day09() : Day(2020, 9, "Encoding Error")
 {
     private long[]? _list;
     private long _part1;
-
-    public Day09() : base(2020, 9, "Encoding Error")
-    {
-    }
 
     public override void ProcessInput()
     {

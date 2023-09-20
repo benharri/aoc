@@ -3,14 +3,10 @@ namespace AOC2021;
 /// <summary>
 /// Day 14: <a href="https://adventofcode.com/2021/day/14"/>
 /// </summary>
-public sealed class Day14 : Day
+public sealed class Day14() : Day(2021, 14, "Extended Polymerization")
 {
     private string? _template;
     private Dictionary<string, string>? _substitutionPairs;
-
-    public Day14() : base(2021, 14, "Extended Polymerization")
-    {
-    }
 
     public override void ProcessInput()
     {

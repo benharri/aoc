@@ -3,14 +3,10 @@ namespace AOC2021;
 /// <summary>
 /// Day 20: <a href="https://adventofcode.com/2021/day/20"/>
 /// </summary>
-public sealed class Day20 : Day
+public sealed class Day20() : Day(2021, 20, "Trench Map")
 {
     private ImmutableArray<bool> _enhancementAlgorithm;
     private Image? _initialImage;
-
-    public Day20() : base(2021, 20, "Trench Map")
-    {
-    }
 
     public override void ProcessInput()
     {

@@ -3,14 +3,10 @@ namespace AOC2020;
 /// <summary>
 ///     Day 22: <a href="https://adventofcode.com/2020/day/22" />
 /// </summary>
-public sealed class Day22 : Day
+public sealed class Day22() : Day(2020, 22, "Crab Combat")
 {
     private readonly Queue<int> _deck1 = new();
     private readonly Queue<int> _deck2 = new();
-
-    public Day22() : base(2020, 22, "Crab Combat")
-    {
-    }
 
     public override void ProcessInput()
     {

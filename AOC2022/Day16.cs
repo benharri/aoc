@@ -3,12 +3,8 @@ namespace AOC2022;
 /// <summary>
 /// Day 16: <a href="https://adventofcode.com/2022/day/16"/>
 /// </summary>
-public sealed class Day16 : Day
+public sealed class Day16() : Day(2022, 16, "Proboscidea Volcanium")
 {
-    public Day16() : base(2022, 16, "Proboscidea Volcanium")
-    {
-    }
-    
     public override void ProcessInput()
     {
     }

@@ -3,13 +3,9 @@ namespace AOC2020;
 /// <summary>
 ///     Day 2: <a href="https://adventofcode.com/2020/day/1" />
 /// </summary>
-public sealed class Day02 : Day
+public sealed class Day02() : Day(2020, 2, "Password Philosophy")
 {
     private ImmutableList<Password>? _passwords;
-
-    public Day02() : base(2020, 2, "Password Philosophy")
-    {
-    }
 
     public override void ProcessInput()
     {

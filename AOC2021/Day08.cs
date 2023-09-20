@@ -3,14 +3,10 @@ namespace AOC2021;
 /// <summary>
 /// Day 8: <a href="https://adventofcode.com/2021/day/8"/>
 /// </summary>
-public sealed class Day08 : Day
+public sealed class Day08() : Day(2021, 8, "Seven Segment Search")
 {
     private static readonly List<char[]> PossibleMappings =
         "abcdefg".ToCharArray().Permute().Select(m => m.ToArray()).ToList();
-    
-    public Day08() : base(2021, 8, "Seven Segment Search")
-    {
-    }
 
     public override void ProcessInput()
     {

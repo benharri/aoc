@@ -1,12 +1,8 @@
 namespace AOC2019;
 
-public sealed class Day02 : Day
+public sealed class Day02() : Day(2019, 2, "1202 Program Alarm")
 {
     private IEnumerable<int>? _input;
-
-    public Day02() : base(2019, 2, "1202 Program Alarm")
-    {
-    }
 
     public override void ProcessInput()
     {

@@ -3,14 +3,10 @@ namespace AOC2015;
 /// <summary>
 /// Day 15: <a href="https://adventofcode.com/2015/day/15"/>
 /// </summary>
-public sealed partial class Day15 : Day
+public sealed partial class Day15() : Day(2015, 15, "Science for Hungry People")
 {
     private int _best;
     private int _best500Cals;
-
-    public Day15() : base(2015, 15, "Science for Hungry People")
-    {
-    }
 
     [GeneratedRegex(@"-?\d+")]
     private static partial Regex Digits();

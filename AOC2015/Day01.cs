@@ -1,11 +1,7 @@
 namespace AOC2015;
 
-public class Day01 : Day
+public class Day01() : Day(2015, 1, "Not Quite Lisp")
 {
-    public Day01() : base(2015, 1, "Not Quite Lisp")
-    {
-    }
-
     public override void ProcessInput()
     {
     }

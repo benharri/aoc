@@ -3,13 +3,9 @@ namespace AOC2021;
 /// <summary>
 /// Day 23: <a href="https://adventofcode.com/2021/day/23"/>
 /// </summary>
-public sealed class Day23 : Day
+public sealed class Day23() : Day(2021, 23, "Amphipod")
 {
     private List<char>? _crabs;
-
-    public Day23() : base(2021, 23, "Amphipod")
-    {
-    }
 
     public override void ProcessInput()
     {

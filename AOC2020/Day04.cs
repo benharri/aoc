@@ -5,13 +5,9 @@ namespace AOC2020;
 /// <summary>
 ///     Day 4: <a href="https://adventofcode.com/2020/day/4" />
 /// </summary>
-public sealed partial class Day04 : Day
+public sealed partial class Day04() : Day(2020, 4, "Passport Processing")
 {
     private List<Dictionary<string, string>>? _passports;
-
-    public Day04() : base(2020, 4, "Passport Processing")
-    {
-    }
 
     public override void ProcessInput() =>
         _passports = Input.Split("").Select(Parse).ToList();

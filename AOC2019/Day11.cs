@@ -1,14 +1,10 @@
 namespace AOC2019;
 
-public sealed class Day11 : Day
+public sealed class Day11() : Day(2019, 11, "Space Police")
 {
     private IntCodeVM? _vm;
     private Direction _heading;
     private long _x, _y;
-
-    public Day11() : base(2019, 11, "Space Police")
-    {
-    }
 
     public override void ProcessInput()
     {

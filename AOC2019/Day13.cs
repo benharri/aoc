@@ -1,14 +1,10 @@
 namespace AOC2019;
 
-public sealed class Day13 : Day
+public sealed class Day13() : Day(2019, 13, "Care Package")
 {
     private IntCodeVM? _vm;
     private readonly Dictionary<(long x, long y), long> _board = new();
     private readonly List<(long x, long y)> _updatedCoordinates = new();
-
-    public Day13() : base(2019, 13, "Care Package")
-    {
-    }
 
     public override void ProcessInput()
     {

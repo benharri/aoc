@@ -3,13 +3,9 @@ namespace AOC2021;
 /// <summary>
 /// Day 7: <a href="https://adventofcode.com/2021/day/7"/>
 /// </summary>
-public sealed class Day07 : Day
+public sealed class Day07() : Day(2021, 7, "The Treachery of Whales")
 {
     private List<long>? _tape;
-
-    public Day07() : base(2021, 7, "The Treachery of Whales")
-    {
-    }
 
     public override void ProcessInput()
     {

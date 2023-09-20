@@ -3,12 +3,8 @@ namespace AOC2015;
 /// <summary>
 /// Day 3: <a href="https://adventofcode.com/2015/day/3"/>
 /// </summary>
-public sealed class Day03 : Day
+public sealed class Day03() : Day(2015, 3, "Perfectly Spherical Houses in a Vacuum")
 {
-    public Day03() : base(2015, 3, "Perfectly Spherical Houses in a Vacuum")
-    {
-    }
-
     public override void ProcessInput()
     {
     }

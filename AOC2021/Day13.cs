@@ -5,14 +5,10 @@ namespace AOC2021;
 /// <summary>
 /// Day 13: <a href="https://adventofcode.com/2021/day/13"/>
 /// </summary>
-public sealed class Day13 : Day
+public sealed class Day13() : Day(2021, 13, "Transparent Origami")
 {
     private List<(int x, int y)>? _dots;
     private List<(char axis, int index)>? _folds;
-
-    public Day13() : base(2021, 13, "Transparent Origami")
-    {
-    }
 
     public override void ProcessInput()
     {

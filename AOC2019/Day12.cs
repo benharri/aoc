@@ -1,13 +1,9 @@
 namespace AOC2019;
 
-public sealed class Day12 : Day
+public sealed class Day12() : Day(2019, 12, "The N-Body Problem")
 {
     private List<Position>? _moons;
     private int _step;
-
-    public Day12() : base(2019, 12, "The N-Body Problem")
-    {
-    }
 
     public override void ProcessInput()
     {
@@ -60,22 +56,11 @@ public sealed class Day12 : Day
         return Util.Lcm(cycleX, Util.Lcm(cycleY, cycleZ));
     }
 
-    public class Position
+    public class Position(IList<int> moon)
     {
-        private List<Position> _siblings;
-        private int _x, _y, _z;
-        public int Dx, Dy, Dz;
-
-        public Position(IList<int> moon)
-        {
-            _x = moon[0];
-            _y = moon[1];
-            _z = moon[2];
-            Dx = 0;
-            Dy = 0;
-            Dz = 0;
-            _siblings = new();
-        }
+        private List<Position> _siblings = new();
+        private int _x = moon[0], _y = moon[1], _z = moon[2];
+        public int Dx = 0, Dy = 0, Dz = 0;
 
         private int KineticEnergy =>
             Math.Abs(_x) + Math.Abs(_y) + Math.Abs(_z);
