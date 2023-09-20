@@ -5,7 +5,7 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day18() : Day(2015, 18, "Like a GIF For Your Yard")
 {
-    private bool[][] _lights;
+    private bool[][]? _lights;
 
     public override void ProcessInput()
     {
@@ -44,8 +44,8 @@ public sealed class Day18() : Day(2015, 18, "Like a GIF For Your Yard")
 
     public override object Part1()
     {
-        for (var i = 0; i < 100; i++) _lights = DoStep(_lights);
-        return _lights.Sum(l => l.Count(x => x));
+        for (var i = 0; i < 100; i++) _lights = DoStep(_lights!);
+        return _lights!.Sum(l => l.Count(x => x));
     }
 
     public override object Part2()
@@ -53,10 +53,10 @@ public sealed class Day18() : Day(2015, 18, "Like a GIF For Your Yard")
         ProcessInput();
         for (var i = 0; i < 100; i++)
         {
-            _lights = DoStep(_lights);
+            _lights = DoStep(_lights!);
             _lights[1][1] = _lights[1][100] = _lights[100][1] = _lights[100][100] = true;
         }
 
-        return _lights.Sum(l => l.Count(x => x));
+        return _lights!.Sum(l => l.Count(x => x));
     }
 }
