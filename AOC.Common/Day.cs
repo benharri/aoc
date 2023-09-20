@@ -1,19 +1,12 @@
 namespace AOC.Common;
 
-public abstract class Day
+public abstract class Day(int year, int day, string puzzleName)
 {
-    protected Day(int year, int day, string puzzleName)
-    {
-        Year = year;
-        DayNumber = day;
-        PuzzleName = puzzleName;
-    }
-
     public static bool UseTestInput { get; set; }
 
-    public int Year { get; }
-    public int DayNumber { get; }
-    public string PuzzleName { get; }
+    public int Year { get; } = year;
+    public int DayNumber { get; } = day;
+    public string PuzzleName { get; } = puzzleName;
 
     protected IEnumerable<string> Input =>
         File.ReadLines(FileName);

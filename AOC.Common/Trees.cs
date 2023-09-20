@@ -14,13 +14,13 @@ public class DefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue> where TK
     }
 }
 
-public class Tree<T>
+public class Tree<T>(Tree<T>.Node root)
 {
-    public class Node
+    public class Node(Node? parent, T data)
     {
-        public Node? Parent { get; private set; }
-        public T Data { get; set; }
-        private List<Node?> Children { get; }
+        public Node? Parent { get; private set; } = parent;
+        public T Data { get; set; } = data;
+        private List<Node?> Children { get; } = new();
 
         public Node? Left
         {
@@ -47,13 +47,6 @@ public class Tree<T>
             }
         }
 
-        public Node(Node? parent, T data)
-        {
-            Parent = parent;
-            Data = data;
-            Children = new();
-        }
-
         public int DistanceToParent(Node parent)
         {
             var current = this;
@@ -68,8 +61,7 @@ public class Tree<T>
         }
     }
 
-    public Node Root { get; }
-    public Tree(Node root) => Root = root;
+    public Node Root { get; } = root;
 }
 
 public class Dijkstra<TCell, TMid> where TCell : notnull
