@@ -20,21 +20,24 @@ public abstract class Day(int year, int day, string puzzleName)
     public abstract object Part1();
     public abstract object Part2();
 
-    private void AllParts(bool verbose = true)
+    private void PrintDay(bool showTiming = true)
     {
         Console.Write($"{Year} Day {DayNumber,2}: {PuzzleName,-40} ");
 
         var s = Stopwatch.StartNew();
         ProcessInput();
         s.Stop();
-        Console.WriteLine($"{s.ScaleMilliseconds()}ms elapsed processing input");
+
+        Console.WriteLine(showTiming ? $"{s.ScaleMilliseconds()}ms elapsed processing input" : "");
+
         s.Reset();
 
         s.Start();
         var part1 = Part1();
         s.Stop();
         Console.Write($"Part 1: {part1,-45} ");
-        Console.WriteLine(verbose ? $"{s.ScaleMilliseconds()}ms elapsed" : "");
+
+        Console.WriteLine(showTiming ? $"{s.ScaleMilliseconds()}ms elapsed" : "");
 
         s.Reset();
 
@@ -42,7 +45,8 @@ public abstract class Day(int year, int day, string puzzleName)
         var part2 = Part2();
         s.Stop();
         Console.Write($"Part 2: {part2,-45} ");
-        Console.WriteLine(verbose ? $"{s.ScaleMilliseconds()}ms elapsed" : "");
+
+        Console.WriteLine(showTiming ? $"{s.ScaleMilliseconds()}ms elapsed" : "");
 
         Console.WriteLine();
     }
@@ -60,20 +64,18 @@ public abstract class Day(int year, int day, string puzzleName)
             throw new ApplicationException("no days found");
         }
 
-        if (args is [_, "--test"] or ["--test", ..])
-        {
-            UseTestInput = true;
-        }
+        UseTestInput = args is [_, "--test"] or ["--test", ..];
+        var verbose = args is [_, "--verbose"] or ["--verbose", ..];
 
-        if (int.TryParse(args[0], out var dayNum))
+        if (args.Length > 0 && int.TryParse(args[0], out var dayNum))
         {
             var day = days.FirstOrDefault(d => d.DayNumber == dayNum);
-            if (day != null) day.AllParts();
-            else Console.WriteLine($"Day {dayNum} invalid or not yet implemented");
+            if (day != null) day.PrintDay(verbose);
+            else throw new ApplicationException($"Day {dayNum} invalid or not yet implemented");
         }
         else
         {
-            foreach (var d in days) d.AllParts();
+            foreach (var d in days) d.PrintDay(verbose);
         }
     }
 }
