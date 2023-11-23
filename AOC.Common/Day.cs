@@ -64,8 +64,8 @@ public abstract class Day(int year, int day, string puzzleName)
             throw new ApplicationException("no days found");
         }
 
-        UseTestInput = args is [_, "--test"] or ["--test", ..];
-        var verbose = args is [_, "--verbose"] or ["--verbose", ..];
+        UseTestInput = args.Contains("--test");
+        var verbose = args.Contains("--verbose");
 
         if (args.Length > 0 && int.TryParse(args[0], out var dayNum))
         {
