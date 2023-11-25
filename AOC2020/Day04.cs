@@ -8,19 +8,20 @@ namespace AOC2020;
 public sealed partial class Day04() : Day(2020, 4, "Passport Processing")
 {
     private List<Dictionary<string, string>>? _passports;
+    private static readonly string[] RequiredFieldNames = { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid" };
+    private static readonly string[] EyeColors = { "amb", "blu", "brn", "gry", "grn", "hzl", "oth" };
 
     public override void ProcessInput() =>
         _passports = Input.Split("").Select(Parse).ToList();
-    
+
     [GeneratedRegex("#[0-9a-f]{6}")]
     private static partial Regex HexColor();
 
     private static Dictionary<string, string> Parse(IEnumerable<string> list) =>
         string.Join(' ', list).Split(' ', StringSplitOptions.TrimEntries)
             .ToDictionary(k => k.Split(':', 2)[0], v => v.Split(':', 2)[1]);
-    
-    private static bool IsValid(Dictionary<string, string> d) =>
-        new[] { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid" }.All(d.ContainsKey);
+
+    private static bool IsValid(Dictionary<string, string> d) => RequiredFieldNames.All(d.ContainsKey);
 
     private static bool ExtendedValidation(Dictionary<string, string> d)
     {
@@ -70,7 +71,7 @@ public sealed partial class Day04() : Day(2020, 4, "Passport Processing")
         if (!HexColor().IsMatch(d["hcl"])) return false;
 
         // eye color
-        if (!new[] { "amb", "blu", "brn", "gry", "grn", "hzl", "oth" }.Contains(d["ecl"]))
+        if (!EyeColors.Contains(d["ecl"]))
             return false;
 
         // passport id
