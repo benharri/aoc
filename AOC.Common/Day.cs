@@ -4,33 +4,19 @@ namespace AOC.Common;
 
 public abstract class Day(int year, int day, string puzzleName)
 {
-    private class Options
-    {
-        [Option('t', "test", Required = false, Default = false, HelpText = "Use test input for the given day")]
-        public bool TestInput { get; set; }
-
-        [Value(0, MetaName = "Day Number", HelpText = "Which Day to run")]
-        public int DayNumber { get; set; }
-
-        [Value(1, MetaName = "Part", HelpText = "Which Part to run")]
-        public int? PartNumber { get; set; }
-    }
-
-    public static bool UseTestInput { get; set; }
-
-    private readonly Stopwatch _stopwatch = new();
-
     public int Year { get; } = year;
     public int DayNumber { get; } = day;
     public string PuzzleName { get; } = puzzleName;
 
-    protected IEnumerable<string> Input =>
-        File.ReadLines(FileName);
+    protected IEnumerable<string> Input => File.ReadLines(FileName);
 
     public string FileName =>
         Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
             $"input{Year}/{(UseTestInput ? "test" : "day")}{DayNumber,2:00}.in");
 
+    public static bool UseTestInput { get; set; }
+    private readonly Stopwatch _stopwatch = new();
+    
     public abstract void ProcessInput();
     public abstract object Part1();
     public abstract object Part2();
@@ -62,6 +48,21 @@ public abstract class Day(int year, int day, string puzzleName)
         Console.WriteLine($"Part 2: {part2,-45}{_stopwatch.ScaleMilliseconds()}ms elapsed");
     }
 
+    private class Options
+    {
+        [Option('t', "test", Required = false, Default = false, HelpText = "Use test input for the given day")]
+        public bool TestInput { get; set; }
+
+        [Option('a', "all", Required = false, Default = false, HelpText = "Run all available days. Overrides day and part.")]
+        public bool RunAllDays { get; set; }
+
+        [Value(0, MetaName = "Day Number", HelpText = "Which Day to run")]
+        public int DayNumber { get; set; }
+
+        [Value(1, MetaName = "Part", HelpText = "Which Part to run")]
+        public int? PartNumber { get; set; }
+    }
+
     public static void RunFromArgs(string[] args)
     {
         var days = Assembly.GetEntryAssembly()?.GetTypes()
@@ -77,33 +78,47 @@ public abstract class Day(int year, int day, string puzzleName)
         {
             UseTestInput = options.TestInput;
 
-            var day = days.SingleOrDefault(d => d.DayNumber == options.DayNumber);
-            if (day != null)
+            if (options.RunAllDays)
             {
-                day.PrintProcessInput();
-                if (options.PartNumber.HasValue)
+                foreach (var day in days)
                 {
-                    switch (options.PartNumber)
-                    {
-                        case 1:
-                            day.PrintPart1();
-                            break;
-                        case 2:
-                            day.PrintPart2();
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException(nameof(args));
-                    }
-                }
-                else
-                {
+                    day.PrintProcessInput();
                     day.PrintPart1();
                     day.PrintPart2();
+                    Console.WriteLine();
                 }
-
-                Console.WriteLine();
             }
-            else throw new ApplicationException($"Day {options.DayNumber} invalid or not yet implemented");
+            else
+            {
+                var day = days.SingleOrDefault(d => d.DayNumber == options.DayNumber);
+                if (day != null)
+                {
+                    day.PrintProcessInput();
+                    if (options.PartNumber.HasValue)
+                    {
+                        switch (options.PartNumber)
+                        {
+                            case 1:
+                                day.PrintPart1();
+                                break;
+                            case 2:
+                                day.PrintPart2();
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException(nameof(args));
+                        }
+                    }
+                    else
+                    {
+                        day.PrintPart1();
+                        day.PrintPart2();
+                    }
+
+                    Console.WriteLine();
+
+                }
+                else throw new ApplicationException($"Day {options.DayNumber} invalid or not yet implemented");
+            }
         }).WithNotParsed(errors =>
         {
             foreach (var err in errors) Console.WriteLine(err);
