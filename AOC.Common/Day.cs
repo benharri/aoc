@@ -1,8 +1,24 @@
+using CommandLine;
+
 namespace AOC.Common;
 
 public abstract class Day(int year, int day, string puzzleName)
 {
+    private class Options
+    {
+        [Option('t', "test", Required = false, Default = false, HelpText = "Use test input for the given day")]
+        public bool TestInput { get; set; }
+
+        [Value(0, MetaName = "Day Number", HelpText = "Which Day to run")]
+        public int DayNumber { get; set; }
+
+        [Value(1, MetaName = "Part", HelpText = "Which Part to run")]
+        public int? PartNumber { get; set; }
+    }
+
     public static bool UseTestInput { get; set; }
+
+    private readonly Stopwatch _stopwatch = new();
 
     public int Year { get; } = year;
     public int DayNumber { get; } = day;
@@ -16,39 +32,34 @@ public abstract class Day(int year, int day, string puzzleName)
             $"input{Year}/{(UseTestInput ? "test" : "day")}{DayNumber,2:00}.in");
 
     public abstract void ProcessInput();
-
     public abstract object Part1();
     public abstract object Part2();
 
-    private void PrintDay(bool showTiming = true)
+    private void PrintProcessInput()
     {
-        Console.Write($"{Year} Day {DayNumber,2}: {PuzzleName,-40} ");
-
-        var s = Stopwatch.StartNew();
+        _stopwatch.Restart();
         ProcessInput();
-        s.Stop();
+        _stopwatch.Stop();
+        Console.WriteLine(
+            $"{Year} Day {DayNumber,2}: {PuzzleName,-40}{_stopwatch.ScaleMilliseconds()}ms elapsed processing input");
+    }
 
-        Console.WriteLine(showTiming ? $"{s.ScaleMilliseconds()}ms elapsed processing input" : "");
-
-        s.Reset();
-
-        s.Start();
+    private void PrintPart1()
+    {
+        _stopwatch.Restart();
         var part1 = Part1();
-        s.Stop();
-        Console.Write($"Part 1: {part1,-45} ");
+        _stopwatch.Stop();
 
-        Console.WriteLine(showTiming ? $"{s.ScaleMilliseconds()}ms elapsed" : "");
+        Console.WriteLine($"Part 1: {part1,-45}{_stopwatch.ScaleMilliseconds()}ms elapsed");
+    }
 
-        s.Reset();
-
-        s.Start();
+    private void PrintPart2()
+    {
+        _stopwatch.Restart();
         var part2 = Part2();
-        s.Stop();
-        Console.Write($"Part 2: {part2,-45} ");
+        _stopwatch.Stop();
 
-        Console.WriteLine(showTiming ? $"{s.ScaleMilliseconds()}ms elapsed" : "");
-
-        Console.WriteLine();
+        Console.WriteLine($"Part 2: {part2,-45}{_stopwatch.ScaleMilliseconds()}ms elapsed");
     }
 
     public static void RunFromArgs(string[] args)
@@ -60,22 +71,42 @@ public abstract class Day(int year, int day, string puzzleName)
             .ToList();
 
         if (days == null || days.Count == 0)
-        {
             throw new ApplicationException("no days found");
-        }
 
-        UseTestInput = args.Contains("--test");
-        var verbose = args.Contains("--verbose");
+        Parser.Default.ParseArguments<Options>(args).WithParsed(options =>
+        {
+            UseTestInput = options.TestInput;
 
-        if (args.Length > 0 && int.TryParse(args[0], out var dayNum))
+            var day = days.SingleOrDefault(d => d.DayNumber == options.DayNumber);
+            if (day != null)
+            {
+                day.PrintProcessInput();
+                if (options.PartNumber.HasValue)
+                {
+                    switch (options.PartNumber)
+                    {
+                        case 1:
+                            day.PrintPart1();
+                            break;
+                        case 2:
+                            day.PrintPart2();
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(args));
+                    }
+                }
+                else
+                {
+                    day.PrintPart1();
+                    day.PrintPart2();
+                }
+
+                Console.WriteLine();
+            }
+            else throw new ApplicationException($"Day {options.DayNumber} invalid or not yet implemented");
+        }).WithNotParsed(errors =>
         {
-            var day = days.FirstOrDefault(d => d.DayNumber == dayNum);
-            if (day != null) day.PrintDay(verbose);
-            else throw new ApplicationException($"Day {dayNum} invalid or not yet implemented");
-        }
-        else
-        {
-            foreach (var d in days) d.PrintDay(verbose);
-        }
+            foreach (var err in errors) Console.WriteLine(err);
+        });
     }
 }
