@@ -1,5 +1,3 @@
-//using MoreLinq.Extensions;
-
 namespace AOC2015;
 
 /// <summary>
