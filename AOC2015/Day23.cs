@@ -11,14 +11,16 @@ public sealed class Day23() : Day(2015, 23, "Opening the Turing Lock")
 
     private int RunOperations(int initialA = 0, int initialB = 0)
     {
-        Dictionary<char, int> registers = new();
-        registers['a'] = initialA;
-        registers['b'] = initialB;
+        Dictionary<char, int> registers = new()
+        {
+            ['a'] = initialA,
+            ['b'] = initialB
+        };
 
         var input = Input.ToList();
         for (var i = 0; i < input.Count;)
         {
-            switch (input[i][0..3])
+            switch (input[i][..3])
             {
                 case "hlf":
                     registers[input[i++][4]] /= 2;

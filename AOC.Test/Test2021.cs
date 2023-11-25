@@ -6,21 +6,21 @@ namespace AOC.Test;
 public class Test2021
 {
     private const string Day13Actual = """
-        ████▒███▒▒████▒▒██▒▒█▒▒█▒▒██▒▒█▒▒█▒█▒▒█
-        █▒▒▒▒█▒▒█▒▒▒▒█▒█▒▒█▒█▒█▒▒█▒▒█▒█▒▒█▒█▒▒█
-        ███▒▒█▒▒█▒▒▒█▒▒█▒▒▒▒██▒▒▒█▒▒▒▒████▒█▒▒█
-        █▒▒▒▒███▒▒▒█▒▒▒█▒██▒█▒█▒▒█▒▒▒▒█▒▒█▒█▒▒█
-        █▒▒▒▒█▒▒▒▒█▒▒▒▒█▒▒█▒█▒█▒▒█▒▒█▒█▒▒█▒█▒▒█
-        ████▒█▒▒▒▒████▒▒███▒█▒▒█▒▒██▒▒█▒▒█▒▒██▒
-        """;
+                                       ████▒███▒▒████▒▒██▒▒█▒▒█▒▒██▒▒█▒▒█▒█▒▒█
+                                       █▒▒▒▒█▒▒█▒▒▒▒█▒█▒▒█▒█▒█▒▒█▒▒█▒█▒▒█▒█▒▒█
+                                       ███▒▒█▒▒█▒▒▒█▒▒█▒▒▒▒██▒▒▒█▒▒▒▒████▒█▒▒█
+                                       █▒▒▒▒███▒▒▒█▒▒▒█▒██▒█▒█▒▒█▒▒▒▒█▒▒█▒█▒▒█
+                                       █▒▒▒▒█▒▒▒▒█▒▒▒▒█▒▒█▒█▒█▒▒█▒▒█▒█▒▒█▒█▒▒█
+                                       ████▒█▒▒▒▒████▒▒███▒█▒▒█▒▒██▒▒█▒▒█▒▒██▒
+                                       """;
 
     private const string Day13Test = """
-        █████
-        █▒▒▒█
-        █▒▒▒█
-        █▒▒▒█
-        █████
-        """;
+                                     █████
+                                     █▒▒▒█
+                                     █▒▒▒█
+                                     █▒▒▒█
+                                     █████
+                                     """;
 
     [DataTestMethod]
     [DataRow(typeof(Day01), "1616", "1645")]
@@ -48,10 +48,8 @@ public class Test2021
     [DataRow(typeof(Day23), "15365", "52055")]
     [DataRow(typeof(Day24), "99299513899971", "93185111127911")]
     [DataRow(typeof(Day25), "417", "")]
-    public void CheckAllDays(Type dayType, string part1, string part2)
-    {
+    public void CheckAllDays(Type dayType, string part1, string part2) =>
         Common.CheckDay(dayType, part1, part2);
-    }
 
     [DataTestMethod]
     [DataRow(typeof(Day01), "7", "5")]
@@ -78,8 +76,6 @@ public class Test2021
     [DataRow(typeof(Day22), "590784", "39769202357779")]
     [DataRow(typeof(Day23), "12521", "44169")]
     [DataRow(typeof(Day25), "58", "")]
-    public void CheckTestInputs(Type dayType, string part1, string part2)
-    {
+    public void CheckTestInputs(Type dayType, string part1, string part2) =>
         Common.CheckDay(dayType, part1, part2, true);
-    }
 }

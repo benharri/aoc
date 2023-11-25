@@ -37,8 +37,7 @@ public sealed class Day05() : Day(2016, 5, "How About a Nice Game of Chess?")
     {
         var s = Input.First();
         var answer = new char[8];
-        var index = 0;
-        var found = 0;
+        int index = 0, found = 0;
 
         while (true)
         {
