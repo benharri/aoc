@@ -46,7 +46,7 @@ public sealed class Day07() : Day(2020, 7, "Handy Haversacks")
                 if (contained.Any(i => i.HasValue && i.Value.Name == node) && p.Add(container))
                     start.Enqueue(container);
 
-            if (!start.Any()) break;
+            if (start.Count == 0) break;
         }
 
         return p.Count;

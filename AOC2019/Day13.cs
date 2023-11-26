@@ -13,7 +13,7 @@ public sealed class Day13() : Day(2019, 13, "Care Package")
 
     private void PrintBoard()
     {
-        var coords = _updatedCoordinates.Any() ? _updatedCoordinates : _board.Keys.ToList();
+        var coords = _updatedCoordinates.Count != 0 ? _updatedCoordinates : _board.Keys.ToList();
         foreach (var (x, y) in coords)
         {
             if (x < 0 || y < 0) continue;
@@ -55,7 +55,7 @@ public sealed class Day13() : Day(2019, 13, "Care Package")
         {
             haltType = _vm.Run();
             if (printBoard) _updatedCoordinates.Clear();
-            while (_vm.Output.Any())
+            while (_vm.Output.Count != 0)
             {
                 long x = _vm.Result, y = _vm.Result;
                 _board[(x, y)] = _vm.Result;

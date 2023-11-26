@@ -35,7 +35,7 @@ public sealed class Day12() : Day(2022, 12, "Hill Climbing Algorithm")
         var seen = new HashSet<(int x, int y)> { startCoord };
         queue.Enqueue((startCoord.x, startCoord.y, 0));
 
-        while (queue.Any())
+        while (queue.Count != 0)
         {
             var (x, y, steps) = queue.Dequeue();
             if (destCoord == (x, y) || (destVal != null && _grid[(x, y)] == destVal)) return steps;

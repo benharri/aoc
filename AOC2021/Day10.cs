@@ -58,7 +58,7 @@ public sealed class Day10() : Day(2021, 10, "Syntax Scoring")
 
             if (corrupt) continue;
             var score2 = 0L;
-            while (s.Any())
+            while (s.Count != 0)
             {
                 score2 *= 5;
                 score2 += ScoresPart2[s.Pop()];

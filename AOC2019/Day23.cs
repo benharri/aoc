@@ -19,7 +19,7 @@ public sealed class Day23() : Day(2019, 23, "Category Six")
         while (true)
             foreach (var vm in vms)
             {
-                while (vm.Output.Any())
+                while (vm.Output.Count != 0)
                 {
                     var destination = (int)vm.Result;
                     var x = vm.Result;
@@ -52,7 +52,7 @@ public sealed class Day23() : Day(2019, 23, "Category Six")
             foreach (var vm in vms)
             {
                 var isIdle = true;
-                while (vm.Output.Any())
+                while (vm.Output.Count != 0)
                 {
                     var destination = (int)vm.Result;
                     var x = vm.Result;

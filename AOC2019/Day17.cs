@@ -14,7 +14,7 @@ public sealed class Day17() : Day(2019, 17, "Set and Forget")
         _vm!.Reset();
         _vm.Run();
         var sb = new StringBuilder();
-        while (_vm.Output.Any())
+        while (_vm.Output.Count != 0)
             sb.Append((char)_vm.Result);
         // Console.Write(sb);
         var grid = sb.ToString().Trim().Split().Select(s => s.ToCharArray()).ToArray();

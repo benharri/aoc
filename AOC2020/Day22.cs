@@ -37,7 +37,7 @@ public sealed class Day22() : Day(2020, 22, "Crab Combat")
         var seen1 = new HashSet<string>();
         var seen2 = new HashSet<string>();
 
-        while (deck1.Any() && deck2.Any())
+        while (deck1.Count != 0 && deck2.Count != 0)
         {
             if (recursive)
             {
@@ -92,13 +92,13 @@ public sealed class Day22() : Day(2020, 22, "Crab Combat")
     public override object Part1()
     {
         var (deck1, deck2) = Play(_deck1, _deck2);
-        return CalculateScore(deck1.Any() ? deck1 : deck2);
+        return CalculateScore(deck1.Count == 0 ? deck2 : deck1);
     }
 
     public override object Part2()
     {
         Reset();
         var (deck1, deck2) = Play(_deck1, _deck2, recursive: true);
-        return CalculateScore(deck1.Any() ? deck1 : deck2);
+        return CalculateScore(deck1.Count == 0 ? deck2 : deck1);
     }
 }
