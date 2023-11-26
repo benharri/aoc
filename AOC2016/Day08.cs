@@ -25,8 +25,8 @@ public sealed class Day08() : Day(2016, 8, "Two-Factor Authentication")
 
     private static void DrawRectangle(char[,] screen, int width, int height)
     {
-        foreach (var y in Enumerable.Range(0, height))
-        foreach (var x in Enumerable.Range(0, width))
+        for (var y = 0; y < height; y++)
+        for (var x = 0; x < width; x++)
             screen[y, x] = '\u2588';
     }
 
@@ -36,9 +36,7 @@ public sealed class Day08() : Day(2016, 8, "Two-Factor Authentication")
         {
             var tmp = screen[screen.GetUpperBound(0), index];
             for (var i = screen.GetUpperBound(0); i > 0; i--)
-            {
                 screen[i, index] = screen[i - 1, index];
-            }
 
             screen[0, index] = tmp;
         }
@@ -50,9 +48,7 @@ public sealed class Day08() : Day(2016, 8, "Two-Factor Authentication")
         {
             var tmp = screen[index, screen.GetUpperBound(1)];
             for (var i = screen.GetUpperBound(1); i > 0; i--)
-            {
                 screen[index, i] = screen[index, i - 1];
-            }
 
             screen[index, 0] = tmp;
         }
@@ -94,7 +90,6 @@ public sealed class Day08() : Day(2016, 8, "Two-Factor Authentication")
 
                     break;
             }
-            // Console.WriteLine(PrintGrid(screen));
         }
 
         return Environment.NewLine + PrintGrid(screen);
