@@ -12,6 +12,7 @@ public class Test2016
     [DataRow(typeof(Day04), "361724", "482")]
     //[DataRow(typeof(Day05), "F77A0E6E", "999828EC")] // TODO: optimize
     [DataRow(typeof(Day06), "gyvwpxaz", "jucfoary")]
+    [DataRow(typeof(Day07), "105", "258")]
     public void CheckAllDays(Type dayType, string part1, string part2) =>
         Common.CheckDay(dayType, part1, part2);
 
