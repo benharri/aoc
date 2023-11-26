@@ -7,7 +7,7 @@ public static class Common
         Day.UseTestInput = testInput;
         var day = Activator.CreateInstance(dayType) as Day;
         
-        Assert.IsNotNull(day, "failed to instantiate day object");
+        Assert.IsNotNull(day, "Failed to instantiate day object");
         Assert.IsTrue(File.Exists(day.FileName), $"File.Exists(day.FileName) {day.FileName}");
 
         var s = Stopwatch.StartNew();
@@ -22,13 +22,13 @@ public static class Common
         var part1Actual = day.Part1();
         s.Stop();
         Console.WriteLine($"Part 1: {part1Actual,-45}{s.ScaleMilliseconds()} ms elapsed");
-        Assert.AreEqual(part1, part1Actual.ToString(), $"Incorrect answer for Day {day.DayNumber} Part1");
+        Assert.AreEqual(part1, part1Actual.ToString(), $"Incorrect answer for Day {day.DayNumber} Part 1");
 
         // part 2
         s.Restart();
         var part2Actual = day.Part2();
         s.Stop();
         Console.WriteLine($"Part 2: {part2Actual,-45}{s.ScaleMilliseconds()} ms elapsed");
-        Assert.AreEqual(part2, part2Actual.ToString(), $"Incorrect answer for Day {day.DayNumber} Part2");
+        Assert.AreEqual(part2, part2Actual.ToString(), $"Incorrect answer for Day {day.DayNumber} Part 2");
     }
 }
