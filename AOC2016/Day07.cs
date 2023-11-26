@@ -11,16 +11,13 @@ public sealed partial class Day07() : Day(2016, 7, "Internet Protocol Version 7"
     [GeneratedRegex(@"\[(\w*)\]")]
     private static partial Regex InsideBracketsRegex();
 
-    private List<string> _input = null!;
-
     public override void ProcessInput()
     {
-        _input = Input.ToList();
     }
 
     private static bool SupportsTls(string input)
     {
-        foreach (Match m in InsideBracketsRegex().Matches(input))
+        foreach (var m in InsideBracketsRegex().Matches(input).Cast<Match>())
         {
             if (CheckAbba(m.ValueSpan)) return false;
         }
@@ -45,7 +42,7 @@ public sealed partial class Day07() : Day(2016, 7, "Internet Protocol Version 7"
     {
         foreach (var ip in BracketsRegex().Split(input))
         foreach (var aba in CheckAba(ip))
-        foreach (Match m in InsideBracketsRegex().Matches(input))
+        foreach (var m in InsideBracketsRegex().Matches(input).Cast<Match>())
             if (m.Value.Contains($"{aba[1]}{aba[0]}{aba[1]}"))
                 return true;
 
@@ -59,6 +56,6 @@ public sealed partial class Day07() : Day(2016, 7, "Internet Protocol Version 7"
                 yield return input.Substring(i, 3);
     }
 
-    public override object Part1() => _input.Count(SupportsTls);
-    public override object Part2() => _input.Count(SupportsSsl);
+    public override object Part1() => Input.Count(SupportsTls);
+    public override object Part2() => Input.Count(SupportsSsl);
 }
