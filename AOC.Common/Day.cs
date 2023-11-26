@@ -27,7 +27,7 @@ public abstract class Day(int year, int day, string puzzleName)
         ProcessInput();
         _stopwatch.Stop();
         Console.WriteLine(
-            $"{Year} Day {DayNumber,2}: {PuzzleName,-40}{_stopwatch.ScaleMilliseconds()}ms elapsed processing input");
+            $"{Year} Day {DayNumber,2}: {PuzzleName,-40} {_stopwatch.ScaleMilliseconds()}ms elapsed processing input");
     }
 
     private void PrintPart1()
@@ -36,7 +36,7 @@ public abstract class Day(int year, int day, string puzzleName)
         var part1 = Part1();
         _stopwatch.Stop();
 
-        Console.WriteLine($"Part 1: {part1,-45}{_stopwatch.ScaleMilliseconds()}ms elapsed");
+        Console.WriteLine($"Part 1: {part1,-45} {_stopwatch.ScaleMilliseconds()}ms elapsed");
     }
 
     private void PrintPart2()
@@ -45,7 +45,7 @@ public abstract class Day(int year, int day, string puzzleName)
         var part2 = Part2();
         _stopwatch.Stop();
 
-        Console.WriteLine($"Part 2: {part2,-45}{_stopwatch.ScaleMilliseconds()}ms elapsed");
+        Console.WriteLine($"Part 2: {part2,-45} {_stopwatch.ScaleMilliseconds()}ms elapsed");
     }
 
     private class Options
