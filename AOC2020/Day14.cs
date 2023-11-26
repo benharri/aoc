@@ -75,7 +75,7 @@ public sealed class Day14() : Day(2020, 14, "Docking Data")
                             break;
                     }
 
-                if (floats.Any())
+                if (floats.Count != 0)
                 {
                     var combos = new List<ulong> { addr };
 

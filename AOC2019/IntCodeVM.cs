@@ -103,7 +103,7 @@ public class IntCodeVM
                     _i += 4;
                     break;
                 case 3:
-                    if (!_input.Any())
+                    if (_input.Count == 0)
                         return HaltType.Waiting;
                     Set(1, _input.Dequeue());
                     _i += 2;

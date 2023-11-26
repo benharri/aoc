@@ -28,7 +28,7 @@ public sealed class Day04() : Day(2021, 4, "Giant Squid")
                 .Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).Select(int.Parse));
         }
 
-        if (currentBoard.Any()) _boards.Add(currentBoard);
+        if (currentBoard.Count != 0) _boards.Add(currentBoard);
         _size = (int)Math.Sqrt(currentBoard.Count);
     }
 

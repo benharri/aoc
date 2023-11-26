@@ -41,7 +41,7 @@ public sealed class Day05() : Day(2022, 5, "Supply Stacks")
     }
 
     private static string PeekStackTops(IEnumerable<Stack<char>> stacks) =>
-        stacks.Where(s => s.Any()).Aggregate("", (result, stack) => result + stack.Peek());
+        stacks.Where(s => s.Count != 0).Aggregate("", (result, stack) => result + stack.Peek());
 
     public override object Part1()
     {
@@ -58,7 +58,7 @@ public sealed class Day05() : Day(2022, 5, "Supply Stacks")
             var crane = new Stack<char>(quantity);
             Enumerable.Range(0, quantity).ForEach(_ => crane.Push(_stacksPart2![from].Pop()));
 
-            while (crane.Any()) _stacksPart2![to].Push(crane.Pop());
+            while (crane.Count != 0) _stacksPart2![to].Push(crane.Pop());
         }
 
         return PeekStackTops(_stacksPart2!);

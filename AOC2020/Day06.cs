@@ -31,7 +31,7 @@ public sealed class Day06() : Day(2020, 6, "Custom Customs")
             lines.Add(line);
         }
 
-        if (s.Any())
+        if (s.Count != 0)
         {
             _countPart1 += s.Count;
             _countPart2 += alphabet.Count(a => lines.All(l => l.Contains(a)));

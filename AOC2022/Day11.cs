@@ -20,7 +20,7 @@ public sealed class Day11() : Day(2022, 11, "Monkey in the Middle")
     {
         foreach (var monkey in _monkeys!)
         {
-            while (monkey.Items.Any())
+            while (monkey.Items.Count != 0)
             {
                 var item = monkey.Items.Dequeue();
                 item = monkey.Operation(item);
