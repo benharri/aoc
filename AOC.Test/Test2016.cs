@@ -5,6 +5,18 @@ namespace AOC.Test;
 [TestClass]
 public class Test2016
 {
+    private const string Day08Actual =
+        """
+        
+        ███▒▒█▒▒█▒███▒▒█▒▒█▒▒██▒▒████▒▒██▒▒████▒▒███▒█▒▒▒▒
+        █▒▒█▒█▒▒█▒█▒▒█▒█▒▒█▒█▒▒█▒█▒▒▒▒█▒▒█▒█▒▒▒▒▒▒█▒▒█▒▒▒▒
+        █▒▒█▒█▒▒█▒█▒▒█▒█▒▒█▒█▒▒▒▒███▒▒█▒▒█▒███▒▒▒▒█▒▒█▒▒▒▒
+        ███▒▒█▒▒█▒███▒▒█▒▒█▒█▒▒▒▒█▒▒▒▒█▒▒█▒█▒▒▒▒▒▒█▒▒█▒▒▒▒
+        █▒█▒▒█▒▒█▒█▒█▒▒█▒▒█▒█▒▒█▒█▒▒▒▒█▒▒█▒█▒▒▒▒▒▒█▒▒█▒▒▒▒
+        █▒▒█▒▒██▒▒█▒▒█▒▒██▒▒▒██▒▒████▒▒██▒▒████▒▒███▒████▒
+        
+        """;
+    
     [DataTestMethod]
     [DataRow(typeof(Day01), "300", "159")]
     [DataRow(typeof(Day02), "76792", "A7AC3")]
@@ -13,6 +25,7 @@ public class Test2016
     //[DataRow(typeof(Day05), "F77A0E6E", "999828EC")] // TODO: optimize
     [DataRow(typeof(Day06), "gyvwpxaz", "jucfoary")]
     [DataRow(typeof(Day07), "105", "258")]
+    [DataRow(typeof(Day08), "121", Day08Actual)]
     public void CheckAllDays(Type dayType, string part1, string part2) =>
         Common.CheckDay(dayType, part1, part2);
 
