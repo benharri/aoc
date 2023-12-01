@@ -12,11 +12,10 @@ public class Day01() : Day(2023, 1, "Puzzle Name")
 	public override object Part1() =>
 		Input.Sum(line => (line.First(char.IsDigit) - '0') * 10 + (line.Last(char.IsDigit) - '0'));
 
-	public override object Part2()
-	{
-		return Input.Sum(line =>
+	public override object Part2() =>
+		Input.Sum(line =>
 		{
-			List<int> digits = new();
+			List<int> digits = [];
 
 			for (var i = 0; i < line.Length; i++)
 			{
@@ -38,5 +37,4 @@ public class Day01() : Day(2023, 1, "Puzzle Name")
 
 			return digits.First() * 10 + digits.Last();
 		});
-	}
 }
