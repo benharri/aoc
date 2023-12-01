@@ -27,11 +27,11 @@ public class Day01() : Day(2023, 1, "Trebuchet?!")
 
                 foreach (var (digit, spelled) in _singleDigits.Indexed())
                 {
-                    if (i + spelled.Length - 1 >= line.Length || line[i..(i + spelled.Length)] != spelled)
-                        continue;
-
-                    digits.Add(digit);
-                    break;
+                    if (i + spelled.Length - 1 < line.Length && line[i..(i + spelled.Length)] == spelled)
+                    {
+                        digits.Add(digit);
+                        break;
+                    }
                 }
             }
 
