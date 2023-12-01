@@ -5,8 +5,8 @@ namespace AOC2015;
 /// </summary>
 public sealed partial class Day05() : Day(2015, 5, "Doesn't He Have Intern-Elves For This?")
 {
-    private static readonly List<char> Vowels = new() { 'a', 'e', 'i', 'o', 'u' };
-    private List<string> _strings = new();
+    private static readonly List<char> Vowels = ['a', 'e', 'i', 'o', 'u'];
+    private List<string> _strings = [];
 
     [GeneratedRegex(@"(.)\1")]
     private static partial Regex DoubleLetter();
@@ -17,10 +17,8 @@ public sealed partial class Day05() : Day(2015, 5, "Doesn't He Have Intern-Elves
     [GeneratedRegex(@"(..).*\1")]
     private static partial Regex TwoPairs();
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _strings = Input.Where(line => !string.IsNullOrEmpty(line)).ToList();
-    }
 
     public override object Part1() =>
         _strings.Count(s =>

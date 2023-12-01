@@ -16,7 +16,7 @@ public class Test2016
         █▒▒█▒▒██▒▒█▒▒█▒▒██▒▒▒██▒▒████▒▒██▒▒████▒▒███▒████▒
         
         """;
-    
+
     [DataTestMethod]
     [DataRow(typeof(Day01), "300", "159")]
     [DataRow(typeof(Day02), "76792", "A7AC3")]

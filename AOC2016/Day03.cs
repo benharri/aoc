@@ -7,22 +7,19 @@ public sealed class Day03() : Day(2016, 3, "Squares With Three Sides")
 {
     private List<int[]> _triangles = null!;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _triangles = Input
             .Select(line => line.Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToArray())
             .ToList();
-    }
 
-    public override object Part1() => _triangles.Count(ValidTriangle);
+    public override object Part1() =>
+        _triangles.Count(ValidTriangle);
 
-    private static bool ValidTriangle(params int[] triangle)
-    {
-        return triangle[0] + triangle[1] > triangle[2] &&
-               triangle[0] + triangle[2] > triangle[1] &&
-               triangle[1] + triangle[2] > triangle[0];
-    }
+    private static bool ValidTriangle(params int[] triangle) =>
+        triangle[0] + triangle[1] > triangle[2] &&
+        triangle[0] + triangle[2] > triangle[1] &&
+        triangle[1] + triangle[2] > triangle[0];
 
     public override object Part2()
     {

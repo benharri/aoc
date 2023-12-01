@@ -9,10 +9,9 @@ public sealed class Day19() : Day(2021, 19, "Beacon Scanner")
         { (0, 1, 0), (0, -1, 0), (1, 0, 0), (-1, 0, 0), (0, 0, 1), (0, 0, -1) };
 
     private List<HashSet<Vector3>>? _scans;
-    private List<HashSet<Vector3>> _scanners = new();
+    private List<HashSet<Vector3>> _scanners = [];
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _scans = Input
             .Aggregate(new List<HashSet<Vector3>>(), (list, line) =>
             {
@@ -20,7 +19,7 @@ public sealed class Day19() : Day(2021, 19, "Beacon Scanner")
 
                 if (line.StartsWith("---"))
                 {
-                    list.Add(new());
+                    list.Add([]);
                     return list;
                 }
 
@@ -28,7 +27,6 @@ public sealed class Day19() : Day(2021, 19, "Beacon Scanner")
                 list[^1].Add((parts[0], parts[1], parts[2]));
                 return list;
             });
-    }
 
     private static Vector3 Transform(Vector3 pt, Vector3 up, int rotation)
     {

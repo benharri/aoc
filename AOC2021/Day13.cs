@@ -13,24 +13,24 @@ public sealed class Day13() : Day(2021, 13, "Transparent Origami")
     public override void ProcessInput()
     {
         var s = Input.Split("").ToList();
-        
+
         _dots = s[0].Select(p =>
         {
             var i = p.Split(',', 2).Select(int.Parse).ToList();
             return (i[0], i[1]);
         }).ToList();
-        
+
         _folds = s[1].Select(p => p.Split(' ').Skip(2).First()).Select(p =>
         {
             var i = p.Split('=', 2);
             return (i[0][0], int.Parse(i[1]));
         }).ToList();
     }
-    
+
     private static List<(int x, int y)> DoFold(List<(int x, int y)> grid, char axis, int at)
     {
-        List<(int, int)> result = new();
-        
+        List<(int, int)> result = [];
+
         switch (axis)
         {
             case 'x':

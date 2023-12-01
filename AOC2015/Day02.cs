@@ -7,19 +7,16 @@ public sealed class Day02() : Day(2015, 2, "I Was Told There Would Be No Math")
 {
     private List<List<int>>? _gifts;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _gifts = Input.Select(line => line.Split('x').Select(int.Parse).ToList()).ToList();
-    }
 
-    public override object Part1()
-    {
-        return _gifts!.Sum(gift =>
+    public override object Part1() =>
+        _gifts!.Sum(gift =>
         {
             var biggestDimension = gift.IndexOf(gift.Max());
 
             var surfaceArea = 2 * gift[0] * gift[1] + 2 * gift[1] * gift[2] + 2 * gift[0] * gift[2];
-            
+
             var smallestSideArea = 1;
             for (var i = 0; i < gift.Count; i++)
             {
@@ -29,11 +26,9 @@ public sealed class Day02() : Day(2015, 2, "I Was Told There Would Be No Math")
 
             return surfaceArea + smallestSideArea;
         });
-    }
 
-    public override object Part2()
-    {
-        return _gifts!.Sum(gift =>
+    public override object Part2() =>
+        _gifts!.Sum(gift =>
         {
             var biggestDimension = gift.IndexOf(gift.Max());
             var bowArea = gift.Aggregate(1, (i, i1) => i * i1);
@@ -47,6 +42,4 @@ public sealed class Day02() : Day(2015, 2, "I Was Told There Would Be No Math")
 
             return smallestSide + bowArea;
         });
-    }
 }
-

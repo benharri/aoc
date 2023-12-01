@@ -67,11 +67,11 @@ public sealed class Day08() : Day(2022, 8, "Treetop Tree House")
     {
         var max = 0;
         for (var y = 0; y < _trees!.Length; y++)
-        for (var x = 0; x < _trees[0].Length; x++)
-        {
-            var (_, score) = ScoreCoord(x, y);
-            if (score > max) max = score;
-        }
+            for (var x = 0; x < _trees[0].Length; x++)
+            {
+                var (_, score) = ScoreCoord(x, y);
+                if (score > max) max = score;
+            }
 
         return max;
     }

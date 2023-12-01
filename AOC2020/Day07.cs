@@ -7,8 +7,7 @@ public sealed class Day07() : Day(2020, 7, "Handy Haversacks")
 {
     private Dictionary<string, IEnumerable<(int Weight, string Name)?>>? _rules;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _rules = Input
             .Select(rule =>
             {
@@ -18,7 +17,6 @@ public sealed class Day07() : Day(2020, 7, "Handy Haversacks")
                 return (outer, inner);
             })
             .ToDictionary(t => t.outer, t => t.inner);
-    }
 
     private static (int, string)? ParseQuantity(string arg)
     {

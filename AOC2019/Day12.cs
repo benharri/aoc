@@ -58,9 +58,9 @@ public sealed class Day12() : Day(2019, 12, "The N-Body Problem")
 
     public class Position(IList<int> moon)
     {
-        private List<Position> _siblings = new();
+        private List<Position> _siblings = [];
         private int _x = moon[0], _y = moon[1], _z = moon[2];
-        public int Dx = 0, Dy = 0, Dz = 0;
+        public int Dx, Dy, Dz;
 
         private int KineticEnergy =>
             Math.Abs(_x) + Math.Abs(_y) + Math.Abs(_z);

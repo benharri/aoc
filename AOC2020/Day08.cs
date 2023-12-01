@@ -9,10 +9,8 @@ public sealed class Day08() : Day(2020, 8, "Handheld Halting")
     private int _accumulator;
     private int _currentInstruction;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _instructions = Input.Select(ParseLine).ToArray();
-    }
 
     private static (string, int) ParseLine(string line)
     {

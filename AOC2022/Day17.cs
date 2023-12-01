@@ -9,13 +9,7 @@ public sealed class Day17() : Day(2022, 17, "Pyroclastic Flow")
     {
     }
 
-    public override object Part1()
-    {
-        return "";
-    }
+    public override object Part1() => "";
 
-    public override object Part2()
-    {
-        return "";
-    }
+    public override object Part2() => "";
 }

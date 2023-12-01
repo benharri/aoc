@@ -9,9 +9,8 @@ public sealed class Day16() : Day(2015, 16, "Aunt Sue")
     {
     }
 
-    private IEnumerable<string> Common()
-    {
-        return Input
+    private IEnumerable<string> Common() =>
+        Input
             .Select(i => Regex.Replace(i, @": \d\d", ": 9"))
             .WhereMatch("children: 3")
             .WhereMatch("samoyeds: 2")
@@ -19,29 +18,24 @@ public sealed class Day16() : Day(2015, 16, "Aunt Sue")
             .WhereMatch("vizslas: 0")
             .WhereMatch("cars: 2")
             .WhereMatch("perfumes: 1");
-    }
 
-    public override object Part1()
-    {
-        return Common()
+    public override object Part1() =>
+        Common()
             .WhereMatch("cats: 7")
             .WhereMatch("trees: 3")
             .WhereMatch("pomeranians: 3")
             .WhereMatch("goldfish: 5")
             .Single()
             .Split(' ', ':')[1];
-    }
 
-    public override object Part2()
-    {
-        return Common()
+    public override object Part2() =>
+        Common()
             .WhereMatch("cats: [89]")
             .WhereMatch("trees: [4-9]")
             .WhereMatch("pomeranians: [012]")
             .WhereMatch("goldfish: [0-4]")
             .Single()
             .Split(' ', ':')[1];
-    }
 }
 
 public static class Day16Extensions

@@ -5,7 +5,8 @@ public sealed class Day19() : Day(2019, 19, "Tractor Beam")
     private long[,]? _grid;
     private IntCodeVM? _vm;
 
-    public override void ProcessInput(){
+    public override void ProcessInput()
+    {
         _vm = new(Input.First());
         _grid = new long[50, 50];
     }

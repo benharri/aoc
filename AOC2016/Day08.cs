@@ -54,14 +54,12 @@ public sealed class Day08() : Day(2016, 8, "Two-Factor Authentication")
         }
     }
 
-    public override object Part1()
-    {
-        return Input.Where(line => line.StartsWith("rect")).Sum(rect =>
+    public override object Part1() =>
+        Input.Where(line => line.StartsWith("rect")).Sum(rect =>
         {
             var s = rect.Split('x', ' ').Skip(1).Select(int.Parse).ToList();
             return s[0] * s[1];
         });
-    }
 
     public override object Part2()
     {

@@ -5,7 +5,7 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day22() : Day(2021, 22, "Reactor Reboot")
 {
-    private readonly List<Instruction> _instructions = new();
+    private readonly List<Instruction> _instructions = [];
 
     public override void ProcessInput()
     {
@@ -18,7 +18,7 @@ public sealed class Day22() : Day(2021, 22, "Reactor Reboot")
                 .SelectMany(l => l.Split(".."))
                 .Select(int.Parse)
                 .ToList();
-            
+
             _instructions.Add(new(s[0] == "off", new(new(e[0], e[1]), new(e[2], e[3]), new(e[4], e[5]))));
         }
     }
@@ -26,7 +26,7 @@ public sealed class Day22() : Day(2021, 22, "Reactor Reboot")
     private long ActiveCubes(int x, Region3D region)
     {
         if (region.IsEmpty || x < 0) return 0;
-        
+
         var intersection = region.Intersect(_instructions[x].Region);
         var activeInRegion = ActiveCubes(x - 1, region);
         var activeInIntersection = ActiveCubes(x - 1, intersection);
@@ -34,7 +34,7 @@ public sealed class Day22() : Day(2021, 22, "Reactor Reboot")
 
         // outside the intersection is unaffected, the rest is either on or off:
         return _instructions[x].Disable ? activeOutsideIntersection : activeOutsideIntersection + intersection.Volume;
-    
+
     }
 
     public override object Part1()

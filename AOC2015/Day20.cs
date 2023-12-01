@@ -7,10 +7,8 @@ public sealed class Day20() : Day(2015, 20, "Infinite Elves and Infinite Houses"
 {
     private int _input;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _input = int.Parse(Input.First());
-    }
 
     public override object Part1()
     {

@@ -12,7 +12,7 @@ public sealed class Day03() : Day(2015, 3, "Perfectly Spherical Houses in a Vacu
     public override object Part1()
     {
         int x = 0, y = 0;
-         Dictionary<(int x, int y), int> map = new() { [(0, 0)] = 1 };
+        Dictionary<(int x, int y), int> map = new() { [(0, 0)] = 1 };
 
         foreach (var c in Input.First())
         {

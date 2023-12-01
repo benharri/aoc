@@ -5,7 +5,7 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day07() : Day(2022, 7, "No Space Left On Device")
 {
-    private readonly DefaultDictionary<string, long> _dirs = new();
+    private readonly DefaultDictionary<string, long> _dirs = [];
 
     public override void ProcessInput()
     {
@@ -23,7 +23,7 @@ public sealed class Day07() : Day(2022, 7, "No Space Left On Device")
             else
             {
                 if (!long.TryParse(line.Split(' ')[0], out var filesize)) continue;
-                
+
                 var pathList = path.ToList();
                 pathList.Reverse();
 

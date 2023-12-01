@@ -9,10 +9,7 @@ public sealed class Day04() : Day(2015, 4, "The Ideal Stocking Stuffer")
 {
     private string? _key;
 
-    public override void ProcessInput()
-    {
-        _key = Input.First();
-    }
+    public override void ProcessInput() => _key = Input.First();
 
     public override object Part1()
     {

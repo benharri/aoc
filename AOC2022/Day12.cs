@@ -5,8 +5,8 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day12() : Day(2022, 12, "Hill Climbing Algorithm")
 {
-    private readonly Dictionary<(int x, int y), int> _grid = new();
-    private static readonly List<(int x, int y)> Directions = new() { (-1, 0), (1, 0), (0, -1), (0, 1) };
+    private readonly Dictionary<(int x, int y), int> _grid = [];
+    private static readonly List<(int x, int y)> Directions = [(-1, 0), (1, 0), (0, -1), (0, 1)];
     private (int x, int y) _startCoord, _destCoord;
 
     public override void ProcessInput()

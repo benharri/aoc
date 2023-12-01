@@ -5,10 +5,8 @@ public sealed class Day16() : Day(2019, 16, "Flawed Frequency Transmission")
     private static readonly int[] BasePattern = { 0, 1, 0, -1 };
     private int[]? _initialList;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _initialList = Input.First().Select(c => c - '0').ToArray();
-    }
 
     public override object Part1()
     {

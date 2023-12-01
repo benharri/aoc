@@ -31,7 +31,7 @@ public sealed class Day19() : Day(2015, 19, "Medicine for Rudolph")
 
     public override object Part1()
     {
-        HashSet<string> compounds = new();
+        HashSet<string> compounds = [];
         foreach (var rule in _rules!)
             foreach (var match in Regex.EnumerateMatches(_compound, rule[0]))
                 compounds.Add(_compound!.Remove(match.Index, rule[0].Length).Insert(match.Index, rule[1]));

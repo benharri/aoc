@@ -7,10 +7,8 @@ public sealed class Day23() : Day(2021, 23, "Amphipod")
 {
     private List<char>? _crabs;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _crabs = Input.SelectMany(l => l).Where(char.IsLetter).ToList();
-    }
 
     private static IEnumerable<int> BreadthFirstSearch(string s, int i)
     {
@@ -32,53 +30,50 @@ public sealed class Day23() : Day(2021, 23, "Amphipod")
         }
     }
 
-    private static Dijkstra<State, (State state, int distance)> GetPathFinder(int size)
+    private static Dijkstra<State, (State state, int distance)> GetPathFinder(int size) => new()
     {
-        return new()
+        Neighbors = state =>
         {
-            Neighbors = state =>
+            // Find all neighbors from the current state
+            var possible = new List<(State, int)>();
+            var entries = new[] { 2, 4, 6, 8 };
+            // Add each way of taking an item out of a hole into the hallway
+            foreach (var i in entries)
             {
-                // Find all neighbors from the current state
-                var possible = new List<(State, int)>();
-                var entries = new[] { 2, 4, 6, 8 };
-                // Add each way of taking an item out of a hole into the hallway
-                foreach (var i in entries)
+                var hole = state[i / 2 - 1];
+                if (string.IsNullOrWhiteSpace(hole)) continue;
+                var targets = BreadthFirstSearch(state.Hallway, i).Except(entries).ToList();
+                foreach (var target in targets)
                 {
-                    var hole = state[i / 2 - 1];
-                    if (string.IsNullOrWhiteSpace(hole)) continue;
-                    var targets = BreadthFirstSearch(state.Hallway, i).Except(entries).ToList();
-                    foreach (var target in targets)
-                    {
-                        var data = state.Hallway.ToCharArray();
-                        data[target] = hole.Trim()[0];
-                        var newHole = hole.Trim()[1..].PadLeft(size);
-                        var next = State.New(state, data, i / 2 - 1, newHole);
-                        var cost = Math.Abs(target - i) + (size - newHole.Trim().Length);
-                        cost *= 10.Pow(data[target] - 'A');
-                        possible.Add((next, cost));
-                    }
-                }
-
-                foreach (var (at, which) in state.Hallway.Indexed().WhereValue(char.IsLetter))
-                {
-                    var dest = which - 'A';
-                    if (!BreadthFirstSearch(state.Hallway, at).Intersect(entries).Select(i => i / 2 - 1)
-                            .Contains(dest)) continue;
-                    if (state[dest]!.Trim().Any(c => c != which)) continue;
                     var data = state.Hallway.ToCharArray();
-                    data[at] = ' ';
-                    var next = State.New(state, data, dest, (which + state[dest]!.Trim()).PadLeft(size));
-                    var cost = Math.Abs(at - (dest + 1) * 2) + (size - state[dest]!.Trim().Length);
-                    cost *= 10.Pow(dest);
+                    data[target] = hole.Trim()[0];
+                    var newHole = hole.Trim()[1..].PadLeft(size);
+                    var next = State.New(state, data, i / 2 - 1, newHole);
+                    var cost = Math.Abs(target - i) + (size - newHole.Trim().Length);
+                    cost *= 10.Pow(data[target] - 'A');
                     possible.Add((next, cost));
                 }
+            }
 
-                return possible;
-            },
-            Distance = tuple => tuple.distance,
-            Cell = (_, tuple) => tuple.state
-        };
-    }
+            foreach (var (at, which) in state.Hallway.Indexed().WhereValue(char.IsLetter))
+            {
+                var dest = which - 'A';
+                if (!BreadthFirstSearch(state.Hallway, at).Intersect(entries).Select(i => i / 2 - 1)
+                        .Contains(dest)) continue;
+                if (state[dest]!.Trim().Any(c => c != which)) continue;
+                var data = state.Hallway.ToCharArray();
+                data[at] = ' ';
+                var next = State.New(state, data, dest, (which + state[dest]!.Trim()).PadLeft(size));
+                var cost = Math.Abs(at - (dest + 1) * 2) + (size - state[dest]!.Trim().Length);
+                cost *= 10.Pow(dest);
+                possible.Add((next, cost));
+            }
+
+            return possible;
+        },
+        Distance = tuple => tuple.distance,
+        Cell = (_, tuple) => tuple.state
+    };
 
     public override object Part1()
     {

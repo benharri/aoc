@@ -5,8 +5,8 @@ namespace AOC2015;
 /// </summary>
 public sealed partial class Day06() : Day(2015, 6, "Probably a Fire Hazard")
 {
-    private readonly Dictionary<(int x, int y), int> _brightnessGrid = new();
-    private readonly Dictionary<(int x, int y), bool> _lightGrid = new();
+    private readonly Dictionary<(int x, int y), int> _brightnessGrid = [];
+    private readonly Dictionary<(int x, int y), bool> _lightGrid = [];
 
     [GeneratedRegex(@"(\d+),(\d+) through (\d+),(\d+)")]
     private static partial Regex Coords();

@@ -53,29 +53,29 @@ public sealed class Day20() : Day(2020, 20, "Jurassic Jigsaw")
 
         void AddConnection(PuzzlePiece p1, PuzzlePiece p2)
         {
-            if (!connections.ContainsKey(p1)) connections.Add(p1, new());
-            if (!connections.ContainsKey(p2)) connections.Add(p2, new());
+            if (!connections.ContainsKey(p1)) connections.Add(p1, []);
+            if (!connections.ContainsKey(p2)) connections.Add(p2, []);
             connections[p1].Add(p2);
             connections[p2].Add(p1);
         }
 
         foreach (var piece in puzzlePieces)
-        foreach (var (original, flipped) in piece.SidesWithFlippedPaired.Value)
-        {
-            if (sides.TryGetValue(original, out var side))
+            foreach (var (original, flipped) in piece.SidesWithFlippedPaired.Value)
             {
-                AddConnection(piece, side);
+                if (sides.TryGetValue(original, out var side))
+                {
+                    AddConnection(piece, side);
+                }
+                else if (sides.TryGetValue(flipped, out var otherPiece))
+                {
+                    AddConnection(piece, otherPiece);
+                }
+                else
+                {
+                    sides.Add(original, piece);
+                    sides.Add(flipped, piece);
+                }
             }
-            else if (sides.TryGetValue(flipped, out var otherPiece))
-            {
-                AddConnection(piece, otherPiece);
-            }
-            else
-            {
-                sides.Add(original, piece);
-                sides.Add(flipped, piece);
-            }
-        }
 
         return connections;
     }

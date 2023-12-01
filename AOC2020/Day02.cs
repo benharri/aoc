@@ -7,10 +7,8 @@ public sealed class Day02() : Day(2020, 2, "Password Philosophy")
 {
     private ImmutableList<Password>? _passwords;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _passwords = Input.Select(p => new Password(p)).ToImmutableList();
-    }
 
     public override object Part1() =>
         _passwords!.Count(p => p.IsValid);

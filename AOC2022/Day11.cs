@@ -26,7 +26,7 @@ public sealed class Day11() : Day(2022, 11, "Monkey in the Middle")
                 item = monkey.Operation(item);
                 if (part1) item /= 3;
                 item %= _lcm;
-                
+
                 monkey.InspectionCount++;
                 var dest = item % monkey.ModTest == 0 ? monkey.TrueDest : monkey.FalseDest;
                 _monkeys[dest].Items.Enqueue(item);

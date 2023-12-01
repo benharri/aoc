@@ -8,10 +8,8 @@ public sealed class Day09() : Day(2020, 9, "Encoding Error")
     private long[]? _list;
     private long _part1;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _list = Input.Select(long.Parse).ToArray();
-    }
 
     public override object Part1()
     {

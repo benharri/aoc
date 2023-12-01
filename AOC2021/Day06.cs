@@ -10,11 +10,11 @@ public sealed class Day06() : Day(2021, 6, "Lanternfish")
     public override void ProcessInput()
     {
         var fishes = Input.First().Split(',').Select(long.Parse).ToList();
-        Dictionary<long, long> counts = new();
-        
+        Dictionary<long, long> counts = [];
+
         for (var i = 0; i <= 8; i++)
             counts[i] = fishes.Count(x => x == i);
-        
+
         for (var i = 0; i < 256; i++)
         {
             var breeders = counts[0];

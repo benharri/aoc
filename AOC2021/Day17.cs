@@ -7,8 +7,7 @@ public sealed class Day17() : Day(2021, 17, "Trick Shot")
 {
     private List<int>? _target;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _target = Input.First()
             .Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
             .Skip(2)
@@ -16,7 +15,6 @@ public sealed class Day17() : Day(2021, 17, "Trick Shot")
             .Select(i => i.TrimEnd(','))
             .Select(int.Parse)
             .ToList();
-    }
 
     public override object Part1()
     {

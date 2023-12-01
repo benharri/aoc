@@ -9,13 +9,7 @@ public sealed class Day16() : Day(2022, 16, "Proboscidea Volcanium")
     {
     }
 
-    public override object Part1()
-    {
-        return "";
-    }
+    public override object Part1() => "";
 
-    public override object Part2()
-    {
-        return "";
-    }
+    public override object Part2() => "";
 }

@@ -31,8 +31,8 @@ public static class Extensions
             result[i] = new T[array.Length];
 
         for (var i = 0; i < array.Length; i++)
-        for (var j = 0; j < array[i].Length; j++)
-            result[i][j] = array[array.Length - j - 1][i];
+            for (var j = 0; j < array[i].Length; j++)
+                result[i][j] = array[array.Length - j - 1][i];
 
         return result;
     }

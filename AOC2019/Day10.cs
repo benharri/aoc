@@ -6,15 +6,13 @@ public sealed class Day10() : Day(2019, 10, "Monitoring Station")
     private (int x, int y) _best = (x: -1, y: -1);
     private int _bestCanSee;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _asteroids = Input
             .Select((r, y) => r.Select((c, x) => (x, y, isAsteroid: c == '#')).ToArray())
             .SelectMany(r => r)
             .Where(a => a.isAsteroid)
             .Select(a => (a.x, a.y))
             .ToHashSet();
-    }
 
     public override object Part1()
     {

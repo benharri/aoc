@@ -29,19 +29,19 @@ public sealed class Day04() : Day(2016, 4, "Security Through Obscurity")
         {
             var answer = Name.ToCharArray();
             for (var i = 0; i < Name.Length; i++)
-            for (var l = 0; l < SectorId % 26; l++)
-                answer[i] = answer[i] == 'z' ? 'a' : (char)(answer[i] + 1);
+                for (var l = 0; l < SectorId % 26; l++)
+                    answer[i] = answer[i] == 'z' ? 'a' : (char)(answer[i] + 1);
 
             return new(answer);
         }
     }
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _rooms = Input.Select(Room.FromRawLine).ToList();
-    }
 
-    public override object Part1() => _rooms.Where(r => r.IsRealRoom()).Sum(r => r.SectorId);
+    public override object Part1() =>
+        _rooms.Where(r => r.IsRealRoom()).Sum(r => r.SectorId);
 
-    public override object Part2() => _rooms.Single(r => r.DecryptedName().Contains("northpole")).SectorId;
+    public override object Part2() =>
+        _rooms.Single(r => r.DecryptedName().Contains("northpole")).SectorId;
 }

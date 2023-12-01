@@ -6,10 +6,16 @@ public sealed class Day11() : Day(2019, 11, "Space Police")
     private Direction _heading;
     private long _x, _y;
 
-    public override void ProcessInput()
+    private enum Direction
     {
-        _vm = new(Input.First());
+        Up,
+        Down,
+        Left,
+        Right
     }
+
+    public override void ProcessInput() =>
+        _vm = new(Input.First());
 
     private void Move()
     {
@@ -36,9 +42,9 @@ public sealed class Day11() : Day(2019, 11, "Space Police")
     {
         _heading = _heading switch
         {
-            Direction.Up    => direction == 0 ? Direction.Left : Direction.Right,
-            Direction.Down  => direction == 0 ? Direction.Right : Direction.Left,
-            Direction.Left  => direction == 0 ? Direction.Down : Direction.Up,
+            Direction.Up => direction == 0 ? Direction.Left : Direction.Right,
+            Direction.Down => direction == 0 ? Direction.Right : Direction.Left,
+            Direction.Left => direction == 0 ? Direction.Down : Direction.Up,
             Direction.Right => direction == 0 ? Direction.Up : Direction.Down,
             _ => _heading
         };
@@ -84,13 +90,5 @@ public sealed class Day11() : Day(2019, 11, "Space Police")
             )
             .Reverse()
             .ToDelimitedString(Environment.NewLine);
-    }
-
-    private enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
     }
 }
