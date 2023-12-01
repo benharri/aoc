@@ -8,6 +8,7 @@ public static class Extensions
     public static IEnumerable<T> Repeat<T>(this IEnumerable<T> sequence, int? count = null)
     {
         while (count == null || count-- > 0)
+            // ReSharper disable once PossibleMultipleEnumeration
             foreach (var item in sequence)
                 yield return item;
     }

@@ -15,15 +15,9 @@ public sealed partial class Day07() : Day(2016, 7, "Internet Protocol Version 7"
     {
     }
 
-    private static bool SupportsTls(string input)
-    {
-        foreach (var m in InsideBracketsRegex().Matches(input).Cast<Match>())
-        {
-            if (CheckAbba(m.ValueSpan)) return false;
-        }
-
-        return BracketsRegex().Split(input).Any(v => CheckAbba(v));
-    }
+    private static bool SupportsTls(string input) =>
+        !InsideBracketsRegex().Matches(input).Any(m => CheckAbba(m.ValueSpan)) &&
+        BracketsRegex().Split(input).Any(v => CheckAbba(v));
 
     private static bool CheckAbba(ReadOnlySpan<char> input)
     {
@@ -41,10 +35,10 @@ public sealed partial class Day07() : Day(2016, 7, "Internet Protocol Version 7"
     private static bool SupportsSsl(string input)
     {
         foreach (var ip in BracketsRegex().Split(input))
-            foreach (var aba in CheckAba(ip))
-                foreach (var m in InsideBracketsRegex().Matches(input).Cast<Match>())
-                    if (m.Value.Contains($"{aba[1]}{aba[0]}{aba[1]}"))
-                        return true;
+        foreach (var aba in CheckAba(ip))
+        foreach (var m in InsideBracketsRegex().Matches(input).Cast<Match>())
+            if (m.Value.Contains($"{aba[1]}{aba[0]}{aba[1]}"))
+                return true;
 
         return false;
     }

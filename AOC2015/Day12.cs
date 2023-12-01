@@ -35,5 +35,5 @@ public sealed partial class Day12() : Day(2015, 12, "JSAbacusFramework.io")
 
     private long GetSum(JArray arr, string avoid) => arr.Sum((dynamic a) => (long)GetSum(a, avoid));
 
-    private long GetSum(JValue val, string avoid) => val.Type == JTokenType.Integer ? (long)(val.Value ?? 0L) : 0;
+    private static long GetSum(JValue val, string avoid) => val.Type == JTokenType.Integer ? (long)(val.Value ?? 0L) : 0;
 }

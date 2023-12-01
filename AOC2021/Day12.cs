@@ -13,10 +13,10 @@ public sealed class Day12() : Day(2021, 12, "Passage Pathing")
         {
             var s = line.Split('-', 2);
 
-            if (_edges.ContainsKey(s[0])) _edges[s[0]].Add(s[1]);
+            if (_edges.TryGetValue(s[0], out var edge)) edge.Add(s[1]);
             else _edges[s[0]] = [s[1]];
 
-            if (_edges.ContainsKey(s[1])) _edges[s[1]].Add(s[0]);
+            if (_edges.TryGetValue(s[1], out var edge2)) edge2.Add(s[0]);
             else _edges[s[1]] = [s[0]];
         }
     }

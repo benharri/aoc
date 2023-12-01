@@ -18,7 +18,8 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
 
     private Dictionary<string, int> _boss;
 
-    public record Spell(
+    private record Spell(
+        // ReSharper disable once NotAccessedPositionalProperty.Local
         string Name,
         int Mana,
         int Duration = 0,
@@ -28,7 +29,7 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
         int ManaCharge = 0
     );
 
-    public struct GameState(bool HardMode = false, int RoundNumber = 0, int TotalManaSpent = 0, int PlayerHealth = 50,
+    private struct GameState(bool HardMode = false, int RoundNumber = 0, int TotalManaSpent = 0, int PlayerHealth = 50,
         int PlayerMana = 500, int BossHealth = 0, int BossDamage = 0, Dictionary<Spell, int>? ActiveSpells = null)
     {
         public GameResult DoTurn(Spell spell)
@@ -77,7 +78,7 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
         }
     }
 
-    public enum GameResult
+    private enum GameResult
     {
         Win,
         Loss,

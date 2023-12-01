@@ -21,10 +21,10 @@ public sealed class Day14() : Day(2021, 14, "Extended Polymerization")
         for (var i = 0; i < input.Length - 1; i++)
         {
             var k = input.Substring(i, 2);
-            if (_substitutionPairs!.ContainsKey(k))
+            if (_substitutionPairs!.TryGetValue(k, out var value))
             {
                 result.Append(k[0]);
-                result.Append(_substitutionPairs[k]);
+                result.Append(value);
             }
             else
             {

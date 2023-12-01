@@ -34,9 +34,6 @@ public sealed class Day03() : Day(2021, 3, "Binary Diagnostic")
         var o = _report!;
         var c = _report!;
 
-        char MostCommon(int i, IReadOnlyCollection<string> report) =>
-            report.Count(r => r[i] == '1') >= report.Count / 2.0 ? '1' : '0';
-
         var i = 0;
         while (o.Count > 1)
         {
@@ -56,5 +53,8 @@ public sealed class Day03() : Day(2021, 3, "Binary Diagnostic")
         var co2 = c.Single().BigIntegerFromBinaryString();
 
         return o2 * co2;
+
+        char MostCommon(int index, IReadOnlyCollection<string> report) =>
+            report.Count(r => r[index] == '1') >= report.Count / 2.0 ? '1' : '0';
     }
 }

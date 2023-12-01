@@ -3,8 +3,11 @@ namespace AOC2020;
 /// <summary>
 ///     Day 20: <a href="https://adventofcode.com/2020/day/20" />
 /// </summary>
-public sealed class Day20() : Day(2020, 20, "Jurassic Jigsaw")
+public sealed partial class Day20() : Day(2020, 20, "Jurassic Jigsaw")
 {
+    [GeneratedRegex("(?<=#.{77})#.{4}#{2}.{4}#{2}.{4}#{3}(?=.{77}#.{2}#.{2}#.{2}#.{2}#.{2}#)")]
+    private static partial Regex MonsterRegex();
+    
     public override void ProcessInput()
     {
     }
@@ -51,14 +54,6 @@ public sealed class Day20() : Day(2020, 20, "Jurassic Jigsaw")
         var sides = new Dictionary<string, PuzzlePiece>();
         var connections = new Dictionary<PuzzlePiece, List<PuzzlePiece>>();
 
-        void AddConnection(PuzzlePiece p1, PuzzlePiece p2)
-        {
-            if (!connections.ContainsKey(p1)) connections.Add(p1, []);
-            if (!connections.ContainsKey(p2)) connections.Add(p2, []);
-            connections[p1].Add(p2);
-            connections[p2].Add(p1);
-        }
-
         foreach (var piece in puzzlePieces)
             foreach (var (original, flipped) in piece.SidesWithFlippedPaired.Value)
             {
@@ -78,6 +73,14 @@ public sealed class Day20() : Day(2020, 20, "Jurassic Jigsaw")
             }
 
         return connections;
+
+        void AddConnection(PuzzlePiece p1, PuzzlePiece p2)
+        {
+            if (!connections.ContainsKey(p1)) connections.Add(p1, []);
+            if (!connections.ContainsKey(p2)) connections.Add(p2, []);
+            connections[p1].Add(p2);
+            connections[p2].Add(p1);
+        }
     }
 
     private static IEnumerable<PuzzlePiece[]> ComposePuzzle(Dictionary<PuzzlePiece, List<PuzzlePiece>> connections)
@@ -171,10 +174,8 @@ public sealed class Day20() : Day(2020, 20, "Jurassic Jigsaw")
 
     private static int CountSeaMonstersInImage(char[][] lines)
     {
-        const string pattern = @"(?<=#.{77})#.{4}#{2}.{4}#{2}.{4}#{3}(?=.{77}#.{2}#.{2}#.{2}#.{2}#.{2}#)";
         var singleLine = lines.Aggregate("", (curr, next) => curr + new string(next));
-        var matches = Regex.Matches(singleLine, pattern);
-        return matches.Count;
+        return MonsterRegex().Matches(singleLine).Count;
     }
 
     private class PuzzlePiece
@@ -253,4 +254,6 @@ public sealed class Day20() : Day(2020, 20, "Jurassic Jigsaw")
         private static HashSet<string> CalculateAllSidesWithFlipped(PuzzlePiece piece) =>
             piece.Sides.Value.Concat(piece.Sides.Value.Select(s => new string(s.Reverse().ToArray()))).ToHashSet();
     }
+
+    
 }

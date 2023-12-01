@@ -7,6 +7,7 @@ public sealed class Day08() : Day(2021, 8, "Seven Segment Search")
 {
     private static readonly List<char[]> PossibleMappings =
         "abcdefg".ToCharArray().Permute().Select(m => m.ToArray()).ToList();
+    private static readonly int[] SearchValues = { 2, 3, 4, 7 };
 
     public override void ProcessInput()
     {
@@ -78,7 +79,7 @@ public sealed class Day08() : Day(2021, 8, "Seven Segment Search")
     public override object Part1() =>
         Input
             .Select(line => line.Split(" | ")[1].Split(' '))
-            .Select(outputs => outputs.Count(o => new[] { 2, 3, 4, 7 }.Contains(o.Length)))
+            .Select(outputs => outputs.Count(o => SearchValues.Contains(o.Length)))
             .Sum();
 
     public override object Part2() => Input.Select(Decode).Sum();

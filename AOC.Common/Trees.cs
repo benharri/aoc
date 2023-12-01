@@ -41,17 +41,24 @@ public class Tree<T>(Tree<T>.Node root)
             set
             {
                 if (value != null) value.Parent = this;
-                if (Children.Count >= 2) Children[1] = value;
-                else if (Children.Count == 0) Children.Add(null);
+                switch (Children.Count)
+                {
+                    case >= 2:
+                        Children[1] = value;
+                        break;
+                    case 0:
+                        Children.Add(null);
+                        break;
+                }
                 Children.Add(value);
             }
         }
 
-        public int DistanceToParent(Node parent)
+        public int DistanceToParent(Node nodeParent)
         {
             var current = this;
             var dist = 0;
-            while (current != parent)
+            while (current != nodeParent)
             {
                 dist++;
                 current = current?.Parent;

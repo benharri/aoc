@@ -58,7 +58,7 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
                 {
                     var active = Neighbors(prev, x, y, z);
                     if (prev[(x, y, z)] == '#')
-                        next[(x, y, z)] = active == 2 || active == 3 ? '#' : '.';
+                        next[(x, y, z)] = active is 2 or 3 ? '#' : '.';
                     else
                         next[(x, y, z)] = active == 3 ? '#' : '.';
                 }
@@ -95,7 +95,7 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
                     {
                         var active = Neighbors4(prev, x, y, z, w);
                         if (prev[(x, y, z, w)] == '#')
-                            next[(x, y, z, w)] = active == 2 || active == 3 ? '#' : '.';
+                            next[(x, y, z, w)] = active is 2 or 3 ? '#' : '.';
                         else
                             next[(x, y, z, w)] = active == 3 ? '#' : '.';
                     }

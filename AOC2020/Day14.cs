@@ -9,6 +9,9 @@ public sealed class Day14() : Day(2020, 14, "Docking Data")
     {
     }
 
+    private static readonly char[] SquareBrackets = ['[', ']'];
+    private static readonly char[] BracketsAndEquals = [..SquareBrackets, '='];
+
     public override object Part1()
     {
         var writes = new Dictionary<ulong, ulong>();
@@ -32,7 +35,7 @@ public sealed class Day14() : Day(2020, 14, "Docking Data")
             }
             else
             {
-                var spl = line.Split(new[] { '[', ']', '=' },
+                var spl = line.Split(BracketsAndEquals,
                         StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
                     .Skip(1)
                     .Select(ulong.Parse)
@@ -60,7 +63,7 @@ public sealed class Day14() : Day(2020, 14, "Docking Data")
             else
             {
                 var value = ulong.Parse(spl[2]);
-                var addr = ulong.Parse(spl[0].Split(new[] { '[', ']' },
+                var addr = ulong.Parse(spl[0].Split(SquareBrackets,
                     StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)[1]);
 
                 var floats = new List<int>();

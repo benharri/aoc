@@ -34,7 +34,7 @@ public sealed class Day07() : Day(2020, 7, "Handy Haversacks")
     public override object Part1()
     {
         // breadth-first search with Queue
-        var start = new Queue<string>(new[] { "shiny gold" });
+        Queue<string> start = new(["shiny gold"]);
         var p = new HashSet<string>();
         string node;
         while (true)
