@@ -36,12 +36,6 @@ public sealed class Day10() : Day(2019, 10, "Monitoring Station")
 
     public override object Part2()
     {
-        static IEnumerable<(int x, int y, double angle, double dist)> GetValue(
-            Queue<(int x, int y, double angle, double dist)> q)
-        {
-            if (q.Count > 0) yield return q.Dequeue();
-        }
-
         return _asteroids!
             .Where(a => a != _best)
             .Select(a =>
@@ -60,5 +54,11 @@ public sealed class Day10() : Day(2019, 10, "Monitoring Station")
             .Take(1)
             .Select(a => a.x * 100 + a.y)
             .Single();
+
+        static IEnumerable<(int x, int y, double angle, double dist)> GetValue(
+            Queue<(int x, int y, double angle, double dist)> q)
+        {
+            if (q.Count > 0) yield return q.Dequeue();
+        }
     }
 }

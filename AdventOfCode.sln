@@ -27,9 +27,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FD88DFA6-FE18-466D-B249-14FE2817D45A}"
 	ProjectSection(SolutionItems) = preProject
 		.drone.yml = .drone.yml
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
 		DayXX.cs.txt = DayXX.cs.txt
 		getday.sh = getday.sh
 		global.json = global.json
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject

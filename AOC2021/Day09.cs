@@ -41,12 +41,15 @@ public sealed class Day09() : Day(2021, 9, "Smoke Basin")
             var s = 0;
             var seen = new HashSet<(int x, int y)>();
 
+            MoreEnumerable.TraverseBreadthFirst((x, y), Traverse).Consume();
+            sizes.Add(s);
+            continue;
+
             IEnumerable<(int x, int y)> Traverse((int x, int y) p)
             {
                 var (i, j) = p;
                 if (_map![j][i] == '9') yield break;
-                if (seen.Contains((i, j))) yield break;
-                seen.Add((i, j));
+                if (!seen.Add((i, j))) yield break;
                 s++;
 
                 if (j > 0)
@@ -58,9 +61,6 @@ public sealed class Day09() : Day(2021, 9, "Smoke Basin")
                 if (i < _map[j].Length - 1)
                     yield return (i + 1, j);
             }
-
-            MoreEnumerable.TraverseBreadthFirst((x, y), Traverse).Consume();
-            sizes.Add(s);
         }
 
         return sizes

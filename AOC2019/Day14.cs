@@ -12,8 +12,7 @@ public sealed class Day14() : Day(2019, 14, "Space Stoichiometry")
 
     private bool Consume(string chem, long quantity)
     {
-        if (quantity <= 0)
-            throw new ArgumentOutOfRangeException(nameof(quantity));
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity);
 
         _available.TryAdd(chem, 0);
 
@@ -70,6 +69,7 @@ public sealed class Day14() : Day(2019, 14, "Space Stoichiometry")
     {
         public readonly Component Product;
         public readonly Component[] Reactants;
+        private static readonly string[] Separators = [", ", " => "];
 
         private Reaction(Component[] reactants, Component product)
         {
@@ -79,7 +79,7 @@ public sealed class Day14() : Day(2019, 14, "Space Stoichiometry")
 
         public static Reaction Parse(string s)
         {
-            var ss = s.Split(new[] { ", ", " => " }, StringSplitOptions.None);
+            var ss = s.Split(Separators, StringSplitOptions.None);
 
             return new(
                 ss.Take(ss.Length - 1).Select(ParseComponent).ToArray(),

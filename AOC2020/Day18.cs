@@ -20,23 +20,27 @@ public sealed class Day18() : Day(2020, 18, "Operation Order")
             {
                 postfixNotation.Append(c);
             }
-            else if (c == '(')
+            else switch (c)
             {
-                postfixStack.Push(c);
-            }
-            else if (c == ')')
-            {
-                while (postfixStack.Count > 0 && postfixStack.Peek() != '(')
-                    postfixNotation.Append(postfixStack.Pop());
+                case '(':
+                    postfixStack.Push(c);
+                    break;
+                case ')':
+                    {
+                        while (postfixStack.Count > 0 && postfixStack.Peek() != '(')
+                            postfixNotation.Append(postfixStack.Pop());
 
-                postfixStack.TryPop(out _);
-            }
-            else
-            {
-                while (postfixStack.Count > 0 && precedence(c) <= precedence(postfixStack.Peek()))
-                    postfixNotation.Append(postfixStack.Pop());
+                        postfixStack.TryPop(out _);
+                        break;
+                    }
+                default:
+                    {
+                        while (postfixStack.Count > 0 && precedence(c) <= precedence(postfixStack.Peek()))
+                            postfixNotation.Append(postfixStack.Pop());
 
-                postfixStack.Push(c);
+                        postfixStack.Push(c);
+                        break;
+                    }
             }
 
         while (postfixStack.Count > 0)
@@ -54,8 +58,15 @@ public sealed class Day18() : Day(2020, 18, "Operation Order")
                 var a = expressionStack.Pop();
                 var b = expressionStack.Pop();
 
-                if (c == '+') expressionStack.Push(a + b);
-                if (c == '*') expressionStack.Push(a * b);
+                switch (c)
+                {
+                    case '+':
+                        expressionStack.Push(a + b);
+                        break;
+                    case '*':
+                        expressionStack.Push(a * b);
+                        break;
+                }
             }
 
         return expressionStack.Pop();

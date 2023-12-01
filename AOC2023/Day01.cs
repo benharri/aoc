@@ -2,7 +2,7 @@ namespace AOC2023;
 
 public class Day01() : Day(2023, 1, "Trebuchet?!")
 {
-    private static readonly List<string> _singleDigits =
+    private static readonly List<string> SingleDigits =
         ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 
     public override void ProcessInput()
@@ -25,7 +25,7 @@ public class Day01() : Day(2023, 1, "Trebuchet?!")
                     continue;
                 }
 
-                foreach (var (digit, spelled) in _singleDigits.Indexed())
+                foreach (var (digit, spelled) in SingleDigits.Indexed())
                 {
                     if (i + spelled.Length - 1 < line.Length && line[i..(i + spelled.Length)] == spelled)
                     {

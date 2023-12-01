@@ -3,15 +3,18 @@ namespace AOC2015;
 /// <summary>
 /// Day 16: <a href="https://adventofcode.com/2015/day/16"/>
 /// </summary>
-public sealed class Day16() : Day(2015, 16, "Aunt Sue")
+public sealed partial class Day16() : Day(2015, 16, "Aunt Sue")
 {
+    [GeneratedRegex(@": \d\d")]
+    private static partial Regex TwoDigitsRegex();
+    
     public override void ProcessInput()
     {
     }
 
     private IEnumerable<string> Common() =>
         Input
-            .Select(i => Regex.Replace(i, @": \d\d", ": 9"))
+            .Select(i => TwoDigitsRegex().Replace(i, ": 9"))
             .WhereMatch("children: 3")
             .WhereMatch("samoyeds: 2")
             .WhereMatch("akitas: 0")
