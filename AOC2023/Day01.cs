@@ -1,6 +1,6 @@
 namespace AOC2023;
 
-public class Day01() : Day(2023, 1, "Puzzle Name")
+public class Day01() : Day(2023, 1, "Trebuchet?!")
 {
 	private static readonly List<string> _singleDigits = 
 		["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
