@@ -107,10 +107,10 @@ public sealed class Day21() : Day(2021, 21, "Dirac Dice")
     public override object Part2()
     {
         for (var x = 1; x <= 3; x++)
-        for (var y = 1; y <= 3; y++)
-        for (var z = 1; z <= 3; z++)
-            _possibleRollOutComes[x + y + z] =
-                _possibleRollOutComes.GetValueOrDefault(x + y + z, 0ul) + 1ul;
+            for (var y = 1; y <= 3; y++)
+                for (var z = 1; z <= 3; z++)
+                    _possibleRollOutComes[x + y + z] =
+                        _possibleRollOutComes.GetValueOrDefault(x + y + z, 0ul) + 1ul;
 
         RollDiracDie(0, 0, _player1, _player2, 1, 1);
 

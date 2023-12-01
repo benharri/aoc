@@ -13,23 +13,23 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
         var input = Input.ToList();
 
         for (var x = 0; x < 32; x++)
-        for (var y = 0; y < 32; y++)
-        for (var z = 0; z < 32; z++)
-            _plane[(x, y, z)] = '.';
+            for (var y = 0; y < 32; y++)
+                for (var z = 0; z < 32; z++)
+                    _plane[(x, y, z)] = '.';
 
         for (var x = 0; x < 32; x++)
-        for (var y = 0; y < 32; y++)
-        for (var z = 0; z < 32; z++)
-        for (var w = 0; w < 32; w++)
-            _plane4[(x, y, z, w)] = '.';
+            for (var y = 0; y < 32; y++)
+                for (var z = 0; z < 32; z++)
+                    for (var w = 0; w < 32; w++)
+                        _plane4[(x, y, z, w)] = '.';
 
         for (var y = 0; y < input.Count; y++)
-        for (var x = 0; x < input[y].Length; x++)
-            _plane[(x, y, 0)] = input[y][x];
+            for (var x = 0; x < input[y].Length; x++)
+                _plane[(x, y, 0)] = input[y][x];
 
         for (var y = 0; y < input.Count; y++)
-        for (var x = 0; x < input[y].Length; x++)
-            _plane4[(x, y, 0, 0)] = input[y][x];
+            for (var x = 0; x < input[y].Length; x++)
+                _plane4[(x, y, 0, 0)] = input[y][x];
     }
 
     private static int Neighbors(IReadOnlyDictionary<(int x, int y, int z), char> plane, int x, int y, int z)
@@ -37,12 +37,12 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
         var neighbors = 0;
 
         foreach (var i in new[] { -1, 0, 1 })
-        foreach (var j in new[] { -1, 0, 1 })
-        foreach (var k in new[] { -1, 0, 1 })
-        {
-            if (i == 0 && j == 0 && k == 0) continue;
-            if (plane[((x + i) & 31, (y + j) & 31, (z + k) & 31)] == '#') neighbors++;
-        }
+            foreach (var j in new[] { -1, 0, 1 })
+                foreach (var k in new[] { -1, 0, 1 })
+                {
+                    if (i == 0 && j == 0 && k == 0) continue;
+                    if (plane[((x + i) & 31, (y + j) & 31, (z + k) & 31)] == '#') neighbors++;
+                }
 
         return neighbors;
     }
@@ -53,15 +53,15 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
         var next = new Dictionary<(int x, int y, int z), char>();
 
         for (var z = 0; z < 32; z++)
-        for (var y = 0; y < 32; y++)
-        for (var x = 0; x < 32; x++)
-        {
-            var active = Neighbors(prev, x, y, z);
-            if (prev[(x, y, z)] == '#')
-                next[(x, y, z)] = active == 2 || active == 3 ? '#' : '.';
-            else
-                next[(x, y, z)] = active == 3 ? '#' : '.';
-        }
+            for (var y = 0; y < 32; y++)
+                for (var x = 0; x < 32; x++)
+                {
+                    var active = Neighbors(prev, x, y, z);
+                    if (prev[(x, y, z)] == '#')
+                        next[(x, y, z)] = active == 2 || active == 3 ? '#' : '.';
+                    else
+                        next[(x, y, z)] = active == 3 ? '#' : '.';
+                }
 
         return next;
     }
@@ -72,13 +72,13 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
         var neighbors = 0;
 
         foreach (var i in new[] { -1, 0, 1 })
-        foreach (var j in new[] { -1, 0, 1 })
-        foreach (var k in new[] { -1, 0, 1 })
-        foreach (var l in new[] { -1, 0, 1 })
-        {
-            if (i == 0 && j == 0 && k == 0 && l == 0) continue;
-            if (plane[((x + i) & 31, (y + j) & 31, (z + k) & 31, (w + l) & 31)] == '#') neighbors++;
-        }
+            foreach (var j in new[] { -1, 0, 1 })
+                foreach (var k in new[] { -1, 0, 1 })
+                    foreach (var l in new[] { -1, 0, 1 })
+                    {
+                        if (i == 0 && j == 0 && k == 0 && l == 0) continue;
+                        if (plane[((x + i) & 31, (y + j) & 31, (z + k) & 31, (w + l) & 31)] == '#') neighbors++;
+                    }
 
         return neighbors;
     }
@@ -89,16 +89,16 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
         var next = new Dictionary<(int x, int y, int z, int w), char>();
 
         for (var z = 0; z < 32; z++)
-        for (var y = 0; y < 32; y++)
-        for (var x = 0; x < 32; x++)
-        for (var w = 0; w < 32; w++)
-        {
-            var active = Neighbors4(prev, x, y, z, w);
-            if (prev[(x, y, z, w)] == '#')
-                next[(x, y, z, w)] = active == 2 || active == 3 ? '#' : '.';
-            else
-                next[(x, y, z, w)] = active == 3 ? '#' : '.';
-        }
+            for (var y = 0; y < 32; y++)
+                for (var x = 0; x < 32; x++)
+                    for (var w = 0; w < 32; w++)
+                    {
+                        var active = Neighbors4(prev, x, y, z, w);
+                        if (prev[(x, y, z, w)] == '#')
+                            next[(x, y, z, w)] = active == 2 || active == 3 ? '#' : '.';
+                        else
+                            next[(x, y, z, w)] = active == 3 ? '#' : '.';
+                    }
 
         return next;
     }

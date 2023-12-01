@@ -26,8 +26,8 @@ public sealed class Day08() : Day(2016, 8, "Two-Factor Authentication")
     private static void DrawRectangle(char[,] screen, int width, int height)
     {
         for (var y = 0; y < height; y++)
-        for (var x = 0; x < width; x++)
-            screen[y, x] = '\u2588';
+            for (var x = 0; x < width; x++)
+                screen[y, x] = '\u2588';
     }
 
     private static void Coltate(char[,] screen, int index, int extent)
@@ -65,8 +65,8 @@ public sealed class Day08() : Day(2016, 8, "Two-Factor Authentication")
     {
         var screen = new char[6, 50];
         for (var y = 0; y < 6; y++)
-        for (var x = 0; x < 50; x++)
-            screen[y, x] = '\u2592';
+            for (var x = 0; x < 50; x++)
+                screen[y, x] = '\u2592';
 
         foreach (var line in Input)
         {

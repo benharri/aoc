@@ -19,10 +19,10 @@ public sealed class Day01() : Day(2020, 1, "Report Repair")
     public override object Part2()
     {
         foreach (var i in _entries!)
-        foreach (var j in _entries)
-        foreach (var k in _entries)
-            if (i + j + k == 2020)
-                return i * j * k;
+            foreach (var j in _entries)
+                foreach (var k in _entries)
+                    if (i + j + k == 2020)
+                        return i * j * k;
 
         return default!;
     }

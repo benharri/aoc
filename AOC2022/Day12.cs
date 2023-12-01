@@ -12,21 +12,21 @@ public sealed class Day12() : Day(2022, 12, "Hill Climbing Algorithm")
     public override void ProcessInput()
     {
         foreach (var (y, line) in Input.Indexed())
-        foreach (var (x, c) in line.Indexed())
-            switch (c)
-            {
-                case 'S':
-                    _startCoord = (x, y);
-                    _grid[(x, y)] = 0;
-                    break;
-                case 'E':
-                    _destCoord = (x, y);
-                    _grid[(x, y)] = 25;
-                    break;
-                default:
-                    _grid[(x, y)] = c - 'a';
-                    break;
-            }
+            foreach (var (x, c) in line.Indexed())
+                switch (c)
+                {
+                    case 'S':
+                        _startCoord = (x, y);
+                        _grid[(x, y)] = 0;
+                        break;
+                    case 'E':
+                        _destCoord = (x, y);
+                        _grid[(x, y)] = 25;
+                        break;
+                    default:
+                        _grid[(x, y)] = c - 'a';
+                        break;
+                }
     }
 
     private int ShortestDistance((int x, int y) startCoord, (int x, int y)? destCoord, int? destVal = null)
