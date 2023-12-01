@@ -4,16 +4,14 @@ public sealed class Day06() : Day(2019, 6, "Universal Orbit Map")
 {
     private Dictionary<string, string>? _input;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _input = Input.ToDictionary(i => i.Split(')')[1], i => i.Split(')')[0]);
-    }
 
     private List<string> GetParents(string obj)
     {
         var res = new List<string>();
-        for (var curr = obj; curr != "COM"; curr = _input![curr])
-            res.Add(curr);
+        for (var current = obj; current != "COM"; current = _input![current])
+            res.Add(current);
         res.Add("COM");
         return res;
     }

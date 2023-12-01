@@ -7,17 +7,15 @@ public sealed class Day03() : Day(2021, 3, "Binary Diagnostic")
 {
     private List<string>? _report;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _report = Input.ToList();
-    }
 
     public override object Part1()
     {
         var l = _report!.Count / 2;
         var g = new StringBuilder();
         var e = new StringBuilder();
-        
+
         foreach (var i in Enumerable.Range(0, _report[0].Length))
         {
             var ones = _report.Select(r => r[i]).Count(c => c == '1');
@@ -25,7 +23,7 @@ public sealed class Day03() : Day(2021, 3, "Binary Diagnostic")
             e.Append(ones > l ? '0' : '1');
         }
 
-        var gamma   = g.ToString().BigIntegerFromBinaryString();
+        var gamma = g.ToString().BigIntegerFromBinaryString();
         var epsilon = e.ToString().BigIntegerFromBinaryString();
 
         return gamma * epsilon;
@@ -38,7 +36,7 @@ public sealed class Day03() : Day(2021, 3, "Binary Diagnostic")
 
         char MostCommon(int i, IReadOnlyCollection<string> report) =>
             report.Count(r => r[i] == '1') >= report.Count / 2.0 ? '1' : '0';
-        
+
         var i = 0;
         while (o.Count > 1)
         {

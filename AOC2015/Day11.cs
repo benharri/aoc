@@ -7,10 +7,7 @@ public sealed class Day11() : Day(2015, 11, "Corporate Policy")
 {
     private char[]? _password;
 
-    public override void ProcessInput()
-    {
-        _password = Input.First().ToCharArray();
-    }
+    public override void ProcessInput() => _password = Input.First().ToCharArray();
 
     public override object Part1()
     {

@@ -10,8 +10,8 @@ public sealed class Day16() : Day(2020, 16, "Ticket Translation")
 
     public override void ProcessInput()
     {
-        _tickets = new();
-        _rules = new();
+        _tickets = [];
+        _rules = [];
 
         foreach (var line in Input)
         {

@@ -8,10 +8,7 @@ public sealed class Day22() : Day(2020, 22, "Crab Combat")
     private readonly Queue<int> _deck1 = new();
     private readonly Queue<int> _deck2 = new();
 
-    public override void ProcessInput()
-    {
-        Reset();
-    }
+    public override void ProcessInput() => Reset();
 
     private void Reset()
     {

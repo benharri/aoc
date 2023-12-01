@@ -7,10 +7,7 @@ public sealed class Day01() : Day(2016, 1, "No Time for a Taxicab")
 {
     private string[]? _moves;
 
-    public override void ProcessInput()
-    {
-        _moves = Input.First().Split(", ");
-    }
+    public override void ProcessInput() => _moves = Input.First().Split(", ");
 
     private enum Direction
     {
@@ -20,9 +17,8 @@ public sealed class Day01() : Day(2016, 1, "No Time for a Taxicab")
         West,
     }
 
-    private static Direction Turn(Direction current, char newDirection)
-    {
-        return current switch
+    private static Direction Turn(Direction current, char newDirection) =>
+        current switch
         {
             Direction.North => newDirection == 'L' ? Direction.West : Direction.East,
             Direction.South => newDirection == 'L' ? Direction.East : Direction.West,
@@ -30,11 +26,9 @@ public sealed class Day01() : Day(2016, 1, "No Time for a Taxicab")
             Direction.West => newDirection == 'L' ? Direction.South : Direction.North,
             _ => throw new ArgumentException("invalid direction", nameof(current)),
         };
-    }
 
-    private static (int x, int y) Move((int x, int y) coord, Direction direction)
-    {
-        return direction switch
+    private static (int x, int y) Move((int x, int y) coord, Direction direction) =>
+        direction switch
         {
             Direction.North => (coord.x, coord.y + 1),
             Direction.South => (coord.x, coord.y - 1),
@@ -42,7 +36,6 @@ public sealed class Day01() : Day(2016, 1, "No Time for a Taxicab")
             Direction.West => (coord.x - 1, coord.y),
             _ => (0, 0)
         };
-    }
 
     public override object Part1()
     {
@@ -61,7 +54,7 @@ public sealed class Day01() : Day(2016, 1, "No Time for a Taxicab")
 
     public override object Part2()
     {
-        HashSet<(int x, int y)> visitedLocations = new();
+        HashSet<(int x, int y)> visitedLocations = [];
         var direction = Direction.North;
         var location = (x: 0, y: 0);
 

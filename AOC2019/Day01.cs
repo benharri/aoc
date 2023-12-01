@@ -4,10 +4,8 @@ public sealed class Day01() : Day(2019, 1, "The Tyranny of the Rocket Equation")
 {
     private IEnumerable<int>? _masses;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _masses = Input.Select(int.Parse);
-    }
 
     private static int FuelCost(int weight) => weight / 3 - 2;
 

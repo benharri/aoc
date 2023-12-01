@@ -5,17 +5,17 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day10() : Day(2022, 10, "Cathode-Ray Tube")
 {
-    private readonly List<int> _interestingSignals = new();
+    private readonly List<int> _interestingSignals = [];
     private readonly List<char> _charMap = Enumerable.Range(0, 6 * 40).Select(_ => ' ').ToList();
 
     public override void ProcessInput()
     {
         int x = 1, cycle = 1;
         foreach (var line in Input)
-        {               
+        {
             CpuTick(ref cycle, x);
             if (!line.StartsWith("addx")) continue;
-            
+
             CpuTick(ref cycle, x);
             x += int.Parse(line.Split(' ')[1]);
         }

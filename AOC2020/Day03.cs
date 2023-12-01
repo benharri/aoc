@@ -7,10 +7,8 @@ public sealed class Day03() : Day(2020, 3, "Toboggan Trajectory")
 {
     private string[]? _grid;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _grid = Input.ToArray();
-    }
 
     private long CountSlope(int dx, int dy)
     {

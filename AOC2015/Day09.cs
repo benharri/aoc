@@ -5,7 +5,7 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day09() : Day(2015, 9, "All in a Single Night")
 {
-    private readonly List<Distance> _distances = new();
+    private readonly List<Distance> _distances = [];
     private int _shortest = int.MaxValue, _longest;
 
     public override void ProcessInput()

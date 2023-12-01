@@ -6,7 +6,7 @@ namespace AOC2021;
 public sealed class Day21() : Day(2021, 21, "Dirac Dice")
 {
     private int _player1, _player2;
-    private readonly Dictionary<int, ulong> _possibleRollOutComes = new();
+    private readonly Dictionary<int, ulong> _possibleRollOutComes = [];
     private int _deterministicDie = 1;
     private int _rollCount;
     private ulong _player1Victories, _player2Victories;

@@ -7,10 +7,8 @@ public sealed class Day18() : Day(2020, 18, "Operation Order")
 {
     private List<string>? _expressions;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _expressions = Input.Select(line => line.Replace(" ", "")).ToList();
-    }
 
     private static long Calculate(string expr, Func<char, int> precedence)
     {

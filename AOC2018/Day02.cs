@@ -26,8 +26,8 @@ public sealed class Day02() : Day(2018, 2, "Inventory Management System")
         var input = Input.ToImmutableList();
 
         foreach (var id1 in input)
-        foreach (var id2 in input.Where(line2 => id1.HammingDistance(line2) == 1))
-            return id1.Remove(id1.Zip(id2).Indexed().First(i => i.Value.First != i.Value.Second).Key, 1);
+            foreach (var id2 in input.Where(line2 => id1.HammingDistance(line2) == 1))
+                return id1.Remove(id1.Zip(id2).Indexed().First(i => i.Value.First != i.Value.Second).Key, 1);
 
         throw new("Correct IDs not found");
     }

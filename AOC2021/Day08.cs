@@ -42,7 +42,7 @@ public sealed class Day08() : Day(2021, 8, "Seven Segment Search")
                 lit = "0000000".ToCharArray();
                 foreach (var c in signal)
                     lit[Array.IndexOf(PossibleMappings[i], c)] = '1';
-                
+
                 var match = MatchDigit(new(lit));
                 if (match == -1)
                 {
@@ -68,7 +68,7 @@ public sealed class Day08() : Day(2021, 8, "Seven Segment Search")
             lit = "0000000".ToCharArray();
             foreach (var c in o)
                 lit[Array.IndexOf(PossibleMappings[i], c)] = '1';
-            
+
             digits.Append(MatchDigit(new(lit)));
         }
 

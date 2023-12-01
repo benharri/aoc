@@ -3,14 +3,12 @@ namespace AOC2019;
 public sealed class Day14() : Day(2019, 14, "Space Stoichiometry")
 {
     private Dictionary<string, Reaction>? _reactions;
-    private Dictionary<string, long> _available = new();
+    private Dictionary<string, long> _available = [];
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _reactions = Input
             .Select(Reaction.Parse)
             .ToDictionary(r => r.Product.Name);
-    }
 
     private bool Consume(string chem, long quantity)
     {

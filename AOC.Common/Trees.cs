@@ -20,7 +20,7 @@ public class Tree<T>(Tree<T>.Node root)
     {
         public Node? Parent { get; private set; } = parent;
         public T Data { get; set; } = data;
-        private List<Node?> Children { get; } = new();
+        private List<Node?> Children { get; } = [];
 
         public Node? Left
         {

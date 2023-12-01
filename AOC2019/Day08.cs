@@ -4,10 +4,8 @@ public sealed class Day08() : Day(2019, 8, "Space Image Format")
 {
     private List<List<char>>? _photo;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _photo = Input.First().Chunk(25 * 6).Select(s => s.ToList()).ToList();
-    }
 
     public override object Part1()
     {
@@ -15,9 +13,8 @@ public sealed class Day08() : Day(2019, 8, "Space Image Format")
         return l.Count(p => p == '1') * l.Count(p => p == '2');
     }
 
-    public override object Part2()
-    {
-        return Enumerable.Range(0, 25 * 6)
+    public override object Part2() =>
+        Enumerable.Range(0, 25 * 6)
             .Select(p => Enumerable.Range(0, _photo!.Count)
                 .Select(l => _photo[l][p])
                 .Aggregate('2', (acc, next) =>
@@ -29,5 +26,4 @@ public sealed class Day08() : Day(2019, 8, "Space Image Format")
             .Select(s => new string(s).Trim())
             .ToDelimitedString(Environment.NewLine)
             .Replace('1', 'x');
-    }
 }

@@ -9,13 +9,7 @@ public sealed class Day23() : Day(2022, 23, "Unstable Diffusion")
     {
     }
 
-    public override object Part1()
-    {
-        return "";
-    }
+    public override object Part1() => "";
 
-    public override object Part2()
-    {
-        return "";
-    }
+    public override object Part2() => "";
 }

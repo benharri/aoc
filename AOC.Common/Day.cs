@@ -16,7 +16,7 @@ public abstract class Day(int year, int day, string puzzleName)
 
     public static bool UseTestInput { get; set; }
     private readonly Stopwatch _stopwatch = new();
-    
+
     public abstract void ProcessInput();
     public abstract object Part1();
     public abstract object Part2();

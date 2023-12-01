@@ -5,8 +5,8 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day13() : Day(2015, 13, "Knights of the Dinner Table")
 {
-    private readonly Dictionary<(string person1, string person2), int> _happinessMap = new();
-    private readonly List<string> _people = new();
+    private readonly Dictionary<(string person1, string person2), int> _happinessMap = [];
+    private readonly List<string> _people = [];
 
     public override void ProcessInput()
     {
@@ -55,7 +55,7 @@ public sealed class Day13() : Day(2015, 13, "Knights of the Dinner Table")
                 (item, permutation) => new[] { item }.Concat(permutation).ToList()).ToList();
         }
 
-        return new() { items };
+        return [items];
     }
 
     private long ComputeHappiness()

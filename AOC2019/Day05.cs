@@ -5,20 +5,15 @@ public sealed class Day05() : Day(2019, 5, "Sunny with a Chance of Asteroids")
     private IEnumerable<int>? _tape;
     private int _output;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _tape = Input.First().Split(',').Select(int.Parse);
-    }
 
     private void RunIntCode(IList<int> v, int input)
     {
         var i = 0;
         while (i < v.Count && v[i] != 99)
         {
-            int Val(int mode, int val)
-            {
-                return mode != 0 ? val : v[val];
-            }
+            int Val(int mode, int val) => mode != 0 ? val : v[val];
 
             var mode1 = v[i] / 100 % 10;
             var mode2 = v[i] / 1000;

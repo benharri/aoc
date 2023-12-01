@@ -7,10 +7,8 @@ public sealed class Day01() : Day(2020, 1, "Report Repair")
 {
     private ImmutableHashSet<int>? _entries;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _entries = Input.Select(int.Parse).ToImmutableHashSet();
-    }
 
     public override object Part1()
     {
@@ -25,7 +23,7 @@ public sealed class Day01() : Day(2020, 1, "Report Repair")
         foreach (var k in _entries)
             if (i + j + k == 2020)
                 return i * j * k;
-        
+
         return default!;
     }
 }

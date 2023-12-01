@@ -15,12 +15,12 @@ public sealed class Day11() : Day(2021, 11, "Dumbo Octopus")
         while (true)
         {
             _totalTurns++;
-            
+
             // increment all octopuses
             for (var row = 0; row < _octopusField.Length; row++)
             for (var col = 0; col < _octopusField[row].Length; col++)
                 _octopusField[row][col]++;
-            
+
             // flash any that exceeded 10
             for (var row = 0; row < _octopusField.Length; row++)
             for (var col = 0; col < _octopusField[row].Length; col++)
@@ -34,7 +34,7 @@ public sealed class Day11() : Day(2021, 11, "Dumbo Octopus")
                     _octopusField[row][col] = 0;
                 else
                     done = false;
-            
+
             if (_totalTurns == 100) _flashesAfter100 = _flashTally;
             if (done) break;
         }

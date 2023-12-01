@@ -5,7 +5,7 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day23() : Day(2020, 23, "Crab Cups")
 {
-    private readonly Dictionary<long, long> _cups = new();
+    private readonly Dictionary<long, long> _cups = [];
     private ImmutableList<long>? _initialCups;
     private long[]? _move;
     private long _current;

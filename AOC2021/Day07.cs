@@ -7,10 +7,8 @@ public sealed class Day07() : Day(2021, 7, "The Treachery of Whales")
 {
     private List<long>? _tape;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _tape = Input.First().Split(',').Select(long.Parse).OrderBy(i => i).ToList();
-    }
 
     private static long ArithmeticSumTo(long n) => n * (n + 1) / 2L;
 
@@ -24,7 +22,7 @@ public sealed class Day07() : Day(2021, 7, "The Treachery of Whales")
     {
         var avg = (decimal)_tape!.Sum() / _tape!.Count;
         var floor = _tape.Select(t => ArithmeticSumTo(Math.Abs(t - (long)Math.Floor(avg)))).Sum();
-        var ceil  = _tape.Select(t => ArithmeticSumTo(Math.Abs(t - (long)Math.Ceiling(avg)))).Sum();
+        var ceil = _tape.Select(t => ArithmeticSumTo(Math.Abs(t - (long)Math.Ceiling(avg)))).Sum();
         return Math.Min(floor, ceil);
     }
 }

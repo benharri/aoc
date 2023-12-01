@@ -5,7 +5,7 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day12() : Day(2021, 12, "Passage Pathing")
 {
-    private readonly Dictionary<string, List<string>> _edges = new();
+    private readonly Dictionary<string, List<string>> _edges = [];
 
     public override void ProcessInput()
     {
@@ -14,10 +14,10 @@ public sealed class Day12() : Day(2021, 12, "Passage Pathing")
             var s = line.Split('-', 2);
 
             if (_edges.ContainsKey(s[0])) _edges[s[0]].Add(s[1]);
-            else _edges[s[0]] = new() { s[1] };
+            else _edges[s[0]] = [s[1]];
 
             if (_edges.ContainsKey(s[1])) _edges[s[1]].Add(s[0]);
-            else _edges[s[1]] = new() { s[0] };
+            else _edges[s[1]] = [s[0]];
         }
     }
 
@@ -49,14 +49,14 @@ public sealed class Day12() : Day(2021, 12, "Passage Pathing")
             return true;
         if (seen.GetValueOrDefault("_twice", false))
             return false;
-        
+
         seen["_twice"] = true;
         return true;
     }
 
     public override object Part1() =>
-        WalkGraph(_edges, "start", new());
+        WalkGraph(_edges, "start", []);
 
     public override object Part2() =>
-        TraverseGraph(_edges, "start", new());
+        TraverseGraph(_edges, "start", []);
 }

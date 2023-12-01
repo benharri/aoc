@@ -7,10 +7,7 @@ public sealed class Day10() : Day(2015, 10, "Elves Look, Elves Say")
 {
     private string? _seed;
 
-    public override void ProcessInput()
-    {
-        _seed = Input.First();
-    }
+    public override void ProcessInput() => _seed = Input.First();
 
     public override object Part1()
     {

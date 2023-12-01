@@ -6,14 +6,14 @@ public static class Common
     {
         Day.UseTestInput = testInput;
         var day = Activator.CreateInstance(dayType) as Day;
-        
+
         Assert.IsNotNull(day, "Failed to instantiate day object");
         Assert.IsTrue(File.Exists(day.FileName), $"File.Exists(day.FileName) {day.FileName}");
 
         var s = Stopwatch.StartNew();
         day.ProcessInput();
         s.Stop();
-        
+
         Console.WriteLine(
             $"{day.Year} Day {day.DayNumber,2}: {day.PuzzleName,-40} {s.ScaleMilliseconds()} ms elapsed processing input");
 

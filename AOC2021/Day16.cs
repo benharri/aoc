@@ -34,7 +34,7 @@ public sealed class Day16() : Day(2021, 16, "Packet Decoder")
                     if (chunk[0] == '0') break;
                 }
 
-                return (new(version, typeId, Convert.ToInt64(literalBits.ToString(), 2), new()), index);
+                return (new(version, typeId, Convert.ToInt64(literalBits.ToString(), 2), []), index);
             }
 
             switch (input[index++])

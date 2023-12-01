@@ -11,7 +11,7 @@ public sealed class Day02() : Day(2016, 2, "Bathroom Security")
 
     public override object Part1()
     {
-        List<int> answer = new();
+        List<int> answer = [];
         var location = (x: 1, y: 1);
 
         foreach (var line in Input)
@@ -42,7 +42,7 @@ public sealed class Day02() : Day(2016, 2, "Bathroom Security")
             { '\0', '\0', 'D', '\0', '\0' },
         };
         var location = (x: 0, y: 2);
-        List<char> answer = new();
+        List<char> answer = [];
 
         foreach (var line in Input)
         {

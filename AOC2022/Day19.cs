@@ -9,13 +9,7 @@ public sealed class Day19() : Day(2022, 19, "Not Enough Minerals")
     {
     }
 
-    public override object Part1()
-    {
-        return "";
-    }
+    public override object Part1() => "";
 
-    public override object Part2()
-    {
-        return "";
-    }
+    public override object Part2() => "";
 }

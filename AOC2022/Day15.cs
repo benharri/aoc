@@ -9,13 +9,7 @@ public sealed class Day15() : Day(2022, 15, "Beacon Exclusion Zone")
     {
     }
 
-    public override object Part1()
-    {
-        return "";
-    }
+    public override object Part1() => "";
 
-    public override object Part2()
-    {
-        return "";
-    }
+    public override object Part2() => "";
 }

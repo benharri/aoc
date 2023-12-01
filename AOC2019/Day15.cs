@@ -2,13 +2,11 @@ namespace AOC2019;
 
 public sealed class Day15() : Day(2019, 15, "Oxygen System")
 {
-    private readonly bool _verbose = false;
+    private const bool Verbose = false;
     private IntCodeVM? _vm;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _vm = new(Input.First());
-    }
 
     public override object Part1()
     {
@@ -54,7 +52,7 @@ public sealed class Day15() : Day(2019, 15, "Oxygen System")
                 }
                 else
                 {
-                    if (_verbose)
+                    if (Verbose)
                     {
                         // find extents of canvas
                         int yMin, yMax;
@@ -125,7 +123,7 @@ public sealed class Day15() : Day(2019, 15, "Oxygen System")
         private static readonly int[] Dy = { 0, 1, -1, 0, 0 };
         public static readonly int[] Opposites = { 0, 2, 1, 4, 3 };
 
-        public static readonly Dictionary<(int x, int y), Location> AllLocations = new();
+        public static readonly Dictionary<(int x, int y), Location> AllLocations = [];
 
         private readonly int _currentType;
 
@@ -156,16 +154,13 @@ public sealed class Day15() : Day(2019, 15, "Oxygen System")
 
         public bool IsWall => _currentType == Wall;
 
-        public string Image()
+        public string Image() => _currentType switch
         {
-            return _currentType switch
-            {
-                Wall => "\u2587",
-                Empty => X == 0 && Y == 0 ? "S" : " ",
-                System => "O",
-                _ => "?"
-            };
-        }
+            Wall => "\u2587",
+            Empty => X == 0 && Y == 0 ? "S" : " ",
+            System => "O",
+            _ => "?"
+        };
 
         public bool UpdateDistanceToOxygenSystem()
         {
@@ -184,29 +179,14 @@ public sealed class Day15() : Day(2019, 15, "Oxygen System")
             return false;
         }
 
-        public (int, int) Neighbor(int direction)
-        {
-            return (X + Dx[direction], Y + Dy[direction]);
-        }
+        public (int, int) Neighbor(int direction) => (X + Dx[direction], Y + Dy[direction]);
 
-        public (int, int) PreviousLocation()
-        {
-            return Neighbor(PreviousDirection);
-        }
+        public (int, int) PreviousLocation() => Neighbor(PreviousDirection);
 
-        public int NextDirection()
-        {
-            return _searchDirection++;
-        }
+        public int NextDirection() => _searchDirection++;
 
-        public static Location? GetLocation(int x, int y)
-        {
-            return AllLocations.ContainsKey((x, y)) ? AllLocations[(x, y)] : null;
-        }
+        public static Location? GetLocation(int x, int y) => AllLocations.ContainsKey((x, y)) ? AllLocations[(x, y)] : null;
 
-        public static Location? GetLocation((int x, int y) coords)
-        {
-            return GetLocation(coords.x, coords.y);
-        }
+        public static Location? GetLocation((int x, int y) coords) => GetLocation(coords.x, coords.y);
     }
 }

@@ -4,10 +4,8 @@ public sealed class Day02() : Day(2019, 2, "1202 Program Alarm")
 {
     private IEnumerable<int>? _input;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _input = Input.First().Split(',').Select(int.Parse);
-    }
 
     private int RunIntCode(int noun, int verb)
     {
@@ -26,10 +24,7 @@ public sealed class Day02() : Day(2019, 2, "1202 Program Alarm")
         return v[0];
     }
 
-    public override object Part1()
-    {
-        return RunIntCode(12, 2);
-    }
+    public override object Part1() => RunIntCode(12, 2);
 
     public override object Part2()
     {

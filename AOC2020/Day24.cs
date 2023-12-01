@@ -17,15 +17,12 @@ public sealed class Day24() : Day(2020, 24, "Lobby Layout")
 
     private Dictionary<(int q, int r, int s), Tile>? _tiles;
 
-    public override void ProcessInput()
-    {
-        _tiles = Input
+    public override void ProcessInput() => _tiles = Input
             .Select(Tile.FromLine)
             .GroupBy(t => t.Location)
             .Where(g => g.Count() % 2 == 1)
             .Select(t => t.First())
             .ToDictionary(t => t.Location);
-    }
 
     public override object Part1() => _tiles!.Count;
 

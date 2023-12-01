@@ -7,13 +7,13 @@ public sealed class Day18() : Day(2021, 18, "Snailfish")
 {
     private List<string>? _fishes;
 
-    public override void ProcessInput()
-    {
-        _fishes = Input.ToList();
-    }
+    public override void ProcessInput() => _fishes = Input.ToList();
 
     private static Tree<int> Parse(string input)
     {
+        var cursor = 0;
+        return new(ParseFish(null, input, ref cursor));
+
         static Tree<int>.Node ParseFish(Tree<int>.Node? parent, string input, ref int cursor)
         {
             if (input[cursor] != '[') return new(parent, input[cursor++] - '0');
@@ -26,14 +26,11 @@ public sealed class Day18() : Day(2021, 18, "Snailfish")
             cursor++;
             return node;
         }
-
-        var cursor = 0;
-        return new(ParseFish(null, input, ref cursor));
     }
 
     private static Tree<int> Add(Tree<int> a, Tree<int> b)
     {
-        var reduced = new Tree<int>(new(null, -1) {Left = a.Root, Right = b.Root});
+        var reduced = new Tree<int>(new(null, -1) { Left = a.Root, Right = b.Root });
         Reduce(reduced);
         return reduced;
     }
@@ -60,12 +57,15 @@ public sealed class Day18() : Day(2021, 18, "Snailfish")
 
     private static void Reduce(Tree<int> tree)
     {
-        bool ReduceRecurse(Tree<int>.Node node, Func<Tree<int>, Tree<int>.Node, bool> reducer)
+        var changed = true;
+        while (changed)
         {
-            if (reducer(tree, node)) return true;
-            if (node.Left != null && ReduceRecurse(node.Left, reducer)) return true;
-            return node.Right != null && ReduceRecurse(node.Right, reducer);
+            changed = false;
+            while (ReduceRecurse(tree.Root, Explode)) changed = true;
+            if (ReduceRecurse(tree.Root, Split)) changed = true;
         }
+
+        return;
 
         bool Explode(Tree<int> t, Tree<int>.Node node)
         {
@@ -90,12 +90,11 @@ public sealed class Day18() : Day(2021, 18, "Snailfish")
             return true;
         }
 
-        var changed = true;
-        while (changed)
+        bool ReduceRecurse(Tree<int>.Node node, Func<Tree<int>, Tree<int>.Node, bool> reducer)
         {
-            changed = false;
-            while (ReduceRecurse(tree.Root, Explode)) changed = true;
-            if (ReduceRecurse(tree.Root, Split)) changed = true;
+            if (reducer(tree, node)) return true;
+            if (node.Left != null && ReduceRecurse(node.Left, reducer)) return true;
+            return node.Right != null && ReduceRecurse(node.Right, reducer);
         }
     }
 

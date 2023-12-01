@@ -5,8 +5,8 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day17() : Day(2020, 17, "Conway Cubes")
 {
-    private readonly Dictionary<(int x, int y, int z), char> _plane = new();
-    private readonly Dictionary<(int x, int y, int z, int w), char> _plane4 = new();
+    private readonly Dictionary<(int x, int y, int z), char> _plane = [];
+    private readonly Dictionary<(int x, int y, int z, int w), char> _plane4 = [];
 
     public override void ProcessInput()
     {
@@ -103,15 +103,9 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
         return next;
     }
 
-    public override object Part1()
-    {
-        var plane = Enumerable.Range(0, 6).Aggregate(_plane, (current, _) => Iterate(current));
-        return plane.Values.Count(v => v == '#');
-    }
+    public override object Part1() =>
+        Enumerable.Range(0, 6).Aggregate(_plane, (current, _) => Iterate(current)).Values.Count(v => v == '#');
 
-    public override object Part2()
-    {
-        var plane = Enumerable.Range(0, 6).Aggregate(_plane4, (current, _) => Iterate4(current));
-        return plane.Values.Count(v => v == '#');
-    }
+    public override object Part2() =>
+        Enumerable.Range(0, 6).Aggregate(_plane4, (current, _) => Iterate4(current)).Values.Count(v => v == '#');
 }

@@ -29,7 +29,7 @@ public sealed class Day10() : Day(2021, 10, "Syntax Scoring")
         { '<', 4 }
     };
 
-    private readonly List<long> _scores2 = new();
+    private readonly List<long> _scores2 = [];
 
     private long _score1;
 

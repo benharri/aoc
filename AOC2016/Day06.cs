@@ -7,10 +7,7 @@ public sealed class Day06() : Day(2016, 6, "Signals and Noise")
 {
     private List<string>? _input;
 
-    public override void ProcessInput()
-    {
-        _input = Input.ToList();
-    }
+    public override void ProcessInput() => _input = Input.ToList();
 
     public override object Part1()
     {

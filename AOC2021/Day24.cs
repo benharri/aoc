@@ -5,7 +5,7 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day24() : Day(2021, 24, "Arithmetic Logic Unit")
 {
-    private readonly Dictionary<int, (int x, int y)> _keys = new();
+    private readonly Dictionary<int, (int x, int y)> _keys = [];
 
     public override void ProcessInput()
     {

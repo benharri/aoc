@@ -3,13 +3,11 @@ namespace AOC2019;
 public sealed class Day13() : Day(2019, 13, "Care Package")
 {
     private IntCodeVM? _vm;
-    private readonly Dictionary<(long x, long y), long> _board = new();
-    private readonly List<(long x, long y)> _updatedCoordinates = new();
+    private readonly Dictionary<(long x, long y), long> _board = [];
+    private readonly List<(long x, long y)> _updatedCoordinates = [];
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _vm = new(Input.First());
-    }
 
     private void PrintBoard()
     {
@@ -64,7 +62,7 @@ public sealed class Day13() : Day(2019, 13, "Care Package")
 
             if (printBoard) PrintBoard();
 
-            var (ball, _)   = _board.Single(t => t.Value == 4).Key;
+            var (ball, _) = _board.Single(t => t.Value == 4).Key;
             var (paddle, _) = _board.Single(t => t.Value == 3).Key;
             _vm.AddInput(Math.Sign(ball.CompareTo(paddle)));
 

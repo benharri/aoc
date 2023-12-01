@@ -7,14 +7,12 @@ public sealed class Day05() : Day(2020, 5, "Binary Boarding")
 {
     private ImmutableHashSet<int>? _ids;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _ids = Input
             .Select(s =>
                 Convert.ToInt32(s.Replace('F', '0').Replace('B', '1').Replace('L', '0').Replace('R', '1'), 2))
             .OrderBy(i => i)
             .ToImmutableHashSet();
-    }
 
     public override object Part1() => _ids!.Last();
 

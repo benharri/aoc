@@ -63,12 +63,12 @@ public sealed class Day21() : Day(2015, 21, "RPG Simulator 20XX")
 
     private bool StillAlive(Combination combination)
     {
-        var myDamage          = Math.Max(combination.TotalDamage - _boss!["Armor"], 1);
+        var myDamage = Math.Max(combination.TotalDamage - _boss!["Armor"], 1);
         var bossDamagePerTurn = Math.Max(_boss["Damage"] - combination.TotalArmor, 1);
 
         var turnsToLose = PlayerHp / bossDamagePerTurn;
         if (PlayerHp % bossDamagePerTurn > 0) turnsToLose++;
-        
+
         var turnsToKillBoss = _boss["Hit Points"] / myDamage;
         if (_boss["Hit Points"] % myDamage > 0) turnsToKillBoss++;
 

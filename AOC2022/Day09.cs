@@ -24,7 +24,7 @@ public sealed class Day09() : Day(2022, 9, "Rope Bridge")
                 case 'L': rope[0].x--; break;
                 case 'R': rope[0].x++; break;
             }
-                
+
             foreach (var i in Enumerable.Range(1, ropeLength - 1))
             {
                 int dx = rope[i - 1].x - rope[i].x, dy = rope[i - 1].y - rope[i].y;

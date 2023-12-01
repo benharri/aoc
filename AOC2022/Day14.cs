@@ -17,7 +17,7 @@ public sealed class Day14() : Day(2022, 14, "Regolith Reservoir")
 
     private static HashSet<(int x, int y)> PourSand((int x, int y) start, int bottom, Func<(int x, int y), bool> wall)
     {
-        HashSet<(int x, int y)> sand = new();
+        HashSet<(int x, int y)> sand = [];
 
         while (true)
         {

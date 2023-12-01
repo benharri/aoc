@@ -9,15 +9,6 @@ public sealed class Day25() : Day(2020, 25, "Combo Breaker")
     {
     }
 
-    public override object Part1()
-    {
-        var cardKey = int.Parse(Input.First());
-        var doorKey = int.Parse(Input.Last());
-        return Transform(doorKey, FindLoopSize(7, cardKey));
-    }
-
-    public override object Part2() => "";
-    
     private static long Transform(long subject, int loopSize)
     {
         var value = 1L;
@@ -40,4 +31,13 @@ public sealed class Day25() : Day(2020, 25, "Combo Breaker")
         }
         return loops;
     }
+
+    public override object Part1()
+    {
+        var cardKey = int.Parse(Input.First());
+        var doorKey = int.Parse(Input.Last());
+        return Transform(doorKey, FindLoopSize(7, cardKey));
+    }
+
+    public override object Part2() => "";
 }

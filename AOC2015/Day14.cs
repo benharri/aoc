@@ -7,10 +7,7 @@ public sealed class Day14() : Day(2015, 14, "Reindeer Olympics")
 {
     private List<Reindeer>? _reindeer;
 
-    public override void ProcessInput()
-    {
-        _reindeer = Input.Select(i => new Reindeer(i)).ToList();
-    }
+    public override void ProcessInput() => _reindeer = Input.Select(i => new Reindeer(i)).ToList();
 
     public override object Part1() =>
         _reindeer!.Select(r => r.Fly(2503)).Max();
@@ -21,12 +18,14 @@ public sealed class Day14() : Day(2015, 14, "Reindeer Olympics")
             .GroupBy(r => r)
             .Max(g => g.Count());
 
-    private class Reindeer {
+    private class Reindeer
+    {
         private readonly int _duration;
         private readonly int _rest;
         private readonly int _speed;
 
-        public Reindeer(string input) {
+        public Reindeer(string input)
+        {
             var p = input.Split(' ');
             _speed = int.Parse(p[3]);
             _duration = int.Parse(p[6]);

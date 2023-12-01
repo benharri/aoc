@@ -9,13 +9,7 @@ public sealed class Day21() : Day(2022, 21, "Monkey Math")
     {
     }
 
-    public override object Part1()
-    {
-        return "";
-    }
+    public override object Part1() => "";
 
-    public override object Part2()
-    {
-        return "";
-    }
+    public override object Part2() => "";
 }

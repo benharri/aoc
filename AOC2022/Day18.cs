@@ -9,13 +9,7 @@ public sealed class Day18() : Day(2022, 18, "Boiling Boulders")
     {
     }
 
-    public override object Part1()
-    {
-        return "";
-    }
+    public override object Part1() => "";
 
-    public override object Part2()
-    {
-        return "";
-    }
+    public override object Part2() => "";
 }

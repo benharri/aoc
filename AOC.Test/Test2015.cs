@@ -7,7 +7,7 @@ public class Test2015
 {
     [DataTestMethod]
     [DataRow(typeof(Day01), "232", "1783")]
-    [DataRow(typeof(Day02),"1586300", "3737498")]
+    [DataRow(typeof(Day02), "1586300", "3737498")]
     [DataRow(typeof(Day03), "2081", "2341")]
     [DataRow(typeof(Day04), "346386", "9958218")]
     [DataRow(typeof(Day05), "258", "53")]

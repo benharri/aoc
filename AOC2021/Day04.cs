@@ -12,15 +12,15 @@ public sealed class Day04() : Day(2021, 4, "Giant Squid")
     public override void ProcessInput()
     {
         _call = Input.First().Split(',').Select(int.Parse).ToList();
-        _boards = new();
+        _boards = [];
 
-        List<int> currentBoard = new();
+        List<int> currentBoard = [];
         foreach (var line in Input.Skip(2))
         {
             if (string.IsNullOrWhiteSpace(line))
             {
                 _boards.Add(currentBoard);
-                currentBoard = new();
+                currentBoard = [];
                 continue;
             }
 
@@ -47,7 +47,7 @@ public sealed class Day04() : Day(2021, 4, "Giant Squid")
 
     public override object Part2()
     {
-        Dictionary<int, bool> wonBoards = new();
+        Dictionary<int, bool> wonBoards = [];
         for (var i = 0; i < _boards!.Count; i++)
             wonBoards[i] = false;
 

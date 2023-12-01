@@ -7,10 +7,8 @@ public sealed class Day01() : Day(2021, 1, "Sonar Sweep")
 {
     private List<int>? _readings;
 
-    public override void ProcessInput()
-    {
+    public override void ProcessInput() =>
         _readings = Input.Select(int.Parse).ToList();
-    }
 
     public override object Part1() =>
         Enumerable.Range(0, _readings!.Count - 1).Count(i => _readings[i + 1] > _readings[i]);
