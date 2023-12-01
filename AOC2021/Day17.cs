@@ -29,22 +29,22 @@ public sealed class Day17() : Day(2021, 17, "Trick Shot")
         while (xMin * (xMin + 1) / 2 < _target![0]) xMin++;
 
         for (var x = xMin; x <= _target[1]; x++)
-        for (var y = _target[2]; y < Math.Abs(_target[2]); y++)
-        {
-            int xVelocity = x, yVelocity = y, xPos = 0, yPos = 0;
-
-            while (xPos <= _target[1] && yPos >= _target[2])
+            for (var y = _target[2]; y < Math.Abs(_target[2]); y++)
             {
-                xPos += xVelocity;
-                yPos += yVelocity;
+                int xVelocity = x, yVelocity = y, xPos = 0, yPos = 0;
 
-                if (xPos >= _target[0] && xPos <= _target[1] && yPos >= _target[2] && yPos <= _target[3])
-                    successfulVelocities.Add((x, y));
+                while (xPos <= _target[1] && yPos >= _target[2])
+                {
+                    xPos += xVelocity;
+                    yPos += yVelocity;
 
-                xVelocity = xVelocity == 0 ? 0 : xVelocity - 1;
-                yVelocity--;
+                    if (xPos >= _target[0] && xPos <= _target[1] && yPos >= _target[2] && yPos <= _target[3])
+                        successfulVelocities.Add((x, y));
+
+                    xVelocity = xVelocity == 0 ? 0 : xVelocity - 1;
+                    yVelocity--;
+                }
             }
-        }
 
         return successfulVelocities.Count;
     }
