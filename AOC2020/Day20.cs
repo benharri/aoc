@@ -7,7 +7,7 @@ public sealed partial class Day20() : Day(2020, 20, "Jurassic Jigsaw")
 {
     [GeneratedRegex("(?<=#.{77})#.{4}#{2}.{4}#{2}.{4}#{3}(?=.{77}#.{2}#.{2}#.{2}#.{2}#.{2}#)")]
     private static partial Regex MonsterRegex();
-    
+
     public override void ProcessInput()
     {
     }
@@ -255,5 +255,5 @@ public sealed partial class Day20() : Day(2020, 20, "Jurassic Jigsaw")
             piece.Sides.Value.Concat(piece.Sides.Value.Select(s => new string(s.Reverse().ToArray()))).ToHashSet();
     }
 
-    
+
 }

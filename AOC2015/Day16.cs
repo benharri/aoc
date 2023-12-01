@@ -7,7 +7,7 @@ public sealed partial class Day16() : Day(2015, 16, "Aunt Sue")
 {
     [GeneratedRegex(@": \d\d")]
     private static partial Regex TwoDigitsRegex();
-    
+
     public override void ProcessInput()
     {
     }

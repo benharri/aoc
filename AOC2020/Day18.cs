@@ -21,27 +21,27 @@ public sealed class Day18() : Day(2020, 18, "Operation Order")
                 postfixNotation.Append(c);
             }
             else switch (c)
-            {
-                case '(':
-                    postfixStack.Push(c);
-                    break;
-                case ')':
-                    {
-                        while (postfixStack.Count > 0 && postfixStack.Peek() != '(')
-                            postfixNotation.Append(postfixStack.Pop());
-
-                        postfixStack.TryPop(out _);
-                        break;
-                    }
-                default:
-                    {
-                        while (postfixStack.Count > 0 && precedence(c) <= precedence(postfixStack.Peek()))
-                            postfixNotation.Append(postfixStack.Pop());
-
+                {
+                    case '(':
                         postfixStack.Push(c);
                         break;
-                    }
-            }
+                    case ')':
+                        {
+                            while (postfixStack.Count > 0 && postfixStack.Peek() != '(')
+                                postfixNotation.Append(postfixStack.Pop());
+
+                            postfixStack.TryPop(out _);
+                            break;
+                        }
+                    default:
+                        {
+                            while (postfixStack.Count > 0 && precedence(c) <= precedence(postfixStack.Peek()))
+                                postfixNotation.Append(postfixStack.Pop());
+
+                            postfixStack.Push(c);
+                            break;
+                        }
+                }
 
         while (postfixStack.Count > 0)
             postfixNotation.Append(postfixStack.Pop());
