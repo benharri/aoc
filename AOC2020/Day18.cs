@@ -16,11 +16,12 @@ public sealed class Day18() : Day(2020, 18, "Operation Order")
         var postfixStack = new Stack<char>();
 
         foreach (var c in expr)
-            if (char.IsDigit(c))
+            if (char.IsAsciiDigit(c))
             {
                 postfixNotation.Append(c);
             }
-            else switch (c)
+            else
+                switch (c)
                 {
                     case '(':
                         postfixStack.Push(c);
@@ -49,7 +50,7 @@ public sealed class Day18() : Day(2020, 18, "Operation Order")
         var expressionStack = new Stack<long>();
 
         foreach (var c in postfixNotation.ToString())
-            if (char.IsDigit(c))
+            if (char.IsAsciiDigit(c))
             {
                 expressionStack.Push((long)char.GetNumericValue(c));
             }

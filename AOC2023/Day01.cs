@@ -10,7 +10,7 @@ public class Day01() : Day(2023, 1, "Trebuchet?!")
     }
 
     public override object Part1() =>
-        Input.Sum(line => (line.First(char.IsDigit) - '0') * 10 + (line.Last(char.IsDigit) - '0'));
+        Input.Sum(line => (line.First(char.IsAsciiDigit) - '0') * 10 + (line.Last(char.IsAsciiDigit) - '0'));
 
     public override object Part2() =>
         Input.Sum(line =>
@@ -19,7 +19,7 @@ public class Day01() : Day(2023, 1, "Trebuchet?!")
 
             for (var i = 0; i < line.Length; i++)
             {
-                if (char.IsDigit(line[i]))
+                if (char.IsAsciiDigit(line[i]))
                 {
                     digits.Add(item: line[i] - '0');
                     continue;
