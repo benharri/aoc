@@ -3,50 +3,65 @@ namespace AOC2023;
 /// <summary>
 /// Day  3: <a href="https://adventofcode.com/2023/day/ 3"/>
 /// </summary>
-public sealed partial class Day03() : Day(2023, 3, "Gear Ratios")
+public sealed class Day03() : Day(2023, 3, "Gear Ratios")
 {
-    [GeneratedRegex(@"\d+")]
-    private static partial Regex DigitsRegex();
-
-    private List<string> _input;
+    private readonly List<Number> _numbers = [];
+    private readonly List<Symbol> _symbols = [];
 
     public override void ProcessInput()
     {
-        _input = Input.ToList();
-    }
+        var input = Input.ToList();
+        List<int> digits = [];
 
-    public override object Part1()
-    {
-        var sum = 0;
-
-        for (var i = 0; i < _input.Count; i++)
+        for (var row = 0; row < input.Count; row++)
         {
-            var numbers = DigitsRegex()
-                .Matches(_input[i])
-                .Select(f => (index: f.Index, value: int.Parse(f.Value), length: f.Length));
-
-            foreach (var num in numbers)
+            Number currentNumber = new();
+            
+            for (var col = 0; col < input[row].Length; col++)
             {
-                bool found = false;
-                for (var y = i - 1; y <= i + 1; y++)
+                var c = input[row][col];
+                if (c == '.') continue;
+                
+                if (char.IsAsciiDigit(c))
                 {
-                    if (found) break;
-                    if (y < 0 || y >= _input.Count) continue;
+                    digits.Add(c - '0');
+                    if (digits.Count == 1) 
+                        currentNumber.Start = (row, col);
 
-                    for (var x = num.index - 1; x <= num.index + num.length; x++)
-                    {
-                        if (found) break;
-                        if (x < 0 || x >= _input[i].Length) continue;
+                    while (col < input[row].Length - 1 && char.IsAsciiDigit(input[row][col + 1]))
+                        digits.Add(input[row][++col] - '0');
 
-                        var c = _input[y][x];
-                        if (c == '.' || char.IsDigit(c)) continue;
-                        sum += num.value;
-                        found = true;
-                    }
+                    currentNumber.End = (row, col);
+                    currentNumber.Value = int.Parse(string.Concat(digits));
+                    _numbers.Add(currentNumber);
+                    currentNumber = new();
+                    digits.Clear();
                 }
+                else _symbols.Add(new(input[row][col], (row, col)));
             }
         }
-
-        return sum;
     }
+
+    public override object Part1() =>
+        _numbers
+            .Where(n => _symbols.Any(s =>
+                Math.Abs(s.Position.Row - n.Start.Row) <= 1
+                && s.Position.Column >= n.Start.Column - 1
+                && s.Position.Column <= n.End.Column + 1))
+            .Sum(n => n.Value);
+
+    public override object Part2() =>
+        _symbols
+            .Where(s => s.Value == '*')
+            .Select(s => _numbers.Where(n =>
+                    Math.Abs(s.Position.Row - n.Start.Row) <= 1
+                    && s.Position.Column >= n.Start.Column - 1
+                    && s.Position.Column <= n.End.Column + 1)
+                .ToArray())
+            .Where(gears => gears.Length == 2)
+            .Sum(gears => gears[0].Value * gears[1].Value);
+
+    private record struct Number(int Value, (int Row, int Column) Start, (int Row, int Column) End);
+
+    private record struct Symbol(char Value, (int Row, int Column) Position);
 }
