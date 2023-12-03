@@ -16,16 +16,16 @@ public sealed class Day03() : Day(2023, 3, "Gear Ratios")
         for (var row = 0; row < input.Count; row++)
         {
             Number currentNumber = new();
-            
+
             for (var col = 0; col < input[row].Length; col++)
             {
                 var c = input[row][col];
                 if (c == '.') continue;
-                
+
                 if (char.IsAsciiDigit(c))
                 {
                     digits.Add(c - '0');
-                    if (digits.Count == 1) 
+                    if (digits.Count == 1)
                         currentNumber.Start = (row, col);
 
                     while (col < input[row].Length - 1 && char.IsAsciiDigit(input[row][col + 1]))
