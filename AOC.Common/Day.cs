@@ -8,7 +8,7 @@ public abstract class Day(int year, int day, string puzzleName)
     public int DayNumber { get; } = day;
     public string PuzzleName { get; } = puzzleName;
 
-    protected string[] Input => File.ReadAllLines(FileName);
+    protected IEnumerable<string> Input => File.ReadLines(FileName);
 
     public string FileName =>
         Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
