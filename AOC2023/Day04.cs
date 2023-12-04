@@ -5,33 +5,44 @@ namespace AOC2023;
 /// <summary>
 /// Day  4: <a href="https://adventofcode.com/2023/day/ 4"/>
 /// </summary>
-public sealed class Day04() : Day(2023,  4, "Scratchcards")
+public sealed class Day04() : Day(2023, 4, "Scratchcards")
 {
-    private IEnumerable<(int id, List<int> winningNums, List<int> drawnNums)> _cards;
+    private readonly Dictionary<int, Card> _cards = [];
 
     public override void ProcessInput()
     {
-        _cards = Input.Select(line =>
+        foreach (var line in Input)
         {
-            var s = line.Split(": ");
+            var s = line.Split(": ", 2);
             var id = int.Parse(s[0].Replace("Card ", ""));
-            var s2 = s[1].Split('|');
-            var f = s2[0].Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
-            var g = s2[1].Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
-            return (id, f.Select(int.Parse).ToList(), g.Select(int.Parse).ToList());
-        });
+            var s2 = s[1].Split('|', 2);
+            var f = s2[0].Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToList();
+            var g = s2[1].Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToList();
+            _cards[id] = new(f, g);
+        }
     }
 
-    public override object Part1() =>
-        _cards.Sum(c =>
-        {
-            var count = c.winningNums.Intersect(c.drawnNums).Count();
-            if (count == 0) return 0;
-            return Math.Pow(2, count - 1);
-        });
+    public override object Part1() => _cards.Values.Sum(c => c.Score);
 
     public override object Part2()
     {
-        return "";
+        var current = 1;
+        while (_cards.ContainsKey(current))
+        {
+            for (var matchExtension = 1; matchExtension <= _cards[current].Matches; matchExtension++)
+                _cards[current + matchExtension].Copies += _cards[current].Copies;
+            current++;
+        }
+
+        return _cards.Values.Sum(v => v.Copies);
+    }
+
+    private record Card(List<int> WinningNums, List<int> DrawnNums)
+    {
+        public int Copies { get; set; } = 1;
+        public int Matches => WinningNums.Intersect(DrawnNums).Count();
+        public int Score => (int)Math.Pow(2, Matches - 1);
     }
 }
