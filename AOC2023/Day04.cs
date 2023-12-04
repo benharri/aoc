@@ -1,5 +1,3 @@
-using MoreLinq;
-
 namespace AOC2023;
 
 /// <summary>
@@ -13,14 +11,16 @@ public sealed class Day04() : Day(2023, 4, "Scratchcards")
     {
         foreach (var line in Input)
         {
-            var s = line.Split(": ", 2);
-            var id = int.Parse(s[0].Replace("Card ", ""));
-            var s2 = s[1].Split('|', 2);
-            var f = s2[0].Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse).ToList();
-            var g = s2[1].Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse).ToList();
-            _cards[id] = new(f, g);
+            var s = line.Replace("Card ", "").Split(": ", 2);
+            var cardNums = s[1]
+                .Split('|', 2)
+                .Select(f =>
+                    f.Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+                        .Select(int.Parse)
+                        .ToList()
+                )
+                .ToList();
+            _cards[int.Parse(s[0])] = new(cardNums[0], cardNums[1]);
         }
     }
 
