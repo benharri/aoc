@@ -1,14 +1,10 @@
 namespace AOC2023;
 
 /// <summary>
-/// Day  2: <a href="https://adventofcode.com/2023/day/ 2"/>
+/// <a href="https://adventofcode.com/2023/day/2">Day 2</a>
 /// </summary>
 public sealed class Day02() : Day(2023, 2, "Cube Conundrum")
 {
-    public override void ProcessInput()
-    {
-    }
-    
     private static bool PossibleGame(string line)
     {
         var rounds = line.Split(": ", 2)[1];

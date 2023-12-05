@@ -5,10 +5,6 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day14() : Day(2020, 14, "Docking Data")
 {
-    public override void ProcessInput()
-    {
-    }
-
     private static readonly char[] SquareBrackets = ['[', ']'];
     private static readonly char[] BracketsAndEquals = [.. SquareBrackets, '='];
 

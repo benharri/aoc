@@ -5,10 +5,6 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day22() : Day(2022, 22, "Monkey Map")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1() => "";
 
     public override object Part2() => "";

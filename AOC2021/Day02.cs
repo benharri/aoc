@@ -5,10 +5,6 @@ namespace AOC2021;
 /// </summary>
 public sealed class Day02() : Day(2021, 2, "Dive!")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1()
     {
         int horiz = 0, depth = 0;

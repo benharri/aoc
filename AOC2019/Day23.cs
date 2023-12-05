@@ -2,10 +2,6 @@ namespace AOC2019;
 
 public sealed class Day23() : Day(2019, 23, "Category Six")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1()
     {
         var vms = Enumerable.Range(0, 50)

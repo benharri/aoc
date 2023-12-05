@@ -11,10 +11,6 @@ public sealed partial class Day07() : Day(2016, 7, "Internet Protocol Version 7"
     [GeneratedRegex(@"\[(\w*)\]")]
     private static partial Regex InsideBracketsRegex();
 
-    public override void ProcessInput()
-    {
-    }
-
     private static bool SupportsTls(string input) =>
         !InsideBracketsRegex().Matches(input).Any(m => CheckAbba(m.ValueSpan)) &&
         BracketsRegex().Split(input).Any(v => CheckAbba(v));

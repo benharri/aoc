@@ -5,10 +5,6 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day23() : Day(2015, 23, "Opening the Turing Lock")
 {
-    public override void ProcessInput()
-    {
-    }
-
     private int RunOperations(int initialA = 0, int initialB = 0)
     {
         Dictionary<char, int> registers = new()

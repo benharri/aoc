@@ -8,10 +8,6 @@ public sealed class Day07() : Day(2015, 7, "Some Assembly Required")
     private readonly Dictionary<string, Func<ushort>> _actions = [];
     private readonly Dictionary<string, ushort> _wires = [];
 
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1()
     {
         ProcessInstructions();

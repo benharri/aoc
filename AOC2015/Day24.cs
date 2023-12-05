@@ -5,10 +5,6 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day24() : Day(2015, 24, "It Hangs in the Balance")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1() => "";
 
     public override object Part2() => "";

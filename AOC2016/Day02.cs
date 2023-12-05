@@ -5,10 +5,6 @@ namespace AOC2016;
 /// </summary>
 public sealed class Day02() : Day(2016, 2, "Bathroom Security")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1()
     {
         List<int> answer = [];

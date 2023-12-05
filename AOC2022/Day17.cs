@@ -5,10 +5,6 @@ namespace AOC2022;
 /// </summary>
 public sealed class Day17() : Day(2022, 17, "Pyroclastic Flow")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1() => "";
 
     public override object Part2() => "";

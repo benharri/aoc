@@ -1,21 +1,11 @@
 namespace AOCYYYY;
 
 /// <summary>
-/// Day Q: <a href="https://adventofcode.com/YYYY/day/Q"/>
+/// <a href="https://adventofcode.com/YYYY/day/Q">Day Q</a>
 /// </summary>
 public sealed class DayXX() : Day(YYYY, Q, "Puzzle Name")
 {
-    public override void ProcessInput()
-    {
-    }
+    public override object Part1() => "";
 
-    public override object Part1()
-    {
-        return "";
-    }
-
-    public override object Part2()
-    {
-        return "";
-    }
+    public override object Part2() => "";
 }

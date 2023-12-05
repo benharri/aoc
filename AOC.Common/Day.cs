@@ -2,23 +2,66 @@ using CommandLine;
 
 namespace AOC.Common;
 
+/// <summary>
+/// Base class for a day's solution. Provides stopwatch timing and command line parsing.
+/// </summary>
+/// <param name="year"></param>
+/// <param name="day"></param>
+/// <param name="puzzleName"></param>
 public abstract class Day(int year, int day, string puzzleName)
 {
+    /// <summary>
+    /// The year this Day is from.
+    /// </summary>
     public int Year { get; } = year;
+    /// <summary>
+    /// What day it is.
+    /// </summary>
     public int DayNumber { get; } = day;
+    /// <summary>
+    /// The name of the puzzle.
+    /// </summary>
     public string PuzzleName { get; } = puzzleName;
 
+    /// <summary>
+    /// Enumerable of all lines in the input file.
+    /// </summary>
     protected IEnumerable<string> Input => File.ReadLines(FileName);
+    
+    /// <summary>
+    /// Input file as a <see cref="ReadOnlySpan">span</see>.
+    /// </summary>
+    protected ReadOnlySpan<char> InputBytes => File.ReadAllText(FileName);
 
+    /// <summary>
+    /// Path to the input file in the format of "inputYEAR/dayNN.in".
+    /// </summary>
     public string FileName =>
         Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
             $"input{Year}/{(UseTestInput ? "test" : "day")}{DayNumber,2:00}.in");
 
+    /// <summary>
+    /// A toggle to read the test input file instead of the real input.
+    /// </summary>
     public static bool UseTestInput { get; set; }
     private readonly Stopwatch _stopwatch = new();
 
-    public abstract void ProcessInput();
+    /// <summary>
+    /// Initial parsing of the puzzle input.
+    /// </summary>
+    public virtual void ProcessInput()
+    {
+    }
+    
+    /// <summary>
+    /// Solve Part 1.
+    /// </summary>
+    /// <returns>object whose string representation will be the answer</returns>
     public abstract object Part1();
+    /// <summary>
+    /// Solve Part 2.
+    /// </summary>
+    /// <returns>object whose string representation will be the answer</returns>
     public abstract object Part2();
 
     private void PrintProcessInput()
@@ -63,6 +106,12 @@ public abstract class Day(int year, int day, string puzzleName)
         public int? PartNumber { get; set; }
     }
 
+    /// <summary>
+    /// Parse the command line args and run the appropriate puzzles.
+    /// </summary>
+    /// <param name="args"></param>
+    /// <exception cref="ApplicationException"></exception>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     public static void RunFromArgs(string[] args)
     {
         var days = Assembly.GetEntryAssembly()?.GetTypes()
