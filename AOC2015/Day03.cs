@@ -5,10 +5,6 @@ namespace AOC2015;
 /// </summary>
 public sealed class Day03() : Day(2015, 3, "Perfectly Spherical Houses in a Vacuum")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1()
     {
         int x = 0, y = 0;

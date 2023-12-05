@@ -5,10 +5,6 @@ namespace AOC2018;
 /// </summary>
 public sealed class Day01() : Day(2018, 1, "Chronal Calibration")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1() => Input.Select(int.Parse).Sum();
 
     public override object Part2()

@@ -8,10 +8,6 @@ public sealed partial class Day20() : Day(2020, 20, "Jurassic Jigsaw")
     [GeneratedRegex("(?<=#.{77})#.{4}#{2}.{4}#{2}.{4}#{3}(?=.{77}#.{2}#.{2}#.{2}#.{2}#.{2}#)")]
     private static partial Regex MonsterRegex();
 
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1()
     {
         var puzzlePieces = ParsePiecesFromInput(Input.ToArray());

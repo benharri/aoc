@@ -5,10 +5,6 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day12() : Day(2020, 12, "Rain Risk")
 {
-    public override void ProcessInput()
-    {
-    }
-
     private static void Swap(ref int x, ref int y) => (y, x) = (x, y);
 
     private (int x, int y, int sx, int sy) ProcessInstructions()

@@ -11,10 +11,6 @@ public sealed partial class Day06() : Day(2015, 6, "Probably a Fire Hazard")
     [GeneratedRegex(@"(\d+),(\d+) through (\d+),(\d+)")]
     private static partial Regex Coords();
 
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1()
     {
         foreach (var line in Input)

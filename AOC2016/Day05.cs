@@ -7,10 +7,6 @@ namespace AOC2016;
 /// </summary>
 public sealed class Day05() : Day(2016, 5, "How About a Nice Game of Chess?")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1()
     {
         var s = Input.First();

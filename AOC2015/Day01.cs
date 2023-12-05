@@ -2,10 +2,6 @@ namespace AOC2015;
 
 public class Day01() : Day(2015, 1, "Not Quite Lisp")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1()
     {
         var floor = 0;

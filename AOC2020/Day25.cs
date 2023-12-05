@@ -5,10 +5,6 @@ namespace AOC2020;
 /// </summary>
 public sealed class Day25() : Day(2020, 25, "Combo Breaker")
 {
-    public override void ProcessInput()
-    {
-    }
-
     private static long Transform(long subject, int loopSize)
     {
         var value = 1L;

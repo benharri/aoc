@@ -5,10 +5,6 @@ namespace AOC2016;
 /// </summary>
 public sealed class Day13() : Day(2016, 13, "Puzzle Name")
 {
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1() => "";
 
     public override object Part2() => "";

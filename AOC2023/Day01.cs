@@ -1,13 +1,12 @@
 namespace AOC2023;
 
+/// <summary>
+/// <a href="https://adventofcode.com/2023/day/2">Day 1</a>
+/// </summary>
 public class Day01() : Day(2023, 1, "Trebuchet?!")
 {
     private static readonly List<string> SingleDigits =
         ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
-
-    public override void ProcessInput()
-    {
-    }
 
     public override object Part1() =>
         Input.Sum(line => (line.First(char.IsAsciiDigit) - '0') * 10 + (line.Last(char.IsAsciiDigit) - '0'));

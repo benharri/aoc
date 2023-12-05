@@ -5,10 +5,6 @@ namespace AOC2018;
 /// </summary>
 public sealed class Day02() : Day(2018, 2, "Inventory Management System")
 {
-    public override void ProcessInput()
-    {
-    }
-
     private static bool HasNChars(string line, int count)
     {
         for (var i = 'a'; i <= 'z'; i++)

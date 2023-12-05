@@ -5,10 +5,6 @@ namespace AOC2021;
 /// </summary>
 public sealed partial class Day05() : Day(2021, 5, "Hydrothermal Venture")
 {
-    public override void ProcessInput()
-    {
-    }
-
     private int Solve(bool diagonals = false) =>
         Input
             .Select(s => NonDigits().Split(s).Select(int.Parse).ToList())

@@ -11,10 +11,6 @@ public sealed partial class Day12() : Day(2015, 12, "JSAbacusFramework.io")
     [GeneratedRegex(@"-?\d+")]
     private static partial Regex Digits();
 
-    public override void ProcessInput()
-    {
-    }
-
     public override object Part1() =>
         Digits().Matches(Input.First()).Sum(n => int.Parse(n.Value));
 

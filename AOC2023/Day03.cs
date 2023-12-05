@@ -1,7 +1,7 @@
 namespace AOC2023;
 
 /// <summary>
-/// Day  3: <a href="https://adventofcode.com/2023/day/ 3"/>
+/// <a href="https://adventofcode.com/2023/day/3">Day 3</a>
 /// </summary>
 public sealed class Day03() : Day(2023, 3, "Gear Ratios")
 {

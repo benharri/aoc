@@ -5,10 +5,6 @@ namespace AOC2016;
 /// </summary>
 public sealed class Day08() : Day(2016, 8, "Two-Factor Authentication")
 {
-    public override void ProcessInput()
-    {
-    }
-
     private static string PrintGrid(char[,] screen)
     {
         var sb = new StringBuilder();
