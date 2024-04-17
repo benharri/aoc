@@ -1,5 +1,8 @@
 ﻿namespace AOC2023;
 
+/// <summary>
+/// <a href="https://adventofcode.com/2023/day/6">Day 6</a>
+/// </summary>
 public class Day06() : Day(2023, 6, "Wait For It")
 {
     private readonly List<(int time, int distance)> _races = [];
