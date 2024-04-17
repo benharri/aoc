@@ -14,20 +14,18 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Using Include="AOC.Common" />
-        <Using Include="System.Collections.Generic" />
-        <Using Include="System.Collections.Immutable" />
-        <Using Include="System.Reflection" />
-        <Using Include="System.Text" />
-        <Using Include="System.Text.RegularExpressions" />
+        <Using Include="AOC.Common"/>
+        <Using Include="System.Collections.Generic"/>
+        <Using Include="System.Collections.Immutable"/>
+        <Using Include="System.Reflection"/>
+        <Using Include="System.Text"/>
+        <Using Include="System.Text.RegularExpressions"/>
     </ItemGroup>
-
     <ItemGroup>
-        <ProjectReference Include="..\AOC.Common\AOC.Common.csproj" />
+        <ProjectReference Include="..\AOC.Common\AOC.Common.csproj"/>
     </ItemGroup>
-
     <ItemGroup>
-      <PackageReference Include="morelinq" Version="4.2.0" />
+        <PackageReference Include="morelinq" Version="4.2.0"/>
     </ItemGroup>
 
 </Project>
