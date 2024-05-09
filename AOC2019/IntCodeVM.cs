@@ -2,19 +2,14 @@ namespace AOC2019;
 
 public class IntCodeVM
 {
-    public enum HaltType
-    {
-        Terminate,
-        Waiting
-    }
+    public enum HaltType { Terminate, Waiting }
 
     private readonly Queue<long> _input = new();
-    public readonly Queue<long> Output = new();
-
     private readonly long[] _program;
+    public readonly Queue<long> Output = new();
     private long _i;
-    public long[] Memory;
     private long _relativeBase;
+    public long[] Memory;
 
     public IntCodeVM(string tape)
     {
