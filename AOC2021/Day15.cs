@@ -14,7 +14,7 @@ public record Node
 /// </summary>
 public sealed class Day15() : Day(2021, 15, "Chiton")
 {
-    private static readonly (int x, int y)[] Adjacent = { (-1, 0), (1, 0), (0, -1), (0, 1) };
+    private static readonly (int x, int y)[] Adjacent = [(-1, 0), (1, 0), (0, -1), (0, 1)];
     private Dictionary<(int x, int y), Node>? _fullGrid;
     private Dictionary<(int x, int y), Node>? _grid;
     private int _width;

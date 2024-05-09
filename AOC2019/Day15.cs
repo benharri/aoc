@@ -121,9 +121,9 @@ public sealed class Day15() : Day(2019, 15, "Oxygen System")
         public const int Empty = 1;
         public const int System = 2;
 
-        private static readonly int[] Dx = { 0, 0, 0, 1, -1 };
-        private static readonly int[] Dy = { 0, 1, -1, 0, 0 };
-        public static readonly int[] Opposites = { 0, 2, 1, 4, 3 };
+        private static readonly int[] Dx = [0, 0, 0, 1, -1];
+        private static readonly int[] Dy = [0, 1, -1, 0, 0];
+        public static readonly int[] Opposites = [0, 2, 1, 4, 3];
 
         public static readonly Dictionary<(int x, int y), Location> AllLocations = [];
 
