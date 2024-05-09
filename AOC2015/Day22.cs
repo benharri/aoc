@@ -16,7 +16,7 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
         new("Recharge", Mana: 229, ManaCharge: 101, Duration: 5)
     ];
 
-    private Dictionary<string, int> _boss;
+    private Dictionary<string, int> _boss = new();
 
     private record Spell(
         // ReSharper disable once NotAccessedPositionalProperty.Local
@@ -29,52 +29,54 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
         int ManaCharge = 0
     );
 
-    private struct GameState(bool HardMode = false, int RoundNumber = 0, int TotalManaSpent = 0, int PlayerHealth = 50,
-        int PlayerMana = 500, int BossHealth = 0, int BossDamage = 0, Dictionary<Spell, int>? ActiveSpells = null)
+    private struct GameState(bool hardMode = false, int roundNumber = 0, int totalManaSpent = 0, int playerHealth = 50,
+        int playerMana = 500, int bossHealth = 0, int bossDamage = 0, Dictionary<Spell, int>? activeSpells = null)
     {
         public GameResult DoTurn(Spell spell)
         {
-            RoundNumber++;
+            roundNumber++;
 
             CastSpell(spell);
 
             ProcessActiveSpells();
-            if (BossHealth <= 0) return GameResult.Win;
+            if (bossHealth <= 0) return GameResult.Win;
 
-            PlayerHealth -= Math.Max(1, BossDamage - ActiveSpells.Sum(x => x.Key.Armor));
-            if (PlayerHealth <= 0) return GameResult.Loss;
+            playerHealth -= Math.Max(1, bossDamage - activeSpells?.Sum(x => x.Key.Armor) ?? 0);
+            if (playerHealth <= 0) return GameResult.Loss;
 
-            if (HardMode)
+            if (hardMode)
             {
             }
 
             ProcessActiveSpells();
-            return BossHealth <= 0 ? GameResult.Win : GameResult.Continue;
+            return bossHealth <= 0 ? GameResult.Win : GameResult.Continue;
         }
 
         private void CastSpell(Spell spell)
         {
-            TotalManaSpent += spell.Mana;
-            PlayerMana -= spell.Mana;
+            totalManaSpent += spell.Mana;
+            playerMana -= spell.Mana;
             if (spell.Duration == 0) ProcessSpell(spell);
-            else ActiveSpells.Add(spell, spell.Duration);
+            else activeSpells?.Add(spell, spell.Duration);
         }
 
         private void ProcessActiveSpells()
         {
-            ActiveSpells.Keys.ForEach(ProcessSpell);
-            foreach (var (spell, duration) in ActiveSpells.ToList())
+            if (activeSpells is null) return;
+            
+            activeSpells.Keys.ForEach(ProcessSpell);
+            foreach (var (spell, duration) in activeSpells.ToList())
             {
-                if (duration == 1) ActiveSpells.Remove(spell);
-                else ActiveSpells[spell]--;
+                if (duration == 1) activeSpells.Remove(spell);
+                else activeSpells[spell]--;
             }
         }
 
         private void ProcessSpell(Spell spell)
         {
-            BossHealth -= spell.Damage;
-            PlayerHealth += spell.Heal;
-            PlayerMana += spell.ManaCharge;
+            bossHealth -= spell.Damage;
+            playerHealth += spell.Heal;
+            playerMana += spell.ManaCharge;
         }
     }
 
@@ -90,8 +92,7 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
         var stateQueue = new Queue<GameState>();
         stateQueue.Enqueue(initialState);
 
-        GameState bestGame = new(BossHealth: _boss["Hit Points"], BossDamage: _boss["Damage"]);
-        var roundsProcessed = 0;
+        GameState bestGame = new(bossHealth: _boss["Hit Points"], bossDamage: _boss["Damage"]);
 
         while (stateQueue.Count > 0)
         {
@@ -104,7 +105,7 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
         _boss = Input.ToDictionary(k => k.Split(": ")[0], v => int.Parse(v.Split(": ")[1]));
 
     public override object Part1() =>
-        ProcessStates(new(BossHealth: _boss["Hit Points"], BossDamage: _boss["Damage"]));
+        ProcessStates(new(bossHealth: _boss["Hit Points"], bossDamage: _boss["Damage"]));
 
     public override object Part2() => "";
 }

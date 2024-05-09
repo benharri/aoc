@@ -1,3 +1,5 @@
+// ReSharper disable HeuristicUnreachableCode
+#pragma warning disable CS0162 // Unreachable code detected
 namespace AOC2019;
 
 public sealed class Day15() : Day(2019, 15, "Oxygen System")
@@ -185,7 +187,8 @@ public sealed class Day15() : Day(2019, 15, "Oxygen System")
 
         public int NextDirection() => _searchDirection++;
 
-        public static Location? GetLocation(int x, int y) => AllLocations.ContainsKey((x, y)) ? AllLocations[(x, y)] : null;
+        public static Location? GetLocation(int x, int y) =>
+            AllLocations.ContainsKey((x, y)) ? AllLocations[(x, y)] : null;
 
         public static Location? GetLocation((int x, int y) coords) => GetLocation(coords.x, coords.y);
     }
