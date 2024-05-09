@@ -33,16 +33,13 @@ public sealed partial class Day20() : Day(2020, 20, "Jurassic Jigsaw")
 
     private static IEnumerable<PuzzlePiece> ParsePiecesFromInput(string[] input)
     {
-        var pieces = new List<PuzzlePiece>();
         const int pieceHeight = 12;
         for (var i = pieceHeight; i <= input.Length + 1; i += pieceHeight)
         {
             var lBound = i - pieceHeight;
             var uBound = i - 1;
-            pieces.Add(PuzzlePiece.CreatePieceFromString(input[lBound..uBound]));
+            yield return PuzzlePiece.CreatePieceFromString(input[lBound..uBound]);
         }
-
-        return pieces;
     }
 
     private static Dictionary<PuzzlePiece, List<PuzzlePiece>> FindConnections(IEnumerable<PuzzlePiece> puzzlePieces)
@@ -79,7 +76,7 @@ public sealed partial class Day20() : Day(2020, 20, "Jurassic Jigsaw")
         }
     }
 
-    private static IEnumerable<PuzzlePiece[]> ComposePuzzle(Dictionary<PuzzlePiece, List<PuzzlePiece>> connections)
+    private static PuzzlePiece[][] ComposePuzzle(Dictionary<PuzzlePiece, List<PuzzlePiece>> connections)
     {
         var sideSize = (int)Math.Sqrt(connections.Count);
         var unprocessed = connections.Keys.ToHashSet();

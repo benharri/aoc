@@ -27,11 +27,6 @@ public abstract class Day(int year, int day, string puzzleName)
     /// Enumerable of all lines in the input file.
     /// </summary>
     protected IEnumerable<string> Input => File.ReadLines(FileName);
-    
-    /// <summary>
-    /// Input file as a <see cref="ReadOnlySpan">span</see>.
-    /// </summary>
-    protected ReadOnlySpan<char> InputBytes => File.ReadAllText(FileName);
 
     /// <summary>
     /// Path to the input file in the format of "inputYEAR/dayNN.in".

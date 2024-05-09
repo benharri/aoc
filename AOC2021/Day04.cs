@@ -75,7 +75,7 @@ public sealed class Day04() : Day(2021, 4, "Giant Squid")
 
     private int At(int x, int y) => x * _size + y;
 
-    private bool HasWin(IReadOnlySet<int> c, IReadOnlyList<int> b)
+    private bool HasWin(HashSet<int> c, IReadOnlyList<int> b)
     {
         for (var y = 0; y < _size; y++)
         {
