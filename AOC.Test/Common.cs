@@ -1,3 +1,4 @@
+[assembly: Parallelize(Workers = 0, Scope = ExecutionScope.ClassLevel)]
 namespace AOC.Test;
 
 public static class Common

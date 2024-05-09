@@ -1,4 +1,5 @@
 using AOC2022;
+
 namespace AOC.Test;
 
 [TestClass]
