@@ -6,7 +6,7 @@ namespace AOC2021;
 public sealed class Day19() : Day(2021, 19, "Beacon Scanner")
 {
     private static readonly (int, int, int)[] Axes =
-        { (0, 1, 0), (0, -1, 0), (1, 0, 0), (-1, 0, 0), (0, 0, 1), (0, 0, -1) };
+        [(0, 1, 0), (0, -1, 0), (1, 0, 0), (-1, 0, 0), (0, 0, 1), (0, 0, -1)];
 
     private List<HashSet<Vector3>>? _scans;
     private List<HashSet<Vector3>> _scanners = [];

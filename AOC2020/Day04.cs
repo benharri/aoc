@@ -8,8 +8,8 @@ namespace AOC2020;
 public sealed partial class Day04() : Day(2020, 4, "Passport Processing")
 {
     private List<Dictionary<string, string>>? _passports;
-    private static readonly string[] RequiredFieldNames = { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid" };
-    private static readonly string[] EyeColors = { "amb", "blu", "brn", "gry", "grn", "hzl", "oth" };
+    private static readonly string[] RequiredFieldNames = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"];
+    private static readonly string[] EyeColors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"];
 
     public override void ProcessInput() =>
         _passports = Input.Split("").Select(Parse).ToList();

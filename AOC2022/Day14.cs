@@ -64,7 +64,7 @@ public sealed class Day14() : Day(2022, 14, "Regolith Reservoir")
             return Enumerable.Range(Math.Min(start.x, end.x), Math.Abs(end.x - start.x) + 1)
                 .Select(x => (x, start.y));
 
-        return Enumerable.Empty<(int x, int y)>();
+        return [];
     }
 
     private static IEnumerable<(int x, int y)> ParsePath(string input) =>

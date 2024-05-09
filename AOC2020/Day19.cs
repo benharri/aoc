@@ -45,8 +45,8 @@ public sealed class Day19() : Day(2020, 19, "Monster Messages")
     public override object Part2()
     {
         // fix rules 8 and 11
-        _rules!["8"] = new[] { new[] { "42" }, new[] { "42", "8" } };
-        _rules["11"] = new[] { new[] { "42", "31" }, new[] { "42", "11", "31" } };
+        _rules!["8"] = [["42"], ["42", "8"]];
+        _rules["11"] = [["42", "31"], ["42", "11", "31"]];
         var exp = new Regex($"^{MakeRegexExpression("0")}$");
         return _messages!.Count(m => exp.IsMatch(m));
     }

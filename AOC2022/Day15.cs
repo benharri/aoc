@@ -69,7 +69,7 @@ public sealed partial class Day15() : Day(2022, 15, "Beacon Exclusion Zone")
         public bool IsEmpty => Min > Max;
 
         public IEnumerable<int> Values =>
-            IsEmpty ? Enumerable.Empty<int>() : Enumerable.Range(Min, Max - Min + 1);
+            IsEmpty ? [] : Enumerable.Range(Min, Max - Min + 1);
 
         private bool Overlaps(SensorRange other) =>
             !IsEmpty && !other.IsEmpty && Min <= other.Max && Max >= other.Min;

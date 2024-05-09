@@ -51,22 +51,22 @@ public sealed partial class Day20() : Day(2020, 20, "Jurassic Jigsaw")
         var connections = new Dictionary<PuzzlePiece, List<PuzzlePiece>>();
 
         foreach (var piece in puzzlePieces)
-            foreach (var (original, flipped) in piece.SidesWithFlippedPaired.Value)
+        foreach (var (original, flipped) in piece.SidesWithFlippedPaired.Value)
+        {
+            if (sides.TryGetValue(original, out var side))
             {
-                if (sides.TryGetValue(original, out var side))
-                {
-                    AddConnection(piece, side);
-                }
-                else if (sides.TryGetValue(flipped, out var otherPiece))
-                {
-                    AddConnection(piece, otherPiece);
-                }
-                else
-                {
-                    sides.Add(original, piece);
-                    sides.Add(flipped, piece);
-                }
+                AddConnection(piece, side);
             }
+            else if (sides.TryGetValue(flipped, out var otherPiece))
+            {
+                AddConnection(piece, otherPiece);
+            }
+            else
+            {
+                sides.Add(original, piece);
+                sides.Add(flipped, piece);
+            }
+        }
 
         return connections;
 
@@ -202,8 +202,7 @@ public sealed partial class Day20() : Day(2020, 20, "Jurassic Jigsaw")
             RightSide = new(() => new(piece.Select(line => line[^1]).ToArray()));
             BottomSide = new(() => new(piece[^1].Reverse().ToArray()));
             _leftSide = new(() => new(piece.Select(line => line[0]).Reverse().ToArray()));
-            Sides = new(() => new[]
-                { _topSide.Value, RightSide.Value, BottomSide.Value, _leftSide.Value });
+            Sides = new(() => [_topSide.Value, RightSide.Value, BottomSide.Value, _leftSide.Value]);
             SidesWithFlippedPaired = new(() => CalculateSidesWithFlipped(this));
             AllSidesWithFlipped = new(() => CalculateAllSidesWithFlipped(this));
         }
@@ -239,17 +238,14 @@ public sealed partial class Day20() : Day(2020, 20, "Jurassic Jigsaw")
         public string GetLine(int l) => new(_piece[l]);
 
         private static (string, string)[] CalculateSidesWithFlipped(PuzzlePiece piece) =>
-            new (string, string)[]
-            {
-                (piece._topSide.Value, new(piece._topSide.Value.Reverse().ToArray())),
-                (piece.RightSide.Value, new(piece.RightSide.Value.Reverse().ToArray())),
-                (piece.BottomSide.Value, new(piece.BottomSide.Value.Reverse().ToArray())),
-                (piece._leftSide.Value, new(piece._leftSide.Value.Reverse().ToArray())),
-            };
+        [
+            (piece._topSide.Value, new(piece._topSide.Value.Reverse().ToArray())),
+            (piece.RightSide.Value, new(piece.RightSide.Value.Reverse().ToArray())),
+            (piece.BottomSide.Value, new(piece.BottomSide.Value.Reverse().ToArray())),
+            (piece._leftSide.Value, new(piece._leftSide.Value.Reverse().ToArray()))
+        ];
 
         private static HashSet<string> CalculateAllSidesWithFlipped(PuzzlePiece piece) =>
             piece.Sides.Value.Concat(piece.Sides.Value.Select(s => new string(s.Reverse().ToArray()))).ToHashSet();
     }
-
-
 }

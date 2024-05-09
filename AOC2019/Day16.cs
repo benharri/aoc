@@ -2,7 +2,7 @@ namespace AOC2019;
 
 public sealed class Day16() : Day(2019, 16, "Flawed Frequency Transmission")
 {
-    private static readonly int[] BasePattern = { 0, 1, 0, -1 };
+    private static readonly int[] BasePattern = [0, 1, 0, -1];
     private int[]? _initialList;
 
     public override void ProcessInput() =>

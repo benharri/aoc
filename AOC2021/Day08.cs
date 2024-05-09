@@ -7,7 +7,7 @@ public sealed class Day08() : Day(2021, 8, "Seven Segment Search")
 {
     private static readonly List<char[]> PossibleMappings =
         "abcdefg".ToCharArray().Permute().Select(m => m.ToArray()).ToList();
-    private static readonly int[] SearchValues = { 2, 3, 4, 7 };
+    private static readonly int[] SearchValues = [2, 3, 4, 7];
 
     private static int MatchDigit(string lit) =>
         lit switch

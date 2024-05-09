@@ -60,7 +60,7 @@ public sealed class Day11() : Day(2020, 11, "Seating System")
             _w = Grid[0].Length;
         }
 
-        private LifeGame() => Grid = Array.Empty<char[]>();
+        private LifeGame() => Grid = [];
 
         public int TotalSeated =>
             Grid.Sum(l => l.Count(c => c == '#'));
