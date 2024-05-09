@@ -1,4 +1,5 @@
 using CommandLine;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AOC.Common;
 
@@ -86,6 +87,8 @@ public abstract class Day(int year, int day, string puzzleName)
         Console.WriteLine($"Part 2: {part2,-45} {_stopwatch.ScaleMilliseconds()}ms elapsed");
     }
 
+    // ReSharper disable once ClassNeverInstantiated.Local
+    // ReSharper disable UnusedAutoPropertyAccessor.Local
     private class Options
     {
         [Option('t', "test", Required = false, Default = false, HelpText = "Use test input for the given day")]
