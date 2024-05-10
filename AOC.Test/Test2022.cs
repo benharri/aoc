@@ -5,24 +5,6 @@ namespace AOC.Test;
 [TestClass]
 public class Test2022
 {
-    private const string Day10Actual = """
-         ████ ███   ██  ███  █    ████ ████ █  █
-            █ █  █ █  █ █  █ █    █       █ █  █
-           █  █  █ █  █ █  █ █    ███    █  █  █
-          █   ███  ████ ███  █    █     █   █  █
-         █    █ █  █  █ █ █  █    █    █    █  █
-         ████ █  █ █  █ █  █ ████ █    ████  ██ 
-        """;
-
-    private const string Day10Test = """
-         ██  ██  ██  ██  ██  ██  ██  ██  ██  ██ 
-         ███   ███   ███   ███   ███   ███   ███
-         ████    ████    ████    ████    ████   
-         █████     █████     █████     █████    
-         ██████      ██████      ██████      ███
-        ████████       ███████       ███████    
-        """;
-
     [DataTestMethod]
     [DataRow(typeof(Day01), "70509", "208567")]
     [DataRow(typeof(Day02), "11449", "13187")]
@@ -33,7 +15,15 @@ public class Test2022
     [DataRow(typeof(Day07), "919137", "2877389")]
     [DataRow(typeof(Day08), "1776", "234416")]
     [DataRow(typeof(Day09), "6406", "2643")]
-    [DataRow(typeof(Day10), "14220", Day10Actual)]
+    [DataRow(typeof(Day10), "14220",
+        """
+         ████ ███   ██  ███  █    ████ ████ █  █
+            █ █  █ █  █ █  █ █    █       █ █  █
+           █  █  █ █  █ █  █ █    ███    █  █  █
+          █   ███  ████ ███  █    █     █   █  █
+         █    █ █  █  █ █ █  █    █    █    █  █
+         ████ █  █ █  █ █  █ ████ █    ████  ██ 
+        """)]
     [DataRow(typeof(Day11), "61503", "14081365540")]
     [DataRow(typeof(Day12), "352", "345")]
     [DataRow(typeof(Day13), "5682", "20304")]
@@ -52,7 +42,15 @@ public class Test2022
     [DataRow(typeof(Day07), "95437", "24933642")]
     [DataRow(typeof(Day08), "21", "8")]
     [DataRow(typeof(Day09), "88", "36")]
-    [DataRow(typeof(Day10), "13140", Day10Test)]
+    [DataRow(typeof(Day10), "13140",
+        """
+         ██  ██  ██  ██  ██  ██  ██  ██  ██  ██ 
+         ███   ███   ███   ███   ███   ███   ███
+         ████    ████    ████    ████    ████   
+         █████     █████     █████     █████    
+         ██████      ██████      ██████      ███
+        ████████       ███████       ███████    
+        """)]
     [DataRow(typeof(Day11), "10605", "2713310158")]
     [DataRow(typeof(Day12), "31", "29")]
     [DataRow(typeof(Day13), "13", "140")]

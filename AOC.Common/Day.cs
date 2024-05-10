@@ -156,7 +156,7 @@ public abstract class Day(int year, int day, string puzzleName)
                         $"{options.DayNumber} is not a valid advent day. Must be between 1 and 25.");
 
                 var day = days.SingleOrDefault(d => d.DayNumber == options.DayNumber) ??
-                          throw new NotImplementedException($"Day {options.DayNumber} not yet implemented");
+                          throw new ApplicationException($"Day {options.DayNumber} not yet implemented");
 
                 day.PrintProcessInput();
 
