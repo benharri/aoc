@@ -6,6 +6,5 @@
 public class Day05() : Day(2023, 5, "If you Give A Seed A Fertilizer")
 {
     public override object Part1() => "";
-
     public override object Part2() => "";
 }
