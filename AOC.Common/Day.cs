@@ -1,15 +1,19 @@
 using CommandLine;
+// ReSharper disable MemberCanBeProtected.Global
+// ReSharper disable MemberCanBePrivate.Global
 
 namespace AOC.Common;
 
 /// <summary>
 /// Base class for a day's solution. Provides stopwatch timing and command line parsing.
 /// </summary>
-/// <param name="year"></param>
-/// <param name="day"></param>
-/// <param name="puzzleName"></param>
+/// <param name="year">Puzzle year</param>
+/// <param name="day">Puzzle day</param>
+/// <param name="puzzleName">Puzzle name</param>
 public abstract class Day(int year, int day, string puzzleName)
 {
+    private readonly Stopwatch _stopwatch = new();
+
     /// <summary>
     /// The year this Day is from.
     /// </summary>
@@ -28,24 +32,24 @@ public abstract class Day(int year, int day, string puzzleName)
     /// <summary>
     /// Enumerable of all lines in the input file.
     /// </summary>
-    protected IEnumerable<string> Input => File.ReadLines(FileName);
+    public IEnumerable<string> Input => File.ReadLines(FileName);
 
     /// <summary>
     /// Path to the input file in the format of "inputYEAR/dayNN.in".
     /// </summary>
     public string FileName =>
         Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-            $"input{Year}/{(UseTestInput ? "test" : "day")}{DayNumber,2:00}.in");
+            $"input{Year}/{(UseTestInput ? "test" : "day")}{DayNumber:00}.in");
 
     /// <summary>
     /// A toggle to read the test input file instead of the real input.
     /// </summary>
     public static bool UseTestInput { get; set; }
 
-    private readonly Stopwatch _stopwatch = new();
+    public override string ToString() => $"{Year}.{DayNumber:00}: {PuzzleName}";
 
     /// <summary>
-    /// Initial parsing of the puzzle input.
+    /// Initial parsing of the puzzle input. To be overridden by derived solution classes.
     /// </summary>
     public virtual void ProcessInput()
     {
@@ -66,38 +70,39 @@ public abstract class Day(int year, int day, string puzzleName)
     /// <summary>
     /// Runs <see cref="ProcessInput"/> and prints timing information to the console.
     /// </summary>
-    private void PrintProcessInput()
+    public void PrintProcessInput()
     {
         _stopwatch.Restart();
         ProcessInput();
         _stopwatch.Stop();
 
-        Console.WriteLine(
-            $"{Year} Day {DayNumber,2}: {PuzzleName,-40} {_stopwatch.ScaleMilliseconds()}ms elapsed processing input");
+        Console.WriteLine($"{this,-59} {_stopwatch.ScaleMilliseconds():00.0000}ms");
     }
 
     /// <summary>
     /// Runs the <see cref="Part1"/> solver with timings and prints the result to the console.
     /// </summary>
-    private void PrintPart1()
+    public object PrintPart1()
     {
         _stopwatch.Restart();
         var part1 = Part1();
         _stopwatch.Stop();
 
-        Console.WriteLine($"Part 1: {part1,-45} {_stopwatch.ScaleMilliseconds()}ms elapsed");
+        Console.WriteLine($"P1: {part1,-55} {_stopwatch.ScaleMilliseconds():00.0000}ms");
+        return part1;
     }
 
     /// <summary>
     /// Runs the <see cref="Part2"/> solver with timings and prints the result to the console.
     /// </summary>
-    private void PrintPart2()
+    public object PrintPart2()
     {
         _stopwatch.Restart();
         var part2 = Part2();
         _stopwatch.Stop();
 
-        Console.WriteLine($"Part 2: {part2,-45} {_stopwatch.ScaleMilliseconds()}ms elapsed");
+        Console.WriteLine($"P2: {part2,-55} {_stopwatch.ScaleMilliseconds():00.0000}ms");
+        return part2;
     }
 
     // ReSharper disable once ClassNeverInstantiated.Local

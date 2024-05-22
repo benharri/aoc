@@ -5,12 +5,16 @@ namespace AOC2018;
 /// </summary>
 public sealed class Day01() : Day(2018, 1, "Chronal Calibration")
 {
-    public override object Part1() => Input.Select(int.Parse).Sum();
+    private IEnumerable<int>? _frequencies;
+
+    public override void ProcessInput() => _frequencies = Input.Select(int.Parse);
+
+    public override object Part1() => _frequencies!.Sum();
 
     public override object Part2()
     {
-        var frequencies = new HashSet<int>();
+        var seen = new HashSet<int>();
         var freq = 0;
-        return Input.Select(int.Parse).Repeat().Any(f => !frequencies.Add(freq += f)) ? freq : 0;
+        return _frequencies!.Repeat().Any(f => !seen.Add(freq += f)) ? freq : 0;
     }
 }
