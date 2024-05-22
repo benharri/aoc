@@ -2,9 +2,23 @@ namespace AOC.Common;
 
 public static class Extensions
 {
+    /// <summary>
+    /// <c>string.Join</c> Wrapper
+    /// </summary>
+    /// <param name="enumerable"></param>
+    /// <param name="delimiter"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
     public static string ToDelimitedString<T>(this IEnumerable<T> enumerable, string delimiter = "") =>
         string.Join(delimiter, enumerable);
 
+    /// <summary>
+    /// Loop over a sequence with an optional number of times.
+    /// </summary>
+    /// <param name="sequence"></param>
+    /// <param name="count"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
     public static IEnumerable<T> Repeat<T>(this IEnumerable<T> sequence, int? count = null)
     {
         while (count == null || count-- > 0)
@@ -24,7 +38,7 @@ public static class Extensions
     /// <summary>
     /// Given an array, it returns a rotated copy.
     /// </summary>
-    /// <param name="array">The two dimensional jagged array to rotate.</param>
+    /// <param name="array">The two-dimensional jagged array to rotate.</param>
     public static T[][] Rotate<T>(this T[][] array)
     {
         var result = new T[array[0].Length][];
@@ -41,12 +55,12 @@ public static class Extensions
     /// <summary>
     /// Given a jagged array, it returns a diagonally flipped copy.
     /// </summary>
-    /// <param name="array">The two dimensional jagged array to flip.</param>
+    /// <param name="array">The two-dimensional jagged array to flip.</param>
     public static T[][] FlipHorizontally<T>(this IEnumerable<T[]> array) =>
         array.Select(x => x.Reverse().ToArray()).ToArray();
 
     /// <summary>
-    /// Does a <see cref="Range"/> include a given int?
+    /// Does the <see cref="Range"/> include a given int?
     /// </summary>
     /// <param name="range"></param>
     /// <param name="i"></param>
@@ -75,7 +89,7 @@ public static class Extensions
 
     /// <summary>
     /// Creates a new BigInteger from a binary (Base2) string
-    /// <see href="https://gist.github.com/mjs3339/73042bc0e717f98796ee9fa131e458d4" />
+    /// Based on <a href="https://gist.github.com/mjs3339/73042bc0e717f98796ee9fa131e458d4">mjs3339's gist</a>
     /// </summary>
     public static BigInteger BigIntegerFromBinaryString(this string binaryValue)
     {
@@ -90,6 +104,12 @@ public static class Extensions
         return res;
     }
 
+    /// <summary>
+    /// Generate all permutations of an Enumerable.
+    /// </summary>
+    /// <param name="list"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
     public static IEnumerable<IEnumerable<T>> Permute<T>(this IEnumerable<T> list)
     {
         var array = list as T[] ?? list.ToArray();
@@ -98,6 +118,12 @@ public static class Extensions
             : array.SelectMany(t => Permute(array.Where(x => !x!.Equals(t))), (v, p) => p.Prepend(v));
     }
 
+    /// <summary>
+    /// Raise an integer to a given <paramref name="power"/>.
+    /// </summary>
+    /// <param name="i"></param>
+    /// <param name="power"></param>
+    /// <returns></returns>
     public static int Pow(this int i, int power)
     {
         var pow = (uint)power;
@@ -112,13 +138,34 @@ public static class Extensions
         return ret;
     }
 
+    /// <summary>
+    /// Attach the index of each element.
+    /// </summary>
+    /// <param name="source"></param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
     public static IEnumerable<KeyValuePair<int, T>> Indexed<T>(this IEnumerable<T> source) =>
         source.Select((t, i) => new KeyValuePair<int, T>(i, t));
 
+    /// <summary>
+    /// Wrapper for KeyValuePair to enable passing delegates.
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="func"></param>
+    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="TValue"></typeparam>
+    /// <returns></returns>
     public static IEnumerable<KeyValuePair<TKey, TValue>> WhereValue<TKey, TValue>(
         this IEnumerable<KeyValuePair<TKey, TValue>> source, Func<TValue, bool> func) =>
         source.Where(pair => func(pair.Value));
 
+    /// <summary>
+    /// Compute the Hamming distance between two strings.
+    /// </summary>
+    /// <param name="s1"></param>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
     public static int HammingDistance(this string s1, string other)
     {
         if (s1.Length != other.Length) throw new("Strings must be equal length.");
