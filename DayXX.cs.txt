@@ -1,4 +1,4 @@
-namespace AOCYYYY;
+namespace Solutions._YYYY;
 
 /// <summary>
 /// <a href="https://adventofcode.com/YYYY/day/Q">Day Q</a>
