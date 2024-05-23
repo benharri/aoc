@@ -18,17 +18,17 @@ else
   day="$2"
 fi
 
-mkdir -p "$(printf "AOC%s/input%s" "$year" "$year")"
+mkdir -p "$(printf "Solutions/input/%s" "$year")"
 
 puzzleName=$(curl -s https://adventofcode.com/"$year"/day/"$day" | sed -nr 's/.*--- Day [[:digit:]]+: (.*) ---.*/\1/p')
 
 curl -s https://adventofcode.com/"$year"/day/"$day"/input \
   --cookie "session=$session" \
-  -o "$(printf "AOC%s/input%s/day%02d.in" "$year" "$year" "$day")"
+  -o "$(printf "Solutions/input/%s/day%02d.in" "$year" "$day")"
   
-touch "$(printf "AOC%s/input%s/test%02d.in" "$year" "$year" "$day")"
+touch "$(printf "Solutions/input/%s/test%02d.in" "$year" "$day")"
 
-class=$(printf "AOC%s/Day%02d.cs" "$year" "$day")
+class=$(printf "Solutions/%s/Day%02d.cs" "$year" "$day")
 longDay=$(printf "%02d" "$day")
 
 if [ ! -f "$class" ]; then
