@@ -138,7 +138,6 @@ public abstract class Day(int year, int day, string puzzleName)
         var days = Assembly.GetEntryAssembly()?.GetTypes()
             .Where(t => t.BaseType == typeof(Day))
             .Select(t => (Activator.CreateInstance(t) as Day)!)
-            .OrderBy(d => d.DayNumber)
             .ToList();
 
         if (days == null || days.Count == 0)
@@ -154,7 +153,7 @@ public abstract class Day(int year, int day, string puzzleName)
 
             if (options.RunAllDays)
             {
-                foreach (var day in days.Where(d => d.Year == options.YearNumber))
+                foreach (var day in days.Where(d => d.Year == options.YearNumber).OrderBy(d => d.DayNumber))
                 {
                     day.PrintProcessInput();
                     day.PrintPart1();
