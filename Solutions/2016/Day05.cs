@@ -7,9 +7,12 @@ namespace Solutions._2016;
 /// </summary>
 public sealed class Day05() : Day(2016, 5, "How About a Nice Game of Chess?")
 {
+    private string? _keyBase;
+
+    public override void ProcessInput() => _keyBase = Input.First();
+
     public override object Part1()
     {
-        var s = Input.First();
         var answer = new char[8];
         var index = 0;
 
@@ -17,12 +20,16 @@ public sealed class Day05() : Day(2016, 5, "How About a Nice Game of Chess?")
         {
             while (true)
             {
-                var hash = BitConverter.ToString(MD5.HashData(Encoding.ASCII.GetBytes(s + index++))).Replace("-", "");
-                if (hash.StartsWith("00000"))
-                {
-                    answer[i] = hash[5];
-                    break;
-                }
+                var chars = _keyBase + index++;
+                var bytes = Encoding.ASCII.GetBytes(chars);
+                var hashData = MD5.HashData(bytes);
+                
+                // bail out before converting back to string
+                if (hashData[0] != 0 || hashData[1] != 0 || (hashData[2] & 0xf0) != 0) continue;
+
+                var hash = Convert.ToHexString(hashData);
+                answer[i] = hash[5];
+                break;
             }
         }
 
@@ -31,22 +38,24 @@ public sealed class Day05() : Day(2016, 5, "How About a Nice Game of Chess?")
 
     public override object Part2()
     {
-        var s = Input.First();
         var answer = new char[8];
         int index = 0, found = 0;
-
-        while (true)
+        
+        while (found < 8)
         {
-            var hash = BitConverter.ToString(MD5.HashData(Encoding.ASCII.GetBytes(s + index++))).Replace("-", "");
-            if (hash.StartsWith("00000"))
-            {
-                var target = hash[5] - '0';
-                if (target is < 8 and >= 0 && answer[target] == 0)
-                {
-                    answer[target] = hash[6];
-                    if (++found == 8) break;
-                }
-            }
+            var chars = _keyBase + index++;
+            var bytes = Encoding.ASCII.GetBytes(chars);
+            var hashData = MD5.HashData(bytes);
+
+            // compare bytes for leading zeros and bail if there aren't five of them
+            if (hashData[0] != 0 || hashData[1] != 0 || (hashData[2] & 0xf0) != 0) continue;
+
+            var hash = Convert.ToHexString(hashData);
+            var target = hash[5] - '0';
+            if (target is >= 8 or < 0 || answer[target] != 0) continue;
+
+            answer[target] = hash[6];
+            found++;
         }
 
         return new string(answer);

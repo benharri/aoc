@@ -5,6 +5,7 @@ namespace Solutions._2020;
 /// </summary>
 public sealed class Day17() : Day(2020, 17, "Conway Cubes")
 {
+    private static readonly int[] NeighborIndices = [-1, 0, 1];
     private readonly Dictionary<(int x, int y, int z), char> _plane = [];
     private readonly Dictionary<(int x, int y, int z, int w), char> _plane4 = [];
 
@@ -36,9 +37,9 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
     {
         var neighbors = 0;
 
-        foreach (var i in new[] { -1, 0, 1 })
-        foreach (var j in new[] { -1, 0, 1 })
-        foreach (var k in new[] { -1, 0, 1 })
+        foreach (var i in NeighborIndices)
+        foreach (var j in NeighborIndices)
+        foreach (var k in NeighborIndices)
         {
             if (i == 0 && j == 0 && k == 0) continue;
             if (plane[((x + i) & 31, (y + j) & 31, (z + k) & 31)] == '#') neighbors++;
@@ -71,10 +72,10 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
     {
         var neighbors = 0;
 
-        foreach (var i in new[] { -1, 0, 1 })
-        foreach (var j in new[] { -1, 0, 1 })
-        foreach (var k in new[] { -1, 0, 1 })
-        foreach (var l in new[] { -1, 0, 1 })
+        foreach (var i in NeighborIndices)
+        foreach (var j in NeighborIndices)
+        foreach (var k in NeighborIndices)
+        foreach (var l in NeighborIndices)
         {
             if (i == 0 && j == 0 && k == 0 && l == 0) continue;
             if (plane[((x + i) & 31, (y + j) & 31, (z + k) & 31, (w + l) & 31)] == '#') neighbors++;

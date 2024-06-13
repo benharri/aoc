@@ -104,8 +104,8 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
     public override void ProcessInput() =>
         _boss = Input.ToDictionary(k => k.Split(": ")[0], v => int.Parse(v.Split(": ")[1]));
 
-    public override object Part1() =>
-        ProcessStates(new(bossHealth: _boss["Hit Points"], bossDamage: _boss["Damage"]));
+    public override object Part1() => "";
+        // ProcessStates(new(bossHealth: _boss["Hit Points"], bossDamage: _boss["Damage"]));
 
     public override object Part2() => "";
 }
