@@ -13,6 +13,12 @@ namespace Solutions;
 /// <param name="puzzleName">Puzzle name</param>
 public abstract class Day(int year, int day, string puzzleName)
 {
+    private static readonly List<Day>? Days =
+        Assembly.GetEntryAssembly()?.GetTypes()
+            .Where(t => t.BaseType == typeof(Day))
+            .Select(t => (Activator.CreateInstance(t) as Day)!)
+            .ToList();
+
     private readonly Stopwatch _stopwatch = new();
 
     /// <summary>
@@ -106,6 +112,14 @@ public abstract class Day(int year, int day, string puzzleName)
         return part2;
     }
 
+    private void PrintDay()
+    {
+        PrintProcessInput();
+        PrintPart1();
+        PrintPart2();
+        Console.WriteLine();
+    }
+
     // ReSharper disable once ClassNeverInstantiated.Local
     // ReSharper disable UnusedAutoPropertyAccessor.Local
     private class Options
@@ -135,35 +149,27 @@ public abstract class Day(int year, int day, string puzzleName)
     /// <exception cref="ArgumentOutOfRangeException"></exception>
     public static void RunFromArgs(string[] args)
     {
-        var days = Assembly.GetEntryAssembly()?.GetTypes()
-            .Where(t => t.BaseType == typeof(Day))
-            .Select(t => (Activator.CreateInstance(t) as Day)!)
-            .ToList();
-
-        if (days == null || days.Count == 0)
+        if (Days == null || Days.Count == 0)
             throw new ApplicationException("no days found");
 
         Parser.Default.ParseArguments<Options>(args).WithParsed(options =>
         {
             UseTestInput = options.TestInput;
 
-            if (days.All(d => d.Year != options.YearNumber))
+            if (Days.All(d => d.Year != options.YearNumber))
                 throw new ApplicationException(
-                    $"Invalid year. Available years: {days.Select(d => d.Year).Distinct().OrderBy(d => d).ToDelimitedString(", ")}");
+                    $"Invalid year. Available years: {Days.Select(d => d.Year).Distinct().OrderBy(d => d).ToDelimitedString(", ")}");
 
             if (options.RunAllDays)
             {
-                foreach (var day in days.Where(d => d.Year == options.YearNumber).OrderBy(d => d.DayNumber))
+                foreach (var day in Days.Where(d => d.Year == options.YearNumber).OrderBy(d => d.DayNumber))
                 {
-                    day.PrintProcessInput();
-                    day.PrintPart1();
-                    day.PrintPart2();
-                    Console.WriteLine();
+                    day.PrintDay();
                 }
             }
             else
             {
-                var day = days.SingleOrDefault(d => d.DayNumber == options.DayNumber && d.Year == options.YearNumber) ??
+                var day = Days.SingleOrDefault(d => d.DayNumber == options.DayNumber && d.Year == options.YearNumber) ??
                           throw new ApplicationException($"Day {options.DayNumber} not yet implemented.");
 
                 day.PrintProcessInput();
@@ -193,5 +199,15 @@ public abstract class Day(int year, int day, string puzzleName)
         {
             foreach (var err in errors) Console.WriteLine(err);
         });
+    }
+
+    public static void RunAllYears()
+    {
+        if (Days == null) return;
+        
+        foreach (var day in Days.OrderBy(d => d.Year).ThenBy(d => d.DayNumber))
+        {
+            day.PrintDay();
+        }
     }
 }
