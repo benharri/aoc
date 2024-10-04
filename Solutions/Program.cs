@@ -1,2 +1,4 @@
 ﻿using Solutions;
-Day.RunFromArgs(args);
+
+if (args.Length > 0) Day.RunFromArgs(args);
+else Day.RunAllYears();
