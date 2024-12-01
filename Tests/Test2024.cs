@@ -1,4 +1,4 @@
-﻿using Solutions._2024;
+using Solutions._2024;
 namespace Tests;
 
 [TestClass]
