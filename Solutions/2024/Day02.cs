@@ -14,5 +14,30 @@ public sealed class Day02() : Day(2024, 2, "")
             .Count(pairs => pairs.All(c => Math.Abs(c) is >= 1 and <= 3) &&
                             (pairs.All(c => c > 0) || pairs.All(c => c < 0)));
 
-    public override object Part2() => "";
+    public override object Part2()
+    {
+        var result = 0;
+        
+        foreach (var line in Input)
+        {
+            var ints = line.Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToList();
+
+            for (var i = 0; i < ints.Count; i++)
+            {
+                var intsCopy = ints.ToList();
+                intsCopy.RemoveAt(i);
+                
+                var pairs = intsCopy.Pairwise((x, y) => y - x).ToList();
+                if (pairs.All(c => Math.Abs(c) is >= 1 and <= 3) &&
+                    (pairs.All(c => c > 0) || pairs.All(c => c < 0)))
+                {
+                    result++;
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
 }
