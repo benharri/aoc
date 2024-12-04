@@ -16,46 +16,37 @@ public sealed class Day04() : Day(2024, 4, "Ceres Search")
     {
         var grid = Input.Select(line => line.ToArray()).ToArray();
         var count = 0;
-        List<string> info = [];
+
         for (var y = 0; y < grid.Length; y++)
-        {
-            Console.WriteLine();
-            for (var x = 0; x < grid[0].Length; x++)
+        for (var x = 0; x < grid[0].Length; x++)
+            if (grid[y][x] == 'X')
             {
-                Console.Write(grid[y][x]);
-                if (grid[y][x] == 'X')
+                foreach (var (dx, dy) in Directions)
                 {
-                    var magnitude = 1;
-                    foreach (var (dx, dy) in Directions)
+                    int magnitude = 1, newY = y + dy, newX = x + dx;
+                    if (OutOfBounds(grid, newX, newY)) continue;
+
+                    while (grid[newY][newX] == "XMAS"[magnitude])
                     {
-                        var newY = y + (dy * magnitude);
-                        var newX = x + (dx * magnitude);
-                        
-                        if (newX < 0 || newX >= grid[0].Length || newY < 0 || newY >= grid.Length)
+                        if (++magnitude > 3)
                         {
-                            continue;
+                            count++;
+                            break;
                         }
-                        
-                        while (grid[newY][newX] == "XMAS"[magnitude])
-                        {
-                            if (++magnitude == 4)
-                            {
-                                info.Add($"found starting at x{x},y{y} with direction dx{dx},dy{dy}");
-                                count++;
-                                magnitude = 1;
-                                break;
-                            }
-                        }
+
+                        newY += dy;
+                        newX += dx;
+
+                        if (OutOfBounds(grid, newX, newY)) break;
                     }
                 }
             }
-        }
-
-        Console.WriteLine();
-        foreach (var i in info) Console.WriteLine(i);
 
         return count;
     }
+
+    private static bool OutOfBounds(char[][] grid, int x, int y) =>
+        x < 0 || x >= grid[0].Length || y < 0 || y >= grid.Length;
 
     public override object Part2() => "";
 }
