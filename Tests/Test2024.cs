@@ -15,6 +15,7 @@ public class Test2024
     [DataRow(typeof(Day01), "11", "31")]
     [DataRow(typeof(Day02), "2", "4")]
     [DataRow(typeof(Day03), "161", "48")]
+    [DataRow(typeof(Day04), "18", "")]
     public void CheckTestInputs(Type dayType, string part1, string part2) =>
         Common.CheckDay(dayType, part1, part2, true);
 }
