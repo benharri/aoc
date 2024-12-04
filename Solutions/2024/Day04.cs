@@ -5,6 +5,8 @@ namespace Solutions._2024;
 /// </summary>
 public sealed class Day04() : Day(2024, 4, "Ceres Search")
 {
+    private char[][] _grid = [];
+
     private static readonly List<(int dx, int dy)> Directions =
     [
         (-1, -1), (-1, 0), (-1, 1),
@@ -12,21 +14,25 @@ public sealed class Day04() : Day(2024, 4, "Ceres Search")
         (1, -1), (1, 0), (1, 1),
     ];
 
+    private static bool OutOfBounds(char[][] grid, int x, int y) =>
+        x < 0 || x >= grid[0].Length || y < 0 || y >= grid.Length;
+
+    public override void ProcessInput() => _grid = Input.Select(line => line.ToArray()).ToArray();
+
     public override object Part1()
     {
-        var grid = Input.Select(line => line.ToArray()).ToArray();
         var count = 0;
 
-        for (var y = 0; y < grid.Length; y++)
-        for (var x = 0; x < grid[0].Length; x++)
-            if (grid[y][x] == 'X')
+        for (var y = 0; y < _grid.Length; y++)
+        for (var x = 0; x < _grid[0].Length; x++)
+            if (_grid[y][x] == 'X')
             {
                 foreach (var (dx, dy) in Directions)
                 {
                     int magnitude = 1, newY = y + dy, newX = x + dx;
-                    if (OutOfBounds(grid, newX, newY)) continue;
+                    if (OutOfBounds(_grid, newX, newY)) continue;
 
-                    while (grid[newY][newX] == "XMAS"[magnitude])
+                    while (_grid[newY][newX] == "XMAS"[magnitude])
                     {
                         if (++magnitude > 3)
                         {
@@ -37,7 +43,7 @@ public sealed class Day04() : Day(2024, 4, "Ceres Search")
                         newY += dy;
                         newX += dx;
 
-                        if (OutOfBounds(grid, newX, newY)) break;
+                        if (OutOfBounds(_grid, newX, newY)) break;
                     }
                 }
             }
@@ -45,8 +51,20 @@ public sealed class Day04() : Day(2024, 4, "Ceres Search")
         return count;
     }
 
-    private static bool OutOfBounds(char[][] grid, int x, int y) =>
-        x < 0 || x >= grid[0].Length || y < 0 || y >= grid.Length;
 
-    public override object Part2() => "";
+    public override object Part2()
+    {
+        var count = 0;
+
+        for (var y = 1; y < _grid.Length - 1; y++)
+        for (var x = 1; x < _grid[0].Length - 1; x++)
+            if (_grid[y][x] == 'A')
+                if (((_grid[y - 1][x - 1] == 'M' && _grid[y + 1][x + 1] == 'S')
+                     || (_grid[y - 1][x - 1] == 'S' && _grid[y + 1][x + 1] == 'M'))
+                    && ((_grid[y + 1][x - 1] == 'M' && _grid[y - 1][x + 1] == 'S')
+                        || (_grid[y + 1][x - 1] == 'S' && _grid[y - 1][x + 1] == 'M')))
+                    count++;
+
+        return count;
+    }
 }
