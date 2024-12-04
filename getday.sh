@@ -13,7 +13,7 @@ else
 fi
 
 if [ -z "$2" ]; then
-  day=$(date +"%_d")
+  day=$(date +"%-d")
 else
   day="$2"
 fi
