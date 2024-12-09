@@ -18,7 +18,7 @@ public sealed class Day02() : Day(2016, 2, "Bathroom Security")
                 'D' => c with { y = c.y == 2 ? c.y : c.y + 1 },
                 'L' => c with { x = c.x == 0 ? c.x : c.x - 1 },
                 'R' => c with { x = c.x == 2 ? c.x : c.x + 1 },
-                _ => throw new ArgumentException("invalid direction", nameof(instruction))
+                _ => throw new ArgumentException("invalid direction", nameof(instruction)),
             });
 
             answer.Add(1 + location.x + location.y * 3);
@@ -48,7 +48,7 @@ public sealed class Day02() : Day(2016, 2, "Bathroom Security")
                 'D' => c with { y = c.y == 4 || keyPad[c.y + 1, c.x] == '\0' ? c.y : c.y + 1 },
                 'L' => c with { x = c.x == 0 || keyPad[c.y, c.x - 1] == '\0' ? c.x : c.x - 1 },
                 'R' => c with { x = c.x == 4 || keyPad[c.y, c.x + 1] == '\0' ? c.x : c.x + 1 },
-                _ => throw new ArgumentException("invalid direction", nameof(instruction))
+                _ => throw new ArgumentException("invalid direction", nameof(instruction)),
             });
 
             answer.Add(keyPad[location.y, location.x]);

@@ -10,7 +10,7 @@ public sealed class Day23() : Day(2015, 23, "Opening the Turing Lock")
         Dictionary<char, int> registers = new()
         {
             ['a'] = initialA,
-            ['b'] = initialB
+            ['b'] = initialB,
         };
 
         var input = Input.ToList();

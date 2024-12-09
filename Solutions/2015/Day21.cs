@@ -28,7 +28,7 @@ public sealed class Day21() : Day(2015, 21, "RPG Simulator 20XX")
             new(Name: "Shortsword", Cost: 10, Damage: 5),
             new(Name: "Warhammer",  Cost: 25, Damage: 6),
             new(Name: "Longsword",  Cost: 40, Damage: 7),
-            new(Name: "Greataxe",   Cost: 74, Damage: 8)
+            new(Name: "Greataxe",   Cost: 74, Damage: 8),
         };
 
         var armor = new Item[]
@@ -38,7 +38,7 @@ public sealed class Day21() : Day(2015, 21, "RPG Simulator 20XX")
             new(Name: "Chainmail",  Cost: 31,  Armor: 2),
             new(Name: "Splintmail", Cost: 53,  Armor: 3),
             new(Name: "Bandedmail", Cost: 75,  Armor: 4),
-            new(Name: "Platemail",  Cost: 102, Armor: 5)
+            new(Name: "Platemail",  Cost: 102, Armor: 5),
         };
 
         var rings = new Item[]
@@ -49,7 +49,7 @@ public sealed class Day21() : Day(2015, 21, "RPG Simulator 20XX")
             new(Name: "Damage +3",  Cost: 100, Damage: 3, Armor: 0),
             new(Name: "Defense +1", Cost: 20,  Damage: 0, Armor: 1),
             new(Name: "Defense +2", Cost: 40,  Damage: 0, Armor: 2),
-            new(Name: "Defense +3", Cost: 80,  Damage: 0, Armor: 3)
+            new(Name: "Defense +3", Cost: 80,  Damage: 0, Armor: 3),
         };
 
         _combinations =

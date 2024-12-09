@@ -1,4 +1,5 @@
 using Solutions._2024;
+
 namespace Tests;
 
 [TestClass]
@@ -11,7 +12,7 @@ public class Test2024
     [DataRow(typeof(Day04), "2573", "1850")]
     public void CheckAllDays(Type dayType, string part1, string part2) =>
         Common.CheckDay(dayType, part1, part2);
-    
+
     [DataTestMethod]
     [DataRow(typeof(Day01), "11", "31")]
     [DataRow(typeof(Day02), "2", "4")]

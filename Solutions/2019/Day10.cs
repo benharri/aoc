@@ -19,7 +19,7 @@ public sealed class Day10() : Day(2019, 10, "Monitoring Station")
         foreach (var asteroid in _asteroids!)
         {
             var canSee = _asteroids
-                .Except(new[] { asteroid })
+                .Except([asteroid])
                 .Select(a => (x: a.x - asteroid.x, y: a.y - asteroid.y))
                 .GroupBy(a => Math.Atan2(a.y, a.x))
                 .Count();

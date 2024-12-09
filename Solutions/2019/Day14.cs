@@ -92,7 +92,7 @@ public sealed class Day14() : Day(2019, 14, "Space Stoichiometry")
                 return new()
                 {
                     Quantity = int.Parse(spl[0]),
-                    Name = spl[1]
+                    Name = spl[1],
                 };
             }
         }

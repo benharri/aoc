@@ -31,10 +31,10 @@ public sealed partial class Day07() : Day(2016, 7, "Internet Protocol Version 7"
     private static bool SupportsSsl(string input)
     {
         foreach (var ip in BracketsRegex().Split(input))
-            foreach (var aba in CheckAba(ip))
-                foreach (var m in InsideBracketsRegex().Matches(input).Cast<Match>())
-                    if (m.Value.Contains($"{aba[1]}{aba[0]}{aba[1]}"))
-                        return true;
+        foreach (var aba in CheckAba(ip))
+        foreach (var m in InsideBracketsRegex().Matches(input).Cast<Match>())
+            if (m.Value.Contains($"{aba[1]}{aba[0]}{aba[1]}"))
+                return true;
 
         return false;
     }

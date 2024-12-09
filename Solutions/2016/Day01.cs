@@ -34,7 +34,7 @@ public sealed class Day01() : Day(2016, 1, "No Time for a Taxicab")
             Direction.South => (coord.x, coord.y - 1),
             Direction.East => (coord.x + 1, coord.y),
             Direction.West => (coord.x - 1, coord.y),
-            _ => (0, 0)
+            _ => (0, 0),
         };
 
     public override object Part1()

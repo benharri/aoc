@@ -239,7 +239,7 @@ public sealed partial class Day20() : Day(2020, 20, "Jurassic Jigsaw")
             (piece._topSide.Value, new(piece._topSide.Value.Reverse().ToArray())),
             (piece.RightSide.Value, new(piece.RightSide.Value.Reverse().ToArray())),
             (piece.BottomSide.Value, new(piece.BottomSide.Value.Reverse().ToArray())),
-            (piece._leftSide.Value, new(piece._leftSide.Value.Reverse().ToArray()))
+            (piece._leftSide.Value, new(piece._leftSide.Value.Reverse().ToArray())),
         ];
 
         private static HashSet<string> CalculateAllSidesWithFlipped(PuzzlePiece piece) =>

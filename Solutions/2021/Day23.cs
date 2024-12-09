@@ -72,7 +72,7 @@ public sealed class Day23() : Day(2021, 23, "Amphipod")
             return possible;
         },
         Distance = tuple => tuple.distance,
-        Cell = (_, tuple) => tuple.state
+        Cell = (_, tuple) => tuple.state,
     };
 
     public override object Part1()
@@ -108,7 +108,7 @@ public sealed class Day23() : Day(2021, 23, "Amphipod")
                 1 => B,
                 2 => C,
                 3 => D,
-                _ => null
+                _ => null,
             };
 
         public static State New(State from, char[] hall, int i, string hole) =>

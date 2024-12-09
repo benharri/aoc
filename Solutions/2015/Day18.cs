@@ -32,7 +32,7 @@ public sealed class Day18() : Day(2015, 18, "Like a GIF For Your Yard")
                     lights[i][j + 1],
                     lights[i + 1][j - 1],
                     lights[i + 1][j],
-                    lights[i + 1][j + 1]
+                    lights[i + 1][j + 1],
                 }.Count(n => n);
 
                 nextGrid[i][j] = lights[i][j] ? activeNeighbors is 2 or 3 : activeNeighbors == 3;

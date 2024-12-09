@@ -8,7 +8,7 @@ public sealed class Day05() : Day(2019, 5, "Sunny with a Chance of Asteroids")
     public override void ProcessInput() =>
         _tape = Input.First().Split(',').Select(int.Parse);
 
-    private void RunIntCode(IList<int> v, int input)
+    private void RunIntCode(List<int> v, int input)
     {
         var i = 0;
         while (i < v.Count && v[i] != 99)

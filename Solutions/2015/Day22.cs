@@ -13,7 +13,7 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
         new("Drain", Mana: 73, Damage: 2, Heal: 2),
         new("Shield", Mana: 113, Armor: 7, Duration: 6),
         new("Poison", Mana: 173, Damage: 3, Duration: 6),
-        new("Recharge", Mana: 229, ManaCharge: 101, Duration: 5)
+        new("Recharge", Mana: 229, ManaCharge: 101, Duration: 5),
     ];
 
     private Dictionary<string, int> _boss = new();
@@ -29,8 +29,15 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
         int ManaCharge = 0
     );
 
-    private struct GameState(bool hardMode = false, int roundNumber = 0, int totalManaSpent = 0, int playerHealth = 50,
-        int playerMana = 500, int bossHealth = 0, int bossDamage = 0, Dictionary<Spell, int>? activeSpells = null)
+    private struct GameState(
+        bool hardMode = false,
+        int roundNumber = 0,
+        int totalManaSpent = 0,
+        int playerHealth = 50,
+        int playerMana = 500,
+        int bossHealth = 0,
+        int bossDamage = 0,
+        Dictionary<Spell, int>? activeSpells = null)
     {
         public GameResult DoTurn(Spell spell)
         {
@@ -63,7 +70,7 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
         private void ProcessActiveSpells()
         {
             if (activeSpells is null) return;
-            
+
             activeSpells.Keys.ForEach(ProcessSpell);
             foreach (var (spell, duration) in activeSpells.ToList())
             {
@@ -84,7 +91,7 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
     {
         Win,
         Loss,
-        Continue
+        Continue,
     }
 
     private GameState ProcessStates(GameState initialState)
@@ -105,7 +112,7 @@ public sealed class Day22() : Day(2015, 22, "Wizard Simulator 20XX")
         _boss = Input.ToDictionary(k => k.Split(": ")[0], v => int.Parse(v.Split(": ")[1]));
 
     public override object Part1() => "";
-        // ProcessStates(new(bossHealth: _boss["Hit Points"], bossDamage: _boss["Damage"]));
+    // ProcessStates(new(bossHealth: _boss["Hit Points"], bossDamage: _boss["Damage"]));
 
     public override object Part2() => "";
 }

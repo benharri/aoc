@@ -51,7 +51,7 @@ public sealed class Day15() : Day(2021, 15, "Chiton")
         }
     }
 
-    private static int DijkstraCost(IReadOnlyDictionary<(int x, int y), Node> grid, Node target)
+    private static int DijkstraCost(Dictionary<(int x, int y), Node> grid, Node target)
     {
         var searchQueue = new PriorityQueue<Node, int>();
         grid[(0, 0)].Distance = 0;

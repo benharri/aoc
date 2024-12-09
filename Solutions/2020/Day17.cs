@@ -33,7 +33,7 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
             _plane4[(x, y, 0, 0)] = input[y][x];
     }
 
-    private static int Neighbors(IReadOnlyDictionary<(int x, int y, int z), char> plane, int x, int y, int z)
+    private static int Neighbors(Dictionary<(int x, int y, int z), char> plane, int x, int y, int z)
     {
         var neighbors = 0;
 
@@ -49,7 +49,7 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
     }
 
     private static Dictionary<(int x, int y, int z), char> Iterate(
-        IReadOnlyDictionary<(int x, int y, int z), char> prev)
+        Dictionary<(int x, int y, int z), char> prev)
     {
         var next = new Dictionary<(int x, int y, int z), char>();
 
@@ -67,7 +67,7 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
         return next;
     }
 
-    private static int Neighbors4(IReadOnlyDictionary<(int x, int y, int z, int w), char> plane, int x, int y,
+    private static int Neighbors4(Dictionary<(int x, int y, int z, int w), char> plane, int x, int y,
         int z, int w)
     {
         var neighbors = 0;
@@ -85,7 +85,7 @@ public sealed class Day17() : Day(2020, 17, "Conway Cubes")
     }
 
     private static Dictionary<(int x, int y, int z, int w), char> Iterate4(
-        IReadOnlyDictionary<(int x, int y, int z, int w), char> prev)
+        Dictionary<(int x, int y, int z, int w), char> prev)
     {
         var next = new Dictionary<(int x, int y, int z, int w), char>();
 

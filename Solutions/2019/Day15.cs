@@ -49,7 +49,7 @@ public sealed class Day15() : Day(2019, 15, "Oxygen System")
                     currentLocation = _vm.Result switch
                     {
                         Location.Empty or Location.System => Location.GetLocation(currentLocation.Neighbor(direction)),
-                        _ => throw new($"Unknown or unexpected response for previous room: {_vm.Result}")
+                        _ => throw new($"Unknown or unexpected response for previous room: {_vm.Result}"),
                     };
                 }
                 else
@@ -161,7 +161,7 @@ public sealed class Day15() : Day(2019, 15, "Oxygen System")
             Wall => "\u2587",
             Empty => X == 0 && Y == 0 ? "S" : " ",
             System => "O",
-            _ => "?"
+            _ => "?",
         };
 
         public bool UpdateDistanceToOxygenSystem()

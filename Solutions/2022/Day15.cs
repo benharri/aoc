@@ -18,7 +18,7 @@ public sealed partial class Day15() : Day(2022, 15, "Beacon Exclusion Zone")
     public override object Part1()
     {
         var targetRow = UseTestInput ? 10 : 2_000_000;
-        
+
         var taken = _sensors!
             .Where(t => t.ClosestBeaconPosition.y == targetRow)
             .Select(t => t.ClosestBeaconPosition.x);
@@ -33,15 +33,16 @@ public sealed partial class Day15() : Day(2022, 15, "Beacon Exclusion Zone")
     {
         var size = UseTestInput ? 20 : 4_000_000;
         var limit = new SensorRange(0, size);
-        
+
         for (var y = 0; y <= size; y++)
         {
-            var covered = _sensors!.Select(s => s.GetSlice(y));
+            var y1 = y;
+            var covered = _sensors!.Select(s => s.GetSlice(y1));
             var gap = FindGap(covered, limit);
             if (gap is { } x)
                 return (x * 4_000_000L) + y;
         }
-        
+
         return 0;
     }
 

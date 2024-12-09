@@ -12,7 +12,7 @@ public sealed class Day10() : Day(2020, 10, "Adapter Array")
     {
         var parsed = Input.Select(int.Parse).ToArray();
         // add socket and device to the list
-        _adapters = parsed.Concat(new[] { 0, parsed.Max() + 3 }).OrderBy(i => i).ToArray();
+        _adapters = parsed.Concat([0, parsed.Max() + 3]).OrderBy(i => i).ToArray();
         _memo = new long[_adapters.Length];
     }
 
