@@ -18,7 +18,7 @@ public sealed class Day02() : Day(2019, 2, "1202 Program Alarm")
             {
                 1 => v[v[i + 1]] + v[v[i + 2]],
                 2 => v[v[i + 1]] * v[v[i + 2]],
-                _ => throw new ArgumentOutOfRangeException(nameof(verb))
+                _ => throw new ArgumentOutOfRangeException(nameof(verb)),
             };
 
         return v[0];

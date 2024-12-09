@@ -12,7 +12,7 @@ public sealed class Day24() : Day(2020, 24, "Lobby Layout")
         { "se", (0, 1, -1) },
         { "sw", (-1, 1, 0) },
         { "nw", (0, -1, 1) },
-        { "ne", (1, -1, 0) }
+        { "ne", (1, -1, 0) },
     };
 
     private Dictionary<(int q, int r, int s), Tile>? _tiles;

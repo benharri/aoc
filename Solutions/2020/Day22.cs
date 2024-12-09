@@ -83,7 +83,7 @@ public sealed class Day22() : Day(2020, 22, "Crab Combat")
         bool recursive) =>
         Play(new(enumerable1), new(enumerable2), recursive);
 
-    private static int CalculateScore(IReadOnlyCollection<int> deck) =>
+    private static int CalculateScore(Queue<int> deck) =>
         deck.Reverse().Zip(Enumerable.Range(1, deck.Count), (a, b) => a * b).Sum();
 
     public override object Part1()

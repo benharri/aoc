@@ -10,10 +10,10 @@ public sealed class Day25() : Day(2021, 25, "Sea Cucumber")
     public override void ProcessInput() =>
         _cucumbers = Input.Select(l => l.ToCharArray()).ToArray();
 
-    private static char[][]? DoStep(IReadOnlyList<char[]> arr)
+    private static char[][]? DoStep(char[][] arr)
     {
         var moved = false;
-        var h = arr.Count;
+        var h = arr.Length;
         var w = arr[0].Length;
         var result = new char[h][];
         for (var i = 0; i < h; i++)
@@ -36,15 +36,15 @@ public sealed class Day25() : Day(2021, 25, "Sea Cucumber")
             result2[i] = new char[w];
 
         for (var i = 0; i < h; i++)
-            for (var j = 0; j < w; j++)
-            {
-                if (result2[i][j] == 0) result2[i][j] = result[i][j];
-                if (result[i][j] != 'v') continue;
-                if (result[(i + 1) % h][j] != '.') continue;
-                result2[i][j] = '.';
-                result2[(i + 1) % h][j] = 'v';
-                moved = true;
-            }
+        for (var j = 0; j < w; j++)
+        {
+            if (result2[i][j] == 0) result2[i][j] = result[i][j];
+            if (result[i][j] != 'v') continue;
+            if (result[(i + 1) % h][j] != '.') continue;
+            result2[i][j] = '.';
+            result2[(i + 1) % h][j] = 'v';
+            moved = true;
+        }
 
         return moved ? result2 : null;
     }

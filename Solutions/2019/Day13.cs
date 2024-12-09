@@ -24,7 +24,7 @@ public sealed class Day13() : Day(2019, 13, "Care Package")
                 2 => "#",
                 3 => "_",
                 4 => ".",
-                _ => value
+                _ => value,
             });
         }
     }

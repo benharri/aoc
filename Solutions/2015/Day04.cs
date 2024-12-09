@@ -18,7 +18,7 @@ public sealed class Day04() : Day(2015, 4, "The Ideal Stocking Stuffer")
         while (true)
         {
             var hash = MD5.HashData(Encoding.ASCII.GetBytes(_key + counter));
-            if (BitConverter.ToString(hash).Replace("-", "").StartsWith("00000"))
+            if (Convert.ToHexString(hash).StartsWith("00000"))
                 return counter;
             counter++;
         }

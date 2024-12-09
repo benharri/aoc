@@ -30,7 +30,7 @@ public sealed class Day19() : Day(2020, 19, "Monster Messages")
         var sub = string.Join("|", _rules![key].Select(test => test.Length switch
         {
             1 => test[0][0] == '"' ? test[0].Trim('"') : MakeRegexExpression(test[0]),
-            _ => string.Join(string.Empty, test.Select(MakeRegexExpression))
+            _ => string.Join(string.Empty, test.Select(MakeRegexExpression)),
         }));
         _stack.Pop();
         return _rules[key].Length > 1 ? $"({sub})" : sub;

@@ -75,7 +75,7 @@ public sealed class Day11() : Day(2022, 11, "Monkey in the Middle")
                         {
                             '*' => i => i * amount,
                             '+' => i => i + amount,
-                            _ => throw new ArgumentOutOfRangeException(line, "invalid operation")
+                            _ => throw new ArgumentOutOfRangeException(line, "invalid operation"),
                         };
                     else m.Operation = i => i * i;
                 }

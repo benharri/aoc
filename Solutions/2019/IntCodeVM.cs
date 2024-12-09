@@ -56,7 +56,7 @@ public class IntCodeVM
             0 => MemGet(param),
             1 => param,
             2 => MemGet(_relativeBase + param),
-            _ => throw new("invalid parameter mode")
+            _ => throw new("invalid parameter mode"),
         };
     }
 

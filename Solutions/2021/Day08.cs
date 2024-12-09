@@ -22,7 +22,7 @@ public sealed class Day08() : Day(2021, 8, "Seven Segment Search")
             "1010010" => 7,
             "1111111" => 8,
             "1111011" => 9,
-            _ => -1
+            _ => -1,
         };
 
     private static int Decode(string line)

@@ -11,7 +11,7 @@ public sealed class Day11() : Day(2019, 11, "Space Police")
         Up,
         Down,
         Left,
-        Right
+        Right,
     }
 
     public override void ProcessInput() =>
@@ -46,7 +46,7 @@ public sealed class Day11() : Day(2019, 11, "Space Police")
             Direction.Down => direction == 0 ? Direction.Right : Direction.Left,
             Direction.Left => direction == 0 ? Direction.Down : Direction.Up,
             Direction.Right => direction == 0 ? Direction.Up : Direction.Down,
-            _ => _heading
+            _ => _heading,
         };
 
         Move();

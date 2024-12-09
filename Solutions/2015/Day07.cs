@@ -29,7 +29,8 @@ public sealed class Day07() : Day(2015, 7, "Some Assembly Required")
                 case 3:
                     if (ushort.TryParse(split[0], out var val))
                     {
-                        _actions.Add(destination, () => val);
+                        var result = val;
+                        _actions.Add(destination, () => result);
                         _wires.Add(destination, val);
                     }
                     else

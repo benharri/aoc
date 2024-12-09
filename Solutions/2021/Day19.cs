@@ -38,7 +38,7 @@ public sealed class Day19() : Day(2021, 19, "Beacon Scanner")
             (-1, 0, 0) => (pt.Y, -pt.X, pt.Z),
             (0, 0, 1) => (pt.Y, pt.Z, pt.X),
             (0, 0, -1) => (pt.Y, -pt.Z, -pt.X),
-            _ => throw new("Invalid up vector")
+            _ => throw new("Invalid up vector"),
         };
 
         return rotation switch
@@ -47,7 +47,7 @@ public sealed class Day19() : Day(2021, 19, "Beacon Scanner")
             1 => (reoriented.Z, reoriented.Y, -reoriented.X),
             2 => (-reoriented.X, reoriented.Y, -reoriented.Z),
             3 => (-reoriented.Z, reoriented.Y, reoriented.X),
-            _ => throw new("Invalid rotation")
+            _ => throw new("Invalid rotation"),
         };
     }
 

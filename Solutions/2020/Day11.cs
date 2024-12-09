@@ -74,7 +74,7 @@ public sealed class Day11() : Day(2020, 11, "Seating System")
                 {
                     'L' when CountAdjacent(y, x) == 0 => '#',
                     '#' when CountAdjacent(y, x) >= 4 => 'L',
-                    _ => Grid[y][x]
+                    _ => Grid[y][x],
                 };
 
             // next.PrintBoard();
@@ -88,7 +88,7 @@ public sealed class Day11() : Day(2020, 11, "Seating System")
             new[]
             {
                 At(y - 1, x - 1), At(y - 1, x + 0), At(y - 1, x + 1), At(y + 0, x - 1), At(y + 0, x + 1),
-                At(y + 1, x - 1), At(y + 1, x + 0), At(y + 1, x + 1)
+                At(y + 1, x - 1), At(y + 1, x + 0), At(y + 1, x + 1),
             }.Count(c => c == '#');
 
         public LifeGame StepPart2()
@@ -100,7 +100,7 @@ public sealed class Day11() : Day(2020, 11, "Seating System")
                 {
                     'L' when CanSee(y, x) == 0 => '#',
                     '#' when CanSee(y, x) >= 5 => 'L',
-                    _ => Grid[y][x]
+                    _ => Grid[y][x],
                 };
 
             // next.PrintBoard();
@@ -111,7 +111,7 @@ public sealed class Day11() : Day(2020, 11, "Seating System")
             new[]
             {
                 TraceRay(y, x, -1, -1), TraceRay(y, x, -1, +0), TraceRay(y, x, -1, +1), TraceRay(y, x, +0, -1),
-                TraceRay(y, x, +0, +1), TraceRay(y, x, +1, -1), TraceRay(y, x, +1, +0), TraceRay(y, x, +1, +1)
+                TraceRay(y, x, +0, +1), TraceRay(y, x, +1, -1), TraceRay(y, x, +1, +0), TraceRay(y, x, +1, +1),
             }.Count(c => c == '#');
 
         private char TraceRay(int y, int x, int dy, int dx)

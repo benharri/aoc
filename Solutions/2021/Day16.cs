@@ -77,7 +77,7 @@ public sealed class Day16() : Day(2021, 16, "Packet Decoder")
                 5 => Packets[0].Eval > Packets[1].Eval ? 1 : 0,
                 6 => Packets[0].Eval < Packets[1].Eval ? 1 : 0,
                 7 => Packets[0].Eval == Packets[1].Eval ? 1 : 0,
-                _ => throw new ArgumentException("invalid packet type", nameof(TypeId))
+                _ => throw new ArgumentException("invalid packet type", nameof(TypeId)),
             };
     }
 

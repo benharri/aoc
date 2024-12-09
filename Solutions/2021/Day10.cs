@@ -10,7 +10,7 @@ public sealed class Day10() : Day(2021, 10, "Syntax Scoring")
         {'(', ')'},
         {'[', ']'},
         {'{', '}'},
-        {'<', '>'}
+        {'<', '>'},
     };
 
     private static readonly Dictionary<char, long> Scores = new()
@@ -18,7 +18,7 @@ public sealed class Day10() : Day(2021, 10, "Syntax Scoring")
         { ')', 3 },
         { ']', 57 },
         { '}', 1197 },
-        { '>', 25137 }
+        { '>', 25137 },
     };
 
     private static readonly Dictionary<char, long> ScoresPart2 = new()
@@ -26,7 +26,7 @@ public sealed class Day10() : Day(2021, 10, "Syntax Scoring")
         { '(', 1 },
         { '[', 2 },
         { '{', 3 },
-        { '<', 4 }
+        { '<', 4 },
     };
 
     private readonly List<long> _scores2 = [];

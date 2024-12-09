@@ -3,7 +3,7 @@
 public class Day07() : Day(2023, 7, "Camel Cards")
 {
     private List<(Hand hand, long bid)> _hands = [];
-    public const string OrderedCards = "23456789TJQKA";
+    private const string OrderedCards = "23456789TJQKA";
 
     public override void ProcessInput() =>
         _hands = Input
@@ -22,11 +22,12 @@ public class Day07() : Day(2023, 7, "Camel Cards")
 
     public override object Part2() =>
         _hands
-            .OrderBy(d => d.hand, new HandComparer(rank => rank == OrderedCards.IndexOf('J') ? 0 : rank + 1, useWilds: true))
+            .OrderBy(d => d.hand,
+                new HandComparer(rank => rank == OrderedCards.IndexOf('J') ? 0 : rank + 1, useWilds: true))
             .Select((hand, i) => hand.bid * (i + 1))
             .Sum();
 
-    public class HandComparer(Func<int, int> rankFunc, bool useWilds = false) : IComparer<Hand>
+    private class HandComparer(Func<int, int> rankFunc, bool useWilds = false) : IComparer<Hand>
     {
         public int Compare(Hand? x, Hand? y)
         {
@@ -48,7 +49,7 @@ public class Day07() : Day(2023, 7, "Camel Cards")
     [Flags]
     public enum HandType
     {
-        HighCard, OnePair, TwoPair, ThreeOfAKind, FullHouse, FourOfAKind, FiveOfAKind
+        HighCard, OnePair, TwoPair, ThreeOfAKind, FullHouse, FourOfAKind, FiveOfAKind,
     }
 
     public class Hand(string value)
@@ -86,7 +87,7 @@ public class Day07() : Day(2023, 7, "Camel Cards")
                 {
                     2 => HandType.FiveOfAKind,
                     1 => HandType.FourOfAKind,
-                    _ => pairs > 0 ? HandType.FullHouse : HandType.ThreeOfAKind
+                    _ => pairs > 0 ? HandType.FullHouse : HandType.ThreeOfAKind,
                 },
                 2 => pairs switch
                 {
@@ -95,9 +96,9 @@ public class Day07() : Day(2023, 7, "Camel Cards")
                     {
                         1 => HandType.ThreeOfAKind,
                         2 => HandType.FourOfAKind,
-                        _ => wildCount > 2 ? HandType.FiveOfAKind : HandType.OnePair
+                        _ => wildCount > 2 ? HandType.FiveOfAKind : HandType.OnePair,
                     },
-                    _ => HandType.HighCard
+                    _ => HandType.HighCard,
                 },
                 _ => wildCount switch
                 {
@@ -106,8 +107,8 @@ public class Day07() : Day(2023, 7, "Camel Cards")
                     3 => HandType.FourOfAKind,
                     4 => HandType.FiveOfAKind,
                     5 => HandType.FiveOfAKind,
-                    _ => HandType.HighCard
-                }
+                    _ => HandType.HighCard,
+                },
             };
         }
     }
