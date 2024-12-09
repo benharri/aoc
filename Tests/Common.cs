@@ -1,6 +1,5 @@
 using Solutions;
 
-[assembly: Parallelize(Workers = 0, Scope = ExecutionScope.ClassLevel)]
 namespace Tests;
 
 public static class Common
