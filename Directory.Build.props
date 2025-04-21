@@ -1,0 +1,12 @@
+<Project>
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <Using Include="System"/>
+        <Using Include="System.Diagnostics"/>
+        <Using Include="System.IO"/>
+        <Using Include="System.Linq"/>
+    </ItemGroup>
+</Project>
