@@ -1,17 +1,16 @@
 <Solution>
-  <Folder Name="/Solution Items/">
-    <File Path=".drone.yml" />
-    <File Path=".editorconfig" />
-    <File Path=".gitignore" />
-    <File Path="DayXX.cs.txt" />
-    <File Path="getday.sh" />
-    <File Path="global.json" />
-    <File Path="LICENSE" />
-    <File Path="README.md" />
-  </Folder>
-  <Project Path="Solutions\Solutions.csproj" Type="C#" />
-  <Project Path="Tests\Tests.csproj" />
-  <Properties Name="Visual Studio">
-    <Property Name="OpenWith" Value="Visual Studio Version 17" />
-  </Properties>
+    <Folder Name="/SolutionItems/">
+        <File Path=".drone.yml"/>
+        <File Path=".editorconfig"/>
+        <File Path=".gitignore"/>
+        <File Path="DayXX.cs.txt"/>
+        <File Path="Directory.Build.props"/>
+        <File Path="Directory.Packages.props"/>
+        <File Path="getday.sh"/>
+        <File Path="global.json"/>
+        <File Path="LICENSE"/>
+        <File Path="README.md"/>
+    </Folder>
+    <Project Path="Solutions\Solutions.csproj"/>
+    <Project Path="Tests\Tests.csproj"/>
 </Solution>
