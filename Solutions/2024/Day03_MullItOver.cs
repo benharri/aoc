@@ -1,4 +1,4 @@
-﻿namespace Solutions._2024;
+namespace Solutions._2024;
 
 /// <summary>
 /// <a href="https://adventofcode.com/2024/day/3">Day 3</a>

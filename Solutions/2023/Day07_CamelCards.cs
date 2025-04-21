@@ -1,4 +1,4 @@
-﻿namespace Solutions._2023;
+namespace Solutions._2023;
 
 public class Day07_CamelCards() : Day(2023, 7, "Camel Cards")
 {

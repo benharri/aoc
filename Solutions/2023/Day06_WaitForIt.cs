@@ -1,4 +1,8 @@
-﻿namespace Solutions._2023;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Solutions._2023;
 
 /// <summary>
 /// <a href="https://adventofcode.com/2023/day/6">Day 6</a>
