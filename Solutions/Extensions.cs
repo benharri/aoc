@@ -11,7 +11,7 @@ public static class Extensions
     /// <param name="delimiter"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
-    public static string ToDelimitedString<T>(this IEnumerable<T> enumerable, string delimiter = "") =>
+    public static string Join<T>(this IEnumerable<T> enumerable, string delimiter = "") =>
         string.Join(delimiter, enumerable);
 
     /// <summary>

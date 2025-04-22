@@ -31,5 +31,5 @@ public sealed class Day10CathodeRayTube() : Day(2022, 10, "Cathode-Ray Tube")
     }
 
     public override object Part1() => _interestingSignals.Sum();
-    public override object Part2() => string.Join(Environment.NewLine, _charMap.Chunk(40).Select(s => new string(s)));
+    public override object Part2() => _charMap.Chunk(40).Select(s => new string(s)).Join("\n");
 }

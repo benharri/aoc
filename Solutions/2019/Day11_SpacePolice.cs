@@ -89,9 +89,9 @@ public sealed class Day11SpacePolice() : Day(2019, 11, "Space Police")
             .Select(j =>
                 Enumerable.Range(minX, maxX - minX + 1)
                     .Select(i => map.GetValueOrDefault((x: i, y: j)) == 0 ? ' ' : '#')
-                    .ToDelimitedString()
+                    .Join()
             )
             .Reverse()
-            .ToDelimitedString(Environment.NewLine);
+            .Join("\n");
     }
 }

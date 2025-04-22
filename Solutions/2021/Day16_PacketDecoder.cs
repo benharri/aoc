@@ -9,8 +9,9 @@ public sealed class Day16PacketDecoder() : Day(2021, 16, "Packet Decoder")
 
     public override void ProcessInput()
     {
-        var bits = string.Join(string.Empty,
-            Input.First().Select(c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')));
+        var bits = Input.First()
+            .Select(c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0'))
+            .Join();
         (_packet, _) = Packet.FromBinaryString(bits);
     }
 

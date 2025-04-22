@@ -12,7 +12,7 @@ public sealed class Day07HandyHaversacks() : Day(2020, 7, "Handy Haversacks")
             .Select(rule =>
             {
                 var spl = rule.Split(" bags contain ", 2);
-                var outer = string.Join(' ', spl[0].Split(' ').Take(2));
+                var outer = spl[0].Split(' ').Take(2).Join(" ");
                 var inner = spl[1].Split(", ").Select(ParseQuantity).Where(i => i != null);
                 return (outer, inner);
             })
@@ -22,7 +22,7 @@ public sealed class Day07HandyHaversacks() : Day(2020, 7, "Handy Haversacks")
     {
         if (arg == "no other bags.") return null;
         var words = arg.Split(' ');
-        return (int.Parse(words[0]), string.Join(' ', words[1..3]));
+        return (int.Parse(words[0]), words[1..3].Join(" "));
     }
 
     private int Weight(string node) =>

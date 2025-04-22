@@ -18,7 +18,7 @@ public sealed partial class Day04PassportProcessing() : Day(2020, 4, "Passport P
     private static partial Regex HexColor();
 
     private static Dictionary<string, string> Parse(IEnumerable<string> list) =>
-        string.Join(' ', list).Split(' ', StringSplitOptions.TrimEntries)
+        list.Join(" ").Split(' ', StringSplitOptions.TrimEntries)
             .ToDictionary(k => k.Split(':', 2)[0], v => v.Split(':', 2)[1]);
 
     private static bool IsValid(Dictionary<string, string> d) => RequiredFieldNames.All(d.ContainsKey);

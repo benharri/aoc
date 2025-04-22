@@ -28,7 +28,7 @@ public sealed class Day07NoSpaceLeftOnDevice() : Day(2022, 7, "No Space Left On 
                 pathList.Reverse();
 
                 foreach (var i in Enumerable.Range(0, pathList.Count + 1))
-                    _dirs[string.Join("/", pathList.GetRange(0, i))] += filesize;
+                    _dirs[pathList.GetRange(0, i).Join("/")] += filesize;
             }
         }
     }

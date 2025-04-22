@@ -27,11 +27,13 @@ public sealed class Day19MonsterMessages() : Day(2020, 19, "Monster Messages")
         if (_stack!.Count(s => s == key) > 10) return "x";
         _stack!.Push(key);
 
-        var sub = string.Join("|", _rules![key].Select(test => test.Length switch
-        {
-            1 => test[0][0] == '"' ? test[0].Trim('"') : MakeRegexExpression(test[0]),
-            _ => string.Join(string.Empty, test.Select(MakeRegexExpression)),
-        }));
+        var sub = _rules![key]
+            .Select(test => test.Length switch
+            {
+                1 => test[0][0] == '"' ? test[0].Trim('"') : MakeRegexExpression(test[0]),
+                _ => test.Select(MakeRegexExpression).Join(),
+            })
+            .Join("|");
         _stack.Pop();
         return _rules[key].Length > 1 ? $"({sub})" : sub;
     }

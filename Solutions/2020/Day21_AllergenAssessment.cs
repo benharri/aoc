@@ -39,7 +39,8 @@ public sealed class Day21AllergenAssessment() : Day(2020, 21, "Allergen Assessme
             .Count(i => !_dangerousFoods!.Select(t => t.Ingredient).Contains(i));
 
     public override object Part2() =>
-        string.Join(',', _dangerousFoods!
+        _dangerousFoods!
             .OrderBy(i => i.Allergen)
-            .Select(i => i.Ingredient));
+            .Select(i => i.Ingredient)
+            .Join(",");
 }

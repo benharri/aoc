@@ -13,7 +13,7 @@ public sealed class Day04SecurityThroughObscurity() : Day(2016, 4, "Security Thr
         {
             var s = raw.Split('[');
             var s2 = s[0].Split('-');
-            return new(string.Join("", s2[..^1]).Replace("-", string.Empty), int.Parse(s2.Last()), s[1].TrimEnd(']'));
+            return new(s2[..^1].Join().Replace("-", string.Empty), int.Parse(s2.Last()), s[1].TrimEnd(']'));
         }
 
         public bool IsRealRoom() =>

@@ -24,9 +24,9 @@ public sealed class Day08SpaceImageFormat() : Day(2019, 8, "Space Image Format")
                     acc != '2' ? acc : next == '0' ? ' ' : next
                 )
             )
-            .ToDelimitedString()
+            .Join()
             .Chunk(25)
             .Select(s => new string(s).Trim())
-            .ToDelimitedString(Environment.NewLine)
+            .Join("\n")
             .Replace('1', 'x');
 }

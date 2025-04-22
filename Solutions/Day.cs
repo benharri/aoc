@@ -158,7 +158,7 @@ public abstract class Day(int year, int day, string puzzleName)
 
             if (Days.All(d => d.Year != options.YearNumber))
                 throw new ApplicationException(
-                    $"Invalid year. Available years: {Days.Select(d => d.Year).Distinct().OrderBy(d => d).ToDelimitedString(", ")}");
+                    $"Invalid year. Available years: {Days.Select(d => d.Year).Distinct().OrderBy(d => d).Join(", ")}");
 
             if (options.RunAllDays)
             {

@@ -13,7 +13,7 @@ public sealed class Day08TwoFactorAuthentication() : Day(2016, 8, "Two-Factor Au
             for (var x = 0; x <= screen.GetUpperBound(1); x++)
                 sb.Append(screen[y, x]);
 
-            sb.AppendLine();
+            sb.Append('\n');
         }
 
         return sb.ToString();
@@ -86,6 +86,6 @@ public sealed class Day08TwoFactorAuthentication() : Day(2016, 8, "Two-Factor Au
             }
         }
 
-        return Environment.NewLine + PrintGrid(screen);
+        return '\n' + PrintGrid(screen);
     }
 }
