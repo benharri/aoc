@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 12: <a href="https://adventofcode.com/2019/day/12"/>
+/// </summary>
 public sealed class Day12TheNBodyProblem() : Day(2019, 12, "The N-Body Problem")
 {
     private List<Position>? _moons;

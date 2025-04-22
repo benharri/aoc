@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 11: <a href="https://adventofcode.com/2019/day/11"/>
+/// </summary>
 public sealed class Day11SpacePolice() : Day(2019, 11, "Space Police")
 {
     private IntCodeVM? _vm;

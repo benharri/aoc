@@ -1,7 +1,7 @@
 namespace Solutions._2024;
 
 /// <summary>
-/// <a href="https://adventofcode.com/2024/day/3">Day 3</a>
+/// Day 3: <a href="https://adventofcode.com/2024/day/3"/>
 /// </summary>
 public partial class Day03MullItOver() : Day(2024, 3, "Mull It Over")
 {

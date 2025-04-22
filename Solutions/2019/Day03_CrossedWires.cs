@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 3: <a href="https://adventofcode.com/2019/day/3"/>
+/// </summary>
 public sealed class Day03CrossedWires() : Day(2019, 3, "Crossed Wires")
 {
     private IEnumerable<(int, int)>? _intersections;

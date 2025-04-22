@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 23: <a href="https://adventofcode.com/2019/day/23"/>
+/// </summary>
 public sealed class Day23CategorySix() : Day(2019, 23, "Category Six")
 {
     public override object Part1()

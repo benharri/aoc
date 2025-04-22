@@ -2,6 +2,9 @@
 #pragma warning disable CS0162 // Unreachable code detected
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 15: <a href="https://adventofcode.com/2019/day/15"/>
+/// </summary>
 public sealed class Day15OxygenSystem() : Day(2019, 15, "Oxygen System")
 {
     private const bool Verbose = false;

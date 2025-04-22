@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 10: <a href="https://adventofcode.com/2019/day/10"/>
+/// </summary>
 public sealed class Day10MonitoringStation() : Day(2019, 10, "Monitoring Station")
 {
     private HashSet<(int x, int y)>? _asteroids;

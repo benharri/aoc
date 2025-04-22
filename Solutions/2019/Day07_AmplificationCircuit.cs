@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 7: <a href="https://adventofcode.com/2019/day/7"/>
+/// </summary>
 public sealed class Day07AmplificationCircuit() : Day(2019, 7, "Amplification Circuit")
 {
     private readonly IntCodeVM[] _amplifiers = new IntCodeVM[5];

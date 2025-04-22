@@ -1,7 +1,7 @@
 namespace Solutions._2020;
 
 /// <summary>
-///     Day 9: <a href="https://adventofcode.com/2020/day/9" />
+/// Day 9: <a href="https://adventofcode.com/2020/day/9" />
 /// </summary>
 public sealed class Day09EncodingError() : Day(2020, 9, "Encoding Error")
 {

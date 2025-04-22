@@ -1,7 +1,7 @@
 namespace Solutions._2020;
 
 /// <summary>
-///     Day 2: <a href="https://adventofcode.com/2020/day/1" />
+/// Day 2: <a href="https://adventofcode.com/2020/day/1" />
 /// </summary>
 public sealed class Day02PasswordPhilosophy() : Day(2020, 2, "Password Philosophy")
 {

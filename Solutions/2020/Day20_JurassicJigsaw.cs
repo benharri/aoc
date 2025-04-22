@@ -1,7 +1,7 @@
 namespace Solutions._2020;
 
 /// <summary>
-///     Day 20: <a href="https://adventofcode.com/2020/day/20" />
+/// Day 20: <a href="https://adventofcode.com/2020/day/20" />
 /// </summary>
 public sealed partial class Day20JurassicJigsaw() : Day(2020, 20, "Jurassic Jigsaw")
 {
