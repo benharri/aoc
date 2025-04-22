@@ -1,4 +1,5 @@
 using Solutions._2015;
+// ReSharper disable MemberCanBeMadeStatic.Global
 
 namespace Tests;
 
@@ -29,8 +30,8 @@ public class Test2015
     [Arguments(typeof(Day22WizardSimulator20Xx), "", "")]
     [Arguments(typeof(Day23OpeningTheTuringLock), "255", "334")]
     [Arguments(typeof(Day25LetItSnow), "9132360", "")]
-    public void CheckAllDays(Type dayType, string part1, string part2) =>
-        _ = Common.CheckDay(dayType, part1, part2);
+    public async Task CheckAllDays(Type dayType, string part1, string part2) =>
+        await Common.CheckDay(dayType, part1, part2);
 
     [Test]
     [Arguments(typeof(Day01NotQuiteLisp), "-1", "5")]
@@ -46,6 +47,6 @@ public class Test2015
     [Arguments(typeof(Day13KnightsOfTheDinnerTable), "330", "286")]
     [Arguments(typeof(Day15ScienceForHungryPeople), "62842880", "57600000")]
     [Arguments(typeof(Day19MedicineForRudolph), "4", "2")]
-    public void CheckTestInputs(Type dayType, string part1, string part2) =>
-        _ = Common.CheckDay(dayType, part1, part2, true);
+    public async Task CheckTestInputs(Type dayType, string part1, string part2) =>
+        await Common.CheckDay(dayType, part1, part2, testInput: true);
 }

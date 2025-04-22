@@ -13,21 +13,20 @@ public static class Common
     /// <param name="testInput">Correct answers are for the test input</param>
     public static async Task CheckDay(Type dayType, string part1, string part2, bool testInput = false)
     {
-        Day.UseTestInput = testInput;
-
         var day = Activator.CreateInstance(dayType) as Day;
         await Assert.That(day).IsNotNull();
-        await Assert.That(File.Exists(day!.FileName)).IsTrue();
+        day!.UseTestInput = testInput;
+        await Assert.That(File.Exists(day.FileName)).IsTrue();
 
         day.PrintProcessInput();
 
         // part 1
-        var part1Actual = day.PrintPart1();
+        var part1Actual = day.PrintPart1().ToString();
         await Assert.That(part1Actual).IsEqualTo(part1);
         //Assert.AreEqual(part1, part1Actual.ToString(), $"Incorrect answer for {day} Part 1");
 
         // part 2
-        var part2Actual = day.PrintPart2();
+        var part2Actual = day.PrintPart2().ToString();
         await Assert.That(part2Actual).IsEqualTo(part2);
     }
 }
