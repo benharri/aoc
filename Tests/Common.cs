@@ -11,22 +11,23 @@ public static class Common
     /// <param name="part1">Correct part 1 solution</param>
     /// <param name="part2">Correct part 2 solution</param>
     /// <param name="testInput">Correct answers are for the test input</param>
-    public static void CheckDay(Type dayType, string part1, string part2, bool testInput = false)
+    public static async Task CheckDay(Type dayType, string part1, string part2, bool testInput = false)
     {
         Day.UseTestInput = testInput;
 
         var day = Activator.CreateInstance(dayType) as Day;
-        Assert.IsNotNull(day, "Failed to instantiate day object");
-        Assert.IsTrue(File.Exists(day.FileName), $"File.Exists(day.FileName) {day.FileName}");
+        await Assert.That(day).IsNotNull();
+        await Assert.That(File.Exists(day!.FileName)).IsTrue();
 
         day.PrintProcessInput();
 
         // part 1
         var part1Actual = day.PrintPart1();
-        Assert.AreEqual(part1, part1Actual.ToString(), $"Incorrect answer for {day} Part 1");
+        await Assert.That(part1Actual).IsEqualTo(part1);
+        //Assert.AreEqual(part1, part1Actual.ToString(), $"Incorrect answer for {day} Part 1");
 
         // part 2
         var part2Actual = day.PrintPart2();
-        Assert.AreEqual(part2, part2Actual.ToString(), $"Incorrect answer for {day} Part 2");
+        await Assert.That(part2Actual).IsEqualTo(part2);
     }
 }
