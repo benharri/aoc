@@ -1,10 +1,14 @@
-<Project Sdk="MSTest.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <IsPackable>false</IsPackable>
+        <OutputType>Exe</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
-        <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting"/>
+        <Using Include="System.Threading.Tasks"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="TUnit"/>
     </ItemGroup>
 
     <ItemGroup>
