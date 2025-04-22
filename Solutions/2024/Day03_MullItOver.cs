@@ -13,7 +13,7 @@ public partial class Day03MullItOver() : Day(2024, 3, "Mull It Over")
     [GeneratedRegex(@"don't\(\)|do\(\)|mul\((\d{1,3}),(\d{1,3})\)")]
     private static partial Regex DoDontRegex();
 
-    public override void ProcessInput() => _input = string.Join("", Input);
+    public override void ProcessInput() => _input = Input.Join();
 
     public override object Part1() =>
         MulRegex().Matches(_input)

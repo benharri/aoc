@@ -24,7 +24,7 @@ public sealed class Day02BathroomSecurity() : Day(2016, 2, "Bathroom Security")
             answer.Add(1 + location.x + location.y * 3);
         }
 
-        return string.Join("", answer);
+        return answer.Join();
     }
 
     public override object Part2()
@@ -54,6 +54,6 @@ public sealed class Day02BathroomSecurity() : Day(2016, 2, "Bathroom Security")
             answer.Add(keyPad[location.y, location.x]);
         }
 
-        return string.Join("", answer);
+        return answer.Join();
     }
 }

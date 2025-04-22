@@ -38,8 +38,8 @@ public sealed class Day22CrabCombat() : Day(2020, 22, "Crab Combat")
         {
             if (recursive)
             {
-                var deck1Hash = string.Join(',', deck1);
-                var deck2Hash = string.Join(',', deck2);
+                var deck1Hash = deck1.Join(",");
+                var deck2Hash = deck2.Join(",");
 
                 if (seen1.Contains(deck1Hash) || seen2.Contains(deck2Hash))
                 {

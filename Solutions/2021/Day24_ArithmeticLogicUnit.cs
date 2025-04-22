@@ -35,7 +35,7 @@ public sealed class Day24ArithmeticLogicUnit() : Day(2021, 24, "Arithmetic Logic
             output[x] = Math.Min(9, 9 - y);
         }
 
-        return long.Parse(string.Join("", output.OrderBy(x => x.Key).Select(x => x.Value)));
+        return long.Parse(output.OrderBy(x => x.Key).Select(x => x.Value).Join());
     }
 
     public override object Part2()
@@ -48,6 +48,6 @@ public sealed class Day24ArithmeticLogicUnit() : Day(2021, 24, "Arithmetic Logic
             output[x] = Math.Max(1, 1 - y);
         }
 
-        return long.Parse(string.Join("", output.OrderBy(x => x.Key).Select(x => x.Value)));
+        return long.Parse(output.OrderBy(x => x.Key).Select(x => x.Value).Join());
     }
 }

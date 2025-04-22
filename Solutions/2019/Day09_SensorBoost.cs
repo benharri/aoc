@@ -14,13 +14,13 @@ public sealed class Day09SensorBoost() : Day(2019, 9, "Sensor Boost")
     {
         _vm!.Reset();
         _vm.Run(1);
-        return _vm.Output.ToDelimitedString(",");
+        return _vm.Output.Join(",");
     }
 
     public override object Part2()
     {
         _vm!.Reset();
         _vm.Run(2);
-        return _vm.Output.ToDelimitedString(",");
+        return _vm.Output.Join(",");
     }
 }
