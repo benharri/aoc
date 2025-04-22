@@ -14,7 +14,7 @@ public static class Common
     public static void CheckDay(Type dayType, string part1, string part2, bool testInput = false)
     {
         Day.UseTestInput = testInput;
-        
+
         var day = Activator.CreateInstance(dayType) as Day;
         Assert.IsNotNull(day, "Failed to instantiate day object");
         Assert.IsTrue(File.Exists(day.FileName), $"File.Exists(day.FileName) {day.FileName}");
