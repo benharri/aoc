@@ -34,11 +34,11 @@ public sealed class Day02CubeConundrum() : Day(2023, 2, "Cube Conundrum")
     {
         var sum = 0;
         Dictionary<string, int> mins = new() { { "red", 0 }, { "green", 0 }, { "blue", 0 } };
-        
+
         foreach (var line in Input)
         {
             foreach (var (name, _) in mins) mins[name] = 0;
-            
+
             var rounds = line.Split(": ", 2)[1];
             foreach (var round in rounds.Split("; "))
             {

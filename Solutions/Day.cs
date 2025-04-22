@@ -204,7 +204,7 @@ public abstract class Day(int year, int day, string puzzleName)
     public static void RunAllYears()
     {
         if (Days == null) return;
-        
+
         foreach (var day in Days.OrderBy(d => d.Year).ThenBy(d => d.DayNumber))
         {
             day.PrintDay();

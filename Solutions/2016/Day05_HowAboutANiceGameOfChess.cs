@@ -23,7 +23,7 @@ public sealed class Day05HowAboutANiceGameOfChess() : Day(2016, 5, "How About a 
                 var chars = _keyBase + index++;
                 var bytes = Encoding.ASCII.GetBytes(chars);
                 var hashData = MD5.HashData(bytes);
-                
+
                 // bail out before converting back to string
                 if (hashData[0] != 0 || hashData[1] != 0 || (hashData[2] & 0xf0) != 0) continue;
 
@@ -40,7 +40,7 @@ public sealed class Day05HowAboutANiceGameOfChess() : Day(2016, 5, "How About a 
     {
         var answer = new char[8];
         int index = 0, found = 0;
-        
+
         while (found < 8)
         {
             var chars = _keyBase + index++;
