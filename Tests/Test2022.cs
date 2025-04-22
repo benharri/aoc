@@ -1,4 +1,5 @@
 using Solutions._2022;
+// ReSharper disable MemberCanBeMadeStatic.Global
 
 namespace Tests;
 
@@ -28,8 +29,8 @@ public class Test2022
     [Arguments(typeof(Day13DistressSignal), "5682", "20304")]
     [Arguments(typeof(Day14RegolithReservoir), "674", "24958")]
     // [Arguments(typeof(Day15BeaconExclusionZone), "4724228", "13622251246513")] // TODO: optimize
-    public void CheckAllDays(Type dayType, string part1, string part2) =>
-        _ = Common.CheckDay(dayType, part1, part2);
+    public async Task CheckAllDays(Type dayType, string part1, string part2) =>
+        await Common.CheckDay(dayType, part1, part2);
 
     [Test]
     [Arguments(typeof(Day01CalorieCounting), "24000", "45000")]
@@ -56,6 +57,6 @@ public class Test2022
     [Arguments(typeof(Day14RegolithReservoir), "24", "93")]
     [Arguments(typeof(Day15BeaconExclusionZone), "26", "56000011")]
     // [Arguments(typeof(Day16), "1651", "")]
-    public void CheckTestInputs(Type dayType, string part1, string part2) =>
-        _ = Common.CheckDay(dayType, part1, part2, true);
+    public async Task CheckTestInputs(Type dayType, string part1, string part2) =>
+        await Common.CheckDay(dayType, part1, part2, true);
 }

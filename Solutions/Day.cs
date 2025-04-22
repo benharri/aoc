@@ -51,7 +51,7 @@ public abstract class Day(int year, int day, string puzzleName)
     /// <summary>
     /// A toggle to read the test input file instead of the real input.
     /// </summary>
-    public static bool UseTestInput { get; set; }
+    public bool UseTestInput { get; set; }
 
     public override string ToString() => $"{Year}.{DayNumber:00}: {PuzzleName}";
 
@@ -154,8 +154,6 @@ public abstract class Day(int year, int day, string puzzleName)
 
         Parser.Default.ParseArguments<Options>(args).WithParsed(options =>
         {
-            UseTestInput = options.TestInput;
-
             if (Days.All(d => d.Year != options.YearNumber))
                 throw new ApplicationException(
                     $"Invalid year. Available years: {Days.Select(d => d.Year).Distinct().OrderBy(d => d).Join(", ")}");
@@ -164,6 +162,7 @@ public abstract class Day(int year, int day, string puzzleName)
             {
                 foreach (var day in Days.Where(d => d.Year == options.YearNumber).OrderBy(d => d.DayNumber))
                 {
+                    day.UseTestInput = options.TestInput;
                     day.PrintDay();
                 }
             }
@@ -172,6 +171,7 @@ public abstract class Day(int year, int day, string puzzleName)
                 var day = Days.SingleOrDefault(d => d.DayNumber == options.DayNumber && d.Year == options.YearNumber) ??
                           throw new ApplicationException($"Day {options.DayNumber} not yet implemented.");
 
+                day.UseTestInput = options.TestInput;
                 day.PrintProcessInput();
 
                 if (options.PartNumber.HasValue)

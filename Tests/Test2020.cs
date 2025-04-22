@@ -1,4 +1,5 @@
 using Solutions._2020;
+// ReSharper disable MemberCanBeMadeStatic.Global
 
 namespace Tests;
 
@@ -30,6 +31,6 @@ public class Test2020
     [Arguments(typeof(Day23CrabCups), "36542897", "562136730660")]
     [Arguments(typeof(Day24LobbyLayout), "282", "3445")]
     [Arguments(typeof(Day25ComboBreaker), "11707042", "")]
-    public void CheckAllDays(Type dayType, string part1, string part2) =>
-        _ = Common.CheckDay(dayType, part1, part2);
+    public async Task CheckAllDays(Type dayType, string part1, string part2) =>
+        await Common.CheckDay(dayType, part1, part2);
 }
