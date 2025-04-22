@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 8: <a href="https://adventofcode.com/2019/day/8"/>
+/// </summary>
 public sealed class Day08SpaceImageFormat() : Day(2019, 8, "Space Image Format")
 {
     private List<List<char>>? _photo;

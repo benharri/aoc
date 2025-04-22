@@ -1,6 +1,9 @@
 namespace Solutions._2023;
 
-public class Day07_CamelCards() : Day(2023, 7, "Camel Cards")
+/// <summary>
+/// Day 7: <a href="https://adventofcode.com/2023/day/7"/>
+/// </summary>
+public class Day07CamelCards() : Day(2023, 7, "Camel Cards")
 {
     private List<(Hand hand, long bid)> _hands = [];
     private const string OrderedCards = "23456789TJQKA";

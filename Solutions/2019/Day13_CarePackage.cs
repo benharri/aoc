@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 13: <a href="https://adventofcode.com/2019/day/13"/>
+/// </summary>
 public sealed class Day13CarePackage() : Day(2019, 13, "Care Package")
 {
     private IntCodeVM? _vm;

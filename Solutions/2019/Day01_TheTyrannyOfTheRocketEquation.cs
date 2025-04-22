@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 1: <a href="https://adventofcode.com/2019/day/1"/>
+/// </summary>
 public sealed class Day01TheTyrannyOfTheRocketEquation() : Day(2019, 1, "The Tyranny of the Rocket Equation")
 {
     private IEnumerable<int>? _masses;

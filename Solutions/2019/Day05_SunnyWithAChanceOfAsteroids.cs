@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 5: <a href="https://adventofcode.com/2019/day/5"/>
+/// </summary>
 public sealed class Day05SunnyWithAChanceOfAsteroids() : Day(2019, 5, "Sunny with a Chance of Asteroids")
 {
     private IEnumerable<int>? _tape;

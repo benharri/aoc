@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 14: <a href="https://adventofcode.com/2019/day/14"/>
+/// </summary>
 public sealed class Day14SpaceStoichiometry() : Day(2019, 14, "Space Stoichiometry")
 {
     private Dictionary<string, Reaction>? _reactions;

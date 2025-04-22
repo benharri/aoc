@@ -1,7 +1,7 @@
 namespace Solutions._2023;
 
 /// <summary>
-/// <a href="https://adventofcode.com/2023/day/3">Day 3</a>
+/// Day 3: <a href="https://adventofcode.com/2023/day/3"/>
 /// </summary>
 public sealed class Day03GearRatios() : Day(2023, 3, "Gear Ratios")
 {

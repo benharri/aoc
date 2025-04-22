@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 2: <a href="https://adventofcode.com/2019/day/2"/>
+/// </summary>
 // ReSharper disable once InconsistentNaming
 public sealed class Day02_1202ProgramAlarm() : Day(2019, 2, "1202 Program Alarm")
 {

@@ -3,7 +3,7 @@ using MoreLinq;
 namespace Solutions._2020;
 
 /// <summary>
-///     Day 4: <a href="https://adventofcode.com/2020/day/4" />
+/// Day 4: <a href="https://adventofcode.com/2020/day/4" />
 /// </summary>
 public sealed partial class Day04PassportProcessing() : Day(2020, 4, "Passport Processing")
 {

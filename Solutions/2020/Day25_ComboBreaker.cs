@@ -1,7 +1,7 @@
 namespace Solutions._2020;
 
 /// <summary>
-///     Day 25: <a href="https://adventofcode.com/2020/day/25" />
+/// Day 25: <a href="https://adventofcode.com/2020/day/25" />
 /// </summary>
 public sealed class Day25ComboBreaker() : Day(2020, 25, "Combo Breaker")
 {

@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 4: <a href="https://adventofcode.com/2019/day/4"/>
+/// </summary>
 public sealed class Day04SecureContainer() : Day(2019, 4, "Secure Container")
 {
     private int _start, _end;

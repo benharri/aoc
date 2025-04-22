@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 9: <a href="https://adventofcode.com/2019/day/9"/>
+/// </summary>
 public sealed class Day09SensorBoost() : Day(2019, 9, "Sensor Boost")
 {
     private IntCodeVM? _vm;

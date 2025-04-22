@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 6: <a href="https://adventofcode.com/2019/day/6"/>
+/// </summary>
 public sealed class Day06UniversalOrbitMap() : Day(2019, 6, "Universal Orbit Map")
 {
     private Dictionary<string, string>? _input;

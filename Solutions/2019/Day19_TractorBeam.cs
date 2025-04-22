@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 19: <a href="https://adventofcode.com/2019/day/19"/>
+/// </summary>
 public sealed class Day19TractorBeam() : Day(2019, 19, "Tractor Beam")
 {
     private long[,]? _grid;

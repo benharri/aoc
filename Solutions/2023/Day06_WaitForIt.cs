@@ -1,7 +1,7 @@
 namespace Solutions._2023;
 
 /// <summary>
-/// <a href="https://adventofcode.com/2023/day/6">Day 6</a>
+/// Day 6: <a href="https://adventofcode.com/2023/day/6"/>
 /// </summary>
 public class Day06WaitForIt() : Day(2023, 6, "Wait For It")
 {

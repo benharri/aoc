@@ -1,5 +1,8 @@
 namespace Solutions._2019;
 
+/// <summary>
+/// Day 16: <a href="https://adventofcode.com/2019/day/16"/>
+/// </summary>
 public sealed class Day16FlawedFrequencyTransmission() : Day(2019, 16, "Flawed Frequency Transmission")
 {
     private static readonly int[] BasePattern = [0, 1, 0, -1];

@@ -1,7 +1,7 @@
 namespace Solutions._2020;
 
 /// <summary>
-///     Day 16: <a href="https://adventofcode.com/2020/day/16" />
+/// Day 16: <a href="https://adventofcode.com/2020/day/16" />
 /// </summary>
 public sealed class Day16TicketTranslation() : Day(2020, 16, "Ticket Translation")
 {
