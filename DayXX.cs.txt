@@ -1,7 +1,7 @@
 namespace Solutions._YYYY;
 
 /// <summary>
-/// <a href="https://adventofcode.com/YYYY/day/Q">Day Q</a>
+/// Day Q: <a href="https://adventofcode.com/YYYY/day/Q"/>
 /// </summary>
 public sealed class DayXX() : Day(YYYY, Q, "Puzzle Name")
 {

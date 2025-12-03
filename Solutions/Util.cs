@@ -1,3 +1,5 @@
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable ForCanBeConvertedToForeach
 namespace Solutions;
 
 public static class Util
@@ -27,6 +29,8 @@ public static class Util
         }
     }
 
+    public static int ParseIntFast(string arg) => ParseIntFast(arg.AsSpan());
+
     /// <summary>
     /// Quickly parse an integer from a ReadOnlySpan by ascii index and radix shifting.
     /// </summary>
@@ -40,6 +44,8 @@ public static class Util
         return result;
     }
 
+    public static long ParseLongFast(string arg) => ParseLongFast(arg.AsSpan());
+
     /// <summary>
     /// Quickly parse a long from a ReadOnlySpan by ascii index and radix shifting.
     /// </summary>
@@ -52,4 +58,7 @@ public static class Util
             result = result * 10 + span[i] - '0';
         return result;
     }
+
+    /// <summary>Integer modulus to range [0, <paramref name="b"/>)</summary>
+    public static double Modulus(float a, float b) => a - b * Math.Floor(a / b);
 }
