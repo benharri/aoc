@@ -24,7 +24,7 @@ puzzleName=$(curl -s https://adventofcode.com/"$year"/day/"$day" | sed -nr 's/.*
 
 curl -s https://adventofcode.com/"$year"/day/"$day"/input \
   --cookie "session=$session" \
-  -o "$(printf "Solutions/input/%s/day%02d.in" "$year" "$day")"
+  -o "$(printf "~/Sync/Notes/aocinput/%s/day%02d.in" "$year" "$day")"
   
 touch "$(printf "Solutions/input/%s/test%02d.in" "$year" "$day")"
 

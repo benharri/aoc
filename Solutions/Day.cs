@@ -45,8 +45,10 @@ public abstract class Day(int year, int day, string puzzleName)
     /// Path to the input file in the format of "inputYEAR/dayNN.in".
     /// </summary>
     public string FileName =>
-        Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-            $"input/{Year}/{(UseTestInput ? "test" : "day")}{DayNumber:00}.in");
+        UseTestInput
+            ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"input/{Year}/test{DayNumber:00}.in")
+            : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                $"Sync/Notes/aocinput/{Year}/day{DayNumber:00}.in");
 
     /// <summary>
     /// A toggle to read the test input file instead of the real input.

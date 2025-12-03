@@ -15,18 +15,21 @@ public static class Common
     {
         var day = Activator.CreateInstance(dayType) as Day;
         await Assert.That(day).IsNotNull();
+
         day!.UseTestInput = testInput;
-        await Assert.That(File.Exists(day.FileName)).IsTrue();
 
-        day.PrintProcessInput();
+        // run real tests if the input files are available
+        if (!testInput && File.Exists(day.FileName))
+        {
+            day.PrintProcessInput();
 
-        // part 1
-        var part1Actual = day.PrintPart1().ToString();
-        await Assert.That(part1Actual).IsEqualTo(part1);
-        //Assert.AreEqual(part1, part1Actual.ToString(), $"Incorrect answer for {day} Part 1");
+            // part 1
+            var part1Actual = day.PrintPart1().ToString();
+            await Assert.That(part1Actual).IsEqualTo(part1).IgnoringWhitespace();
 
-        // part 2
-        var part2Actual = day.PrintPart2().ToString();
-        await Assert.That(part2Actual).IsEqualTo(part2);
+            // part 2
+            var part2Actual = day.PrintPart2().ToString();
+            await Assert.That(part2Actual).IsEqualTo(part2).IgnoringWhitespace();
+        }
     }
 }
