@@ -5,15 +5,15 @@ namespace Solutions._2025;
 /// </summary>
 public sealed class Day04PrintingDepartment() : Day(2025, 4, "Printing Department")
 {
-    private char[][]? _stacks;
+    private bool[][]? _stacks;
 
     public override void ProcessInput()
     {
         var input = Input.ToArray();
-        _stacks = Enumerable.Range(0, input.Length + 2).Select(_ => new char[input[0].Length + 2]).ToArray();
+        _stacks = Enumerable.Range(0, input.Length + 2).Select(_ => new bool[input[0].Length + 2]).ToArray();
         for (var i = 0; i < input.Length; i++)
         for (var j = 0; j < input[0].Length; j++)
-            _stacks[i + 1][j + 1] = input[i][j];
+            _stacks[i + 1][j + 1] = input[i][j] == '@';
     }
 
     public override object Part1()
@@ -21,7 +21,7 @@ public sealed class Day04PrintingDepartment() : Day(2025, 4, "Printing Departmen
         var count = 0;
         for (var i = 1; i < _stacks!.Length - 1; i++)
         for (var j = 1; j < _stacks[0].Length - 1; j++)
-            if (_stacks[i][j] == '@' && NeighborsAt(i, j).Count(n => n == '@') < 4) count++;
+            if (_stacks[i][j] && NeighborsAt(i, j).Count(n => n) < 4) count++;
 
         return count;
     }
@@ -35,9 +35,9 @@ public sealed class Day04PrintingDepartment() : Day(2025, 4, "Printing Departmen
             var countBeforeRemoval = count;
             for (var i = 1; i < _stacks!.Length - 1; i++)
             for (var j = 1; j < _stacks[0].Length - 1; j++)
-                if (_stacks[i][j] == '@' && NeighborsAt(i, j).Count(n => n == '@') < 4)
+                if (_stacks[i][j] && NeighborsAt(i, j).Count(n => n) < 4)
                 {
-                    _stacks[i][j] = '.';
+                    _stacks[i][j] = false;
                     count++;
                 }
 
@@ -47,7 +47,7 @@ public sealed class Day04PrintingDepartment() : Day(2025, 4, "Printing Departmen
         return count;
     }
 
-    private char[] NeighborsAt(int i, int j) =>
+    private bool[] NeighborsAt(int i, int j) =>
     [
         _stacks![i - 1][j - 1], _stacks[i - 1][j], _stacks[i - 1][j + 1], _stacks[i][j - 1],
         _stacks[i][j + 1], _stacks[i + 1][j - 1], _stacks[i + 1][j], _stacks[i + 1][j + 1]
