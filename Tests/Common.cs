@@ -18,18 +18,17 @@ public static class Common
 
         day!.UseTestInput = testInput;
 
-        // run real tests if the input files are available
-        if (!testInput && File.Exists(day.FileName))
-        {
-            day.PrintProcessInput();
+        // skip real tests when missing input files
+        if (!testInput && !File.Exists(day.FileName)) return;
+     
+        day.PrintProcessInput();
 
-            // part 1
-            var part1Actual = day.PrintPart1().ToString();
-            await Assert.That(part1Actual).IsEqualTo(part1).IgnoringWhitespace();
+        // part 1
+        var part1Actual = day.PrintPart1().ToString();
+        await Assert.That(part1Actual).IsEqualTo(part1).IgnoringWhitespace();
 
-            // part 2
-            var part2Actual = day.PrintPart2().ToString();
-            await Assert.That(part2Actual).IsEqualTo(part2).IgnoringWhitespace();
-        }
+        // part 2
+        var part2Actual = day.PrintPart2().ToString();
+        await Assert.That(part2Actual).IsEqualTo(part2).IgnoringWhitespace();
     }
 }
