@@ -8,7 +8,7 @@ public class Test2025
     [Arguments(typeof(Day01SecretEntrance), "1105", "")]
     [Arguments(typeof(Day02GiftShop), "20223751480", "30260171216")]
     [Arguments(typeof(Day03Lobby), "17155", "")]
-    [Arguments(typeof(Day04PrintingDepartment), "1419", "")]
+    [Arguments(typeof(Day04PrintingDepartment), "1419", "8739")]
     public async Task CheckAllDays(Type dayType, string part1, string part2) =>
         await Common.CheckDay(dayType, part1, part2);
 

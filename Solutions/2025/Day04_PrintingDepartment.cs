@@ -20,21 +20,36 @@ public sealed class Day04PrintingDepartment() : Day(2025, 4, "Printing Departmen
     {
         var count = 0;
         for (var i = 1; i < _stacks!.Length - 1; i++)
+        for (var j = 1; j < _stacks[0].Length - 1; j++)
+            if (_stacks[i][j] == '@' && NeighborsAt(i, j).Count(n => n == '@') < 4) count++;
+
+        return count;
+    }
+
+    public override object Part2()
+    {
+        var count = 0;
+        
+        while (true)
         {
+            var countBeforeRemoval = count;
+            for (var i = 1; i < _stacks!.Length - 1; i++)
             for (var j = 1; j < _stacks[0].Length - 1; j++)
-            {
-                var neighbors = new[]
+                if (_stacks[i][j] == '@' && NeighborsAt(i, j).Count(n => n == '@') < 4)
                 {
-                    _stacks[i - 1][j - 1], _stacks[i - 1][j], _stacks[i - 1][j + 1], _stacks[i][j - 1],
-                    _stacks[i][j + 1], _stacks[i + 1][j - 1], _stacks[i + 1][j], _stacks[i + 1][j + 1],
-                };
-                
-                if (_stacks[i][j] == '@' && neighbors.Count(n => n == '@') < 4) count++;
-            }
+                    _stacks[i][j] = '.';
+                    count++;
+                }
+
+            if (countBeforeRemoval == count) break;
         }
 
         return count;
     }
 
-    public override object Part2() => "";
+    private char[] NeighborsAt(int i, int j) =>
+    [
+        _stacks![i - 1][j - 1], _stacks[i - 1][j], _stacks[i - 1][j + 1], _stacks[i][j - 1],
+        _stacks[i][j + 1], _stacks[i + 1][j - 1], _stacks[i + 1][j], _stacks[i + 1][j + 1]
+    ];
 }
