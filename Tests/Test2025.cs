@@ -17,6 +17,7 @@ public class Test2025
     [Arguments(typeof(Day02GiftShop), "1227775554", "4174379265")]
     [Arguments(typeof(Day03Lobby), "357", "3121910778619")]
     [Arguments(typeof(Day04PrintingDepartment), "13", "43")]
+    [Arguments(typeof(Day05Cafeteria), "3", "")]
     public async Task CheckTestInputs(Type dayType, string part1, string part2) =>
         await Common.CheckDay(dayType, part1, part2, true);
 }
