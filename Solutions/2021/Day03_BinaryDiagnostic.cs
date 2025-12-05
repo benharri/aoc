@@ -1,3 +1,6 @@
+using System.Globalization;
+using System.Numerics;
+
 namespace Solutions._2021;
 
 /// <summary>
@@ -23,8 +26,8 @@ public sealed class Day03BinaryDiagnostic() : Day(2021, 3, "Binary Diagnostic")
             e.Append(ones > l ? '0' : '1');
         }
 
-        var gamma = g.ToString().BigIntegerFromBinaryString();
-        var epsilon = e.ToString().BigIntegerFromBinaryString();
+        var gamma = BigInteger.Parse($"0{g}", NumberStyles.BinaryNumber);
+        var epsilon = BigInteger.Parse($"0{e}", NumberStyles.BinaryNumber);
 
         return gamma * epsilon;
     }
@@ -41,7 +44,7 @@ public sealed class Day03BinaryDiagnostic() : Day(2021, 3, "Binary Diagnostic")
             o = o.Where(r => r[i] == most).ToList();
             i++;
         }
-        var o2 = o.Single().BigIntegerFromBinaryString();
+        var o2 = BigInteger.Parse($"0{o.Single()}", NumberStyles.BinaryNumber);
 
         i = 0;
         while (c.Count > 1)
@@ -50,7 +53,7 @@ public sealed class Day03BinaryDiagnostic() : Day(2021, 3, "Binary Diagnostic")
             c = c.Where(r => r[i] != most).ToList();
             i++;
         }
-        var co2 = c.Single().BigIntegerFromBinaryString();
+        var co2 = BigInteger.Parse($"0{c.Single()}", NumberStyles.BinaryNumber);
 
         return o2 * co2;
 

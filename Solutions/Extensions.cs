@@ -90,23 +90,6 @@ public static class Extensions
         r2.Start.Value <= r1.End.Value && r2.End.Value >= r1.Start.Value;
 
     /// <summary>
-    /// Creates a new BigInteger from a binary (Base2) string
-    /// Based on <a href="https://gist.github.com/mjs3339/73042bc0e717f98796ee9fa131e458d4">mjs3339's gist</a>
-    /// </summary>
-    public static BigInteger BigIntegerFromBinaryString(this string binaryValue)
-    {
-        BigInteger res = 0;
-        if (binaryValue.Count(b => b == '1') + binaryValue.Count(b => b == '0') != binaryValue.Length) return res;
-        foreach (var c in binaryValue)
-        {
-            res <<= 1;
-            res += c == '1' ? 1 : 0;
-        }
-
-        return res;
-    }
-
-    /// <summary>
     /// Generate all permutations of an Enumerable.
     /// </summary>
     /// <param name="list"></param>
