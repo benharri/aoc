@@ -1,32 +1,50 @@
-using System.Numerics;
-
 namespace Solutions;
 
 public static class Extensions
 {
-    /// <summary>
-    /// <c>string.Join</c> Wrapper
-    /// </summary>
     /// <param name="enumerable"></param>
-    /// <param name="delimiter"></param>
     /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public static string Join<T>(this IEnumerable<T> enumerable, string delimiter = "") =>
-        string.Join(delimiter, enumerable);
-
-    /// <summary>
-    /// Loop over a sequence with an optional number of times.
-    /// </summary>
-    /// <param name="sequence"></param>
-    /// <param name="count"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public static IEnumerable<T> Repeat<T>(this IEnumerable<T> sequence, int? count = null)
+    extension<T>(IEnumerable<T> enumerable)
     {
-        while (count == null || count-- > 0)
-            // ReSharper disable once PossibleMultipleEnumeration
-            foreach (var item in sequence)
-                yield return item;
+        /// <summary>
+        /// <c>string.Join</c> Wrapper
+        /// </summary>
+        /// <param name="delimiter"></param>
+        /// <returns></returns>
+        public string Join(string delimiter = "") =>
+            string.Join(delimiter, enumerable);
+
+        /// <summary>
+        /// Loop over a sequence with an optional number of times.
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public IEnumerable<T> Repeat(int? count = null)
+        {
+            while (count == null || count-- > 0)
+                // ReSharper disable once PossibleMultipleEnumeration
+                foreach (var item in enumerable)
+                    yield return item;
+        }
+
+        /// <summary>
+        /// Generate all permutations of an Enumerable.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<IEnumerable<T>> Permute()
+        {
+            var array = enumerable as T[] ?? enumerable.ToArray();
+            return array.Length == 1
+                ? [array]
+                : array.SelectMany(t => Permute(array.Where(x => !x!.Equals(t))), (v, p) => p.Prepend(v));
+        }
+
+        /// <summary>
+        /// Attach the index of each element.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<KeyValuePair<int, T>> Indexed() =>
+            enumerable.Select((t, i) => new KeyValuePair<int, T>(i, t));
     }
 
     /// <summary>
@@ -61,46 +79,33 @@ public static class Extensions
     public static T[][] FlipHorizontally<T>(this IEnumerable<T[]> array) =>
         array.Select(x => x.Reverse().ToArray()).ToArray();
 
-    /// <summary>
-    /// Does the <see cref="Range"/> include a given int?
-    /// </summary>
     /// <param name="range"></param>
-    /// <param name="i"></param>
-    /// <returns></returns>
-    public static bool Contains(this Range range, int i) =>
-        i >= range.Start.Value && i <= range.End.Value;
-
-    /// <summary>
-    /// Does <paramref name="r1"/> contain the entire range of <paramref name="r2"/>?
-    /// </summary>
-    /// <param name="r1"></param>
-    /// <param name="r2"></param>
-    /// <returns></returns>
-    public static bool Contains(this Range r1, Range r2) =>
-        r1.Start.Value <= r2.Start.Value && r1.End.Value >= r2.End.Value;
-
-    /// <summary>
-    /// Do <paramref name="r1"/> and <paramref name="r2"/> overlap?
-    /// </summary>
-    /// <param name="r1"></param>
-    /// <param name="r2"></param>
-    /// <returns></returns>
-    public static bool Overlaps(this Range r1, Range r2) =>
-        r1.Start.Value <= r2.End.Value && r1.End.Value >= r2.Start.Value &&
-        r2.Start.Value <= r1.End.Value && r2.End.Value >= r1.Start.Value;
-
-    /// <summary>
-    /// Generate all permutations of an Enumerable.
-    /// </summary>
-    /// <param name="list"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public static IEnumerable<IEnumerable<T>> Permute<T>(this IEnumerable<T> list)
+    extension(Range range)
     {
-        var array = list as T[] ?? list.ToArray();
-        return array.Length == 1
-            ? [array]
-            : array.SelectMany(t => Permute(array.Where(x => !x!.Equals(t))), (v, p) => p.Prepend(v));
+        /// <summary>
+        /// Does the <see cref="Range"/> include a given int?
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public bool Contains(int i) =>
+            i >= range.Start.Value && i <= range.End.Value;
+
+        /// <summary>
+        /// Does <paramref name="range"/> contain the entire range of <paramref name="r2"/>?
+        /// </summary>
+        /// <param name="r2"></param>
+        /// <returns></returns>
+        public bool Contains(Range r2) =>
+            range.Start.Value <= r2.Start.Value && range.End.Value >= r2.End.Value;
+
+        /// <summary>
+        /// Do <paramref name="range"/> and <paramref name="r2"/> overlap?
+        /// </summary>
+        /// <param name="r2"></param>
+        /// <returns></returns>
+        public bool Overlaps(Range r2) =>
+            range.Start.Value <= r2.End.Value && range.End.Value >= r2.Start.Value &&
+            r2.Start.Value <= range.End.Value && r2.End.Value >= range.Start.Value;
     }
 
     /// <summary>
@@ -122,15 +127,6 @@ public static class Extensions
 
         return ret;
     }
-
-    /// <summary>
-    /// Attach the index of each element.
-    /// </summary>
-    /// <param name="source"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public static IEnumerable<KeyValuePair<int, T>> Indexed<T>(this IEnumerable<T> source) =>
-        source.Select((t, i) => new KeyValuePair<int, T>(i, t));
 
     /// <summary>
     /// Wrapper for KeyValuePair to enable passing delegates.
