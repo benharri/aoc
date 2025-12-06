@@ -9,6 +9,7 @@ public class Test2025
     [Arguments(typeof(Day02GiftShop), "20223751480", "30260171216")]
     [Arguments(typeof(Day03Lobby), "17155", "")]
     [Arguments(typeof(Day04PrintingDepartment), "1419", "8739")]
+    [Arguments(typeof(Day05Cafeteria), "756", "355555479253787")]
     public async Task CheckAllDays(Type dayType, string part1, string part2) =>
         await Common.CheckDay(dayType, part1, part2);
 
@@ -17,7 +18,7 @@ public class Test2025
     [Arguments(typeof(Day02GiftShop), "1227775554", "4174379265")]
     [Arguments(typeof(Day03Lobby), "357", "3121910778619")]
     [Arguments(typeof(Day04PrintingDepartment), "13", "43")]
-    [Arguments(typeof(Day05Cafeteria), "3", "")]
+    [Arguments(typeof(Day05Cafeteria), "3", "14")]
     public async Task CheckTestInputs(Type dayType, string part1, string part2) =>
         await Common.CheckDay(dayType, part1, part2, true);
 }
