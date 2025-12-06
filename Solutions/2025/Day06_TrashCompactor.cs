@@ -24,5 +24,28 @@ public sealed class Day06TrashCompactor() : Day(2025, 6, "Trash Compactor")
         return sum;
     }
 
-    public override object Part2() => "";
+    public override object Part2()
+    {
+        var inp = Input.ToList();
+        var operands = inp.SkipLast(1).ToList();
+        var sum = 0L;
+        
+        var operators = Regex.Matches(inp.Last(), @"\S +");
+        foreach (Match op in operators)
+        {
+            var first = op.Groups.Values.First();
+            List<long> numbers = [];
+            // I added one (1) space to the end of each line in the input to avoid additional index math for the last operation
+            for (var i = first.Length + first.Index - 2; i >= first.Index; i--)
+            {
+                var digits = operands.Select(line => line[i]).Where(c => c != ' ').ToArray();
+                numbers.Add(Util.ParseLongFast(digits));
+            }
+
+            var isMult = first.Value[0] == '*';
+            sum += numbers.Aggregate(isMult ? 1L : 0L, (i, l) => isMult ? i * l : i + l);
+        }
+
+        return sum;
+    }
 }
