@@ -5,14 +5,21 @@ namespace Solutions._2025;
 /// </summary>
 public sealed class Day07Laboratories() : Day(2025, 7, "Laboratories")
 {
+    private string[] _input = null!;
+    private readonly Dictionary<(int x, int y), long> _timelines = [];
+
+    public override void ProcessInput()
+    {
+        _input = Input.ToArray();
+    }
+
     public override object Part1()
     {
-        var inp = Input.ToArray();
-        var tachyons = new bool[inp[0].Length];
+        var tachyons = new bool[_input[0].Length];
         
-        tachyons[inp[0].IndexOf('S')] = true;
+        tachyons[_input[0].IndexOf('S')] = true;
         var count = 0;
-        foreach (var line in inp.Skip(1))
+        foreach (var line in _input.Skip(1))
         {
             for (var i = 0; i < tachyons.Length; i++)
             {
@@ -28,5 +35,17 @@ public sealed class Day07Laboratories() : Day(2025, 7, "Laboratories")
         return count;
     }
 
-    public override object Part2() => "";
+    public override object Part2() => SplitTheTimeline(_input[0].IndexOf('S'), 0);
+
+    private long SplitTheTimeline(int x, int y)
+    {
+        // bail when already computed or at the end
+        if (_timelines.TryGetValue((x, y), out var timelines)) return timelines;
+        if (_input.Length == y + 1) return 1;
+
+        // recurse left and right if we're at a splitter
+        return _timelines[(x, y)] = _input[y + 1][x] == '^'
+            ? SplitTheTimeline(x + 1, y + 1) + SplitTheTimeline(x - 1, y + 1)
+            : SplitTheTimeline(x, y + 1);
+    }
 }
