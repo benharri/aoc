@@ -31,26 +31,19 @@ public sealed class Day01SecretEntrance() : Day(2025, 1, "Secret Entrance")
     {
         int current = 50, counter = 0;
 
-        foreach (var turn in Input.Select(l => l.Replace("R", "").Replace("L", "-")).Select(int.Parse))
+        foreach (var t in Input.Select(l => l.Replace("R", "").Replace("L", "-")).Select(int.Parse))
         {
-            var next = current + turn;
-            switch (next)
-            {
-                case <= 0:
-                    counter += Math.Abs(next / 100);
-
-                    if (next % 100 == 0)
-                        counter++;
-
-                    if (current == 0)
-                        counter--;
-                    break;
-                case >= 100:
-                    counter += next / 100;
-                    break;
-            }
-
-            current = (next + 100) % 100;
+            var turn = t;
+            counter += Math.Abs(turn) / 100;
+            turn %= 100;
+            var next = (current + turn + 100) % 100;
+            
+            if (current != 0 && next != 0 && (turn < 0 && current < next || turn > 0 && next < current))
+                counter++;
+            if (next == 0)
+                counter++;
+            
+            current = next;
         }
 
         return counter;

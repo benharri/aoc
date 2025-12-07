@@ -5,7 +5,7 @@ namespace Tests;
 public class Test2025
 {
     [Test]
-    [Arguments(typeof(Day01SecretEntrance), "1105", "")]
+    [Arguments(typeof(Day01SecretEntrance), "1105", "6599")]
     [Arguments(typeof(Day02GiftShop), "20223751480", "30260171216")]
     [Arguments(typeof(Day03Lobby), "17155", "169685670469164")]
     [Arguments(typeof(Day04PrintingDepartment), "1419", "8739")]
