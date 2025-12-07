@@ -7,7 +7,7 @@ public class Test2025
     [Test]
     [Arguments(typeof(Day01SecretEntrance), "1105", "")]
     [Arguments(typeof(Day02GiftShop), "20223751480", "30260171216")]
-    [Arguments(typeof(Day03Lobby), "17155", "")]
+    [Arguments(typeof(Day03Lobby), "17155", "169685670469164")]
     [Arguments(typeof(Day04PrintingDepartment), "1419", "8739")]
     [Arguments(typeof(Day05Cafeteria), "756", "355555479253787")]
     [Arguments(typeof(Day06TrashCompactor), "6757749566978", "10603075273949")]

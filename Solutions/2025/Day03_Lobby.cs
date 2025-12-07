@@ -22,12 +22,30 @@ public sealed class Day03Lobby() : Day(2025, 3, "Lobby")
         return max;
     }
 
-    public override object Part2() => Input.Sum(Largest12DigitJoltage);
-
-    private static long Largest12DigitJoltage(string line)
+    public override object Part2()
     {
-        var max = 0L;
+        var total = 0L;
 
-        return max;
+        foreach (var line in Input)
+        {
+            var joltage = "000000000000".ToCharArray();
+
+            for (var i = 0; i < line.Length; i++)
+            {
+                for (int n = 0, m = joltage.Length - 1; n < joltage.Length; n++, m--)
+                {
+                    if (line[i] <= joltage[n] || line.Length - i - 1 < m) continue;
+
+                    joltage[n] = line[i];
+                    for (var j = n + 1; j < joltage.Length; j++)
+                        joltage[j] = '0'; // zero out the remainder to compare properly
+                    break;
+                }
+            }
+
+            total += Util.ParseLongFast(joltage);
+        }
+
+        return total;
     }
 }
