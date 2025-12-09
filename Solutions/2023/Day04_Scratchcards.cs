@@ -43,6 +43,6 @@ public sealed class Day04Scratchcards() : Day(2023, 4, "Scratchcards")
     {
         public int Copies { get; set; } = 1;
         public int Matches => WinningNums.Intersect(DrawnNums).Count();
-        public int Score => (int)Math.Pow(2, Matches - 1);
+        public int Score => 2.Pow(Matches - 1);
     }
 }

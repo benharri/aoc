@@ -61,4 +61,30 @@ public static class Util
 
     /// <summary>Integer modulus to range [0, <paramref name="b"/>)</summary>
     public static double Modulus(float a, float b) => a - b * Math.Floor(a / b);
+
+    /// <summary>
+    /// Choose groups of size m from the range 0 to n
+    /// </summary>
+    /// <param name="n"></param>
+    /// <param name="m"></param>
+    public static IEnumerable<int[]> ChooseIntsUpTo(int n, int m)
+    {
+        int[] result = new int[m];
+        Stack<int> stack = new(m);
+        stack.Push(0);
+        
+        while (stack.Count > 0)
+        {
+            int index = stack.Count - 1;
+            int value = stack.Pop();
+            while (value < n)
+            {
+                result[index++] = value++;
+                stack.Push(value);
+                if (index != m) continue;
+                yield return (int[])result.Clone();
+                break;
+            }
+        }
+    }
 }

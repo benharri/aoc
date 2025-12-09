@@ -39,6 +39,14 @@ public static class Extensions
                 : array.SelectMany(t => Permute(array.Where(x => !x!.Equals(t))), (v, p) => p.Prepend(v));
         }
 
+        public IEnumerable<(T First, T Second)> Pairs()
+        {
+            var list = enumerable.ToList();
+            ArgumentOutOfRangeException.ThrowIfLessThan(list.Count, 2);
+            foreach (int[] j in Util.ChooseIntsUpTo(list.Count, 2))
+                yield return (list[j[0]], list[j[1]]);
+        }
+
         /// <summary>
         /// Attach the index of each element.
         /// </summary>
