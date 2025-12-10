@@ -19,6 +19,7 @@
 
     <ItemGroup>
         <PackageReference Include="CommandLineParser"/>
+        <PackageReference Include="Microsoft.Z3" />
         <PackageReference Include="morelinq"/>
         <PackageReference Include="Newtonsoft.Json"/>
     </ItemGroup>
