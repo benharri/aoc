@@ -6,6 +6,7 @@ namespace Tests;
 public class Test2015
 {
     [Test]
+    [RealInputRequired]
     [Arguments(typeof(Day01NotQuiteLisp), "232", "1783")]
     [Arguments(typeof(Day02IWasToldThereWouldBeNoMath), "1586300", "3737498")]
     [Arguments(typeof(Day03PerfectlySphericalHousesInAVacuum), "2081", "2341")]

@@ -5,6 +5,7 @@ namespace Tests;
 public class Test2025
 {
     [Test]
+    [RealInputRequired]
     [Arguments(typeof(Day01SecretEntrance), "1105", "6599")]
     [Arguments(typeof(Day02GiftShop), "20223751480", "30260171216")]
     [Arguments(typeof(Day03Lobby), "17155", "169685670469164")]
@@ -13,7 +14,7 @@ public class Test2025
     [Arguments(typeof(Day06TrashCompactor), "6757749566978", "10603075273949")]
     [Arguments(typeof(Day07Laboratories), "1642", "47274292756692")]
     [Arguments(typeof(Day08Playground), "102816", "100011612")]
-    [Arguments(typeof(Day09MovieTheater), "4752484112", "")]
+    [Arguments(typeof(Day09MovieTheater), "4752484112", "1465767840")]
     [Arguments(typeof(Day10Factory), "475", "18273")]
     public async Task CheckAllDays(Type dayType, string part1, string part2) =>
         await Common.CheckDay(dayType, part1, part2);
@@ -27,7 +28,7 @@ public class Test2025
     [Arguments(typeof(Day06TrashCompactor), "4277556", "3263827")]
     [Arguments(typeof(Day07Laboratories), "21" , "40")]
     [Arguments(typeof(Day08Playground), "40", "25272")]
-    [Arguments(typeof(Day09MovieTheater), "50", "")]
+    [Arguments(typeof(Day09MovieTheater), "50", "24")]
     [Arguments(typeof(Day10Factory), "7", "33")]
     public async Task CheckTestInputs(Type dayType, string part1, string part2) =>
         await Common.CheckDay(dayType, part1, part2, true);

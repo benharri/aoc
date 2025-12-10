@@ -6,6 +6,7 @@ namespace Tests;
 public class Test2021
 {
     [Test]
+    [RealInputRequired]
     [Arguments(typeof(Day01SonarSweep), "1616", "1645")]
     [Arguments(typeof(Day02Dive), "2272262", "2134882034")]
     [Arguments(typeof(Day03BinaryDiagnostic), "3009600", "6940518")]
@@ -32,7 +33,7 @@ public class Test2021
     [Arguments(typeof(Day16PacketDecoder), "852", "19348959966392")]
     [Arguments(typeof(Day17TrickShot), "12090", "5059")]
     [Arguments(typeof(Day18Snailfish), "4289", "4807")]
-    // [Arguments(typeof(Day19BeaconScanner), "338", "9862")] // takes too long and i don't feel like optimizing
+    [Arguments(typeof(Day19BeaconScanner), "338", "9862")] // takes too long and i don't feel like optimizing
     [Arguments(typeof(Day20TrenchMap), "5306", "17497")]
     [Arguments(typeof(Day21DiracDice), "512442", "346642902541848")]
     [Arguments(typeof(Day22ReactorReboot), "658691", "1228699515783640")]

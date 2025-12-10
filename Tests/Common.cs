@@ -15,11 +15,8 @@ public static class Common
     {
         var day = Activator.CreateInstance(dayType) as Day;
         await Assert.That(day).IsNotNull();
-
         day!.UseTestInput = testInput;
-
-        // skip real tests when missing input files
-        if (!testInput && !File.Exists(day.FileName)) return;
+        await Assert.That(new FileInfo(day.FileName)).Exists();
      
         day.PrintProcessInput();
 
@@ -30,5 +27,14 @@ public static class Common
         // part 2
         var part2Actual = day.PrintPart2().ToString();
         await Assert.That(part2Actual).IsEqualTo(part2).IgnoringWhitespace();
+    }
+}
+
+public class RealInputRequired() : SkipAttribute("Test requires actual AoC input to run")
+{
+    public override Task<bool> ShouldSkip(TestRegisteredContext context)
+    {
+        return Task.FromResult(!Directory.Exists(
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Sync/Notes/aocinput")));
     }
 }

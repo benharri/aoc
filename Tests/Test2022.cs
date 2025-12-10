@@ -6,6 +6,7 @@ namespace Tests;
 public class Test2022
 {
     [Test]
+    [RealInputRequired]
     [Arguments(typeof(Day01CalorieCounting), "70509", "208567")]
     [Arguments(typeof(Day02RockPaperScissors), "11449", "13187")]
     [Arguments(typeof(Day03RucksackReorganization), "7917", "2585")]

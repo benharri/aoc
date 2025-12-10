@@ -6,6 +6,7 @@ namespace Tests;
 public class Test2018
 {
     [Test]
+    [RealInputRequired]
     [Arguments(typeof(Day01ChronalCalibration), "582", "488")]
     [Arguments(typeof(Day02InventoryManagementSystem), "5166", "cypueihajytordkgzxfqplbwn")]
     [Arguments(typeof(Day03NoMatterHowYouSliceIt), "119551", "1124")]

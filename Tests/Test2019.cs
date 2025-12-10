@@ -6,6 +6,7 @@ namespace Tests;
 public class Test2019
 {
     [Test]
+    [RealInputRequired]
     [Arguments(typeof(Day01TheTyrannyOfTheRocketEquation), "3394106", "5088280")]
     [Arguments(typeof(Day02_1202ProgramAlarm), "3085697", "9425")]
     [Arguments(typeof(Day03CrossedWires), "1195", "91518")]
