@@ -5,14 +5,14 @@ namespace Solutions._2025;
 /// </summary>
 public sealed class Day08Playground() : Day(2025, 8, "Playground")
 {
-    private readonly PriorityQueue<(Point3d one, Point3d two), double> _priorityQueue = new();
-    private HashSet<Point3d> _boxes = [];
-    private readonly List<HashSet<Point3d>> _circuits = [];
+    private readonly PriorityQueue<(Point3d<int> one, Point3d<int> two), double> _priorityQueue = new();
+    private HashSet<Point3d<int>> _boxes = [];
+    private readonly List<HashSet<Point3d<int>>> _circuits = [];
     private long _largest3CircuitsMagnitude, _lastBoxXOffset;
 
     public override void ProcessInput()
     {
-        _boxes = Input.Select(Point3d.FromLine).ToHashSet();
+        _boxes = Input.Select(Point3d<int>.FromLine).ToHashSet();
         foreach (var p in _boxes.Pairs())
             _priorityQueue.Enqueue(p, p.First.EuclideanDistance(p.Second));
 

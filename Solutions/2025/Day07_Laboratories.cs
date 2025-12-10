@@ -6,7 +6,7 @@ namespace Solutions._2025;
 public sealed class Day07Laboratories() : Day(2025, 7, "Laboratories")
 {
     private string[] _input = null!;
-    private readonly Dictionary<(int x, int y), long> _timelines = [];
+    private readonly Dictionary<Point2d<int>, long> _timelines = [];
 
     public override void ProcessInput()
     {
@@ -35,17 +35,17 @@ public sealed class Day07Laboratories() : Day(2025, 7, "Laboratories")
         return count;
     }
 
-    public override object Part2() => SplitTheTimeline(_input[0].IndexOf('S'), 0);
+    public override object Part2() => SplitTheTimeline((_input[0].IndexOf('S'), 0));
 
-    private long SplitTheTimeline(int x, int y)
+    private long SplitTheTimeline(Point2d<int> point)
     {
         // bail when already computed or at the end
-        if (_timelines.TryGetValue((x, y), out var timelines)) return timelines;
-        if (_input.Length == y + 1) return 1;
+        if (_timelines.TryGetValue(point, out var timelines)) return timelines;
+        if (_input.Length == point.Y + 1) return 1;
 
         // recurse left and right if we're at a splitter
-        return _timelines[(x, y)] = _input[y + 1][x] == '^'
-            ? SplitTheTimeline(x + 1, y + 1) + SplitTheTimeline(x - 1, y + 1)
-            : SplitTheTimeline(x, y + 1);
+        return _timelines[point] = _input[point.Y + 1][point.X] == '^'
+            ? SplitTheTimeline((point.X + 1, point.Y + 1)) + SplitTheTimeline((point.X - 1, point.Y + 1))
+            : SplitTheTimeline((point.X, point.Y + 1));
     }
 }
