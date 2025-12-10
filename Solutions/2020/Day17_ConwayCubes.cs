@@ -6,8 +6,8 @@ namespace Solutions._2020;
 public sealed class Day17ConwayCubes() : Day(2020, 17, "Conway Cubes")
 {
     private static readonly int[] NeighborIndices = [-1, 0, 1];
-    private readonly Dictionary<(int x, int y, int z), char> _plane = [];
-    private readonly Dictionary<(int x, int y, int z, int w), char> _plane4 = [];
+    private readonly Dictionary<Point3d<int>, char> _plane = [];
+    private readonly Dictionary<Point4d<int>, char> _plane4 = [];
 
     public override void ProcessInput()
     {
@@ -33,7 +33,7 @@ public sealed class Day17ConwayCubes() : Day(2020, 17, "Conway Cubes")
             _plane4[(x, y, 0, 0)] = input[y][x];
     }
 
-    private static int Neighbors(Dictionary<(int x, int y, int z), char> plane, int x, int y, int z)
+    private static int Neighbors(Dictionary<Point3d<int>, char> plane, int x, int y, int z)
     {
         var neighbors = 0;
 
@@ -48,10 +48,10 @@ public sealed class Day17ConwayCubes() : Day(2020, 17, "Conway Cubes")
         return neighbors;
     }
 
-    private static Dictionary<(int x, int y, int z), char> Iterate(
-        Dictionary<(int x, int y, int z), char> prev)
+    private static Dictionary<Point3d<int>, char> Iterate(
+        Dictionary<Point3d<int>, char> prev)
     {
-        var next = new Dictionary<(int x, int y, int z), char>();
+        var next = new Dictionary<Point3d<int>, char>();
 
         for (var z = 0; z < 32; z++)
         for (var y = 0; y < 32; y++)
@@ -67,8 +67,7 @@ public sealed class Day17ConwayCubes() : Day(2020, 17, "Conway Cubes")
         return next;
     }
 
-    private static int Neighbors4(Dictionary<(int x, int y, int z, int w), char> plane, int x, int y,
-        int z, int w)
+    private static int Neighbors4(Dictionary<Point4d<int>, char> plane, int x, int y, int z, int w)
     {
         var neighbors = 0;
 
@@ -84,10 +83,9 @@ public sealed class Day17ConwayCubes() : Day(2020, 17, "Conway Cubes")
         return neighbors;
     }
 
-    private static Dictionary<(int x, int y, int z, int w), char> Iterate4(
-        Dictionary<(int x, int y, int z, int w), char> prev)
+    private static Dictionary<Point4d<int>, char> Iterate4(Dictionary<Point4d<int>, char> prev)
     {
-        var next = new Dictionary<(int x, int y, int z, int w), char>();
+        var next = new Dictionary<Point4d<int>, char>();
 
         for (var z = 0; z < 32; z++)
         for (var y = 0; y < 32; y++)

@@ -32,12 +32,12 @@ public sealed class Day20TrenchMap() : Day(2021, 20, "Trench Map")
 
     private static Image Parse(IEnumerable<string> grid)
     {
-        var image = ImmutableHashSet.CreateBuilder<Point2d>();
+        var image = ImmutableHashSet.CreateBuilder<Point2d<int>>();
         foreach (var (line, y) in grid.Select((a, i) => (a, i)))
         {
             image.UnionWith(line.Select((ch, i) => (x: i, isLit: ch == '#'))
                 .Where(p => p.isLit)
-                .Select(p => new Point2d(p.x, y)));
+                .Select(p => new Point2d<int>(p.x, y)));
         }
 
         var bounds = new Rect(image.Min(p => p.X), image.Min(p => p.Y), image.Max(p => p.X), image.Max(p => p.Y));
@@ -52,22 +52,22 @@ public sealed class Day20TrenchMap() : Day(2021, 20, "Trench Map")
 
     private record Rect(int MinX, int MinY, int MaxX, int MaxY)
     {
-        public IEnumerable<Point2d> Points =>
+        public IEnumerable<Point2d<int>> Points =>
             Enumerable.Range(MinY, MaxY - MinY + 1)
-                .SelectMany(_ => Enumerable.Range(MinX, MaxX - MinX + 1), (y, x) => new Point2d(x, y));
+                .SelectMany(_ => Enumerable.Range(MinX, MaxX - MinX + 1), (y, x) => new Point2d<int>(x, y));
 
-        public bool Contains(Point2d pt) => pt.X >= MinX && pt.X <= MaxX && pt.Y >= MinY && pt.Y <= MaxY;
+        public bool Contains(Point2d<int> pt) => pt.X >= MinX && pt.X <= MaxX && pt.Y >= MinY && pt.Y <= MaxY;
         public Rect Grow() => new(MinX - 1, MinY - 1, MaxX + 1, MaxY + 1);
     }
 
-    private record Image(Rect Bounds, ImmutableHashSet<Point2d> Pixels, bool InfiniteValue = false)
+    private record Image(Rect Bounds, ImmutableHashSet<Point2d<int>> Pixels, bool InfiniteValue = false)
     {
-        private bool this[Point2d pt] =>
+        private bool this[Point2d<int> pt] =>
             Bounds.Contains(pt) ? Pixels.Contains(pt) : InfiniteValue;
 
         public int PixelCount => Pixels.Count(Bounds.Contains);
 
-        public int GetEnhanceInput(Point2d pt)
+        public int GetEnhanceInput(Point2d<int> pt)
         {
             var (x, y) = pt;
             var values =

@@ -5,7 +5,7 @@ namespace Solutions._2021;
 /// </summary>
 public sealed class Day24ArithmeticLogicUnit() : Day(2021, 24, "Arithmetic Logic Unit")
 {
-    private readonly Dictionary<int, (int x, int y)> _keys = [];
+    private readonly Dictionary<int, Point2d<int>> _keys = [];
 
     public override void ProcessInput()
     {
@@ -14,7 +14,7 @@ public sealed class Day24ArithmeticLogicUnit() : Day(2021, 24, "Arithmetic Logic
             .Select(i => (int.Parse(lines[i * 18 + 5][6..]), int.Parse(lines[i * 18 + 15][6..])))
             .ToList();
 
-        var stack = new Stack<(int, int)>();
+        var stack = new Stack<Point2d<int>>();
         foreach (var ((x, y), i) in pairs.Select((pair, i) => (pair, i)))
             if (x > 0)
                 stack.Push((i, y));

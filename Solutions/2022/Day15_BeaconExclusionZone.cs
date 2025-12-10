@@ -5,25 +5,25 @@ namespace Solutions._2022;
 /// </summary>
 public sealed partial class Day15BeaconExclusionZone() : Day(2022, 15, "Beacon Exclusion Zone")
 {
-    private List<Sensor>? _sensors;
+    private readonly List<Sensor> _sensors = [];
 
     [GeneratedRegex(@"-?\d+")]
     private static partial Regex DigitsRegex();
 
     public override void ProcessInput()
     {
-        _sensors = Input.Select(Sensor.FromString).ToList();
+        _sensors.AddRange(Input.Select(Sensor.FromString));
     }
 
     public override object Part1()
     {
         var targetRow = UseTestInput ? 10 : 2_000_000;
 
-        var taken = _sensors!
-            .Where(t => t.ClosestBeaconPosition.y == targetRow)
-            .Select(t => t.ClosestBeaconPosition.x);
+        var taken = _sensors
+            .Where(t => t.ClosestBeaconPosition.Y == targetRow)
+            .Select(t => t.ClosestBeaconPosition.X);
 
-        return _sensors!
+        return _sensors
             .SelectMany(s => s.GetSlice(targetRow).Values)
             .Except(taken)
             .Count();
@@ -37,7 +37,7 @@ public sealed partial class Day15BeaconExclusionZone() : Day(2022, 15, "Beacon E
         for (var y = 0; y <= size; y++)
         {
             var y1 = y;
-            var covered = _sensors!.Select(s => s.GetSlice(y1));
+            var covered = _sensors.Select(s => s.GetSlice(y1));
             var gap = FindGap(covered, limit);
             if (gap is { } x)
                 return (x * 4_000_000L) + y;
@@ -79,18 +79,17 @@ public sealed partial class Day15BeaconExclusionZone() : Day(2022, 15, "Beacon E
             Overlaps(other) ? new(Math.Max(Min, other.Min), Math.Min(Max, other.Max)) : Empty;
     }
 
-    private record Sensor((int x, int y) Position, (int x, int y) ClosestBeaconPosition)
+    private record Sensor(Point2d<int> Position, Point2d<int> ClosestBeaconPosition)
     {
-        private int ManhattanDistance =>
-            Math.Abs(Position.x - ClosestBeaconPosition.x) + Math.Abs(Position.y - ClosestBeaconPosition.y);
+        private int ManhattanDistance => Position.ManhattanDistance(ClosestBeaconPosition);
 
         public SensorRange GetSlice(int y)
         {
-            var dy = Math.Abs(y - Position.y);
+            var dy = Math.Abs(y - Position.Y);
             if (dy > ManhattanDistance) return new(0, -1);
 
             var dx = ManhattanDistance - dy;
-            return new(Position.x - dx, Position.x + dx);
+            return new(Position.X - dx, Position.X + dx);
         }
 
         public static Sensor FromString(string line)

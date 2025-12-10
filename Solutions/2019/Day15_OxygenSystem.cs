@@ -16,7 +16,7 @@ public sealed class Day15OxygenSystem() : Day(2019, 15, "Oxygen System")
     public override object Part1()
     {
         _vm!.Reset();
-        var currentLocation = new Location(0, 0);
+        var currentLocation = new Location((0, 0));
         var halt = IntCodeVM.HaltType.Waiting;
         while (halt == IntCodeVM.HaltType.Waiting)
         {
@@ -24,19 +24,19 @@ public sealed class Day15OxygenSystem() : Day(2019, 15, "Oxygen System")
             if (direction <= 4)
             {
                 var (x, y) = currentLocation.Neighbor(direction);
-                if (Location.GetLocation(x, y) == null)
+                if (Location.GetLocation((x, y)) == null)
                 {
                     halt = _vm.Run(direction);
                     switch (_vm.Result)
                     {
                         case Location.Wall:
-                            _ = new Location(x, y, Location.Opposites[direction], Location.Wall);
+                            _ = new Location((x, y), Location.Opposites[direction], Location.Wall);
                             break;
                         case Location.Empty:
-                            currentLocation = new(x, y, Location.Opposites[direction]);
+                            currentLocation = new((x, y), Location.Opposites[direction]);
                             break;
                         case Location.System:
-                            currentLocation = new(x, y, Location.Opposites[direction], Location.System);
+                            currentLocation = new((x, y), Location.Opposites[direction], Location.System);
                             break;
                         default:
                             throw new($"Unknown IntCodeVM response: {_vm.Result}");
@@ -128,19 +128,18 @@ public sealed class Day15OxygenSystem() : Day(2019, 15, "Oxygen System")
         private static readonly int[] Dy = [0, 1, -1, 0, 0];
         public static readonly int[] Opposites = [0, 2, 1, 4, 3];
 
-        public static readonly Dictionary<(int x, int y), Location> AllLocations = [];
+        public static readonly Dictionary<Point2d<int>, Location> AllLocations = [];
 
         private readonly int _currentType;
 
         private int _searchDirection = 1;
         public int DistanceToOxygenSystem = int.MaxValue - 1;
 
-        public Location(int x, int y, int prev = 0, int type = Empty)
+        public Location(Point2d<int> point, int prev = 0, int type = Empty)
         {
             PreviousDirection = prev;
             _currentType = type;
-            X = x;
-            Y = y;
+            Point = point;
 
             if (type == System)
             {
@@ -149,20 +148,19 @@ public sealed class Day15OxygenSystem() : Day(2019, 15, "Oxygen System")
                 // Console.WriteLine($"Found Oxygen System at ({x}, {y})");
             }
 
-            AllLocations.Add((x, y), this);
+            AllLocations.Add(point, this);
         }
 
         public static Location? OxygenLocation { get; private set; }
         public int PreviousDirection { get; }
-        private int X { get; }
-        private int Y { get; }
+        private Point2d<int> Point { get; }
 
         public bool IsWall => _currentType == Wall;
 
         public string Image() => _currentType switch
         {
             Wall => "\u2587",
-            Empty => X == 0 && Y == 0 ? "S" : " ",
+            Empty => Point is { X: 0, Y: 0 } ? "S" : " ",
             System => "O",
             _ => "?",
         };
@@ -184,15 +182,13 @@ public sealed class Day15OxygenSystem() : Day(2019, 15, "Oxygen System")
             return false;
         }
 
-        public (int, int) Neighbor(int direction) => (X + Dx[direction], Y + Dy[direction]);
+        public Point2d<int> Neighbor(int direction) => (Point.X + Dx[direction], Point.Y + Dy[direction]);
 
-        public (int, int) PreviousLocation() => Neighbor(PreviousDirection);
+        public Point2d<int> PreviousLocation() => Neighbor(PreviousDirection);
 
         public int NextDirection() => _searchDirection++;
 
-        public static Location? GetLocation(int x, int y) =>
-            AllLocations.ContainsKey((x, y)) ? AllLocations[(x, y)] : null;
-
-        public static Location? GetLocation((int x, int y) coords) => GetLocation(coords.x, coords.y);
+        public static Location? GetLocation(Point2d<int> coords) =>
+            AllLocations.ContainsKey(coords) ? AllLocations[coords] : null;
     }
 }

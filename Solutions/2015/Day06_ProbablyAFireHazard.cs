@@ -5,19 +5,18 @@ namespace Solutions._2015;
 /// </summary>
 public sealed partial class Day06ProbablyAFireHazard() : Day(2015, 6, "Probably a Fire Hazard")
 {
-    private readonly Dictionary<(int x, int y), int> _brightnessGrid = [];
-    private readonly Dictionary<(int x, int y), bool> _lightGrid = [];
+    private readonly Dictionary<Point2d<int>, int> _brightnessGrid = [];
+    private readonly Dictionary<Point2d<int>, bool> _lightGrid = [];
 
-    [GeneratedRegex(@"(\d+),(\d+) through (\d+),(\d+)")]
+    [GeneratedRegex(@"(\d+,\d+) through (\d+,\d+)")]
     private static partial Regex Coords();
 
     public override object Part1()
     {
         foreach (var line in Input)
         {
-            var d = Coords().Match(line).Groups.Values.Skip(1).Select(v => int.Parse(v.Value)).ToList();
-            int x1 = d[0], y1 = d[1], x2 = d[2], y2 = d[3];
-            int xStart = Math.Min(x1, x2), xEnd = Math.Max(x1, x2), yStart = Math.Min(y1, y2), yEnd = Math.Max(y1, y2);
+            var d = Coords().Match(line).Groups.Values.Skip(1).Select(g => Point2d<int>.FromLine(g.Value)).ToList();
+            int xStart = d.Min(p => p.X), xEnd = d.Max(p => p.X), yStart = d.Min(p => p.Y), yEnd = d.Max(p => p.Y);
 
             for (var x = xStart; x <= xEnd; x++)
             {
@@ -53,9 +52,8 @@ public sealed partial class Day06ProbablyAFireHazard() : Day(2015, 6, "Probably 
     {
         foreach (var line in Input)
         {
-            var d = Coords().Match(line).Groups.Values.Skip(1).Select(v => int.Parse(v.Value)).ToList();
-            int x1 = d[0], y1 = d[1], x2 = d[2], y2 = d[3];
-            int xStart = Math.Min(x1, x2), xEnd = Math.Max(x1, x2), yStart = Math.Min(y1, y2), yEnd = Math.Max(y1, y2);
+            var d = Coords().Match(line).Groups.Values.Skip(1).Select(g => Point2d<int>.FromLine(g.Value)).ToList();
+            int xStart = d.Min(p => p.X), xEnd = d.Max(p => p.X), yStart = d.Min(p => p.Y), yEnd = d.Max(p => p.Y);
 
             for (var x = xStart; x <= xEnd; x++)
             {

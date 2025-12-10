@@ -24,7 +24,7 @@ public sealed class Day17TrickShot() : Day(2021, 17, "Trick Shot")
 
     public override object Part2()
     {
-        var successfulVelocities = new HashSet<(int x, int y)>();
+        var successfulVelocities = new HashSet<Point2d<int>>();
         var xMin = 1;
         while (xMin * (xMin + 1) / 2 < _target![0]) xMin++;
 

@@ -5,8 +5,8 @@ namespace Solutions._2019;
 /// </summary>
 public sealed class Day10MonitoringStation() : Day(2019, 10, "Monitoring Station")
 {
-    private HashSet<(int x, int y)>? _asteroids;
-    private (int x, int y) _best = (x: -1, y: -1);
+    private HashSet<Point2d<int>>? _asteroids;
+    private Point2d<int> _best = (x: -1, y: -1);
     private int _bestCanSee;
 
     public override void ProcessInput() =>
@@ -14,7 +14,7 @@ public sealed class Day10MonitoringStation() : Day(2019, 10, "Monitoring Station
             .Select((r, y) => r.Select((c, x) => (x, y, isAsteroid: c == '#')).ToArray())
             .SelectMany(r => r)
             .Where(a => a.isAsteroid)
-            .Select(a => (a.x, a.y))
+            .Select(a => new Point2d<int>(a.x, a.y))
             .ToHashSet();
 
     public override object Part1()
@@ -23,7 +23,7 @@ public sealed class Day10MonitoringStation() : Day(2019, 10, "Monitoring Station
         {
             var canSee = _asteroids
                 .Except([asteroid])
-                .Select(a => (x: a.x - asteroid.x, y: a.y - asteroid.y))
+                .Select(a => (x: a.X - asteroid.X, y: a.Y - asteroid.Y))
                 .GroupBy(a => Math.Atan2(a.y, a.x))
                 .Count();
 
@@ -43,10 +43,10 @@ public sealed class Day10MonitoringStation() : Day(2019, 10, "Monitoring Station
             .Where(a => a != _best)
             .Select(a =>
             {
-                var xDist = a.x - _best.x;
-                var yDist = a.y - _best.y;
+                var xDist = a.X - _best.X;
+                var yDist = a.Y - _best.Y;
                 var angle = Math.Atan2(xDist, yDist);
-                return (a.x, a.y, angle, dist: Math.Sqrt(xDist * xDist + yDist * yDist));
+                return (a.X, a.Y, angle, dist: Math.Sqrt(xDist * xDist + yDist * yDist));
             })
             .ToLookup(a => a.angle)
             .OrderByDescending(a => a.Key)

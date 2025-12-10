@@ -5,15 +5,15 @@ namespace Solutions._2022;
 /// </summary>
 public sealed class Day09RopeBridge() : Day(2022, 9, "Rope Bridge")
 {
-    private List<(char direction, int count)>? _steps;
+    private readonly List<(char direction, int count)> _steps = [];
 
     public override void ProcessInput() =>
-        _steps = Input.Select(line => (line[0], int.Parse(line[2..]))).ToList();
+        _steps.AddRange(Input.Select(line => (line[0], int.Parse(line[2..]))));
 
     private int CountTailPositions(int ropeLength)
     {
         var rope = Enumerable.Range(0, ropeLength).Select(_ => (x: 0, y: 0)).ToArray();
-        var visited = new HashSet<(int x, int y)>();
+        var visited = new HashSet<Point2d<int>>();
 
         foreach (var step in _steps!.SelectMany(step => Enumerable.Range(0, step.count), (step, _) => step))
         {

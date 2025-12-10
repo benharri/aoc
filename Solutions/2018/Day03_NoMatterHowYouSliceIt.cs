@@ -6,7 +6,7 @@ namespace Solutions._2018;
 public sealed partial class Day03NoMatterHowYouSliceIt() : Day(2018, 3, "No Matter How You Slice It")
 {
     private List<Claim>? _claims;
-    private readonly Dictionary<(int x, int y), List<int>> _plots = [];
+    private readonly Dictionary<Point2d<int>, List<int>> _plots = [];
 
     [GeneratedRegex(@"\d+")]
     private static partial Regex Digits();
@@ -19,13 +19,11 @@ public sealed partial class Day03NoMatterHowYouSliceIt() : Day(2018, 3, "No Matt
             .Select(l => new Claim(l[0], l[1], l[2], l[3], l[4])).ToList();
 
         foreach (var claim in _claims)
+        foreach (var y in Enumerable.Range(claim.X, claim.SizeX))
+        foreach (var x in Enumerable.Range(claim.Y, claim.SizeY))
         {
-            foreach (var y in Enumerable.Range(claim.X, claim.SizeX))
-                foreach (var x in Enumerable.Range(claim.Y, claim.SizeY))
-                {
-                    if (!_plots.ContainsKey((x, y))) _plots.Add((x, y), []);
-                    _plots[(x, y)].Add(claim.ID);
-                }
+            if (!_plots.TryAdd((x, y), [claim.ID]))
+                _plots[(x, y)].Add(claim.ID);
         }
     }
 

@@ -27,45 +27,45 @@ public sealed class Day01NoTimeForATaxicab() : Day(2016, 1, "No Time for a Taxic
             _ => throw new ArgumentException("invalid direction", nameof(current)),
         };
 
-    private static (int x, int y) Move((int x, int y) coord, Direction direction) =>
+    private static Point2d<int> Move(Point2d<int> coord, Direction direction) =>
         direction switch
         {
-            Direction.North => (coord.x, coord.y + 1),
-            Direction.South => (coord.x, coord.y - 1),
-            Direction.East => (coord.x + 1, coord.y),
-            Direction.West => (coord.x - 1, coord.y),
+            Direction.North => (coord.X, coord.Y + 1),
+            Direction.South => (coord.X, coord.Y - 1),
+            Direction.East => (coord.X + 1, coord.Y),
+            Direction.West => (coord.X - 1, coord.Y),
             _ => (0, 0),
         };
 
     public override object Part1()
     {
         var direction = Direction.North;
-        var location = (x: 0, y: 0);
+        Point2d<int> location = (0, 0);
 
-        foreach (var move in _moves!)
+        foreach (var move in _moves)
         {
             direction = Turn(direction, move[0]);
             location = Enumerable.Range(0, int.Parse(move[1..]))
                 .Aggregate(location, (current, _) => Move(current, direction));
         }
 
-        return Math.Abs(location.x) + Math.Abs(location.y);
+        return Math.Abs(location.X) + Math.Abs(location.Y);
     }
 
     public override object Part2()
     {
-        HashSet<(int x, int y)> visitedLocations = [];
+        HashSet<Point2d<int>> visitedLocations = [];
         var direction = Direction.North;
-        var location = (x: 0, y: 0);
+        Point2d<int> location = (0, 0);
 
-        foreach (var move in _moves!)
+        foreach (var move in _moves)
         {
             direction = Turn(direction, move[0]);
             foreach (var _ in Enumerable.Range(0, int.Parse(move[1..])))
             {
                 location = Move(location, direction);
-                if (!visitedLocations.Add((location.x, location.y)))
-                    return Math.Abs(location.x) + Math.Abs(location.y);
+                if (!visitedLocations.Add((location.X, location.Y)))
+                    return Math.Abs(location.X) + Math.Abs(location.Y);
             }
         }
 

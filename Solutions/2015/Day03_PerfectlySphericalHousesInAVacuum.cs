@@ -8,7 +8,7 @@ public sealed class Day03PerfectlySphericalHousesInAVacuum() : Day(2015, 3, "Per
     public override object Part1()
     {
         int x = 0, y = 0;
-        Dictionary<(int x, int y), int> map = new() { [(0, 0)] = 1 };
+        Dictionary<Point2d<int>, int> map = new() { [(0, 0)] = 1 };
 
         foreach (var c in Input.First())
         {
@@ -30,7 +30,7 @@ public sealed class Day03PerfectlySphericalHousesInAVacuum() : Day(2015, 3, "Per
     public override object Part2()
     {
         int x1 = 0, y1 = 0, x2 = 0, y2 = 0;
-        Dictionary<(int x, int y), int> map = new() { [(0, 0)] = 1 };
+        Dictionary<Point2d<int>, int> map = new() { [(0, 0)] = 1 };
         var santaTurn = true;
 
         foreach (var c in Input.First())
