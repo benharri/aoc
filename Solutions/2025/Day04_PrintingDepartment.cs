@@ -5,7 +5,7 @@ namespace Solutions._2025;
 /// </summary>
 public sealed class Day04PrintingDepartment() : Day(2025, 4, "Printing Department")
 {
-    private bool[][]? _stacks;
+    private bool[][] _stacks = [];
 
     public override void ProcessInput()
     {
@@ -19,7 +19,7 @@ public sealed class Day04PrintingDepartment() : Day(2025, 4, "Printing Departmen
     public override object Part1()
     {
         var count = 0;
-        for (var i = 1; i < _stacks!.Length - 1; i++)
+        for (var i = 1; i < _stacks.Length - 1; i++)
         for (var j = 1; j < _stacks[0].Length - 1; j++)
             if (_stacks[i][j] && NeighborsAt(i, j).Count(n => n) < 4) count++;
 
@@ -33,7 +33,7 @@ public sealed class Day04PrintingDepartment() : Day(2025, 4, "Printing Departmen
         while (true)
         {
             var countBeforeRemoval = count;
-            for (var i = 1; i < _stacks!.Length - 1; i++)
+            for (var i = 1; i < _stacks.Length - 1; i++)
             for (var j = 1; j < _stacks[0].Length - 1; j++)
                 if (_stacks[i][j] && NeighborsAt(i, j).Count(n => n) < 4)
                 {
@@ -49,7 +49,7 @@ public sealed class Day04PrintingDepartment() : Day(2025, 4, "Printing Departmen
 
     private bool[] NeighborsAt(int i, int j) =>
     [
-        _stacks![i - 1][j - 1], _stacks[i - 1][j], _stacks[i - 1][j + 1], _stacks[i][j - 1],
+        _stacks[i - 1][j - 1], _stacks[i - 1][j], _stacks[i - 1][j + 1], _stacks[i][j - 1],
         _stacks[i][j + 1], _stacks[i + 1][j - 1], _stacks[i + 1][j], _stacks[i + 1][j + 1]
     ];
 }

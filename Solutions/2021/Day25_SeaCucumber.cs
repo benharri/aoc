@@ -5,7 +5,7 @@ namespace Solutions._2021;
 /// </summary>
 public sealed class Day25SeaCucumber() : Day(2021, 25, "Sea Cucumber")
 {
-    private char[][]? _cucumbers;
+    private char[][] _cucumbers = [];
 
     public override void ProcessInput() =>
         _cucumbers = Input.Select(l => l.ToCharArray()).ToArray();

@@ -5,14 +5,10 @@ namespace Solutions._2019;
 /// </summary>
 public sealed class Day19TractorBeam() : Day(2019, 19, "Tractor Beam")
 {
-    private long[,]? _grid;
+    private readonly long[,] _grid = new long[50, 50];
     private IntCodeVM? _vm;
 
-    public override void ProcessInput()
-    {
-        _vm = new(Input.First());
-        _grid = new long[50, 50];
-    }
+    public override void ProcessInput() => _vm = new(Input.First());
 
     public override object Part1()
     {
@@ -21,10 +17,10 @@ public sealed class Day19TractorBeam() : Day(2019, 19, "Tractor Beam")
             {
                 _vm!.Reset();
                 _vm.Run(x, y);
-                _grid![x, y] = _vm.Result;
+                _grid[x, y] = _vm.Result;
             }
 
-        return _grid!.Cast<long>().Sum();
+        return _grid.Cast<long>().Sum();
     }
 
     public override object Part2()

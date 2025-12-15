@@ -5,13 +5,13 @@ namespace Solutions._2016;
 /// </summary>
 public sealed class Day06SignalsAndNoise() : Day(2016, 6, "Signals and Noise")
 {
-    private List<string>? _input;
+    private readonly List<string> _input = [];
 
-    public override void ProcessInput() => _input = Input.ToList();
+    public override void ProcessInput() => _input.AddRange(Input);
 
     public override object Part1()
     {
-        var answer = new char[_input![0].Length];
+        var answer = new char[_input[0].Length];
 
         for (var i = 0; i < _input[0].Length; i++)
         {
@@ -28,7 +28,7 @@ public sealed class Day06SignalsAndNoise() : Day(2016, 6, "Signals and Noise")
 
     public override object Part2()
     {
-        var answer = new char[_input![0].Length];
+        var answer = new char[_input[0].Length];
 
         for (var i = 0; i < _input[0].Length; i++)
         {

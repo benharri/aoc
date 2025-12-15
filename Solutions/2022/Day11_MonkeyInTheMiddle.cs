@@ -7,18 +7,18 @@ namespace Solutions._2022;
 /// </summary>
 public sealed class Day11MonkeyInTheMiddle() : Day(2022, 11, "Monkey in the Middle")
 {
-    private Monkey[]? _monkeys;
+    private Monkey[] _monkeys = [];
     private long _lcm;
 
     public override void ProcessInput()
     {
         _monkeys = Input.Split("").Select(Monkey.FromLines).ToArray();
-        _lcm = _monkeys!.Aggregate(1L, (i, monkey) => i * monkey.ModTest);
+        _lcm = _monkeys.Aggregate(1L, (i, monkey) => i * monkey.ModTest);
     }
 
     private void DoRound(bool part1 = true)
     {
-        foreach (var monkey in _monkeys!)
+        foreach (var monkey in _monkeys)
         {
             while (monkey.Items.Count != 0)
             {
@@ -35,7 +35,7 @@ public sealed class Day11MonkeyInTheMiddle() : Day(2022, 11, "Monkey in the Midd
     }
 
     private long MonkeyBusiness() =>
-        _monkeys!.OrderByDescending(m => m.InspectionCount).Take(2)
+        _monkeys.OrderByDescending(m => m.InspectionCount).Take(2)
             .Aggregate(1L, (i, monkey) => i * monkey.InspectionCount);
 
     public override object Part1()

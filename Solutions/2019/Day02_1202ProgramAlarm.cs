@@ -6,14 +6,14 @@ namespace Solutions._2019;
 // ReSharper disable once InconsistentNaming
 public sealed class Day02_1202ProgramAlarm() : Day(2019, 2, "1202 Program Alarm")
 {
-    private IEnumerable<int>? _input;
+    private readonly List<int> _input = [];
 
     public override void ProcessInput() =>
-        _input = Input.First().Split(',').Select(int.Parse);
+        _input.AddRange(Input.First().Split(',').Select(int.Parse));
 
     private int RunIntCode(int noun, int verb)
     {
-        var v = _input!.ToList();
+        var v = _input.ToList();
         v[1] = noun;
         v[2] = verb;
 

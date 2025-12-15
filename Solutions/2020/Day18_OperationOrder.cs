@@ -5,10 +5,10 @@ namespace Solutions._2020;
 /// </summary>
 public sealed class Day18OperationOrder() : Day(2020, 18, "Operation Order")
 {
-    private List<string>? _expressions;
+    private readonly List<string> _expressions = [];
 
     public override void ProcessInput() =>
-        _expressions = Input.Select(line => line.Replace(" ", "")).ToList();
+        _expressions.AddRange(Input.Select(line => line.Replace(" ", "")));
 
     private static long Calculate(string expr, Func<char, int> precedence)
     {
@@ -74,8 +74,8 @@ public sealed class Day18OperationOrder() : Day(2020, 18, "Operation Order")
     }
 
     public override object Part1() =>
-        _expressions!.Sum(expr => Calculate(expr, c => c is '+' or '*' ? 1 : 0));
+        _expressions.Sum(expr => Calculate(expr, c => c is '+' or '*' ? 1 : 0));
 
     public override object Part2() =>
-        _expressions!.Sum(expr => Calculate(expr, c => c switch { '+' => 2, '*' => 1, _ => 0 }));
+        _expressions.Sum(expr => Calculate(expr, c => c switch { '+' => 2, '*' => 1, _ => 0 }));
 }

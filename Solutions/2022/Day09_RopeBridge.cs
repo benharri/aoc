@@ -15,7 +15,7 @@ public sealed class Day09RopeBridge() : Day(2022, 9, "Rope Bridge")
         var rope = Enumerable.Range(0, ropeLength).Select(_ => (x: 0, y: 0)).ToArray();
         var visited = new HashSet<Point2d<int>>();
 
-        foreach (var step in _steps!.SelectMany(step => Enumerable.Range(0, step.count), (step, _) => step))
+        foreach (var step in _steps.SelectMany(step => Enumerable.Range(0, step.count), (step, _) => step))
         {
             switch (step.direction)
             {

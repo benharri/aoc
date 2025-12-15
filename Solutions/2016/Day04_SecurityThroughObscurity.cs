@@ -5,7 +5,7 @@ namespace Solutions._2016;
 /// </summary>
 public sealed class Day04SecurityThroughObscurity() : Day(2016, 4, "Security Through Obscurity")
 {
-    private List<Room> _rooms = null!;
+    private readonly List<Room> _rooms = [];
 
     private record Room(string Name, int SectorId, string Checksum)
     {
@@ -37,7 +37,7 @@ public sealed class Day04SecurityThroughObscurity() : Day(2016, 4, "Security Thr
     }
 
     public override void ProcessInput() =>
-        _rooms = Input.Select(Room.FromRawLine).ToList();
+        _rooms.AddRange(Input.Select(Room.FromRawLine));
 
     public override object Part1() =>
         _rooms.Where(r => r.IsRealRoom()).Sum(r => r.SectorId);

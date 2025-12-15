@@ -6,14 +6,13 @@ namespace Solutions._2019;
 public sealed class Day16FlawedFrequencyTransmission() : Day(2019, 16, "Flawed Frequency Transmission")
 {
     private static readonly int[] BasePattern = [0, 1, 0, -1];
-    private int[]? _initialList;
+    private readonly List<int> _initialList = [];
 
-    public override void ProcessInput() =>
-        _initialList = Input.First().Select(c => c - '0').ToArray();
+    public override void ProcessInput() => _initialList.AddRange(Input.First().Select(c => c - '0'));
 
     public override object Part1()
     {
-        var signal0 = _initialList!.ToArray();
+        var signal0 = _initialList.ToArray();
         var signal1 = new int[signal0.Length];
 
         for (var i = 0; i < 100; i++)
@@ -27,8 +26,8 @@ public sealed class Day16FlawedFrequencyTransmission() : Day(2019, 16, "Flawed F
 
     public override object Part2()
     {
-        var messageOffset = _initialList!.Take(7).Aggregate((n, i) => n * 10 + i);
-        var signal = _initialList!.Repeat(10_000).Skip(messageOffset).ToArray();
+        var messageOffset = _initialList.Take(7).Aggregate((n, i) => n * 10 + i);
+        var signal = _initialList.Repeat(10_000).Skip(messageOffset).ToArray();
 
         for (var p = 0; p < 100; p++)
         {

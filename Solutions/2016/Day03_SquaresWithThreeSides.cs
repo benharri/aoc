@@ -5,13 +5,12 @@ namespace Solutions._2016;
 /// </summary>
 public sealed class Day03SquaresWithThreeSides() : Day(2016, 3, "Squares With Three Sides")
 {
-    private List<int[]> _triangles = null!;
+    private readonly List<int[]> _triangles = [];
 
     public override void ProcessInput() =>
-        _triangles = Input
+        _triangles.AddRange(Input
             .Select(line => line.Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse).ToArray())
-            .ToList();
+                .Select(int.Parse).ToArray()));
 
     public override object Part1() =>
         _triangles.Count(ValidTriangle);

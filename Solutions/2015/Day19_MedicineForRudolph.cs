@@ -7,13 +7,13 @@ namespace Solutions._2015;
 /// </summary>
 public sealed class Day19MedicineForRudolph() : Day(2015, 19, "Medicine for Rudolph")
 {
-    private IEnumerable<string[]>? _rules;
+    private readonly List<string[]> _rules = [];
     private string? _compound;
 
     public override void ProcessInput()
     {
         var i = Input.Split("").ToList();
-        _rules = i[0].Select(r => r.Split(" => "));
+        _rules.AddRange(i[0].Select(r => r.Split(" => ")));
         _compound = i[1].Single();
     }
 
@@ -32,9 +32,9 @@ public sealed class Day19MedicineForRudolph() : Day(2015, 19, "Medicine for Rudo
     public override object Part1()
     {
         HashSet<string> compounds = [];
-        foreach (var rule in _rules!)
-            foreach (var match in Regex.EnumerateMatches(_compound, rule[0]))
-                compounds.Add(_compound!.Remove(match.Index, rule[0].Length).Insert(match.Index, rule[1]));
+        foreach (var rule in _rules)
+        foreach (var match in Regex.EnumerateMatches(_compound, rule[0]))
+            compounds.Add(_compound!.Remove(match.Index, rule[0].Length).Insert(match.Index, rule[1]));
 
         return compounds.Count;
     }

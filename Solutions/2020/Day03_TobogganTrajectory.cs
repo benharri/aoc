@@ -5,15 +5,14 @@ namespace Solutions._2020;
 /// </summary>
 public sealed class Day03TobogganTrajectory() : Day(2020, 3, "Toboggan Trajectory")
 {
-    private string[]? _grid;
+    private readonly List<string> _grid = [];
 
-    public override void ProcessInput() =>
-        _grid = Input.ToArray();
+    public override void ProcessInput() => _grid.AddRange(Input);
 
     private long CountSlope(int dx, int dy)
     {
         long hits = 0;
-        for (int x = 0, y = 0; y < _grid!.Length; y += dy, x = (x + dx) % _grid[0].Length)
+        for (int x = 0, y = 0; y < _grid.Count; y += dy, x = (x + dx) % _grid[0].Length)
             if (_grid[y][x] == '#')
                 hits++;
 

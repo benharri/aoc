@@ -5,13 +5,10 @@ namespace Solutions._2025;
 /// </summary>
 public sealed class Day07Laboratories() : Day(2025, 7, "Laboratories")
 {
-    private string[] _input = null!;
+    private string[] _input = [];
     private readonly Dictionary<Point2d<int>, long> _timelines = [];
 
-    public override void ProcessInput()
-    {
-        _input = Input.ToArray();
-    }
+    public override void ProcessInput() => _input = Input.ToArray();
 
     public override object Part1()
     {

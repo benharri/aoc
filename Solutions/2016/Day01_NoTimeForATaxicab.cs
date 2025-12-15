@@ -5,9 +5,9 @@ namespace Solutions._2016;
 /// </summary>
 public sealed class Day01NoTimeForATaxicab() : Day(2016, 1, "No Time for a Taxicab")
 {
-    private string[]? _moves;
+    private readonly List<string> _moves = [];
 
-    public override void ProcessInput() => _moves = Input.First().Split(", ");
+    public override void ProcessInput() => _moves.AddRange(Input.First().Split(", "));
 
     private enum Direction
     {

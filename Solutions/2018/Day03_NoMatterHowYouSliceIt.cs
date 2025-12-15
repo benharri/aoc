@@ -5,7 +5,7 @@ namespace Solutions._2018;
 /// </summary>
 public sealed partial class Day03NoMatterHowYouSliceIt() : Day(2018, 3, "No Matter How You Slice It")
 {
-    private List<Claim>? _claims;
+    private readonly List<Claim> _claims = [];
     private readonly Dictionary<Point2d<int>, List<int>> _plots = [];
 
     [GeneratedRegex(@"\d+")]
@@ -15,8 +15,8 @@ public sealed partial class Day03NoMatterHowYouSliceIt() : Day(2018, 3, "No Matt
 
     public override void ProcessInput()
     {
-        _claims = Input.Select(line => Digits().Matches(line).Select(m => int.Parse(m.Value)).ToList())
-            .Select(l => new Claim(l[0], l[1], l[2], l[3], l[4])).ToList();
+        _claims.AddRange(Input.Select(line => Digits().Matches(line).Select(m => int.Parse(m.Value)).ToList())
+            .Select(l => new Claim(l[0], l[1], l[2], l[3], l[4])));
 
         foreach (var claim in _claims)
         foreach (var y in Enumerable.Range(claim.X, claim.SizeX))
@@ -31,6 +31,6 @@ public sealed partial class Day03NoMatterHowYouSliceIt() : Day(2018, 3, "No Matt
     public override object Part2()
     {
         var overlapping = _plots.Where(p => p.Value.Count > 1).SelectMany(p => p.Value).Distinct().ToList();
-        return _claims!.Single(p => !overlapping.Contains(p.ID)).ID;
+        return _claims.Single(p => !overlapping.Contains(p.ID)).ID;
     }
 }

@@ -5,16 +5,16 @@ namespace Solutions._2020;
 /// </summary>
 public sealed class Day02PasswordPhilosophy() : Day(2020, 2, "Password Philosophy")
 {
-    private ImmutableList<Password>? _passwords;
+    private readonly List<Password> _passwords = [];
 
     public override void ProcessInput() =>
-        _passwords = Input.Select(p => new Password(p)).ToImmutableList();
+        _passwords.AddRange(Input.Select(p => new Password(p)));
 
     public override object Part1() =>
-        _passwords!.Count(p => p.IsValid);
+        _passwords.Count(p => p.IsValid);
 
     public override object Part2() =>
-        _passwords!.Count(p => p.IsValidByIndex);
+        _passwords.Count(p => p.IsValidByIndex);
 
     private class Password
     {
@@ -29,14 +29,11 @@ public sealed class Day02PasswordPhilosophy() : Day(2020, 2, "Password Philosoph
             Value = split[1];
         }
 
-        public bool IsValid =>
-            Count >= I && Count <= J;
+        public bool IsValid => Count >= I && Count <= J;
 
-        public bool IsValidByIndex =>
-            (Value[I - 1] == C) ^ (Value[J - 1] == C);
+        public bool IsValidByIndex => (Value[I - 1] == C) ^ (Value[J - 1] == C);
 
-        private int Count =>
-            Value.Count(p => p == C);
+        private int Count => Value.Count(p => p == C);
 
         private int I { get; }
         private int J { get; }

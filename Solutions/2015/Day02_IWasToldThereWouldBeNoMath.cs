@@ -5,13 +5,13 @@ namespace Solutions._2015;
 /// </summary>
 public sealed class Day02IWasToldThereWouldBeNoMath() : Day(2015, 2, "I Was Told There Would Be No Math")
 {
-    private List<List<int>>? _gifts;
+    private readonly List<List<int>> _gifts = [];
 
     public override void ProcessInput() =>
-        _gifts = Input.Select(line => line.Split('x').Select(int.Parse).ToList()).ToList();
+        _gifts.AddRange(Input.Select(line => line.Split('x').Select(int.Parse).ToList()));
 
     public override object Part1() =>
-        _gifts!.Sum(gift =>
+        _gifts.Sum(gift =>
         {
             var biggestDimension = gift.IndexOf(gift.Max());
 
@@ -28,7 +28,7 @@ public sealed class Day02IWasToldThereWouldBeNoMath() : Day(2015, 2, "I Was Told
         });
 
     public override object Part2() =>
-        _gifts!.Sum(gift =>
+        _gifts.Sum(gift =>
         {
             var biggestDimension = gift.IndexOf(gift.Max());
             var bowArea = gift.Aggregate(1, (i, i1) => i * i1);

@@ -5,13 +5,11 @@ namespace Solutions._2019;
 /// </summary>
 public sealed class Day14SpaceStoichiometry() : Day(2019, 14, "Space Stoichiometry")
 {
-    private Dictionary<string, Reaction>? _reactions;
+    private Dictionary<string, Reaction> _reactions = [];
     private Dictionary<string, long> _available = [];
 
     public override void ProcessInput() =>
-        _reactions = Input
-            .Select(Reaction.Parse)
-            .ToDictionary(r => r.Product.Name);
+        _reactions = Input.Select(Reaction.Parse).ToDictionary(r => r.Product.Name);
 
     private bool Consume(string chem, long quantity)
     {
@@ -28,10 +26,9 @@ public sealed class Day14SpaceStoichiometry() : Day(2019, 14, "Space Stoichiomet
 
     private bool Produce(string chem, long quantity)
     {
-        if (chem == "ORE")
-            return false;
+        if (chem == "ORE") return false;
 
-        var reaction = _reactions![chem];
+        var reaction = _reactions[chem];
         var reactionCount = (long)Math.Ceiling((double)quantity / reaction.Product.Quantity);
 
         if (reaction.Reactants.Any(reactant => !Consume(reactant.Name, reactionCount * reactant.Quantity)))

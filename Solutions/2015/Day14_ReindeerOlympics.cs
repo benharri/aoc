@@ -5,16 +5,16 @@ namespace Solutions._2015;
 /// </summary>
 public sealed class Day14ReindeerOlympics() : Day(2015, 14, "Reindeer Olympics")
 {
-    private List<Reindeer>? _reindeer;
+    private readonly List<Reindeer> _reindeer = [];
 
-    public override void ProcessInput() => _reindeer = Input.Select(i => new Reindeer(i)).ToList();
+    public override void ProcessInput() => _reindeer.AddRange(Input.Select(i => new Reindeer(i)));
 
     public override object Part1() =>
-        _reindeer!.Select(r => r.Fly(2503)).Max();
+        _reindeer.Select(r => r.Fly(2503)).Max();
 
     public override object Part2() =>
         Enumerable.Range(1, 2503)
-            .SelectMany(time => _reindeer!.GroupBy(r => r.Fly(time)).OrderByDescending(r => r.Key).First())
+            .SelectMany(time => _reindeer.GroupBy(r => r.Fly(time)).OrderByDescending(r => r.Key).First())
             .GroupBy(r => r)
             .Max(g => g.Count());
 

@@ -5,23 +5,23 @@ namespace Solutions._2020;
 /// </summary>
 public sealed class Day10AdapterArray() : Day(2020, 10, "Adapter Array")
 {
-    private int[]? _adapters;
+    private readonly List<int> _adapters = [];
     private long[]? _memo;
 
     public override void ProcessInput()
     {
-        var parsed = Input.Select(int.Parse).ToArray();
+        var parsed = Input.Select(int.Parse).ToList();
         // add socket and device to the list
-        _adapters = parsed.Concat([0, parsed.Max() + 3]).OrderBy(i => i).ToArray();
-        _memo = new long[_adapters.Length];
+        _adapters.AddRange(parsed.Concat([0, parsed.Max() + 3]).OrderBy(i => i));
+        _memo = new long[_adapters.Count];
     }
 
     private long Connections(int i)
     {
-        if (i == _adapters!.Length - 1) _memo![i] = 1;
+        if (i == _adapters.Count - 1) _memo![i] = 1;
         if (_memo![i] > 0) return _memo[i];
 
-        for (var j = i + 1; j <= i + 3 && j < _adapters.Length; j++)
+        for (var j = i + 1; j <= i + 3 && j < _adapters.Count; j++)
             if (_adapters[j] - _adapters[i] <= 3)
                 _memo[i] += Connections(j);
 
@@ -33,7 +33,7 @@ public sealed class Day10AdapterArray() : Day(2020, 10, "Adapter Array")
         var ones = 0;
         var threes = 0;
 
-        for (var i = 0; i < _adapters!.Length - 1; i++)
+        for (var i = 0; i < _adapters.Count - 1; i++)
             switch (_adapters[i + 1] - _adapters[i])
             {
                 case 1:

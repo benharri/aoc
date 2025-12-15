@@ -7,7 +7,7 @@ namespace Solutions._2016;
 /// </summary>
 public sealed class Day05HowAboutANiceGameOfChess() : Day(2016, 5, "How About a Nice Game of Chess?")
 {
-    private string? _keyBase;
+    private string _keyBase = "";
 
     public override void ProcessInput() => _keyBase = Input.First();
 

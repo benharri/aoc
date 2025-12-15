@@ -5,10 +5,10 @@ namespace Solutions._2021;
 /// </summary>
 public sealed class Day23Amphipod() : Day(2021, 23, "Amphipod")
 {
-    private List<char>? _crabs;
+    private readonly List<char> _crabs = [];
 
     public override void ProcessInput() =>
-        _crabs = Input.SelectMany(l => l).Where(char.IsLetter).ToList();
+        _crabs.AddRange(Input.SelectMany(l => l).Where(char.IsLetter));
 
     private static IEnumerable<int> BreadthFirstSearch(string s, int i)
     {
@@ -78,7 +78,7 @@ public sealed class Day23Amphipod() : Day(2021, 23, "Amphipod")
     public override object Part1()
     {
         var start = new State("           ",
-            $"{_crabs![0]}{_crabs[4]}",
+            $"{_crabs[0]}{_crabs[4]}",
             $"{_crabs[1]}{_crabs[5]}",
             $"{_crabs[2]}{_crabs[6]}",
             $"{_crabs[3]}{_crabs[7]}");
@@ -90,7 +90,7 @@ public sealed class Day23Amphipod() : Day(2021, 23, "Amphipod")
     public override object Part2()
     {
         var start = new State("           ",
-            $"{_crabs![0]}DD{_crabs[4]}",
+            $"{_crabs[0]}DD{_crabs[4]}",
             $"{_crabs[1]}CB{_crabs[5]}",
             $"{_crabs[2]}BA{_crabs[6]}",
             $"{_crabs[3]}AC{_crabs[7]}");

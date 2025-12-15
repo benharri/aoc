@@ -7,18 +7,18 @@ namespace Solutions._2022;
 /// </summary>
 public sealed class Day05SupplyStacks() : Day(2022, 5, "Supply Stacks")
 {
-    private IEnumerable<(int quantity, int from, int to)>? _instructions;
-    private List<Stack<char>>? _stacks;
-    private List<Stack<char>>? _stacksPart2;
+    private readonly List<(int quantity, int from, int to)> _instructions = [];
+    private readonly List<Stack<char>> _stacks = [];
+    private readonly List<Stack<char>> _stacksPart2 = [];
 
     public override void ProcessInput()
     {
         var s = Input.Split("").ToList();
-        var stackDiagram = s[0];
-        _instructions = s[1].Select(ParseInstruction);
-        _stacks = Enumerable.Range(0, stackDiagram.First().Length / 4 + 2).Select(_ => new Stack<char>()).ToList();
+        var stackDiagram = s[0].ToList();
+        _instructions.AddRange(s[1].Select(ParseInstruction));
+        _stacks.AddRange(Enumerable.Range(0, stackDiagram.First().Length / 4 + 2).Select(_ => new Stack<char>()));
 
-        foreach (var line in stackDiagram.Reverse().Skip(1))
+        foreach (var line in Enumerable.Reverse(stackDiagram).Skip(1))
         {
             var diagramIndex = 1;
             foreach (var stack in line.Chunk(4))
@@ -30,7 +30,6 @@ public sealed class Day05SupplyStacks() : Day(2022, 5, "Supply Stacks")
             }
         }
 
-        _stacksPart2 = new(_stacks.Count);
         _stacks.ForEach(item => _stacksPart2.Add(new(item.Reverse())));
     }
 
@@ -45,22 +44,22 @@ public sealed class Day05SupplyStacks() : Day(2022, 5, "Supply Stacks")
 
     public override object Part1()
     {
-        foreach (var (quantity, from, to) in _instructions!)
-            Enumerable.Range(0, quantity).ForEach(_ => _stacks![to].Push(_stacks[from].Pop()));
+        foreach (var (quantity, from, to) in _instructions)
+            Enumerable.Range(0, quantity).ForEach(_ => _stacks[to].Push(_stacks[from].Pop()));
 
-        return PeekStackTops(_stacks!);
+        return PeekStackTops(_stacks);
     }
 
     public override object Part2()
     {
-        foreach (var (quantity, from, to) in _instructions!)
+        foreach (var (quantity, from, to) in _instructions)
         {
             var crane = new Stack<char>(quantity);
-            Enumerable.Range(0, quantity).ForEach(_ => crane.Push(_stacksPart2![from].Pop()));
+            Enumerable.Range(0, quantity).ForEach(_ => crane.Push(_stacksPart2[from].Pop()));
 
-            while (crane.Count != 0) _stacksPart2![to].Push(crane.Pop());
+            while (crane.Count != 0) _stacksPart2[to].Push(crane.Pop());
         }
 
-        return PeekStackTops(_stacksPart2!);
+        return PeekStackTops(_stacksPart2);
     }
 }

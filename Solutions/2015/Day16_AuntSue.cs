@@ -5,21 +5,23 @@ namespace Solutions._2015;
 /// </summary>
 public sealed partial class Day16AuntSue() : Day(2015, 16, "Aunt Sue")
 {
+    private readonly List<string> _common = [];
+    
     [GeneratedRegex(@": \d\d")]
     private static partial Regex TwoDigitsRegex();
 
-    private IEnumerable<string> Common() =>
-        Input
+    public override void ProcessInput() =>
+        _common.AddRange(Input
             .Select(i => TwoDigitsRegex().Replace(i, ": 9"))
             .WhereMatch("children: 3")
             .WhereMatch("samoyeds: 2")
             .WhereMatch("akitas: 0")
             .WhereMatch("vizslas: 0")
             .WhereMatch("cars: 2")
-            .WhereMatch("perfumes: 1");
+            .WhereMatch("perfumes: 1"));
 
     public override object Part1() =>
-        Common()
+        _common
             .WhereMatch("cats: 7")
             .WhereMatch("trees: 3")
             .WhereMatch("pomeranians: 3")
@@ -28,7 +30,7 @@ public sealed partial class Day16AuntSue() : Day(2015, 16, "Aunt Sue")
             .Split(' ', ':')[1];
 
     public override object Part2() =>
-        Common()
+        _common
             .WhereMatch("cats: [89]")
             .WhereMatch("trees: [4-9]")
             .WhereMatch("pomeranians: [012]")

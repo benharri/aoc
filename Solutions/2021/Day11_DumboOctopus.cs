@@ -6,7 +6,7 @@ namespace Solutions._2021;
 public sealed class Day11DumboOctopus() : Day(2021, 11, "Dumbo Octopus")
 {
     private int _flashTally, _flashesAfter100, _totalTurns;
-    private int[][]? _octopusField;
+    private int[][] _octopusField = [];
 
     public override void ProcessInput()
     {
@@ -43,7 +43,7 @@ public sealed class Day11DumboOctopus() : Day(2021, 11, "Dumbo Octopus")
     private void FlashAt(int r, int c)
     {
         _flashTally++;
-        _octopusField![r][c] = -1;
+        _octopusField[r][c] = -1;
         foreach (var rr in new[] { -1, 0, 1 }.Select(dr => dr + r))
         foreach (var cc in new[] { -1, 0, 1 }.Select(dc => dc + c))
             if (0 <= rr && rr < _octopusField.Length && 0 <= cc && cc < _octopusField[0].Length &&

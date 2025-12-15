@@ -17,8 +17,7 @@ public sealed class Day11SpacePolice() : Day(2019, 11, "Space Police")
         Right,
     }
 
-    public override void ProcessInput() =>
-        _vm = new(Input.First());
+    public override void ProcessInput() => _vm = new(Input.First());
 
     private void Move()
     {

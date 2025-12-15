@@ -5,9 +5,9 @@ namespace Solutions._2021;
 /// </summary>
 public sealed class Day18Snailfish() : Day(2021, 18, "Snailfish")
 {
-    private List<string>? _fishes;
+    private readonly List<string> _fishes = [];
 
-    public override void ProcessInput() => _fishes = Input.ToList();
+    public override void ProcessInput() => _fishes.AddRange(Input);
 
     private static Tree<int> Parse(string input)
     {
@@ -71,9 +71,9 @@ public sealed class Day18Snailfish() : Day(2021, 18, "Snailfish")
         {
             if (node.Data != -1 || node.DistanceToParent(t.Root) < 4) return false;
             var left = SiblingOf(node, n => n.Right, n => n.Left);
-            if (left != null) left.Data += node.Left!.Data;
+            left?.Data += node.Left!.Data;
             var right = SiblingOf(node, n => n.Left, n => n.Right);
-            if (right != null) right.Data += node.Right!.Data;
+            right?.Data += node.Right!.Data;
 
             node.Left = null;
             node.Right = null;
@@ -105,12 +105,12 @@ public sealed class Day18Snailfish() : Day(2021, 18, "Snailfish")
     }
 
     public override object Part1() =>
-        Magnitude(_fishes!.Skip(1).Aggregate(Parse(_fishes!.First()), (a, b) => Add(a, Parse(b))).Root);
+        Magnitude(_fishes.Skip(1).Aggregate(Parse(_fishes.First()), (a, b) => Add(a, Parse(b))).Root);
 
     public override object Part2()
     {
         var best = 0L;
-        for (var i = 0; i < _fishes!.Count; i++)
+        for (var i = 0; i < _fishes.Count; i++)
             best = _fishes
                 .Where((_, j) => i != j)
                 .Select(t => Add(Parse(_fishes[i]), Parse(t)))

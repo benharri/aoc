@@ -8,14 +8,13 @@ namespace Solutions._2021;
 /// </summary>
 public sealed class Day03BinaryDiagnostic() : Day(2021, 3, "Binary Diagnostic")
 {
-    private List<string>? _report;
+    private readonly List<string> _report = [];
 
-    public override void ProcessInput() =>
-        _report = Input.ToList();
+    public override void ProcessInput() => _report.AddRange(Input);
 
     public override object Part1()
     {
-        var l = _report!.Count / 2;
+        var l = _report.Count / 2;
         var g = new StringBuilder();
         var e = new StringBuilder();
 
@@ -34,8 +33,8 @@ public sealed class Day03BinaryDiagnostic() : Day(2021, 3, "Binary Diagnostic")
 
     public override object Part2()
     {
-        var o = _report!;
-        var c = _report!;
+        var o = _report;
+        var c = _report;
 
         var i = 0;
         while (o.Count > 1)

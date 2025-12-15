@@ -50,7 +50,7 @@ public sealed class Day13TransparentOrigami() : Day(2021, 13, "Transparent Origa
         for (var y = 0; y <= yMax; y++)
         {
             for (var x = 0; x <= xMax; x++)
-                s.Append(_dots!.Contains((x, y)) ? "█" : "▒");
+                s.Append(_dots.Contains((x, y)) ? "█" : "▒");
 
             if (y < yMax) s.Append('\n');
         }

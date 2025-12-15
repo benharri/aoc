@@ -5,11 +5,11 @@ namespace Solutions._2019;
 /// </summary>
 public sealed class Day05SunnyWithAChanceOfAsteroids() : Day(2019, 5, "Sunny with a Chance of Asteroids")
 {
-    private IEnumerable<int>? _tape;
+    private readonly List<int> _tape = [];
     private int _output;
 
     public override void ProcessInput() =>
-        _tape = Input.First().Split(',').Select(int.Parse);
+        _tape.AddRange(Input.First().Split(',').Select(int.Parse));
 
     private void RunIntCode(List<int> v, int input)
     {
@@ -61,13 +61,13 @@ public sealed class Day05SunnyWithAChanceOfAsteroids() : Day(2019, 5, "Sunny wit
 
     public override object Part1()
     {
-        RunIntCode(_tape!.ToList(), 1);
+        RunIntCode(_tape.ToList(), 1);
         return _output;
     }
 
     public override object Part2()
     {
-        RunIntCode(_tape!.ToList(), 5);
+        RunIntCode(_tape.ToList(), 5);
         return _output;
     }
 }

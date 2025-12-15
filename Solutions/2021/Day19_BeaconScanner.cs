@@ -8,11 +8,11 @@ public sealed class Day19BeaconScanner() : Day(2021, 19, "Beacon Scanner")
     private static readonly (int, int, int)[] Axes =
         [(0, 1, 0), (0, -1, 0), (1, 0, 0), (-1, 0, 0), (0, 0, 1), (0, 0, -1)];
 
-    private List<HashSet<Point3d<int>>>? _scans;
+    private readonly List<HashSet<Point3d<int>>> _scans = [];
     private List<HashSet<Point3d<int>>> _scanners = [];
 
     public override void ProcessInput() =>
-        _scans = Input
+        _scans.AddRange(Input
             .Aggregate(new List<HashSet<Point3d<int>>>(), (list, line) =>
             {
                 if (string.IsNullOrWhiteSpace(line)) return list;
@@ -26,7 +26,7 @@ public sealed class Day19BeaconScanner() : Day(2021, 19, "Beacon Scanner")
                 var parts = line.Split(',').Select(int.Parse).ToList();
                 list[^1].Add((parts[0], parts[1], parts[2]));
                 return list;
-            });
+            }));
 
     private static (HashSet<Point3d<int>> alignedBeacons, Point3d<int> translation, Point3d<int> up, int rotation)? Align(
         HashSet<Point3d<int>> beacons1, IReadOnlyCollection<Point3d<int>> beacons2)
@@ -60,7 +60,7 @@ public sealed class Day19BeaconScanner() : Day(2021, 19, "Beacon Scanner")
     }
 
     private static (List<HashSet<Point3d<int>>> scans, List<HashSet<Point3d<int>>> scanners) Reduce(
-        IReadOnlyList<HashSet<Point3d<int>>> scans, IReadOnlyList<HashSet<Point3d<int>>> scanners)
+        List<HashSet<Point3d<int>>> scans, List<HashSet<Point3d<int>>> scanners)
     {
         var toRemove = new HashSet<int>();
         for (var i = 0; i < scans.Count - 1; i++)
@@ -91,7 +91,7 @@ public sealed class Day19BeaconScanner() : Day(2021, 19, "Beacon Scanner")
 
     public override object Part1()
     {
-        var scans = _scans!;
+        var scans = _scans;
         _scanners = scans.Select(_ => new HashSet<Point3d<int>> { (0, 0, 0) }).ToList();
         while (scans.Count > 1)
             (scans, _scanners) = Reduce(scans, _scanners);

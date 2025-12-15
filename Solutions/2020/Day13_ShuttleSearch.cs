@@ -5,23 +5,23 @@ namespace Solutions._2020;
 /// </summary>
 public sealed class Day13ShuttleSearch() : Day(2020, 13, "Shuttle Search")
 {
-    private long[]? _buses;
+    private readonly List<long> _buses = [];
     private long _earliest;
-    private string[]? _fullSchedule;
+    private readonly List<string> _fullSchedule = [];
 
     public override void ProcessInput()
     {
         _earliest = long.Parse(Input.First());
-        _fullSchedule = Input.Last().Split(',');
-        _buses = _fullSchedule.Where(c => c != "x").Select(long.Parse).ToArray();
+        _fullSchedule.AddRange(Input.Last().Split(','));
+        _buses.AddRange(_fullSchedule.Where(c => c != "x").Select(long.Parse));
     }
 
     public override object Part1()
     {
         for (var i = _earliest; ; i++)
-            if (_buses!.Any(b => i % b == 0))
+            if (_buses.Any(b => i % b == 0))
             {
-                var bus = _buses!.First(b => i % b == 0);
+                var bus = _buses.First(b => i % b == 0);
                 return bus * (i - _earliest);
             }
     }
@@ -31,7 +31,7 @@ public sealed class Day13ShuttleSearch() : Day(2020, 13, "Shuttle Search")
         var i = 0;
         long result = 1, multiplier = 1;
 
-        foreach (var id in _fullSchedule!)
+        foreach (var id in _fullSchedule)
         {
             if (id != "x")
             {

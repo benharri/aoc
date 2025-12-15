@@ -7,10 +7,10 @@ namespace Solutions._2022;
 /// </summary>
 public sealed class Day13DistressSignal() : Day(2022, 13, "Distress Signal")
 {
-    private IEnumerable<JsonNode>? _packets;
+    private readonly List<JsonNode> _packets = [];
 
     public override void ProcessInput() =>
-        _packets = Input.Where(line => !string.IsNullOrWhiteSpace(line)).Select(s => JsonNode.Parse(s)!);
+        _packets.AddRange(Input.Where(line => !string.IsNullOrWhiteSpace(line)).Select(s => JsonNode.Parse(s)!));
 
     private static int Compare(JsonNode? left, JsonNode? right)
     {
@@ -24,12 +24,12 @@ public sealed class Day13DistressSignal() : Day(2022, 13, "Distress Signal")
     }
 
     public override object Part1() =>
-        _packets!.Chunk(2).Select((p, i) => Compare(p[0], p[1]) < 0 ? i + 1 : 0).Sum();
+        _packets.Chunk(2).Select((p, i) => Compare(p[0], p[1]) < 0 ? i + 1 : 0).Sum();
 
     public override object Part2()
     {
         JsonNode two = JsonNode.Parse("[[2]]")!, six = JsonNode.Parse("[[6]]")!;
-        var packets = _packets!.Append(two).Append(six).ToList();
+        var packets = _packets.Append(two).Append(six).ToList();
         packets.Sort(Compare);
         return (packets.IndexOf(two) + 1) * (packets.IndexOf(six) + 1);
     }

@@ -24,6 +24,6 @@ public sealed class Day01ReportRepair() : Day(2020, 1, "Report Repair")
             if (i + j + k == 2020)
                 return i * j * k;
 
-        return default!;
+        return null!;
     }
 }

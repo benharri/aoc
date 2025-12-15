@@ -5,12 +5,12 @@ namespace Solutions._2019;
 /// </summary>
 public sealed class Day12TheNBodyProblem() : Day(2019, 12, "The N-Body Problem")
 {
-    private List<Position>? _moons;
+    private readonly List<Position> _moons = [];
     private int _step;
 
     public override void ProcessInput()
     {
-        _moons = Input
+        _moons.AddRange(Input
             .Select(moon =>
                 moon
                     .TrimStart('<')
@@ -18,20 +18,16 @@ public sealed class Day12TheNBodyProblem() : Day(2019, 12, "The N-Body Problem")
                     .Split(",")
                     .Select(val => int.Parse(val.Split("=").Last()))
             )
-            .Select(moon => new Position(moon.ToList()))
-            .ToList();
+            .Select(moon => new Position(moon.ToList())));
 
-        foreach (var moon in _moons)
-            moon.SetSiblings(_moons);
+        foreach (var moon in _moons) moon.SetSiblings(_moons);
     }
 
     private void Step()
     {
-        foreach (var moon in _moons!)
-            moon.Gravitate();
+        foreach (var moon in _moons) moon.Gravitate();
 
-        foreach (var moon in _moons)
-            moon.Move();
+        foreach (var moon in _moons) moon.Move();
 
         _step++;
     }
@@ -41,7 +37,7 @@ public sealed class Day12TheNBodyProblem() : Day(2019, 12, "The N-Body Problem")
         while (_step < 1000)
             Step();
 
-        return _moons!.Sum(p => p.TotalEnergy);
+        return _moons.Sum(p => p.TotalEnergy);
     }
 
     public override object Part2()
@@ -51,9 +47,9 @@ public sealed class Day12TheNBodyProblem() : Day(2019, 12, "The N-Body Problem")
         while (cycleX == 0 || cycleY == 0 || cycleZ == 0)
         {
             Step();
-            if (cycleX == 0 && _moons!.All(m => m.Dx == 0)) cycleX = _step * 2;
-            if (cycleY == 0 && _moons!.All(m => m.Dy == 0)) cycleY = _step * 2;
-            if (cycleZ == 0 && _moons!.All(m => m.Dz == 0)) cycleZ = _step * 2;
+            if (cycleX == 0 && _moons.All(m => m.Dx == 0)) cycleX = _step * 2;
+            if (cycleY == 0 && _moons.All(m => m.Dy == 0)) cycleY = _step * 2;
+            if (cycleZ == 0 && _moons.All(m => m.Dz == 0)) cycleZ = _step * 2;
         }
 
         return Util.Lcm(cycleX, Util.Lcm(cycleY, cycleZ));

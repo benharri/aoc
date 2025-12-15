@@ -5,14 +5,13 @@ namespace Solutions._2021;
 /// </summary>
 public sealed class Day04GiantSquid() : Day(2021, 4, "Giant Squid")
 {
-    private List<int>? _call;
-    private List<List<int>>? _boards;
+    private readonly List<int> _call = [];
+    private readonly List<List<int>> _boards = [];
     private int _size;
 
     public override void ProcessInput()
     {
-        _call = Input.First().Split(',').Select(int.Parse).ToList();
-        _boards = [];
+        _call.AddRange(Input.First().Split(',').Select(int.Parse));
 
         List<int> currentBoard = [];
         foreach (var line in Input.Skip(2))
@@ -41,34 +40,34 @@ public sealed class Day04GiantSquid() : Day(2021, 4, "Giant Squid")
             b = FirstWin(i);
         }
 
-        var called = _call!.Take(i).ToHashSet();
-        return called.Last() * _boards![b].Where(x => !called.Contains(x)).Sum();
+        var called = _call.Take(i).ToHashSet();
+        return called.Last() * _boards[b].Where(x => !called.Contains(x)).Sum();
     }
 
     public override object Part2()
     {
         Dictionary<int, bool> wonBoards = [];
-        for (var i = 0; i < _boards!.Count; i++)
+        for (var i = 0; i < _boards.Count; i++)
             wonBoards[i] = false;
 
         var j = _size;
         while (wonBoards.Values.Count(b => b) != wonBoards.Count - 1)
         {
-            var c = _call!.Take(j).ToHashSet();
+            var c = _call.Take(j).ToHashSet();
             for (var u = 0; u < _boards.Count; u++)
                 wonBoards[u] = HasWin(c, _boards[u]);
             j++;
         }
 
-        var called = _call!.Take(j).ToHashSet();
+        var called = _call.Take(j).ToHashSet();
         var b = wonBoards.Single(kvp => !kvp.Value).Key;
         return called.Last() * _boards[b].Where(x => !called.Contains(x)).Sum();
     }
 
     private int FirstWin(int i)
     {
-        var c = _call!.Take(i).ToHashSet();
-        for (var j = 0; j < _boards!.Count; j++)
+        var c = _call.Take(i).ToHashSet();
+        for (var j = 0; j < _boards.Count; j++)
             if (HasWin(c, _boards[j])) return j;
         return -1;
     }

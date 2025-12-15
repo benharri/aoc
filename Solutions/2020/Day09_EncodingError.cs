@@ -5,15 +5,14 @@ namespace Solutions._2020;
 /// </summary>
 public sealed class Day09EncodingError() : Day(2020, 9, "Encoding Error")
 {
-    private long[]? _list;
+    private readonly List<long> _list = [];
     private long _part1;
 
-    public override void ProcessInput() =>
-        _list = Input.Select(long.Parse).ToArray();
+    public override void ProcessInput() => _list.AddRange(Input.Select(long.Parse));
 
     public override object Part1()
     {
-        for (var i = 25; i < _list!.Length - 25; i++)
+        for (var i = 25; i < _list.Count - 25; i++)
         {
             var preamble = _list[(i - 25)..i];
             if (!preamble.Any(num1 => preamble.Any(num2 => num1 + num2 == _list[i])))
@@ -25,10 +24,10 @@ public sealed class Day09EncodingError() : Day(2020, 9, "Encoding Error")
 
     public override object Part2()
     {
-        for (var i = 0; i < _list!.Length; i++)
+        for (var i = 0; i < _list.Count; i++)
         {
             long sum = 0;
-            for (var j = i; j < _list.Length; j++)
+            for (var j = i; j < _list.Count; j++)
             {
                 sum += _list[j];
                 if (sum > _part1) break;

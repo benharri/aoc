@@ -5,7 +5,7 @@ namespace Solutions._2019;
 /// </summary>
 public sealed class Day10MonitoringStation() : Day(2019, 10, "Monitoring Station")
 {
-    private HashSet<Point2d<int>>? _asteroids;
+    private HashSet<Point2d<int>> _asteroids = [];
     private Point2d<int> _best = (x: -1, y: -1);
     private int _bestCanSee;
 
@@ -19,7 +19,7 @@ public sealed class Day10MonitoringStation() : Day(2019, 10, "Monitoring Station
 
     public override object Part1()
     {
-        foreach (var asteroid in _asteroids!)
+        foreach (var asteroid in _asteroids)
         {
             var canSee = _asteroids
                 .Except([asteroid])
@@ -39,7 +39,7 @@ public sealed class Day10MonitoringStation() : Day(2019, 10, "Monitoring Station
 
     public override object Part2()
     {
-        return _asteroids!
+        return _asteroids
             .Where(a => a != _best)
             .Select(a =>
             {

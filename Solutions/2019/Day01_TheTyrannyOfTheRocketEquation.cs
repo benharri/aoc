@@ -5,10 +5,10 @@ namespace Solutions._2019;
 /// </summary>
 public sealed class Day01TheTyrannyOfTheRocketEquation() : Day(2019, 1, "The Tyranny of the Rocket Equation")
 {
-    private IEnumerable<int>? _masses;
+    private readonly List<int> _masses = [];
 
     public override void ProcessInput() =>
-        _masses = Input.Select(int.Parse);
+        _masses.AddRange(Input.Select(int.Parse));
 
     private static int FuelCost(int weight) => weight / 3 - 2;
 
@@ -25,7 +25,7 @@ public sealed class Day01TheTyrannyOfTheRocketEquation() : Day(2019, 1, "The Tyr
         return total;
     }
 
-    public override object Part1() => _masses!.Sum(FuelCost);
+    public override object Part1() => _masses.Sum(FuelCost);
 
-    public override object Part2() => _masses!.Sum(FullCost);
+    public override object Part2() => _masses.Sum(FullCost);
 }

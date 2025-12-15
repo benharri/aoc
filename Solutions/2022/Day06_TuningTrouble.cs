@@ -7,8 +7,7 @@ public sealed class Day06TuningTrouble() : Day(2022, 6, "Tuning Trouble")
 {
     private string? _signal;
 
-    public override void ProcessInput() =>
-        _signal = Input.First();
+    public override void ProcessInput() => _signal = Input.First();
 
     private int DistinctSubstringIndex(int n) =>
         Enumerable.Range(0, _signal!.Length).First(i => _signal.Substring(i, n).Distinct().Count() == n) + n;

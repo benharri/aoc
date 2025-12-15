@@ -7,23 +7,22 @@ namespace Solutions._2025;
 /// </summary>
 public sealed class Day05Cafeteria() : Day(2025, 5, "Cafeteria")
 {
-    private List<(long start, long end)> _ranges = [];
-    private List<long> _ids = [];
+    private readonly List<(long start, long end)> _ranges = [];
+    private readonly List<long> _ids = [];
 
     public override void ProcessInput()
     {
         var split = Input.Split("").ToList();
         
-        _ranges = split[0]
+        _ranges.AddRange(split[0]
             .Select(i =>
             {
                 var rangeSplit = i.Split('-').Select(long.Parse).ToList();
                 return (start: rangeSplit[0], end: rangeSplit[1] + 1);
             })
-            .OrderBy(r => r.start)
-            .ToList();
+            .OrderBy(r => r.start));
         
-        _ids = split[1].Select(long.Parse).ToList();
+        _ids.AddRange(split[1].Select(long.Parse));
     }
 
     public override object Part1() =>

@@ -5,7 +5,7 @@ namespace Solutions._2020;
 /// </summary>
 public sealed class Day07HandyHaversacks() : Day(2020, 7, "Handy Haversacks")
 {
-    private Dictionary<string, IEnumerable<(int Weight, string Name)?>>? _rules;
+    private Dictionary<string, IEnumerable<(int Weight, string Name)?>> _rules = [];
 
     public override void ProcessInput() =>
         _rules = Input
@@ -26,7 +26,7 @@ public sealed class Day07HandyHaversacks() : Day(2020, 7, "Handy Haversacks")
     }
 
     private int Weight(string node) =>
-        1 + _rules![node]
+        1 + _rules[node]
             .Where(i => i.HasValue)
             .Select(i => i!.Value)
             .Sum(i => i.Weight * Weight(i.Name));
@@ -40,7 +40,7 @@ public sealed class Day07HandyHaversacks() : Day(2020, 7, "Handy Haversacks")
         while (true)
         {
             node = start.Dequeue();
-            foreach (var (container, contained) in _rules!)
+            foreach (var (container, contained) in _rules)
                 if (contained.Any(i => i.HasValue && i.Value.Name == node) && p.Add(container))
                     start.Enqueue(container);
 

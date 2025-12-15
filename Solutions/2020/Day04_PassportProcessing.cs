@@ -7,12 +7,12 @@ namespace Solutions._2020;
 /// </summary>
 public sealed partial class Day04PassportProcessing() : Day(2020, 4, "Passport Processing")
 {
-    private List<Dictionary<string, string>>? _passports;
+    private readonly List<Dictionary<string, string>> _passports = [];
     private static readonly string[] RequiredFieldNames = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"];
     private static readonly string[] EyeColors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"];
 
     public override void ProcessInput() =>
-        _passports = Input.Split("").Select(Parse).ToList();
+        _passports.AddRange(Input.Split("").Select(Parse));
 
     [GeneratedRegex("#[0-9a-f]{6}")]
     private static partial Regex HexColor();
@@ -78,6 +78,6 @@ public sealed partial class Day04PassportProcessing() : Day(2020, 4, "Passport P
         return !d.ContainsKey("pid") || d["pid"].Length == 9;
     }
 
-    public override object Part1() => _passports!.Count(IsValid);
-    public override object Part2() => _passports!.Count(ExtendedValidation);
+    public override object Part1() => _passports.Count(IsValid);
+    public override object Part2() => _passports.Count(ExtendedValidation);
 }

@@ -5,15 +5,15 @@ namespace Solutions._2024;
 /// </summary>
 public sealed class Day01HistorianHysteria() : Day(2024, 1, "Historian Hysteria")
 {
-    private List<int> _list1 = [];
-    private List<int> _list2 = [];
+    private readonly List<int> _list1 = [];
+    private readonly List<int> _list2 = [];
 
     public override void ProcessInput()
     {
         var l = Input.Select(line =>
             line.Split(' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)).ToList();
-        _list1 = l.Select(line => line[0]).Select(int.Parse).ToList();
-        _list2 = l.Select(line => line[1]).Select(int.Parse).ToList();
+        _list1.AddRange(l.Select(line => line[0]).Select(int.Parse));
+        _list2.AddRange(l.Select(line => line[1]).Select(int.Parse));
     }
 
     public override object Part1() =>
