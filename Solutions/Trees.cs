@@ -28,7 +28,7 @@ public class Tree<T>(Tree<T>.Node root)
 
             set
             {
-                if (value != null) value.Parent = this;
+                value?.Parent = this;
                 if (Children.Count >= 1) Children[0] = value;
                 else Children.Add(value);
             }
@@ -40,7 +40,7 @@ public class Tree<T>(Tree<T>.Node root)
 
             set
             {
-                if (value != null) value.Parent = this;
+                value?.Parent = this;
                 switch (Children.Count)
                 {
                     case >= 2:
