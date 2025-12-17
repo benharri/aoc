@@ -1,16 +1,48 @@
 namespace Solutions;
 
-public class DefaultDictionary<TKey, TValue> : Dictionary<TKey, TValue> where TKey : notnull
+public class DefaultDictionary<TKey, TValue>(Func<TKey, TValue> defaultSelector) : Dictionary<TKey, TValue> where TKey : notnull
 {
-    public TValue? DefaultValue;
-
-    public new TValue? this[TKey key]
+    public new TValue this[TKey key]
     {
-        get => TryGetValue(key, out var t) ? t : DefaultValue;
+        get => TryGetValue(key, out var t) ? t : base[key] = defaultSelector(key);
         set
         {
             if (value != null) base[key] = value;
         }
+    }
+}
+
+public sealed class DirectedGraph<T> where T : IEquatable<T>
+{
+    public readonly record struct Edge(T From, T To);
+
+    public DefaultDictionary<T, HashSet<T>> Incoming { get; } = new(_ => []);
+    public DefaultDictionary<T, HashSet<T>> Outgoing { get; } = new(_ => []);
+
+    public IEnumerable<T> Sources => Outgoing.Keys.Where(v => Incoming[v] is { Count: 0 });
+    public IEnumerable<T> Sinks => Incoming.Keys.Where(v => Outgoing[v] is { Count: 0 });
+
+    public DirectedGraph()
+    {
+    }
+
+    public DirectedGraph(IEnumerable<Edge> edges)
+    {
+        foreach (var edge in edges)
+        {
+            AddEdge(edge);
+        }
+    }
+
+    public void AddEdge(Edge edge)
+    {
+        AddEdge(edge.From, edge.To);
+    }
+
+    public void AddEdge(T edgeFrom, T edgeTo)
+    {
+        Incoming[edgeTo].Add(edgeFrom);
+        Outgoing[edgeFrom].Add(edgeTo);
     }
 }
 
@@ -50,6 +82,7 @@ public class Tree<T>(Tree<T>.Node root)
                         Children.Add(null);
                         break;
                 }
+
                 Children.Add(value);
             }
         }
@@ -80,7 +113,7 @@ public class Dijkstra<TCell, TMid> where TCell : notnull
     public int ComputeFind(TCell start, TCell target, Func<TCell, bool>? valid = null)
     {
         valid ??= _ => true;
-        var dist = new DefaultDictionary<TCell, int> { DefaultValue = int.MaxValue, [start] = 0 };
+        var dist = new DefaultDictionary<TCell, int>(_ => int.MaxValue) { [start] = 0 };
         var seen = new HashSet<TCell>();
         var queue = new PriorityQueue<TCell, int>();
         queue.Enqueue(start, 0);

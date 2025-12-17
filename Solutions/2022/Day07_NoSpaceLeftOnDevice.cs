@@ -5,7 +5,7 @@ namespace Solutions._2022;
 /// </summary>
 public sealed class Day07NoSpaceLeftOnDevice() : Day(2022, 7, "No Space Left On Device")
 {
-    private readonly DefaultDictionary<string, long> _dirs = [];
+    private readonly DefaultDictionary<string, long> _dirs = new(_ => 0);
 
     public override void ProcessInput()
     {
