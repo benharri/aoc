@@ -17,7 +17,7 @@ public static class Common
         await Assert.That(day).IsNotNull();
         day!.UseTestInput = testInput;
         await Assert.That(new FileInfo(day.FileName)).Exists();
-     
+
         day.PrintProcessInput();
 
         // part 1

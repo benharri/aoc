@@ -29,7 +29,7 @@ public sealed class Day04PrintingDepartment() : Day(2025, 4, "Printing Departmen
     public override object Part2()
     {
         var count = 0;
-        
+
         while (true)
         {
             var countBeforeRemoval = count;

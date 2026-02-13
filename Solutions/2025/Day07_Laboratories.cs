@@ -13,7 +13,7 @@ public sealed class Day07Laboratories() : Day(2025, 7, "Laboratories")
     public override object Part1()
     {
         var tachyons = new bool[_input[0].Length];
-        
+
         tachyons[_input[0].IndexOf('S')] = true;
         var count = 0;
         foreach (var line in _input.Skip(1))
@@ -28,7 +28,7 @@ public sealed class Day07Laboratories() : Day(2025, 7, "Laboratories")
                 }
             }
         }
-        
+
         return count;
     }
 

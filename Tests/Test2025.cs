@@ -27,7 +27,7 @@ public class Test2025
     [Arguments(typeof(Day04PrintingDepartment), "13", "43")]
     [Arguments(typeof(Day05Cafeteria), "3", "14")]
     [Arguments(typeof(Day06TrashCompactor), "4277556", "3263827")]
-    [Arguments(typeof(Day07Laboratories), "21" , "40")]
+    [Arguments(typeof(Day07Laboratories), "21", "40")]
     [Arguments(typeof(Day08Playground), "40", "25272")]
     [Arguments(typeof(Day09MovieTheater), "50", "24")]
     [Arguments(typeof(Day10Factory), "7", "33")]

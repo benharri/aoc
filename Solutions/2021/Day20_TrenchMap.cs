@@ -10,7 +10,7 @@ public sealed class Day20TrenchMap() : Day(2021, 20, "Trench Map")
 
     public override void ProcessInput()
     {
-        _enhancementAlgorithm = [..Input.First().Select(ch => ch == '#')];
+        _enhancementAlgorithm = [.. Input.First().Select(ch => ch == '#')];
         _initialImage = Parse(Input.Skip(2).ToList());
     }
 

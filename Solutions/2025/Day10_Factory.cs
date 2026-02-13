@@ -58,7 +58,7 @@ public sealed class Day10Factory() : Day(2025, 10, "Factory")
             if (q == -1) throw new();
             minPresses += BitOperations.PopCount((uint)q);
         }
-        
+
         return minPresses;
     }
 

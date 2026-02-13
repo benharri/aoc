@@ -8,11 +8,11 @@ public sealed class Day01SecretEntrance() : Day(2025, 1, "Secret Entrance")
     public override object Part1()
     {
         int current = 50, zeroCount = 0;
-        
+
         foreach (var line in Input)
         {
             var value = int.Parse(line[1..]);
-            
+
             switch (line[0])
             {
                 case 'L': current -= value; break;
@@ -37,12 +37,12 @@ public sealed class Day01SecretEntrance() : Day(2025, 1, "Secret Entrance")
             counter += Math.Abs(turn) / 100;
             turn %= 100;
             var next = (current + turn + 100) % 100;
-            
+
             if (current != 0 && next != 0 && (turn < 0 && current < next || turn > 0 && next < current))
                 counter++;
             if (next == 0)
                 counter++;
-            
+
             current = next;
         }
 

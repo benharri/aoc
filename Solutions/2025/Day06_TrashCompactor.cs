@@ -29,7 +29,7 @@ public sealed class Day06TrashCompactor() : Day(2025, 6, "Trash Compactor")
         var inp = Input.ToList();
         var operands = inp.SkipLast(1).ToList();
         var sum = 0L;
-        
+
         var operators = Regex.Matches(inp.Last(), @"\S +");
         foreach (Match op in operators)
         {

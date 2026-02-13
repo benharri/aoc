@@ -6,7 +6,7 @@ namespace Solutions._2015;
 public sealed partial class Day16AuntSue() : Day(2015, 16, "Aunt Sue")
 {
     private readonly List<string> _common = [];
-    
+
     [GeneratedRegex(@": \d\d")]
     private static partial Regex TwoDigitsRegex();
 

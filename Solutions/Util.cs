@@ -72,7 +72,7 @@ public static class Util
         int[] result = new int[m];
         Stack<int> stack = new(m);
         stack.Push(0);
-        
+
         while (stack.Count > 0)
         {
             int index = stack.Count - 1;

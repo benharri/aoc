@@ -14,7 +14,7 @@ public sealed class Day11Reactor() : Day(2025, 11, "Reactor")
         foreach (var adj in chunks[1].Split(' '))
             _dag.AddEdge(chunks[0], adj);
     }
-    
+
     private long Paths(string from, string to)
     {
         if (_memo.TryGetValue((from, to), out var cached)) return cached;

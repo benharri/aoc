@@ -13,7 +13,7 @@ public sealed class Day05Cafeteria() : Day(2025, 5, "Cafeteria")
     public override void ProcessInput()
     {
         var split = Input.Split("").ToList();
-        
+
         _ranges.AddRange(split[0]
             .Select(i =>
             {
@@ -21,7 +21,7 @@ public sealed class Day05Cafeteria() : Day(2025, 5, "Cafeteria")
                 return (start: rangeSplit[0], end: rangeSplit[1] + 1);
             })
             .OrderBy(r => r.start));
-        
+
         _ids.AddRange(split[1].Select(long.Parse));
     }
 
