@@ -37,8 +37,8 @@ public readonly record struct Point3d<T>(T X, T Y, T Z) where T : INumber<T>
 {
     public double EuclideanDistance(Point3d<T> other)
     {
-        T x = X - other.X, y = Y - other.Y, z = Z - other.Z;
-        return Math.Sqrt(Convert.ToDouble(x * x + y * y + z * z));
+        double x = Convert.ToDouble(X - other.X), y = Convert.ToDouble(Y - other.Y), z = Convert.ToDouble(Z - other.Z);
+        return Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2));
     }
 
     public static Point3d<T> FromLine(string line)
