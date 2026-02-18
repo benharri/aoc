@@ -20,7 +20,7 @@ public sealed class Day08Playground() : Day(2025, 8, "Playground")
         var toMake = UseTestInput ? 10 : 1000;
         while (_priorityQueue.TryDequeue(out var p, out _))
         {
-            if (connections == toMake)
+            if (connections++ == toMake)
             {
                 _largest3CircuitsMagnitude = _circuits.OrderByDescending(x => x.Count).Take(3).Aggregate(1L, (l, set) => l * set.Count);
             }
@@ -43,7 +43,7 @@ public sealed class Day08Playground() : Day(2025, 8, "Playground")
                     break;
             }
 
-            if (++connections > toMake && _circuits.Count == 1)
+            if (_circuits.Count == 1 && _circuits[0].Count == _boxes.Count)
             {
                 _lastBoxXOffset = p.one.X * p.two.X;
                 break;

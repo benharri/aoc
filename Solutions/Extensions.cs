@@ -36,7 +36,7 @@ public static class Extensions
             var array = enumerable as T[] ?? enumerable.ToArray();
             return array.Length == 1
                 ? [array]
-                : array.SelectMany(t => Permute(array.Where(x => !x!.Equals(t))), (v, p) => p.Prepend(v));
+                : array.SelectMany(t => array.Where(x => !x!.Equals(t)).Permute(), (v, p) => p.Prepend(v));
         }
 
         public IEnumerable<(T First, T Second)> Pairs()
