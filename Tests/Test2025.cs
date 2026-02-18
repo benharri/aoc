@@ -31,7 +31,7 @@ public class Test2025
     [Arguments(typeof(Day08Playground), "40", "25272")]
     [Arguments(typeof(Day09MovieTheater), "50", "24")]
     [Arguments(typeof(Day10Factory), "7", "33")]
-    [Arguments(typeof(Day11Reactor), "5", "2")]
+    [Arguments(typeof(Day11Reactor), "5", "0")] // Separate example input for p2, would be 2 for correct input
     public async Task CheckTestInputs(Type dayType, string part1, string part2) =>
         await Common.CheckDay(dayType, part1, part2, true);
 }
