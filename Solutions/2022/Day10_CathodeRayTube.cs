@@ -14,7 +14,7 @@ public sealed class Day10CathodeRayTube() : Day(2022, 10, "Cathode-Ray Tube")
         foreach (var line in Input)
         {
             CpuTick(ref cycle, x);
-            if (!line.StartsWith("addx")) continue;
+            if (!line.StartsWith("addx", StringComparison.Ordinal)) continue;
 
             CpuTick(ref cycle, x);
             x += int.Parse(line.Split(' ')[1]);

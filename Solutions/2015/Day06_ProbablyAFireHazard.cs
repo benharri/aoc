@@ -22,7 +22,7 @@ public sealed partial class Day06ProbablyAFireHazard() : Day(2015, 6, "Probably 
             {
                 for (var y = yStart; y <= yEnd; y++)
                 {
-                    if (line.StartsWith("toggle"))
+                    if (line.StartsWith("toggle", StringComparison.Ordinal))
                     {
                         if (_lightGrid.ContainsKey((x, y)))
                         {
@@ -33,11 +33,11 @@ public sealed partial class Day06ProbablyAFireHazard() : Day(2015, 6, "Probably 
                             _lightGrid[(x, y)] = true;
                         }
                     }
-                    else if (line.StartsWith("turn on"))
+                    else if (line.StartsWith("turn on", StringComparison.Ordinal))
                     {
                         _lightGrid[(x, y)] = true;
                     }
-                    else if (line.StartsWith("turn off"))
+                    else if (line.StartsWith("turn off", StringComparison.Ordinal))
                     {
                         _lightGrid[(x, y)] = false;
                     }
@@ -59,7 +59,7 @@ public sealed partial class Day06ProbablyAFireHazard() : Day(2015, 6, "Probably 
             {
                 for (var y = yStart; y <= yEnd; y++)
                 {
-                    if (line.StartsWith("toggle"))
+                    if (line.StartsWith("toggle", StringComparison.Ordinal))
                     {
                         if (_brightnessGrid.ContainsKey((x, y)))
                         {
@@ -70,7 +70,7 @@ public sealed partial class Day06ProbablyAFireHazard() : Day(2015, 6, "Probably 
                             _brightnessGrid[(x, y)] = 2;
                         }
                     }
-                    else if (line.StartsWith("turn on"))
+                    else if (line.StartsWith("turn on", StringComparison.Ordinal))
                     {
                         if (_brightnessGrid.ContainsKey((x, y)))
                         {
@@ -81,7 +81,7 @@ public sealed partial class Day06ProbablyAFireHazard() : Day(2015, 6, "Probably 
                             _brightnessGrid[(x, y)] = 1;
                         }
                     }
-                    else if (line.StartsWith("turn off"))
+                    else if (line.StartsWith("turn off", StringComparison.Ordinal))
                     {
                         if (_brightnessGrid.ContainsKey((x, y)) && _brightnessGrid[(x, y)] > 0)
                         {

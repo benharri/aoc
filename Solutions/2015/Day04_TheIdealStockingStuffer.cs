@@ -17,10 +17,8 @@ public sealed class Day04TheIdealStockingStuffer() : Day(2015, 4, "The Ideal Sto
 
         while (true)
         {
-            var hash = MD5.HashData(Encoding.ASCII.GetBytes(_key + counter));
-            if (Convert.ToHexString(hash).StartsWith("00000"))
-                return counter;
-            counter++;
+            var hash = MD5.HashData(Encoding.ASCII.GetBytes(_key + counter++));
+            if (hash[0] == 0 && hash[1] == 0 && (hash[2] & 0xf0) == 0) return counter - 1;
         }
     }
 
@@ -30,10 +28,8 @@ public sealed class Day04TheIdealStockingStuffer() : Day(2015, 4, "The Ideal Sto
 
         while (true)
         {
-            var hashBytes = MD5.HashData(Encoding.ASCII.GetBytes(_key + counter));
-            if (hashBytes[0] == 0 && hashBytes[1] == 0 && hashBytes[2] == 0)
-                return counter;
-            counter++;
+            var hashBytes = MD5.HashData(Encoding.ASCII.GetBytes(_key + counter++));
+            if (hashBytes[0] == 0 && hashBytes[1] == 0 && hashBytes[2] == 0) return counter - 1;
         }
     }
 }

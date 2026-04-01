@@ -31,9 +31,9 @@ public sealed partial class Day05DoesntHeHaveInternElvesForThis() : Day(2015, 5,
             if (s.Count(c => Vowels.Contains(c)) < 3) return false;
 
             // must have a double-letter somewhere
-            return DoubleLetter().Matches(s).Count >= 1;
+            return DoubleLetter().Count(s) >= 1;
         });
 
     public override object Part2() =>
-        _strings.Count(s => LetterSandwich().Matches(s).Count >= 1 && TwoPairs().Matches(s).Count == 1);
+        _strings.Count(s => LetterSandwich().Count(s) >= 1 && TwoPairs().Count(s) == 1);
 }

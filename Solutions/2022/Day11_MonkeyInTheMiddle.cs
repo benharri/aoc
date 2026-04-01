@@ -65,9 +65,9 @@ public sealed class Day11MonkeyInTheMiddle() : Day(2022, 11, "Monkey in the Midd
             var m = new Monkey();
             foreach (var line in lines.Select(l => l.Trim()))
             {
-                if (line.StartsWith("Starting items: "))
+                if (line.StartsWith("Starting items: ", StringComparison.Ordinal))
                     m.Items = new(line.Split("Starting items: ")[1].Split(", ").Select(long.Parse));
-                else if (line.StartsWith("Operation: "))
+                else if (line.StartsWith("Operation: ", StringComparison.Ordinal))
                 {
                     var s = line.Split("Operation: new = old ")[1];
                     if (long.TryParse(s[2..], out var amount))
@@ -79,11 +79,11 @@ public sealed class Day11MonkeyInTheMiddle() : Day(2022, 11, "Monkey in the Midd
                         };
                     else m.Operation = i => i * i;
                 }
-                else if (line.StartsWith("Test: "))
+                else if (line.StartsWith("Test: ", StringComparison.Ordinal))
                     m.ModTest = long.Parse(line.Split("Test: divisible by ")[1]);
-                else if (line.StartsWith("If true: "))
+                else if (line.StartsWith("If true: ", StringComparison.Ordinal))
                     m.TrueDest = int.Parse(line.Split(' ')[5]);
-                else if (line.StartsWith("If false: "))
+                else if (line.StartsWith("If false: ", StringComparison.Ordinal))
                     m.FalseDest = int.Parse(line.Split(' ')[5]);
             }
 

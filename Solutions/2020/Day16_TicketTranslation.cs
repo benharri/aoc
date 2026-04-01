@@ -77,7 +77,7 @@ public sealed class Day16TicketTranslation() : Day(2020, 16, "Ticket Translation
                     .Where(x => x.Index != index || x.Key == key)
                     .ToList();
 
-        var departureFields = matchedRules.Where(r => r.Key.StartsWith("departure"));
+        var departureFields = matchedRules.Where(r => r.Key.StartsWith("departure", StringComparison.Ordinal));
 
         return departureFields.Aggregate(1L, (l, match) => l * _tickets!.First()[match.Index]);
     }

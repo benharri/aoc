@@ -51,7 +51,7 @@ public sealed class Day08TwoFactorAuthentication() : Day(2016, 8, "Two-Factor Au
     }
 
     public override object Part1() =>
-        Input.Where(line => line.StartsWith("rect")).Sum(rect =>
+        Input.Where(line => line.StartsWith("rect", StringComparison.Ordinal)).Sum(rect =>
         {
             var s = rect.Split('x', ' ').Skip(1).Select(int.Parse).ToList();
             return s[0] * s[1];

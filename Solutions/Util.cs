@@ -87,4 +87,30 @@ public static class Util
             }
         }
     }
+
+    /// <inheritdoc cref="TimeAndPrint(Func{object?}, string)"/>
+    public static void TimeAndPrint(Action action, string prefix = "") =>
+        TimeAndPrint(() =>
+        {
+            action();
+            return null;
+        }, prefix);
+
+    /// <summary>
+    /// Track how long the given function ran for and print details to the console.
+    /// There's an overload that takes an Action instead of a Func that will return string.Empty.
+    /// </summary>
+    /// <param name="func">The function to track</param>
+    /// <param name="prefix">Context to prepend to the console</param>
+    /// <returns>the result of running <paramref name="func"/> as a string</returns>
+    public static string? TimeAndPrint(Func<object?> func, string prefix = "")
+    {
+        var start = Stopwatch.GetTimestamp();
+        var result = func();
+        var elapsed = Stopwatch.GetElapsedTime(start);
+
+        Console.WriteLine(
+            $"{$"{(string.IsNullOrWhiteSpace(prefix) ? "" : $"{prefix}: ")}{result}",-55} {elapsed.TotalMilliseconds:00.0000}ms");
+        return result?.ToString();
+    }
 }

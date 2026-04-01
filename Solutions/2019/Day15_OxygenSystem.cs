@@ -188,7 +188,6 @@ public sealed class Day15OxygenSystem() : Day(2019, 15, "Oxygen System")
 
         public int NextDirection() => _searchDirection++;
 
-        public static Location? GetLocation(Point2d<int> coords) =>
-            AllLocations.ContainsKey(coords) ? AllLocations[coords] : null;
+        public static Location? GetLocation(Point2d<int> coords) => AllLocations.GetValueOrDefault(coords);
     }
 }

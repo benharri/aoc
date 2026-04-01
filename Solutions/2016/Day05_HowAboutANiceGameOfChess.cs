@@ -20,9 +20,7 @@ public sealed class Day05HowAboutANiceGameOfChess() : Day(2016, 5, "How About a 
         {
             while (true)
             {
-                var chars = _keyBase + index++;
-                var bytes = Encoding.ASCII.GetBytes(chars);
-                var hashData = MD5.HashData(bytes);
+                var hashData = MD5.HashData(Encoding.ASCII.GetBytes(_keyBase + index++));
 
                 // bail out before converting back to string
                 if (hashData[0] != 0 || hashData[1] != 0 || (hashData[2] & 0xf0) != 0) continue;
@@ -43,9 +41,7 @@ public sealed class Day05HowAboutANiceGameOfChess() : Day(2016, 5, "How About a 
 
         while (found < 8)
         {
-            var chars = _keyBase + index++;
-            var bytes = Encoding.ASCII.GetBytes(chars);
-            var hashData = MD5.HashData(bytes);
+            var hashData = MD5.HashData(Encoding.ASCII.GetBytes(_keyBase + index++));
 
             // compare bytes for leading zeros and bail if there aren't five of them
             if (hashData[0] != 0 || hashData[1] != 0 || (hashData[2] & 0xf0) != 0) continue;

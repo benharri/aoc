@@ -155,9 +155,8 @@ public static class Extensions
     /// <param name="other"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public static int HammingDistance(this string s1, string other)
-    {
-        if (s1.Length != other.Length) throw new("Strings must be equal length.");
-        return s1.Zip(other).Count(s => s.First != s.Second);
-    }
+    public static int HammingDistance(this string s1, string other) =>
+        s1.Length != other.Length
+            ? throw new("Strings must be equal length.")
+            : s1.Zip(other).Count(s => s.First != s.Second);
 }

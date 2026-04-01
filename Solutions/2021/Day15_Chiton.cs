@@ -41,7 +41,7 @@ public sealed class Day15Chiton() : Day(2021, 15, "Chiton")
                 .ToDictionary(t => t.newKey, t => t.node);
     }
 
-    private static IEnumerable<Node> GetNeighborsAt(IReadOnlyDictionary<Point2d<int>, Node> grid, Node node)
+    private static IEnumerable<Node> GetNeighborsAt(Dictionary<Point2d<int>, Node> grid, Node node)
     {
         foreach (var (i, j) in Adjacent)
         {

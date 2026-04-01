@@ -25,8 +25,8 @@ public sealed class Day03BinaryDiagnostic() : Day(2021, 3, "Binary Diagnostic")
             e.Append(ones > l ? '0' : '1');
         }
 
-        var gamma = BigInteger.Parse($"0{g}", NumberStyles.BinaryNumber);
-        var epsilon = BigInteger.Parse($"0{e}", NumberStyles.BinaryNumber);
+        var gamma = BigInteger.Parse($"0{g}", NumberStyles.BinaryNumber, CultureInfo.InvariantCulture);
+        var epsilon = BigInteger.Parse($"0{e}", NumberStyles.BinaryNumber, CultureInfo.InvariantCulture);
 
         return gamma * epsilon;
     }
@@ -43,7 +43,7 @@ public sealed class Day03BinaryDiagnostic() : Day(2021, 3, "Binary Diagnostic")
             o = o.Where(r => r[i] == most).ToList();
             i++;
         }
-        var o2 = BigInteger.Parse($"0{o.Single()}", NumberStyles.BinaryNumber);
+        var o2 = BigInteger.Parse($"0{o.Single()}", NumberStyles.BinaryNumber, CultureInfo.InvariantCulture);
 
         i = 0;
         while (c.Count > 1)
@@ -52,7 +52,8 @@ public sealed class Day03BinaryDiagnostic() : Day(2021, 3, "Binary Diagnostic")
             c = c.Where(r => r[i] != most).ToList();
             i++;
         }
-        var co2 = BigInteger.Parse($"0{c.Single()}", NumberStyles.BinaryNumber);
+
+        var co2 = BigInteger.Parse($"0{c.Single()}", NumberStyles.BinaryNumber, CultureInfo.InvariantCulture);
 
         return o2 * co2;
 

@@ -33,10 +33,10 @@ public sealed class Day02_1202ProgramAlarm() : Day(2019, 2, "1202 Program Alarm"
     public override object Part2()
     {
         for (var i = 0; i < 100; i++)
-            for (var j = 0; j < 100; j++)
-                if (RunIntCode(i, j) == 19690720)
-                    return 100 * i + j;
+        for (var j = 0; j < 100; j++)
+            if (RunIntCode(i, j) == 19690720)
+                return 100 * i + j;
 
-        return default!;
+        return null!;
     }
 }

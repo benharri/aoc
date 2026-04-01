@@ -49,7 +49,7 @@ public sealed partial class Day04PassportProcessing() : Day(2020, 4, "Passport P
         else return false;
 
         // height
-        if (d["hgt"].EndsWith("cm"))
+        if (d["hgt"].EndsWith("cm", StringComparison.Ordinal))
         {
             if (int.TryParse(d["hgt"][..3], out var hgt))
             {
@@ -57,7 +57,7 @@ public sealed partial class Day04PassportProcessing() : Day(2020, 4, "Passport P
             }
             else return false;
         }
-        else if (d["hgt"].EndsWith("in"))
+        else if (d["hgt"].EndsWith("in", StringComparison.Ordinal))
         {
             if (int.TryParse(d["hgt"][..2], out var hgt))
             {

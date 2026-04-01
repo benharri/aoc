@@ -95,7 +95,7 @@ public sealed partial class Day20JurassicJigsaw() : Day(2020, 20, "Jurassic Jigs
         {
             var previousPiece = puzzle[i - 1][0];
             var bottomPiece = connections[previousPiece]
-                .Where(p => unprocessed.Contains(p))
+                .Where(unprocessed.Contains)
                 .First(p => p.AllSidesWithFlipped.Value.Contains(previousPiece.BottomSide.Value));
             puzzle[i][0] = bottomPiece.TransformSoTopMatchesWith(previousPiece.BottomSide.Value);
             unprocessed.Remove(bottomPiece);
@@ -107,7 +107,7 @@ public sealed partial class Day20JurassicJigsaw() : Day(2020, 20, "Jurassic Jigs
             {
                 var previousPiece = t[c - 1];
                 var rightPiece = connections[previousPiece]
-                    .Where(p => unprocessed.Contains(p))
+                    .Where(unprocessed.Contains)
                     .First(p => p.AllSidesWithFlipped.Value.Contains(previousPiece.RightSide.Value));
                 t[c] = rightPiece.TransformSoLeftMatchesWith(previousPiece.RightSide.Value);
                 unprocessed.Remove(rightPiece);
@@ -168,7 +168,7 @@ public sealed partial class Day20JurassicJigsaw() : Day(2020, 20, "Jurassic Jigs
     private static int CountSeaMonstersInImage(char[][] lines)
     {
         var singleLine = lines.Aggregate("", (curr, next) => curr + new string(next));
-        return MonsterRegex().Matches(singleLine).Count;
+        return MonsterRegex().Count(singleLine);
     }
 
     private class PuzzlePiece

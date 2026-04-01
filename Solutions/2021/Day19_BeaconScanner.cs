@@ -17,7 +17,7 @@ public sealed class Day19BeaconScanner() : Day(2021, 19, "Beacon Scanner")
             {
                 if (string.IsNullOrWhiteSpace(line)) return list;
 
-                if (line.StartsWith("---"))
+                if (line.StartsWith("---", StringComparison.Ordinal))
                 {
                     list.Add([]);
                     return list;

@@ -12,7 +12,7 @@ public sealed class Day07NoSpaceLeftOnDevice() : Day(2022, 7, "No Space Left On 
         var path = new Stack<string>();
         foreach (var line in Input)
         {
-            if (line.StartsWith("$ cd"))
+            if (line.StartsWith("$ cd", StringComparison.Ordinal))
             {
                 var dir = line.Split("$ cd ")[1];
                 if (dir == "..")
