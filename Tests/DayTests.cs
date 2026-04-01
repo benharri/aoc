@@ -9,7 +9,7 @@ public class DayTests
     [Test, MethodDataSource<DayData>(nameof(DayData.GetData))]
     public async Task CheckAllDays(Day day, string part1, string part2)
     {
-        if (!day.UseTestInput && !File.Exists(day.FileName)) return;
+        if (!day.UseTestInput && !File.Exists(day.FileName)) Skip.Test("Real input unavailable");
 
         Util.TimeAndPrint(day.ProcessInput, "Input processing");
 
