@@ -35,12 +35,6 @@ public readonly record struct Point2d<T>(T X, T Y) where T : INumber<T>
 
 public readonly record struct Point3d<T>(T X, T Y, T Z) where T : INumber<T>
 {
-    public double EuclideanDistance(Point3d<T> other)
-    {
-        double x = Convert.ToDouble(X - other.X), y = Convert.ToDouble(Y - other.Y), z = Convert.ToDouble(Z - other.Z);
-        return Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2));
-    }
-
     public static Point3d<T> FromLine(string line)
     {
         var split = line.Split(',').Select(i => T.Parse(i, CultureInfo.InvariantCulture)).ToList();
@@ -48,6 +42,12 @@ public readonly record struct Point3d<T>(T X, T Y, T Z) where T : INumber<T>
     }
 
     public static implicit operator Point3d<T>((T x, T y, T z) value) => new(value.x, value.y, value.z);
+
+    public double EuclideanDistance(Point3d<T> other)
+    {
+        double x = Convert.ToDouble(X - other.X), y = Convert.ToDouble(Y - other.Y), z = Convert.ToDouble(Z - other.Z);
+        return Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2));
+    }
 
     public Point3d<T> Transform(Point3d<T> up, int rotation)
     {

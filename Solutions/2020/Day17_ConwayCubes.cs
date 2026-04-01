@@ -48,8 +48,7 @@ public sealed class Day17ConwayCubes() : Day(2020, 17, "Conway Cubes")
         return neighbors;
     }
 
-    private static Dictionary<Point3d<int>, char> Iterate(
-        Dictionary<Point3d<int>, char> prev)
+    private static Dictionary<Point3d<int>, char> Iterate(Dictionary<Point3d<int>, char> prev)
     {
         var next = new Dictionary<Point3d<int>, char>();
 
@@ -87,9 +86,9 @@ public sealed class Day17ConwayCubes() : Day(2020, 17, "Conway Cubes")
     {
         var next = new Dictionary<Point4d<int>, char>();
 
-        for (var z = 0; z < 32; z++)
-        for (var y = 0; y < 32; y++)
         for (var x = 0; x < 32; x++)
+        for (var y = 0; y < 32; y++)
+        for (var z = 0; z < 32; z++)
         for (var w = 0; w < 32; w++)
         {
             var active = Neighbors4(prev, x, y, z, w);
