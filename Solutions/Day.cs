@@ -1,4 +1,6 @@
 using CommandLine;
+using Microsoft.Extensions.Configuration;
+using System.Net.Http;
 
 // ReSharper disable MemberCanBeProtected.Global
 // ReSharper disable MemberCanBePrivate.Global
@@ -14,6 +16,9 @@ namespace Solutions;
 /// <param name="puzzleName">Puzzle name</param>
 public abstract class Day(int year, int day, string puzzleName)
 {
+    private static readonly HttpClient HttpClient = new() { BaseAddress = new("https://adventofcode.com") };
+    private static readonly string Cookie = new ConfigurationBuilder().AddUserSecrets<Day>().Build()["SessionCookie"] ?? "";
+
     private static List<Day> GetAllDays() =>
         Assembly.GetEntryAssembly()!.GetTypes()
             .Where(t => t.BaseType == typeof(Day))
@@ -49,6 +54,18 @@ public abstract class Day(int year, int day, string puzzleName)
             : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                 $"Sync/Notes/aocinput/{Year}/day{DayNumber:00}.in");
 
+    /// <summary>Download puzzle input from adventofcode.com for the current day</summary>
+    public void SaveInput()
+    {
+        if (UseTestInput || File.Exists(FileName)) return;
+
+        ArgumentException.ThrowIfNullOrWhiteSpace(Cookie);
+        HttpRequestMessage req = new(HttpMethod.Get, $"/{Year}/day/{DayNumber}/input");
+        req.Headers.Add("Cookie", $"session={Cookie}");
+        var response = HttpClient.Send(req);
+        response.Content.ReadAsStream().CopyTo(new FileStream(FileName, FileMode.CreateNew));
+    }
+
     /// <summary>
     /// A toggle to read the test input file instead of the real input.
     /// </summary>
@@ -78,6 +95,7 @@ public abstract class Day(int year, int day, string puzzleName)
 
     private void PrintDay()
     {
+        SaveInput();
         Util.TimeAndPrint(ProcessInput, this.ToString());
         Util.TimeAndPrint(Part1, "P1");
         Util.TimeAndPrint(Part2, "P2");
@@ -134,6 +152,9 @@ public abstract class Day(int year, int day, string puzzleName)
                           throw new ApplicationException($"Day {options.DayNumber} not yet implemented.");
 
                 day.UseTestInput = options.TestInput;
+
+                day.SaveInput();
+
                 Util.TimeAndPrint(day.ProcessInput, day.ToString());
 
                 if (options.PartNumber.HasValue)

@@ -11,6 +11,8 @@ public class DayTests
     {
         if (!day.UseTestInput && !File.Exists(day.FileName)) Skip.Test("Real input unavailable");
 
+        day.SaveInput();
+
         Util.TimeAndPrint(day.ProcessInput, "Input processing");
 
         // part 1

@@ -56,14 +56,6 @@ public static class Extensions
     }
 
     /// <summary>
-    /// Increased accuracy for stopwatch based on frequency.
-    /// </summary>
-    /// <param name="stopwatch"></param>
-    /// <returns></returns>
-    public static double ScaleMilliseconds(this Stopwatch stopwatch) =>
-        1_000 * stopwatch.ElapsedTicks / (double)Stopwatch.Frequency;
-
-    /// <summary>
     /// Given an array, it returns a rotated copy.
     /// </summary>
     /// <param name="array">The two-dimensional jagged array to rotate.</param>

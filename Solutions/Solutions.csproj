@@ -1,12 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
+        <UserSecretsId>f2939e7d-b1c9-4486-a290-f345e0e4d4fc</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Update="input\*\*.in">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+        <None Update="input\*\*.in" CopyToOutputDirectory="PreserveNewest"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -19,7 +18,8 @@
 
     <ItemGroup>
         <PackageReference Include="CommandLineParser"/>
-        <PackageReference Include="Microsoft.Z3" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets"/>
+        <PackageReference Include="Microsoft.Z3"/>
         <PackageReference Include="morelinq"/>
         <PackageReference Include="Newtonsoft.Json"/>
     </ItemGroup>

@@ -59,6 +59,15 @@ public static class Util
         return result;
     }
 
+    public static ulong ParseULongFast(string arg) => ParseULongFast(arg.AsSpan());
+    public static ulong ParseULongFast(ReadOnlySpan<char> span)
+    {
+        var result = 0ul;
+        for (var i = 0; i < span.Length; i++)
+            result = result * 10 + span[i] - '0';
+        return result;
+    }
+
     /// <summary>Integer modulus to range [0, <paramref name="b"/>)</summary>
     public static double Modulus(float a, float b) => a - b * Math.Floor(a / b);
 

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ./session_cookie.txt
+session=$(dotnet user-secrets -p Solutions list | grep SessionCookie | cut -f 3 -d ' ')
 
 if [ -z "$session" ]; then
   printf "missing session cookie\n"
@@ -25,7 +25,7 @@ puzzleName=$(curl -s https://adventofcode.com/"$year"/day/"$day" | sed -nr 's/.*
 curl -s https://adventofcode.com/"$year"/day/"$day"/input \
   --cookie "session=$session" \
   -o "$(printf "~/Sync/Notes/aocinput/%s/day%02d.in" "$year" "$day")"
-  
+
 touch "$(printf "Solutions/input/%s/test%02d.in" "$year" "$day")"
 
 class=$(printf "Solutions/%s/Day%02d.cs" "$year" "$day")
