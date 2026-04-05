@@ -281,8 +281,8 @@ public class DayData
         yield return Row(new Day03MullItOver { UseTestInput = true }, "161", "48");
         yield return Row(new Day04CeresSearch(), "2573", "1850");
         yield return Row(new Day04CeresSearch { UseTestInput = true }, "18", "9");
-        yield return Row(new Day05PrintQueue(), "4637", "");
-        yield return Row(new Day05PrintQueue { UseTestInput = true }, "143", "");
+        yield return Row(new Day05PrintQueue(), "4637", "6370");
+        yield return Row(new Day05PrintQueue { UseTestInput = true }, "143", "123");
         // 2025
         yield return Row(new Day01SecretEntrance(), "1105", "6599");
         yield return Row(new Day01SecretEntrance { UseTestInput = true }, "3", "6");

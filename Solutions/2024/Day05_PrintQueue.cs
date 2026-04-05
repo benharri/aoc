@@ -7,26 +7,32 @@ namespace Solutions._2024;
 /// </summary>
 public sealed class Day05PrintQueue() : Day(2024, 5, "Print Queue")
 {
-    private readonly List<(string, string)> _rules = [];
     private readonly List<string[]> _updates = [];
+    private readonly List<List<string>> _orderedUpdates = [];
 
     public override void ProcessInput()
     {
         var s = Input.Split("").ToList();
-        _rules.AddRange(s[0].Select(rule =>
-        {
-            var split = rule.Split('|');
-            return (split[0], split[1]);
-        }));
         _updates.AddRange(s[1].Select(update => update.Split(',')));
+        _orderedUpdates.AddRange(_updates
+            .Select(u => u.OrderBy(y => y, new PrintOrderComparer(s[0].Select(rule => rule.Split('|')).ToList())))
+            .Select(x => x.ToList())
+            .ToList());
     }
 
-    public override object Part1()
+    public override object Part1() =>
+        _orderedUpdates.Where((x, i) => x.SequenceEqual(_updates[i])).Sum(x => int.Parse(x[x.Count / 2]));
+
+    public override object Part2() =>
+        _orderedUpdates.Where((x, i) => !x.SequenceEqual(_updates[i])).Sum(x => int.Parse(x[x.Count / 2]));
+}
+
+public class PrintOrderComparer(List<string[]> rules) : IComparer<string>
+{
+    public int Compare(string? x, string? y)
     {
-        var correctOrder = _updates.Where(update => _rules.All(r => !update.Contains(r.Item1) || !update.Contains(r.Item2) ||
-                                                                    update.IndexOf(r.Item1) < update.IndexOf(r.Item2)));
-        return correctOrder.Sum(update => int.Parse(update[update.Length / 2]));
+        var first = rules.First(r => r.Contains(x) && r.Contains(y))[0];
+        if (first == x) return -1;
+        return first == y ? 1 : 0;
     }
-
-    public override object Part2() => "";
 }
